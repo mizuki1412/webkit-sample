@@ -1,0 +1,2 @@
+BASE_URL=/
+VITE_APP_NAME=demo_app
