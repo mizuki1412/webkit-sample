@@ -44,7 +44,7 @@
     </div>
     <div class="h-screen">
       <div class="w-full shadow-md flex justify-between items-center bg-white mb-1" :style="{height: headerHeight}">
-        <i :class="isCollapse?'el-icon-s-unfold':'el-icon-s-fold'" class="text-xl ml-2" @click="setCollapse(!isCollapse)"/>
+        <kit-icon :name="isCollapse?'menu-open':'menu-close'" class="w-6 h-6 ml-2" @click="setCollapse(!isCollapse)"/>
       </div>
       <router-view class="overflow-auto bg-gray-50 p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}"/>
     </div>

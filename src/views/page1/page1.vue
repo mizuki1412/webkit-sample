@@ -5,7 +5,7 @@
     <v-chart style="width: 300px;height: 200px" :option="option1"></v-chart>
     <kit-modal :modal="modal" :confirm="confirm2">
       <template #title>abc</template>
-      tst
+      测试
     </kit-modal>
   </div>
 </template>
@@ -23,7 +23,6 @@
   function confirm2(){
     // confirm()
     // errorMessage("阿里", {type:'modal'})
-    console.log(13)
   }
 
   onMounted(useLoading(loading,async ()=>{
