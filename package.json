@@ -10,16 +10,16 @@
     "update-dep": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "webkit1412": "^0.1.9"
+    "webkit1412": "^0.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.10.0",
-    "@vue/compiler-sfc": "^3.2.22",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "@vue/compiler-sfc": "^3.2.24",
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.1",
+    "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19",
-    "unplugin-vue-components": "^0.17.2",
-    "vite": "^2.6.14",
+    "unplugin-vue-components": "^0.17.6",
+    "vite": "^2.7.0",
     "vite-plugin-svg-icons": "^1.0.5"
   }
 }
