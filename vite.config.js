@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import viteSvgIcons from 'vite-plugin-svg-icons';
@@ -18,6 +19,9 @@ export default defineConfig({
     }),
     // 自动按需导入：原理是直接在源文件中加入了import语句
     Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
   ],

@@ -12,8 +12,9 @@
           mode="vertical"
           :default-active="storeCurrentRoute.name"
           @select="routeTo">
-        <div class="flex justify-center items-center cursor-pointer " @click="routeTo('index')" :style="{height: headerHeight}">
-          <div class="text-white">Demo</div>
+        <div class="flex justify-center items-center cursor-pointer text-white" @click="routeTo('index')" :style="{height: headerHeight}">
+          <div v-if="!isCollapse">Demo System</div>
+          <div v-else>Demo</div>
         </div>
         <template v-for="(item, index) of storePageMenu" :key="index">
           <el-sub-menu
@@ -52,9 +53,9 @@
 </template>
 <script setup>
 import { ref,onMounted,computed } from 'vue';
-import {storePageMenu} from "webkit1412/lib/router";
+import {storePageMenu} from "/lib/router";
 import {useRouter} from "vue-router";
-import {storeCurrentRoute} from "webkit1412/lib/store";
+import {storeCurrentRoute} from "/lib/store";
 const router = useRouter()
 
 // 顶部高
