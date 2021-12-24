@@ -1,14 +1,12 @@
 <template>
-  <div class="flex flex-col items-center p-4">
-    <el-empty :image="img">
-      <template #description>
-        <div class="text-lg text-gray-700">
-          <slot></slot>
-        </div>
-      </template>
-<!--      <template #default></template>-->
-    </el-empty>
-  </div>
+  <el-empty :image="img" :image-size="size">
+    <template #description>
+      <div class="text-lg text-gray-700">
+        <slot></slot>
+      </div>
+    </template>
+    <!--      <template #default></template>-->
+  </el-empty>
 </template>
 <script setup>
 // 可以传入图片地址
@@ -17,6 +15,10 @@ defineProps({
     type: String,
     default: null
   },
+  size:{
+    type: Number,
+    default: 100
+  }
 })
 
 </script>
