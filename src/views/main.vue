@@ -29,16 +29,20 @@
             <el-menu-item
                 v-for="child of menuItemFilter(item.children)"
                 :index="child.name">
-              {{child.menuTitle}}
+              <template #title>
+                {{child.menuTitle}}
+              </template>
             </el-menu-item>
           </el-sub-menu>
           <el-menu-item
               v-else-if="item.name && (!item.authFunc || item.authFunc())"
               :index="item.name">
-            <div class="flex items-center">
-              <kit-icon color="white" class="w-4 h-4" :name="item.menuIcon"></kit-icon>
-              <span class="ml-2">{{ item.menuTitle }}</span>
+            <div class="flex justify-center items-center h-full">
+              <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
             </div>
+            <template #title>
+              <span class="ml-2">{{ item.menuTitle }}</span>
+            </template>
           </el-menu-item>
         </template>
       </el-menu>

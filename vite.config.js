@@ -22,7 +22,8 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      // todo loading-direactive有bug https://github.com/element-plus/element-plus/issues/4855
+      resolvers: [ElementPlusResolver({ importStyle: false })],
     }),
   ],
 })
