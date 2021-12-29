@@ -12,7 +12,7 @@
           mode="vertical"
           :default-active="storeCurrentRoute.name"
           @select="routeTo">
-        <div class="flex justify-center items-center cursor-pointer text-white" @click="routeTo('index')" :style="{height: headerHeight}">
+        <div class="flex justify-center items-center cursor-pointer text-white bg-blue-900 shadow-md" @click="routeTo('index')" :style="{height: headerHeight}">
           <div v-if="!isCollapse">Demo System</div>
           <div v-else>Demo</div>
         </div>
@@ -47,11 +47,11 @@
         </template>
       </el-menu>
     </div>
-    <div class="h-screen">
+    <div class="h-screen bg-gray-50">
       <div class="w-full shadow-md flex justify-between items-center bg-white mb-1" :style="{height: headerHeight}">
         <kit-icon :name="isCollapse?'menu-open':'menu-close'" class="w-6 h-6 ml-2" @click="setCollapse(!isCollapse)"/>
       </div>
-      <router-view class="overflow-auto bg-gray-50 p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}"/>
+      <router-view class="overflow-auto p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}"/>
     </div>
   </div>
 </template>

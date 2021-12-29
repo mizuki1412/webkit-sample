@@ -1,45 +1,42 @@
 <template>
-  <div class="lkt-table">
+  <div>
     <el-table
         ref="table"
-        :stripe="true"
+        stripe
         :data="displayData"
         @selection-change="selectChange"
         @sort-change="sortChange">
       <slot/>
     </el-table>
-    <el-pagination
-      v-if="pageFromServer"
-      background
-      class="mt-0.5 text-center"
-      layout="prev, pager, next, jumper, total"
-      :current-page.sync="currentPageInner"
-      @current-change="pageServerHandle0"
-      :page-count="pageCount"
-      hide-on-single-page
-    />
-    <el-pagination
-      v-else
-      background
-      layout="prev, pager, next, jumper, sizes, total"
-      style="margin-top: 5px;text-align: center"
-      :total="data.length"
-      :page-size.sync="pageSizeInner"
-      :page-sizes="pageSizes"
-      :current-page.sync="currentPageInner"
-      hide-on-single-page
-    />
+    <el-config-provider :locale="zhCn" >
+<!--      <el-pagination-->
+<!--        v-if="pageFromServer"-->
+<!--        background-->
+<!--        class="mt-0.5 text-center"-->
+<!--        layout="prev, pager, next, jumper, total"-->
+<!--        :current-page.sync="currentPageInner"-->
+<!--        @current-change="pageServerHandle0"-->
+<!--        :page-count="pageCount"-->
+<!--        hide-on-single-page-->
+<!--      />-->
+      <el-pagination
+        background
+        layout="prev, pager, next, jumper, sizes, total"
+        style="margin-top: 5px;text-align: center"
+        :total="data.length"
+        :page-sizes="pageSizes"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </el-config-provider>
   </div>
 </template>
 <script setup>
-
 import {computed, ref, watch} from "vue";
+// todo 中文包
+import zhCn from "element-plus/lib/locale/lang/zh-cn"
 
 const props = defineProps({
-  align: {
-    type: String,
-    default: 'center',
-  },
   data: {
     type: Array,
     default: () => [],
@@ -76,13 +73,21 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:currentPage','update:pageSize','ref'])
 
+// 正常操作变化
 const currentPageInner = ref(props.currentPage);
 watch(() => props.currentPage, currentPage => currentPageInner.value = currentPage);
 watch(currentPageInner, currentPageInner => emit('update:currentPage', currentPageInner));
 const pageSizeInner = ref(props.pageSize);
 watch(() => props.pageSize, pageSize => pageSizeInner.value = pageSize);
 watch(pageSizeInner, pageSizeInner => emit('update:pageSize', pageSizeInner));
+function handleSizeChange(val){
+  pageSizeInner.value = val
+}
+function handleCurrentChange(val){
+  currentPageInner.value = val
+}
 
+// table展示的数据
 const displayData = computed(() => {
   if (props.pageFromServer) {
     return dataList.value;
@@ -129,4 +134,6 @@ async function pageServerHandle0(page) {
 async function refresh() {
   await pageServerHandle0(currentPageInner.value);
 }
+
+
 </script>
