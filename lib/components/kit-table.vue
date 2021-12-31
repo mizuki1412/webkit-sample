@@ -8,7 +8,6 @@
         @sort-change="sortChange">
       <slot/>
     </el-table>
-    <el-config-provider :locale="zhCn" >
 <!--      <el-pagination-->
 <!--        v-if="pageFromServer"-->
 <!--        background-->
@@ -28,13 +27,10 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
-    </el-config-provider>
   </div>
 </template>
 <script setup>
 import {computed, ref, watch} from "vue";
-// todo 中文包
-import zhCn from "element-plus/lib/locale/lang/zh-cn"
 
 const props = defineProps({
   data: {

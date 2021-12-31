@@ -14,8 +14,8 @@
     <slot/>
     <template #footer v-if="!noFooter">
       <div class="flex justify-end gap-4">
-        <el-button type="default" plain @click="cancel">取消</el-button>
-        <el-button type="primary" @click="ok">确定</el-button>
+        <el-button type="default" plain @click="cancel" :loading="modal.loading">取消</el-button>
+        <el-button type="primary" @click="ok" :loading="modal.loading">确定</el-button>
       </div>
       <KitErrChannel class="mt-2" :id="id" />
     </template>
