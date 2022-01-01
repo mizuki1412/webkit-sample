@@ -8,25 +8,27 @@
         @sort-change="sortChange">
       <slot/>
     </el-table>
-<!--      <el-pagination-->
-<!--        v-if="pageFromServer"-->
-<!--        background-->
-<!--        class="mt-0.5 text-center"-->
-<!--        layout="prev, pager, next, jumper, total"-->
-<!--        :current-page.sync="currentPageInner"-->
-<!--        @current-change="pageServerHandle0"-->
-<!--        :page-count="pageCount"-->
-<!--        hide-on-single-page-->
-<!--      />-->
+    <div class="flex justify-center">
+      <!--      <el-pagination-->
+      <!--        v-if="pageFromServer"-->
+      <!--        background-->
+      <!--        class="mt-0.5 text-center"-->
+      <!--        layout="prev, pager, next, jumper, total"-->
+      <!--        :current-page.sync="currentPageInner"-->
+      <!--        @current-change="pageServerHandle0"-->
+      <!--        :page-count="pageCount"-->
+      <!--        hide-on-single-page-->
+      <!--      />-->
       <el-pagination
-        background
-        layout="prev, pager, next, jumper, sizes, total"
-        style="margin-top: 5px;text-align: center"
-        :total="data.length"
-        :page-sizes="pageSizes"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
+          background
+          layout="prev, pager, next, jumper, sizes, total"
+          style="margin-top: 5px;text-align: center"
+          :total="data.length"
+          :page-sizes="pageSizes"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
       />
+    </div>
   </div>
 </template>
 <script setup>

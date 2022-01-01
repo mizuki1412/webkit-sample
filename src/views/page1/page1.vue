@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="loading">
     <kit-icon name="fee" class="w-4 h-4 text-red-600" />
     <kit-empty @click="modal.visible = true">test<span style="color: red">abc</span></kit-empty>
     <v-chart style="width: 300px;height: 200px" :option="option1"></v-chart>

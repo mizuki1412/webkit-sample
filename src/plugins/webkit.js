@@ -17,10 +17,6 @@ export function useWebkit(app){
 
   // router
   const router = _useRouter(app, routes)
-  router.beforeEach((to,from,next)=>{
-    routeBaseBefore(to,from,next)
-  })
-  router.afterEach((to)=>{
-    routeBaseAfter(to)
-  })
+  router.beforeEach(routeBaseBefore)
+  router.afterEach(routeBaseAfter)
 }
