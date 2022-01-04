@@ -9,7 +9,7 @@ export const routes = [
     path: '/',
     name: 'index',
     redirect:{name:"page1"},
-    component: () => import('../views/main.vue'),
+    component: () => import('../../lib/components-layout/kit-layout-admin.vue'),
     meta:{
       menu: true
     },

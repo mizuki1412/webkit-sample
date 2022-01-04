@@ -1,7 +1,7 @@
 <template>
   <el-empty :image="img" :image-size="size">
     <template #description>
-      <div class="text-lg text-gray-700">
+      <div class="text-gray-700">
         <slot></slot>
       </div>
     </template>

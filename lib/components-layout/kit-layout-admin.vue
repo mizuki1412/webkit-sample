@@ -13,8 +13,8 @@
           :default-active="storeCurrentRoute.name"
           @select="routeTo">
         <div class="flex justify-center items-center cursor-pointer text-white bg-blue-900 shadow-md" @click="routeTo('index')" :style="{height: headerHeight}">
-          <div v-if="!isCollapse">{{title}}</div>
-          <div v-else>{{titleSimple}}</div>
+          <div v-if="!isCollapse">{{configKit.TITLE}}</div>
+          <div v-else>{{configKit.TITLE_SIMPLE}}</div>
         </div>
         <template v-for="(item, index) of storePageMenu" :key="index">
           <el-sub-menu
@@ -58,7 +58,7 @@
             title="个人中心"
             size="200px"
             direction="rtl">
-          <user-center />
+        <user-center />
         </el-drawer>
       </div>
       <router-view class="overflow-auto p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}"/>
@@ -69,11 +69,10 @@
 import { ref,onMounted,computed } from 'vue';
 import {storePageMenu} from "/lib/router";
 import {useRouter} from "vue-router";
-import {storeCurrentRoute} from "/lib/store";
-import {title, titleSimple} from "../store/env";
-import UserCenter from "../components/user-center.vue";
-const router = useRouter()
+import {configKit, storeCurrentRoute} from "/lib/store";
+import UserCenter from "./user-center.vue";
 
+const router = useRouter()
 // 顶部高
 const headerHeight = ref('60px')
 // menu width
