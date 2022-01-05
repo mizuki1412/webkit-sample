@@ -58,7 +58,7 @@
             title="个人中心"
             size="200px"
             direction="rtl">
-        <user-center />
+          <user-center />
         </el-drawer>
       </div>
       <router-view class="overflow-auto p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}"/>

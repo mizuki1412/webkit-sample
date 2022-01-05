@@ -6,7 +6,7 @@
   "repository": "https://github.com/mizuki1412/webkit-sample",
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "vite build --base=/ --mode pro",
+    "build": "vite build --mode pro",
     "update-dep": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "unplugin-auto-import": "^0.5.5",
     "unplugin-vue-components": "^0.17.11",
     "vite": "^2.7.10",
+    "vite-plugin-style-import": "^1.4.1",
     "vite-plugin-svg-icons": "^1.0.5"
   }
 }
