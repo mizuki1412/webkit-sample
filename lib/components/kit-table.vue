@@ -20,6 +20,7 @@
       <!--        hide-on-single-page-->
       <!--      />-->
       <el-pagination
+          v-if="!noPagination"
           background
           layout="prev, pager, next, jumper, sizes, total"
           style="margin-top: 5px;text-align: center"
@@ -68,6 +69,10 @@ const props = defineProps({
     type: Function,
     default: () => {},
   },
+  noPagination:{
+    type:Boolean,
+    default:false
+  }
 })
 const emit = defineEmits(['update:currentPage','update:pageSize','ref'])
 

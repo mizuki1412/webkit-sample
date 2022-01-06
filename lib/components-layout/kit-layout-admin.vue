@@ -49,9 +49,9 @@
     </div>
     <div class="h-screen bg-gray-50">
       <div class="w-full shadow-md flex justify-between items-center bg-white mb-1" :style="{height: headerHeight}">
-        <kit-icon :name="isCollapse?'menu-open':'menu-close'" class="w-5 h-5 ml-2" @click="setCollapse(!isCollapse)"/>
+        <kit-icon :name="isCollapse?'common-menu-open':'common-menu-close'" class="w-5 h-5 ml-2" @click="setCollapse(!isCollapse)"/>
         <div class="rounded-full border border-blue-600 border-solid mr-4">
-          <kit-icon name="avatar" class="w-7 h-7 text-blue-600" @click="usercenter=true"></kit-icon>
+          <kit-icon name="common-avatar" class="w-7 h-7 text-blue-600" @click="usercenter=true"></kit-icon>
         </div>
         <el-drawer
             v-model="usercenter"
