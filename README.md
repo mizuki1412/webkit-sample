@@ -34,4 +34,4 @@ lib目录将和webkit1412/lib同步。
 - [ ] element-plus: 自动导入icon
 - [ ] route的props在layout中的应用
 - [ ] vant和element在不同场景下切换 router
-- [ ] element-plus bug: 1.3.0-beta2, 导致el-select 绑定问题
+- [ ] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug

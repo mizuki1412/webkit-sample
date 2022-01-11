@@ -4,9 +4,12 @@
     <kit-empty @click="modal.visible = true">test<span style="color: red">abc</span></kit-empty>
     <v-chart style="width: 300px;height: 200px" :option="option1"></v-chart>
 <!--    <el-button type="primary">button</el-button>-->
+
     <kit-modal :modal="modal" :confirm="confirm2">
       <template #title>abc</template>
-      测试
+      <el-select v-model="modal.data.val1">
+        <el-option label="xx" :value="0"></el-option>
+      </el-select>
     </kit-modal>
   </div>
 </template>
@@ -18,7 +21,8 @@
   const loading = ref(false)
   const option1 = ref()
   const modal = ref({
-    visible: false
+    visible: false,
+    data:{}
   })
 
   function confirm2(){
@@ -27,7 +31,6 @@
   }
 
   onMounted(useLoading(loading,async ()=>{
-    await sleep(2000)
     option1.value=chartConfig({
       xAxis: {
         type: 'category',
@@ -43,6 +46,6 @@
         }
       ]
     });
-    console.log(option1.value)
+    modal.value.data.val1 = 0
   }))
 </script>

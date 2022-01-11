@@ -35,7 +35,7 @@
             </el-menu-item>
           </el-sub-menu>
           <el-menu-item
-              v-else-if="item.name && (!item.authFunc || item.authFunc())"
+              v-else-if="item.name && item.component && (!item.authFunc || item.authFunc())"
               :index="item.name">
             <div class="flex justify-center items-center h-full">
               <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
