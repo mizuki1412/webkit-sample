@@ -61,7 +61,9 @@
           <user-center />
         </el-drawer>
       </div>
-      <router-view class="overflow-auto p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}"/>
+      <div class="overflow-auto p-2" :style="{width: 'calc(100vw - '+menuWidth+')',height: 'calc(100vh - '+headerHeight+')'}">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>

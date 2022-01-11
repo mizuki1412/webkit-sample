@@ -7,7 +7,9 @@
       <div class="w-[50%] text-center">{{router.currentRoute.value.meta.menuTitle}}</div>
       <div class="w-[25%]"></div>
     </div>
-    <router-view class="overflow-auto" style="height: calc(100% - 48px);"></router-view>
+    <div class="overflow-auto" style="height: calc(100% - 48px);">
+      <router-view />
+    </div>
   </div>
 </template>
 <script setup>

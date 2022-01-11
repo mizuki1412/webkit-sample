@@ -1,7 +1,9 @@
 <template>
   <div class="h-screen w-screen flex flex-col place-content-between bg-gray-100">
     <div class="h-[48px] flex justify-center items-center bg-white shadow-md text-lg bg-blue-500 text-white">{{configKit.TITLE}}</div>
-    <router-view class="overflow-auto" style="height: calc(100% - 48px - 50px);"></router-view>
+    <div class="overflow-auto" style="height: calc(100% - 48px - 50px);">
+      <router-view />
+    </div>
     <div class="flex w-full shadow bg-white">
       <div
           v-for="(item,index) in storeAppMenu" :key="index"
