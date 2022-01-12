@@ -12,9 +12,9 @@
           mode="vertical"
           :default-active="storeCurrentRoute.name"
           @select="routeTo">
-        <div class="flex justify-center items-center cursor-pointer text-white bg-blue-900 shadow-md" @click="routeTo('index')" :style="{height: headerHeight}">
-          <div v-if="!isCollapse">{{configKit.TITLE}}</div>
-          <div v-else>{{configKit.TITLE_SIMPLE}}</div>
+        <div class="flex justify-center items-center cursor-pointer text-white bg-blue-900 shadow-md p-2" @click="routeTo('index')" :style="{height: headerHeight}">
+          <div v-if="!isCollapse" class="text-center">{{configKit.TITLE}}</div>
+          <div v-else class="text-center">{{configKit.TITLE_SIMPLE}}</div>
         </div>
         <template v-for="(item, index) of storePageMenu" :key="index">
           <el-sub-menu
