@@ -23,7 +23,7 @@
           v-if="!noPagination"
           background
           layout="prev, pager, next, jumper, sizes, total"
-          style="margin-top: 5px;text-align: center"
+          class="mt-1"
           :total="data.length"
           :page-sizes="pageSizes"
           @size-change="handleSizeChange"
