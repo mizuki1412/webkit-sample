@@ -30,8 +30,7 @@ import {ref, onMounted, watch} from 'vue'
   })
 
   function confirm2(){
-    // confirm()
-    // errorMessage("阿里", {type:'modal'})
+
   }
   const data1 = ref([{id:1},{id:2},{id:3},{id:4},{id:5},{id:6},{id:7},{id:8},{id:9},{id:10},{id:11}])
   const data = ref([])
