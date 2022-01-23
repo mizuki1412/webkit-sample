@@ -6,7 +6,7 @@
       <el-pagination
           background
           layout="prev, pager, next, jumper, sizes, total"
-          class="mt-1"
+          class="mt-2"
           :total="data.length"
           :page-sizes="pageSizes"
           @size-change="handleSizeChange"

@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    ._flex_center {
+        @apply flex justify-center items-center
+    }
+
+    ._flex_col_center {
+        @apply flex flex-col justify-center items-center
+    }
+}

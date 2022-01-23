@@ -5,7 +5,8 @@
         <div class="text-center">{{configKit.TITLE}}</div>
       </div>
       <el-menu
-          class="grow"
+          :class="menuWith===''?'grow':''"
+          :style="menuWith===''?{}:{width: menuWith}"
           activeTextColor="#00d0FF"
           textColor="white"
           :unique-opened="true"
@@ -55,7 +56,7 @@
         <user-center class="text-black" />
       </el-drawer>
     </div>
-    <div class="overflow-auto p-4 w-full" :style="{height: 'calc(100vh - '+headerHeight+')'}">
+    <div class="overflow-auto p-4 w-full bg-gray-50" :style="{height: 'calc(100vh - '+headerHeight+')'}">
       <router-view />
     </div>
   </div>
@@ -66,6 +67,13 @@ import {storePageMenu} from "/lib/router";
 import {useRouter} from "vue-router";
 import {configKit, storeCurrentRoute} from "/lib/store";
 import UserCenter from "./user-center.vue";
+
+defineProps({
+  menuWith:{
+    type: String,
+    default: ""
+  }
+})
 
 const router = useRouter()
 // 顶部高
