@@ -56,7 +56,7 @@
         <user-center class="text-black" />
       </el-drawer>
     </div>
-    <div class="overflow-auto p-4 w-full bg-gray-50" :style="{height: 'calc(100vh - '+headerHeight+')'}">
+    <div class="overflow-auto p-4 w-full bg-gray-100" :style="{height: 'calc(100vh - '+headerHeight+')'}">
       <router-view />
     </div>
   </div>

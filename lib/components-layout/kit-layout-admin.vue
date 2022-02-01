@@ -47,7 +47,7 @@
         </template>
       </el-menu>
     </div>
-    <div class="h-screen bg-gray-50">
+    <div class="h-screen bg-gray-100">
       <div class="w-full shadow-md flex justify-between items-center bg-white mb-1" :style="{height: headerHeight}">
         <kit-icon :name="isCollapse?'common-menu-open':'common-menu-close'" class="w-5 h-5 ml-2" @click="setCollapse(!isCollapse)"/>
         <div class="rounded-full border border-blue-600 border-solid mr-4">
