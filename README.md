@@ -30,7 +30,7 @@ lib目录将和webkit1412/lib同步。
 
 # TODO
 
-- [ ] element-plus: auto import 在v-loading时有bug。
+- [x] element-plus: auto import 在v-loading时有bug。
 - [ ] element-plus: 自动导入icon
 - [ ] route的props在layout中的应用
 - [ ] vant和element在不同场景下切换 router

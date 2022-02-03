@@ -37,6 +37,7 @@ import {ref, onMounted, watch} from 'vue'
   const dataDisplay = ref([])
 
   onMounted(useLoading(loading,async ()=>{
+    await sleep(1000)
     option1.value=chartConfig({
       xAxis: {
         type: 'category',
