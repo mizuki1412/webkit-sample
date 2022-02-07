@@ -1,6 +1,7 @@
 <template>
   <el-dialog
       v-model="modal.visible"
+      draggable
       :close-on-click-modal="false"
       :close-on-press-escape="showClose"
       :show-close="showClose"
@@ -14,7 +15,7 @@
     <slot/>
     <KitErrChannel class="mt-2" :id="id" />
     <template #footer v-if="!noFooter">
-      <div class="flex justify-end gap-4">
+      <div class="flex justify-end">
         <el-button type="default" plain @click="cancel" :loading="Object.keys(modal).indexOf('loading')>-1?modal.loading:false">取消</el-button>
         <el-button type="primary" @click="ok" :loading="Object.keys(modal).indexOf('loading')>-1?modal.loading:false">确定</el-button>
       </div>
