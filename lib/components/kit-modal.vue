@@ -2,7 +2,7 @@
   <el-dialog
       v-model="modal.visible"
       draggable
-      :close-on-click-modal="false"
+      :close-on-click-modal="closeOnClickModal"
       :close-on-press-escape="showClose"
       :show-close="showClose"
       :before-close="cancel"
@@ -61,6 +61,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  closeOnClickModal:{
+    type: Boolean,
+    default: false
+  }
 })
 
 function cancel() {
