@@ -32,6 +32,8 @@ lib目录将和webkit1412/lib同步。
 
 - [x] element-plus: auto import 在v-loading时有bug。
 - [ ] element-plus: 自动导入icon
+- [ ] element: Message/MessageBox单独使用时，style未自动导入
 - [ ] route的props在layout中的应用
 - [ ] vant和element在不同场景下切换 router
 - [x] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug
+- [ ] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66

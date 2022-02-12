@@ -6,6 +6,10 @@ import {useRouter as _useRouter} from "/lib/router";
 import {routes} from "../router";
 import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter";
 
+// todo element messagebox style
+import 'element-plus/theme-chalk/el-message-box.css'
+import 'element-plus/theme-chalk/el-message.css'
+
 export function useWebkit(app){
   configKitInit(import.meta.env)
   // 全局注册lib组件

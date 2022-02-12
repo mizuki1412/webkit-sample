@@ -1,8 +1,11 @@
 <template>
   <div v-loading="loading">
-    <kit-icon name="fee" class="w-4 h-4 text-red-600" />
-    <kit-empty @click="modal.visible = true">test<span style="color: red">abc</span></kit-empty>
-    <v-chart style="width: 300px;height: 200px" :option="option1"></v-chart>
+    <div class="flex">
+      <kit-icon name="fee" class="w-4 h-4 text-red-600" />
+      <kit-empty class="cursor-pointer" @click="modal.visible = true">test<span style="color: red">abc</span></kit-empty>
+      <v-chart style="width: 300px;height: 200px" :option="option1"></v-chart>
+    </div>
+    <el-button @click="testMessage">测试messagebox</el-button>
     <kit-pagination-page :data="data" v-model="dataDisplay">
       <div v-for="item in dataDisplay" :key="item.id">
         <div class="text-blue-600">{{item.id}}</div>
@@ -19,24 +22,29 @@
 </template>
 <script setup>
 import {ref, onMounted, watch} from 'vue'
-  import {sleep, chartConfig} from "/lib/utils";
-  import {useLoading} from "/lib/service";
+import {sleep, chartConfig} from "/lib/utils";
+import {useLoading} from "/lib/service";
+import {ElMessage, ElMessageBox} from "element-plus";
 
-  const loading = ref(false)
-  const option1 = ref()
-  const modal = ref({
-    visible: false,
-    data:{}
-  })
+const loading = ref(false)
+const option1 = ref()
+const modal = ref({
+  visible: false,
+  data:{}
+})
 
-  function confirm2(){
+function confirm2(){
 
-  }
-  const data1 = ref([{id:1},{id:2},{id:3},{id:4},{id:5},{id:6},{id:7},{id:8},{id:9},{id:10},{id:11}])
-  const data = ref([])
-  const dataDisplay = ref([])
+}
+const data1 = ref([{id:1},{id:2},{id:3},{id:4},{id:5},{id:6},{id:7},{id:8},{id:9},{id:10},{id:11}])
+const data = ref([])
+const dataDisplay = ref([])
 
-  onMounted(useLoading(loading,async ()=>{
+function testMessage(){
+  ElMessageBox.confirm('','测试')
+}
+
+onMounted(useLoading(loading,async ()=>{
     await sleep(1000)
     option1.value=chartConfig({
       xAxis: {

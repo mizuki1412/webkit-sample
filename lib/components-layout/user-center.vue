@@ -15,8 +15,16 @@ import {UserLogout} from "../dao/user";
 import {RouteName} from "../router";
 const router = useRouter()
 
-function logout(){
-  UserLogout()
-  router.push({name: RouteName.login})
+let props = defineProps({
+  beforeLogout:{
+    type: Function,
+    default: async ()=>{}
+  }
+})
+
+async function logout(){
+  await props.beforeLogout()
+  await UserLogout()
+  await router.push({name: RouteName.login})
 }
 </script>
