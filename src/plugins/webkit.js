@@ -8,6 +8,7 @@ import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter";
 
 // todo element messagebox style
 import 'element-plus/theme-chalk/el-message-box.css'
+import 'element-plus/theme-chalk/el-button.css'
 import 'element-plus/theme-chalk/el-message.css'
 
 export function useWebkit(app){
