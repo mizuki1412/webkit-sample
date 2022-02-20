@@ -6,7 +6,7 @@
     </div>
     <div class="flex w-full shadow bg-white">
       <div
-          v-for="(item,index) in storeAppMenu" :key="index"
+          v-for="(item,index) in storeAppMenu" :key="item.name"
           class="flex flex-col justify-center items-center h-[50px]"
           :class="storeCurrentRoute.name===item.name?'text-blue-500':'text-gray-600'"
           :style="{width: 'calc(100% / '+storeAppMenu.length+')'}"

@@ -16,7 +16,7 @@
           <div v-if="!isCollapse" class="text-center">{{configKit.TITLE}}</div>
           <div v-else class="text-center">{{configKit.TITLE_SIMPLE}}</div>
         </div>
-        <template v-for="(item, index) of storePageMenu" :key="index">
+        <template v-for="(item, index) in storePageMenu" :key="item.name">
           <el-sub-menu
               v-if="menuItemFilter(item.children).length>0"
               :index="item.name">
@@ -25,7 +25,8 @@
               <span>{{item.menuTitle }}</span>
             </template>
             <el-menu-item
-                v-for="child of menuItemFilter(item.children)"
+                v-for="child in menuItemFilter(item.children)"
+                :key="child.name"
                 :index="child.name">
               <template #title>
                 {{child.menuTitle}}

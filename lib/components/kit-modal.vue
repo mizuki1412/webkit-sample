@@ -1,7 +1,7 @@
 <template>
   <el-dialog
       v-model="modal.visible"
-      draggable
+      :draggable="false"
       :close-on-click-modal="closeOnClickModal"
       :close-on-press-escape="showClose"
       :show-close="showClose"
@@ -17,7 +17,7 @@
     <template #footer v-if="!noFooter">
       <div class="flex justify-end">
         <el-button type="default" plain @click="cancel" :loading="Object.keys(modal).indexOf('loading')>-1?modal.loading:false">取消</el-button>
-        <el-button type="primary" @click="ok" :loading="Object.keys(modal).indexOf('loading')>-1?modal.loading:false">确定</el-button>
+        <el-button type="primary" @click="ok" :loading="Object.keys(modal).indexOf('loading')>-1?modal.loading:false">{{confirmText}}</el-button>
       </div>
     </template>
   </el-dialog>
@@ -64,6 +64,10 @@ const props = defineProps({
   closeOnClickModal:{
     type: Boolean,
     default: false
+  },
+  confirmText:{
+    type: String,
+    default: "确定"
   }
 })
 

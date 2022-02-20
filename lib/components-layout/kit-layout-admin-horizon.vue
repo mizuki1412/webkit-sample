@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen">
+  <div class="w-screen h-screen bg-gray-100">
     <div class="w-full shadow-md flex justify-between items-center mb-1" :style="{height: headerHeight,backgroundColor:'#23479C', color:'white'}">
       <div class="flex justify-center items-center cursor-pointer w-1/4" @click="routeTo('index')">
         <div class="text-center">{{configKit.TITLE}}</div>
@@ -15,7 +15,7 @@
           mode="horizontal"
           :default-active="storeCurrentRoute.name"
           @select="routeTo">
-        <template v-for="(item, index) of storePageMenu" :key="item.name">
+        <template v-for="(item, index) in storePageMenu" :key="item.name">
           <el-sub-menu
               v-if="menuItemFilter(item.children).length>0"
               :index="item.name">
@@ -26,7 +26,8 @@
               </div>
             </template>
             <el-menu-item
-                v-for="child of menuItemFilter(item.children)"
+                v-for="child in menuItemFilter(item.children)"
+                :key="child.name"
                 :index="child.name">
               <template #title>
                 {{child.menuTitle}}
@@ -56,7 +57,10 @@
         <user-center class="text-black" />
       </el-drawer>
     </div>
-    <div class="overflow-auto p-4 w-full bg-gray-100" :style="{height: 'calc(100vh - '+headerHeight+')'}">
+    <div class="overflow-auto px-4 pb-4 pt-2 w-full" :style="{height: 'calc(100vh - '+headerHeight+')'}">
+      <el-breadcrumb separator="/" v-if="navigator.length>0" class="mb-4">
+        <el-breadcrumb-item v-for="(item,index) in navigator"><span :class="index===1?'text-blue-500':''">{{ item.menuTitle }}</span></el-breadcrumb-item>
+      </el-breadcrumb>
       <router-view />
     </div>
   </div>
@@ -89,6 +93,21 @@ function menuItemFilter(itemChildren) {
   if(!itemChildren) itemChildren = []
   return itemChildren.filter((child) => !child.authFunc || child.authFunc());
 }
+
+const navigator = computed(()=>{
+  // {name, menuTitle}
+  const navigatorArray = []
+  for(let e of storePageMenu){
+    if(!e.children || e.children.length===0) continue
+    for(let ee of e.children){
+      if(storeCurrentRoute.name === ee.name){
+        navigatorArray.push(e)
+        navigatorArray.push(ee)
+      }
+    }
+  }
+  return navigatorArray
+})
 
 onMounted(()=>{
 
