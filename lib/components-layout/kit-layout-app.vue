@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen w-screen flex flex-col place-content-between bg-gray-100">
-    <div class="h-[48px] flex justify-center items-center bg-white shadow-md text-lg bg-blue-500 text-white">{{configKit.TITLE_APP}}</div>
+    <div class="h-[48px] flex justify-center items-center bg-white shadow-md text-lg bg-blue-500 text-white">{{configKit.titleApp}}</div>
     <div class="overflow-auto" style="height: calc(100% - 48px - 50px);">
       <router-view />
     </div>

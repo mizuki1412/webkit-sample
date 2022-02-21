@@ -2,7 +2,7 @@
   <div class="w-screen h-screen bg-gray-100">
     <div class="w-full shadow-md flex justify-between items-center mb-1" :style="{height: headerHeight,backgroundColor:'#23479C', color:'white'}">
       <div class="flex justify-center items-center cursor-pointer w-1/4" @click="routeTo('index')">
-        <div class="text-center">{{configKit.TITLE}}</div>
+        <div class="text-center">{{configKit.title}}</div>
       </div>
       <el-menu
           :class="menuWith===''?'grow':''"

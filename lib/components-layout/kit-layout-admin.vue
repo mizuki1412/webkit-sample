@@ -13,8 +13,8 @@
           :default-active="storeCurrentRoute.name"
           @select="routeTo">
         <div class="flex justify-center items-center cursor-pointer text-white bg-blue-900 shadow-md p-2" @click="routeTo('index')" :style="{height: headerHeight}">
-          <div v-if="!isCollapse" class="text-center">{{configKit.TITLE}}</div>
-          <div v-else class="text-center">{{configKit.TITLE_SIMPLE}}</div>
+          <div v-if="!isCollapse" class="text-center">{{configKit.title}}</div>
+          <div v-else class="text-center">{{configKit.titleSimple}}</div>
         </div>
         <template v-for="(item, index) in storePageMenu" :key="item.name">
           <el-sub-menu
