@@ -1,14 +1,15 @@
 <template>
   <div>
-    page2
+    test rich text
+    <kit-rich-text v-model="content" style="width: 100%"></kit-rich-text>
   </div>
 </template>
 <script setup>
   import { ref,onMounted } from 'vue'
-  import {BoxList} from "../../dao/test";
   const loading = ref(false)
+  const content = ref(false)
+
   onMounted(async ()=>{
-    let res = await BoxList()
-    console.log(res)
+
   })
 </script>

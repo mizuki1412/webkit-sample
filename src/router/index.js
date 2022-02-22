@@ -101,7 +101,7 @@ export const routes = [
         name: 'page3',
         component: () => import('../views/page2/page2.vue'),
         meta:{
-          menuTitle: "子页面3",
+          menuTitle: "富文本测试",
           menuIcon: 'fee',
           authDisable: true
         },

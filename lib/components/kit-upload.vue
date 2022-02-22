@@ -1,6 +1,7 @@
 <template>
   <div class="flex">
     <el-upload
+        v-if="!disabled"
         action=""
         list-type="picture-card"
         accept="image/png, image/jpeg"
@@ -16,7 +17,6 @@
     <div v-for="f in files" :key="f" style="width: 148px;height: 148px" class="_flex_center gap-0.5 ml-0.5">
       <img :src="f" alt=""/>
     </div>
-
   </div>
 </template>
 <script setup>
@@ -35,6 +35,10 @@ const props = defineProps({
   files:{
     type: Array,
     default: ()=>[]
+  },
+  disabled:{
+    type: Boolean,
+    default: false
   }
 })
 </script>

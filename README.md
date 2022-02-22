@@ -38,3 +38,4 @@ lib目录将和webkit1412/lib同步。
 - [ ] vant和element在不同场景下切换 router
 - [x] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug
 - [ ] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
+- [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
