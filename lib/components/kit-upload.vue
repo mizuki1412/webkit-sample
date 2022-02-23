@@ -14,8 +14,8 @@
 <!--        <img :src="file" >-->
 <!--      </template>-->
     </el-upload>
-    <div v-for="f in files" :key="f" style="width: 148px;height: 148px" class="_flex_center gap-0.5 ml-0.5">
-      <img :src="f" alt=""/>
+    <div v-for="f in files" :key="f" class="_flex_center gap-0.5 ml-0.5">
+      <img :src="f" alt="" style="max-height: 148px"/>
     </div>
   </div>
 </template>
