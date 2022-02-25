@@ -1,7 +1,6 @@
 
 import {configKitInit} from "/lib/store";
 import {VueEcharts} from "/lib/plugin";
-import {KitEmpty, KitIcon, KitModal, KitPaginationPage, KitRichText, KitTable} from "/lib/components";
 import {useRouter as _useRouter} from "/lib/router";
 import {routes} from "../router";
 import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter";
@@ -10,6 +9,12 @@ import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter";
 import 'element-plus/theme-chalk/el-message-box.css'
 import 'element-plus/theme-chalk/el-button.css'
 import 'element-plus/theme-chalk/el-message.css'
+import KitEmpty from "../../lib/components/kit-empty";
+import KitModal from "../../lib/components/kit-modal";
+import KitTable from "../../lib/components/kit-table";
+import KitIcon from "../../lib/components/kit-icon";
+import KitPaginationPage from "../../lib/components/kit-pagination-page";
+import KitRichText from "../../lib/components/kit-rich-text";
 
 export function useWebkit(app){
   configKitInit(import.meta.env)
