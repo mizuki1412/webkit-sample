@@ -10,12 +10,12 @@
     "update-dep": "yarn upgrade-interactive --latest"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^0.2.7",
+    "@element-plus/icons-vue": "^1.0.0",
     "@tinymce/tinymce-vue": "^4.0.6",
     "ali-oss": "^6.17.1",
     "axios": "^0.26.0",
     "echarts": "^5.3.0",
-    "element-plus": "^2.0.2",
+    "element-plus": "^2.0.3",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "qs": "^6.10.3",

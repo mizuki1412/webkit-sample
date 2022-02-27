@@ -25,6 +25,8 @@
 <script setup>
 import {submitErrChanel} from "../store";
 import KitErrChannel from './kit-err-channel.vue'
+import {toRef} from "vue";
+import {useLoadingModal, useLoadingObject} from "../service";
 
 // const vDrag = {
 //   mounted(el) {
@@ -84,7 +86,7 @@ async function ok() {
   if (props.id) {
     submitErrChanel(props.id);
   }
-  await props.confirm();
+  await useLoadingObject(props.modal, props.confirm)()
   props.modal.visible = false;
 }
 

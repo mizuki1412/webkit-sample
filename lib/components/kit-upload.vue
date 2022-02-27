@@ -24,10 +24,6 @@ import { Plus } from '@element-plus/icons-vue'
 import {ref} from "vue";
 
 const props = defineProps({
-  type: {
-    type: String,
-    default: 'image'
-  },
   action:{
     type: Function,
     default: async ()=>{}
