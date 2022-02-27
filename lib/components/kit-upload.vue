@@ -4,7 +4,7 @@
         v-if="!disabled"
         action=""
         list-type="picture-card"
-        accept="image/png, image/jpeg"
+        :accept="accept"
         :http-request="action"
         :show-file-list="false">
       <template #default>
@@ -31,6 +31,10 @@ const props = defineProps({
   action:{
     type: Function,
     default: async ()=>{}
+  },
+  accept:{
+    type: String,
+    default: 'image/png, image/jpeg'
   },
   files:{
     type: Array,

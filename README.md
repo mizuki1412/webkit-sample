@@ -1,12 +1,10 @@
 # webkit-sample
 
-The sample usage of webkit1412.
+The sample usage for Vue3/Vite2/Tailwind project.
 
 # usage
 
 将webkit1412的lib库内嵌入项目中，考虑到element-plus的自动导入问题、项目定制化需求。
-
-lib目录将和webkit1412/lib同步。
 
 # env
 
@@ -34,8 +32,13 @@ lib目录将和webkit1412/lib同步。
 - [ ] element-plus: 自动导入icon
 - [ ] element: Message/MessageBox单独使用时，style未自动导入
 - [ ] element modal drag 如果高度长时有bug
-- [ ] route的props在layout中的应用
-- [ ] vant和element在不同场景下切换 router
+- [x] route的props在layout中的应用
+- [x] vant和element在不同场景下切换 router
 - [x] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug
 - [ ] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
 - [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
+- [ ] 增加补充示例页面
+- [ ] bug：form的validate在初始打开时，会提示error msg
+- [ ] table的服务端分页模式。
+- [ ] el-select bug: 多选时，不能自由取消
+- [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。还是自动引入css的问题。

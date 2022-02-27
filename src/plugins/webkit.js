@@ -6,9 +6,11 @@ import {routes} from "../router";
 import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter";
 
 // todo element messagebox style
-import 'element-plus/theme-chalk/el-message-box.css'
-import 'element-plus/theme-chalk/el-button.css'
-import 'element-plus/theme-chalk/el-message.css'
+// import 'element-plus/theme-chalk/el-message-box.css'
+// import 'element-plus/theme-chalk/el-button.css'
+// import 'element-plus/theme-chalk/el-message.css'
+// todo 考虑到tailwind会覆盖其他element ui
+import 'element-plus/theme-chalk/index.css'
 import KitEmpty from "../../lib/components/kit-empty";
 import KitModal from "../../lib/components/kit-modal";
 import KitTable from "../../lib/components/kit-table";
