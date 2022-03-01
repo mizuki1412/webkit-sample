@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite --mode dev",
     "build": "vite build --mode pro",
-    "update-dep": "yarn upgrade-interactive --latest"
+    "update-dep": "yarn upgrade-interactive --latest",
+    "demo_up2lib": "rm -r ../../webkit-sample/lib/* && cp -r lib/* ../../webkit-sample/lib/",
+    "demo_up4lib": "rm -r lib/* && cp -r ../../webkit-sample/lib/* lib/"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.0.0",
@@ -15,7 +17,7 @@
     "ali-oss": "^6.17.1",
     "axios": "^0.26.0",
     "echarts": "^5.3.0",
-    "element-plus": "^2.0.3",
+    "element-plus": "^2.0.4",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "qs": "^6.10.3",
@@ -23,10 +25,10 @@
     "vant": "^3.4.5",
     "vue": "^3.2.31",
     "vue-echarts": "^6.0.2",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.2",
+    "@vitejs/plugin-vue": "^2.2.4",
     "@vue/compiler-sfc": "^3.2.31",
     "autoprefixer": "^10.4.2",
     "consola": "^2.15.3",
@@ -34,7 +36,7 @@
     "tailwindcss": "^3.0.23",
     "unplugin-auto-import": "^0.6.1",
     "unplugin-vue-components": "^0.17.21",
-    "vite": "^2.8.4",
+    "vite": "^2.8.5",
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-svg-icons": "^2.0.1"
   }

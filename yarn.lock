@@ -45,11 +45,6 @@
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
   integrity sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==
 
-"@element-plus/icons-vue@^0.2.7":
-  version "0.2.7"
-  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-0.2.7.tgz#c0b75363098bf1fba414e18706604bfe5057ae1b"
-  integrity sha512-S8kDbfVaWkQvbUYQE1ui448tzaHfUvyESCep9J6uPRlViyQPXjdIfwLBhV6AmQSOfFS8rL+xehJGhvzPXLrSBg==
-
 "@element-plus/icons-vue@^1.0.0":
   version "1.0.0"
   resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-1.0.0.tgz#6cfdb6a41b2e5371de562c330f6908401e032dcb"
@@ -150,10 +145,10 @@
   resolved "https://registry.npmmirror.com/@vant/use/-/use-1.3.5.tgz#fd2817850e76e3098e29d4c8d864e19207c03ab1"
   integrity sha512-S4rfMQT+71quUbSY9sF7vJTEADVWqHxn8zUbpEl4vzI2CCJx67ri/ZHV911LpXIaZVgSSGPLE5xLV8javmbU0Q==
 
-"@vitejs/plugin-vue@^2.2.2":
-  version "2.2.2"
-  resolved "https://registry.npmmirror.com/@vitejs/plugin-vue/-/plugin-vue-2.2.2.tgz#df5d4464ad8cb97c9fb7407a1e5a3a34f716febb"
-  integrity sha512-3C0s45VOwIFEDU+2ownJOpb0zD5fnjXWaHVOLID2R1mYOlAx3doNBFnNbVjaZvpke/L7IdPJXjpyYpXZToDKig==
+"@vitejs/plugin-vue@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.npmmirror.com/@vitejs/plugin-vue/-/plugin-vue-2.2.4.tgz#ab8b199ca82496b05d2654c5f34ffcf9b947243d"
+  integrity sha512-ev9AOlp0ljCaDkFZF3JwC/pD2N4Hh+r5srl5JHM6BKg5+99jiiK0rE/XaRs3pVm1wzyKkjUy/StBSoXX5fFzcw==
 
 "@vue/compiler-core@3.2.31":
   version "3.2.31"
@@ -197,10 +192,10 @@
     "@vue/compiler-dom" "3.2.31"
     "@vue/shared" "3.2.31"
 
-"@vue/devtools-api@^6.0.0-beta.18":
-  version "6.0.0-beta.21.1"
-  resolved "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.21.1.tgz#f1410f53c42aa67fa3b01ca7bdba891f69d7bc97"
-  integrity sha512-FqC4s3pm35qGVeXRGOjTsRzlkJjrBLriDS9YXbflHLsfA9FrcKzIyWnLXoNm+/7930E8rRakXuAc2QkC50swAw==
+"@vue/devtools-api@^6.0.0":
+  version "6.0.12"
+  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.0.12.tgz#7b57cce215ae9f37a86984633b3aa3d595aa5b46"
+  integrity sha512-iO/4FIezHKXhiDBdKySCvJVh8/mZPxHpiQrTy+PXVqJZgpTPTdHy4q8GXulaY+UKEagdkBb0onxNQZ0LNiqVhw==
 
 "@vue/reactivity-transform@3.2.31":
   version "3.2.31"
@@ -250,7 +245,7 @@
   resolved "https://registry.npmmirror.com/@vue/shared/-/shared-3.2.31.tgz#c90de7126d833dcd3a4c7534d534be2fb41faa4e"
   integrity sha512-ymN2pj6zEjiKJZbrf98UM2pfDd6F2H7ksKw7NDt/ZZ1fh5Ei39X5tABugtT03ZRlWd9imccoK0hE8hpjpU7irQ==
 
-"@vueuse/core@^7.6.2":
+"@vueuse/core@^7.7.0":
   version "7.7.0"
   resolved "https://registry.npmmirror.com/@vueuse/core/-/core-7.7.0.tgz#ddc5bbc910fbe0e2eda2cc823998dcf4a13265b4"
   integrity sha512-DS8+dg758CiWnswebYHjS05PqTtc1ZLomsDlkFjG/KC0iFRgFIsGC66AAGuSXLqWCoirp2xN6N2mkrp1aHdI7A==
@@ -1046,15 +1041,15 @@ electron-to-chromium@^1.4.17:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.38.tgz#10ea58d73d36b13e78d5024f3b74a352d3958d01"
   integrity sha512-WhHt3sZazKj0KK/UpgsbGQnUUoFeAHVishzHFExMxagpZgjiGYSC9S0ZlbhCfSH2L2i+2A1yyqOIliTctMx7KQ==
 
-element-plus@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.0.3.tgz#e84d113ed8a1604b2656dfb30637c1ce0f9da7d2"
-  integrity sha512-k+b4V4sGmgOpOYjrAWyp0k+N1mVaIZQ9LpbXWvmJNzE+j21DYOe9m1zGn5mFDPgeLOZcUS7QzzwYAommhwFj0g==
+element-plus@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.0.4.tgz#2f67dd153d61764f703663fadd1754cd6d548ae6"
+  integrity sha512-g/YT/uY6zbNTAl9jL4zT8WRSf/4KG6GB3Y89MCO/lbglHsps5sdDFohcuOb8699BtIXkXsbOzdwmbk9kDHqHxA==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
-    "@element-plus/icons-vue" "^0.2.7"
+    "@element-plus/icons-vue" "^1.0.0"
     "@popperjs/core" "^2.11.2"
-    "@vueuse/core" "^7.6.2"
+    "@vueuse/core" "^7.7.0"
     async-validator "^4.0.7"
     dayjs "^1.10.7"
     lodash "^4.17.21"
@@ -3350,10 +3345,10 @@ vite-plugin-svg-icons@^2.0.1:
     svg-baker "1.7.0"
     svgo "^2.8.0"
 
-vite@^2.8.4:
-  version "2.8.4"
-  resolved "https://registry.npmmirror.com/vite/-/vite-2.8.4.tgz#4e52a534289b7b4e94e646df2fc5556ceaa7336b"
-  integrity sha512-GwtOkkaT2LDI82uWZKcrpRQxP5tymLnC7hVHHqNkhFNknYr0hJUlDLfhVRgngJvAy3RwypkDCWtTKn1BjO96Dw==
+vite@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.npmmirror.com/vite/-/vite-2.8.5.tgz#afa23aacea91c0ebe77754a807bf74953cafa331"
+  integrity sha512-C/7EGNa1ugWejol6nOcd/0d8PR70Nzd+XXwsPbnNOfzZw0NN2xyXfmw/GNDHgr5fcaTSO4gjxCJCrwNhQUMhmA==
   dependencies:
     esbuild "^0.14.14"
     postcss "^8.4.6"
@@ -3383,12 +3378,12 @@ vue-echarts@^6.0.2:
     resize-detector "^0.3.0"
     vue-demi "^0.12.1"
 
-vue-router@^4.0.12:
-  version "4.0.12"
-  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.0.12.tgz#8dc792cddf5bb1abcc3908f9064136de7e13c460"
-  integrity sha512-CPXvfqe+mZLB1kBWssssTiWg4EQERyqJZes7USiqfW9B5N2x+nHlnsM1D3b5CaJ6qgCvMmYJnz+G0iWjNCvXrg==
+vue-router@^4.0.13:
+  version "4.0.13"
+  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.0.13.tgz#47f06e2f8ff6120bfff3c27ade1356cc9de7d870"
+  integrity sha512-LmXrC+BkDRLak+d5xTMgUYraT3Nj0H/vCbP+7usGvIl9Viqd1UP6AsP0i69pSbn9O0dXK/xCdp4yPw21HqV9Jw==
   dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.18"
+    "@vue/devtools-api" "^6.0.0"
 
 vue@^3.2.31:
   version "3.2.31"

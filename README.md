@@ -42,3 +42,7 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [ ] table的服务端分页模式。
 - [ ] el-select bug: 多选时，不能自由取消
 - [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。还是自动引入css的问题。
+- [ ] feature: web和app的component分开，编译分开
+- [ ] el的全局配置中的中文问题，目前写在app.vue
+- [ ] 增加lodash示例页面
+- [ ] feature: 全局的loading、confirm

@@ -9,18 +9,19 @@
       <slot/>
     </el-table>
     <div class="flex justify-center">
-      <!--      <el-pagination-->
-      <!--        v-if="pageFromServer"-->
-      <!--        background-->
-      <!--        class="mt-0.5 text-center"-->
-      <!--        layout="prev, pager, next, jumper, total"-->
-      <!--        :current-page.sync="currentPageInner"-->
-      <!--        @current-change="pageServerHandle0"-->
-      <!--        :page-count="pageCount"-->
-      <!--        hide-on-single-page-->
-      <!--      />-->
       <el-pagination
-          v-if="!noPagination"
+        v-if="pageFromServer"
+        background
+        class="mt-1"
+        layout="prev, pager, next, jumper, sizes, total"
+        :total="total"
+        :current-page.sync="currentPageInner"
+        @current-change="pageServerHandle0"
+        @size-change="handleSizeChange"
+        :page-sizes="totalPage"
+      />
+      <el-pagination
+          v-else-if="!noPagination"
           background
           layout="prev, pager, next, jumper, sizes, total"
           class="mt-1"
@@ -44,7 +45,7 @@ const props = defineProps({
     type: Function,
     default: () => {},
   },
-  // 分页
+  // 分页数
   pageSize: {
     type: Number,
     default: 10,
@@ -57,7 +58,7 @@ const props = defineProps({
     type: Number,
     default: 1,
   },
-  // 服务端分页开关：在服务端分页模式，data也不需要填
+  // 服务端分页开关：在服务端分页模式，data不需要填
   // eg: ref="table" :page-from-server="true" :page-server-handle="pageHandle"
   // 通过refresh触发初始和刷新
   pageFromServer: {
@@ -94,6 +95,8 @@ function handleCurrentChange(val){
 const displayData = computed(() => {
   if (props.pageFromServer) {
     return dataList.value;
+  } else if(props.noPagination){
+    return props.data
   } else {
     return props.data.slice((currentPageInner.value - 1) * pageSizeInner.value, currentPageInner.value * pageSizeInner.value);
   }
@@ -127,11 +130,15 @@ watch(table, () => {
 // 服务端分页处理函数包装
 const dataList = ref([]);
 const pageCount = ref(1);
+const total = ref();
+const totalPage = ref();
 async function pageServerHandle0(page) {
   currentPageInner.value = page;
   const data = await props.pageServerHandle(page);
   dataList.value = data.data;
   pageCount.value = data.pageCount;
+  total.value = data.total;
+  total.totalPage = data.totalPage;
 }
 // 服务端分页时外部调用刷新，也是初始触发的接口
 async function refresh() {
