@@ -14,8 +14,8 @@
 <!--        <img :src="file" >-->
 <!--      </template>-->
     </el-upload>
-    <div v-for="f in files" :key="f" class="_flex_center gap-0.5 ml-0.5">
-      <img :src="f" alt="" style="max-height: 148px"/>
+    <div v-for="f in files" :key="f" class="_flex_center gap-0.5 ml-1">
+      <img :src="f" alt="" :style="{maxHeight: fileMaxHeight+'px'}"/>
     </div>
   </div>
 </template>
@@ -39,6 +39,10 @@ const props = defineProps({
   disabled:{
     type: Boolean,
     default: false
+  },
+  fileMaxHeight:{
+    type: Number,
+    default: 148
   }
 })
 </script>
