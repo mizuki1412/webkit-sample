@@ -50,6 +50,11 @@
   resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-1.0.0.tgz#6cfdb6a41b2e5371de562c330f6908401e032dcb"
   integrity sha512-v8W6uiOfwq9GRWBLc0fvp0WwExU09BLdYfldRBxWUCJHeJ9WHeFrtt6BdixGVl9SCZ2V5soB8gi4tr365a9p/Q==
 
+"@element-plus/icons-vue@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/-/icons-vue-1.0.1.tgz#b79825cbe7405c1ce3b831b24bdbd3c9cdcfbdc3"
+  integrity sha512-xdT0Jr+Z53rz4+B2knhYjzRzFZ5MoXXWKXEuxFA4nImGr2jCt5Q+VBFiBYRgctnB0ZWmk6iHAqK344zdzQIEEg==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -1041,10 +1046,10 @@ electron-to-chromium@^1.4.17:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.38.tgz#10ea58d73d36b13e78d5024f3b74a352d3958d01"
   integrity sha512-WhHt3sZazKj0KK/UpgsbGQnUUoFeAHVishzHFExMxagpZgjiGYSC9S0ZlbhCfSH2L2i+2A1yyqOIliTctMx7KQ==
 
-element-plus@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.0.4.tgz#2f67dd153d61764f703663fadd1754cd6d548ae6"
-  integrity sha512-g/YT/uY6zbNTAl9jL4zT8WRSf/4KG6GB3Y89MCO/lbglHsps5sdDFohcuOb8699BtIXkXsbOzdwmbk9kDHqHxA==
+element-plus@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.0.5.tgz#325e2ac98a79312564846830467d4b6e1153137c"
+  integrity sha512-zeyICvdDHSs7nwOGPAfI0B3y1HfH8o6IcKI5OA5JnHxildoQHqMycB0PPdEXAewzrsuCNigo6ihrwD9OuhDLHA==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
     "@element-plus/icons-vue" "^1.0.0"
@@ -3345,10 +3350,10 @@ vite-plugin-svg-icons@^2.0.1:
     svg-baker "1.7.0"
     svgo "^2.8.0"
 
-vite@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.npmmirror.com/vite/-/vite-2.8.5.tgz#afa23aacea91c0ebe77754a807bf74953cafa331"
-  integrity sha512-C/7EGNa1ugWejol6nOcd/0d8PR70Nzd+XXwsPbnNOfzZw0NN2xyXfmw/GNDHgr5fcaTSO4gjxCJCrwNhQUMhmA==
+vite@^2.8.6:
+  version "2.8.6"
+  resolved "https://registry.npmmirror.com/vite/-/vite-2.8.6.tgz#32d50e23c99ca31b26b8ccdc78b1d72d4d7323d3"
+  integrity sha512-e4H0QpludOVKkmOsRyqQ7LTcMUDF3mcgyNU4lmi0B5JUbe0ZxeBBl8VoZ8Y6Rfn9eFKYtdXNPcYK97ZwH+K2ug==
   dependencies:
     esbuild "^0.14.14"
     postcss "^8.4.6"
