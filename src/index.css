@@ -23,3 +23,7 @@
         @apply grow
     }
 }
+/* css变量 */
+body{
+    --van-empty-padding: 10px 0
+}

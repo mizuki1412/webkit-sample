@@ -10,20 +10,20 @@
     </el-table>
     <div class="flex justify-center">
       <el-pagination
-        v-if="pageFromServer"
+        v-if="fromServer"
         background
         class="mt-1"
-        layout="prev, pager, next, jumper, sizes, total"
+        layout="total, sizes, prev, pager, next, jumper"
         :total="total"
         :current-page.sync="currentPageInner"
         @current-change="pageServerHandle0"
         @size-change="handleSizeChange"
-        :page-sizes="totalPage"
+        :page-sizes="pageSizes"
       />
       <el-pagination
           v-else-if="!noPagination"
           background
-          layout="prev, pager, next, jumper, sizes, total"
+          layout="total, sizes, prev, pager, next, jumper"
           class="mt-1"
           :total="data.length"
           :page-sizes="pageSizes"
@@ -59,13 +59,15 @@ const props = defineProps({
     default: 1,
   },
   // 服务端分页开关：在服务端分页模式，data不需要填
-  // eg: ref="table" :page-from-server="true" :page-server-handle="pageHandle"
+  // eg: ref="table" :from-server="true" :page-server-handle="pageHandle"
   // 通过refresh触发初始和刷新
-  pageFromServer: {
+  fromServer: {
     type: Boolean,
     default: false,
   },
-  // 服务端分页处理函数，必须返回 {data, pageCount}
+  // 服务端分页处理函数，
+  // 传入参数：page-当前页；countInPage-一页的个数
+  // 返回值 {data, currentPage-当前页, total-总数, totalPage-总页数}
   pageServerHandle: {
     type: Function,
     default: () => {},
@@ -85,7 +87,11 @@ const pageSizeInner = ref(props.pageSize);
 watch(() => props.pageSize, pageSize => pageSizeInner.value = pageSize);
 watch(pageSizeInner, pageSizeInner => emit('update:pageSize', pageSizeInner));
 function handleSizeChange(val){
+  // 每页个数更改
   pageSizeInner.value = val
+  if(props.fromServer){
+    refresh(1)
+  }
 }
 function handleCurrentChange(val){
   currentPageInner.value = val
@@ -93,7 +99,7 @@ function handleCurrentChange(val){
 
 // table展示的数据
 const displayData = computed(() => {
-  if (props.pageFromServer) {
+  if (props.fromServer) {
     return dataList.value;
   } else if(props.noPagination){
     return props.data
@@ -129,21 +135,20 @@ watch(table, () => {
 
 // 服务端分页处理函数包装
 const dataList = ref([]);
-const pageCount = ref(1);
-const total = ref();
-const totalPage = ref();
+const currentPage = ref(1);
+const total = ref(0);
+const totalPage = ref(1);
 async function pageServerHandle0(page) {
   currentPageInner.value = page;
-  const data = await props.pageServerHandle(page);
+  const data = await props.pageServerHandle(page,pageSizeInner.value);
   dataList.value = data.data;
-  pageCount.value = data.pageCount;
+  currentPage.value = data.currentPage;
   total.value = data.total;
   total.totalPage = data.totalPage;
 }
 // 服务端分页时外部调用刷新，也是初始触发的接口
-async function refresh() {
-  await pageServerHandle0(currentPageInner.value);
+async function refresh(pageNo) {
+  await pageServerHandle0(pageNo?pageNo:currentPageInner.value)
 }
-
-
+defineExpose({refresh})
 </script>
