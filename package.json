@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.1",
-    "@tinymce/tinymce-vue": "^4.0.6",
+    "@tinymce/tinymce-vue": "^4.0.7",
     "ali-oss": "^6.17.1",
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "echarts": "^5.3.1",
     "element-plus": "^2.0.5",
     "lodash": "^4.17.21",
@@ -25,7 +25,7 @@
     "vant": "^3.4.5",
     "vue": "^3.2.31",
     "vue-echarts": "^6.0.2",
-    "vue-router": "^4.0.13"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.4",
@@ -34,7 +34,7 @@
     "consola": "^2.15.3",
     "postcss": "^8.4.8",
     "tailwindcss": "^3.0.23",
-    "unplugin-auto-import": "^0.6.1",
+    "unplugin-auto-import": "^0.6.2",
     "unplugin-vue-components": "^0.17.21",
     "vite": "^2.8.6",
     "vite-plugin-style-import": "^2.0.0",

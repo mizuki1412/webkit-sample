@@ -39,7 +39,7 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
 - [ ] 增加补充示例页面
 - [ ] bug：form的validate在初始打开时，会提示error msg
-- [ ] table的服务端分页模式。
+- [x] table的服务端分页模式。
 - [ ] el-select bug: 多选时，不能自由取消
 - [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。还是自动引入css的问题。
 - [ ] feature: web和app的component分开，编译分开

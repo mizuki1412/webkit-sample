@@ -1,6 +1,7 @@
 <template>
   <div v-loading="loading">
     <Editor
+        :api-key="configKit.tinymceApiKey"
         :disabled="disabled"
         ref="editor"
         v-model="content"
@@ -12,6 +13,7 @@ import Editor from '@tinymce/tinymce-vue';
 import {onMounted, ref, watch} from "vue";
 import {publicUrl, putObjectCommon} from "../service3/oss/oss-helper";
 import {useLoading} from "../service";
+import {configKit} from "../store";
 const props = defineProps({
   modelValue: {
     type: String,
