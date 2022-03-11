@@ -28,6 +28,8 @@ The sample usage for Vue3/Vite2/Tailwind project.
 
 # TODO
 
+## TODO List
+
 - [x] element-plus: auto import 在v-loading时有bug。
 - [ ] element-plus: 自动导入icon
 - [ ] element: Message/MessageBox单独使用时，style未自动导入
@@ -46,3 +48,8 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [ ] el的全局配置中的中文问题，目前写在app.vue
 - [ ] 增加lodash示例页面
 - [ ] feature: 全局的loading、confirm
+
+## bug fix
+
+- 关于element auto import style引起的错误：因为在plugin/webkit中需要导入index.css，防止被tailwindcss的style覆盖，所以自动导入中取消了导入style。没有解决只是避免。
+- 因为项目是js的，el是ts的，所有官网上有些导入会报错，比如zhCn
