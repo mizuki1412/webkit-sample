@@ -136,10 +136,10 @@
   dependencies:
     "@popperjs/core" "^2.9.2"
 
-"@vant/use@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.npmmirror.com/@vant/use/-/use-1.3.5.tgz#fd2817850e76e3098e29d4c8d864e19207c03ab1"
-  integrity sha512-S4rfMQT+71quUbSY9sF7vJTEADVWqHxn8zUbpEl4vzI2CCJx67ri/ZHV911LpXIaZVgSSGPLE5xLV8javmbU0Q==
+"@vant/use@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.npmmirror.com/@vant/use/-/use-1.3.6.tgz#7618d3a72ad6cd622a8b3cbc693ed1540426a05b"
+  integrity sha512-3z+nywPaV2F5BdJO7RQxWlgfzJeEOmViD2yHMb7Tg+R4NR/7iQskqW8v2Cnv9FWSJgTOSHlcr7UzeLpiTAP4HA==
 
 "@vitejs/plugin-vue@^2.2.4":
   version "2.2.4"
@@ -1029,10 +1029,10 @@ electron-to-chromium@^1.4.17:
   resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.38.tgz#10ea58d73d36b13e78d5024f3b74a352d3958d01"
   integrity sha512-WhHt3sZazKj0KK/UpgsbGQnUUoFeAHVishzHFExMxagpZgjiGYSC9S0ZlbhCfSH2L2i+2A1yyqOIliTctMx7KQ==
 
-element-plus@^2.0.4:
-  version "2.0.6"
-  resolved "https://registry.npmjs.org/element-plus/-/element-plus-2.0.6.tgz#c996e2804e9c4710c3bce94faa31f5b2a7ac2883"
-  integrity sha512-bh9LTFGLhhm7jJPfhzbwzO7y7t5uJ6dDFf/u3qNQYWEqkZRKvNe1uE1ugq3tQFNWs+MXMKG4tkqzfFO01O8znQ==
+element-plus@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.1.1.tgz#b06581e3e506d63a4c536341ed45a2813dd300a1"
+  integrity sha512-XG6XBo9tLYzfW1MNTgGoBOoPGnfMAkFWJSsCaS5M7ekOCszC4HKCj4OqIkusGemLvzR8O96S06swzQwzNBe2uA==
   dependencies:
     "@ctrl/tinycolor" "^3.4.0"
     "@element-plus/icons-vue" "^1.0.1"
@@ -3292,14 +3292,14 @@ utility@^1.16.1, utility@^1.8.0:
     mz "^2.7.0"
     unescape "^1.0.1"
 
-vant@^3.4.5:
-  version "3.4.5"
-  resolved "https://registry.npmmirror.com/vant/-/vant-3.4.5.tgz#2934f6623d3705120607eb777ae4151ef192befe"
-  integrity sha512-3an2v6ejW9pijKmaDbSCW7Hs1R45tqtTIcedfI8hEAA5zC2Bp8cXU6Z4gUCK6/RAGOJsB+vcyLINLb1cGS/SzQ==
+vant@^3.4.6:
+  version "3.4.6"
+  resolved "https://registry.npmmirror.com/vant/-/vant-3.4.6.tgz#57bab8b7f5d06701039a08e543e45c55e878c3f1"
+  integrity sha512-Ol1xhEXn2wjBAWqCyr4/0EKTCQEYbAzKyOP+bKYIWl+fbJXme8Aza5soeKvWA2KD9ZBU0qS7yBVGpr+76xUEXQ==
   dependencies:
     "@vant/icons" "^1.7.1"
     "@vant/popperjs" "^1.1.0"
-    "@vant/use" "^1.3.5"
+    "@vant/use" "^1.3.6"
 
 vary@^1:
   version "1.1.2"
