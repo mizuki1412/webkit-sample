@@ -8,7 +8,7 @@
     <div class="w-full"><el-button class="w-full" type="danger" @click="logout">退出登录</el-button></div>
     <kit-modal id="update-pwd" :modal="modal" width="400px" :confirm="updatePwd">
       <template #title>账户密码修改</template>
-      <el-form ref="form" label-width="100px" :model="modal.data">
+      <el-form ref="form" label-width="100px" :model="modal.data" v-if="modal.data">
         <el-form-item label="原密码：" prop="oldPwd" :rules="[{ required:true, message: '请填写密码' }]">
           <el-input clearable v-model="modal.data.oldPwd" type="password" autocomplete="new-password"/>
         </el-form-item>

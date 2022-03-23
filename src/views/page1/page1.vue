@@ -22,9 +22,11 @@
 </template>
 <script setup>
 import {ref, onMounted, watch} from 'vue'
-import {sleep, chartConfig} from "/lib/utils";
+import {sleep} from "/lib/utils";
 import {useLoading} from "/lib/service";
 import {ElMessage, ElMessageBox} from "element-plus";
+import {chartConfig} from "../../../lib/service/echarts-helper";
+import _ from "lodash";
 
 const loading = ref(false)
 const option1 = ref()
@@ -45,22 +47,26 @@ function testMessage(){
 }
 
 onMounted(useLoading(loading,async ()=>{
-    await sleep(1000)
-    option1.value=chartConfig({
-      xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [150, 230, 224, 218, 135, 147, 260],
-          type: 'line'
-        }
-      ]
-    });
-    modal.value.data.val1 = 0
-  }))
+  await sleep(1000)
+  option1.value=chartConfig({
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: [150, 230, 224, 218, 135, 147, 260],
+        type: 'line'
+      }
+    ]
+  });
+  modal.value.data.val1 = 0
+
+  let o={a:1, v:{aa:1}}
+  console.log(_.cloneDeep(o))
+  console.log(_.merge(o,{b:2},{v:{a:0,aa:44}}))
+}))
 </script>
