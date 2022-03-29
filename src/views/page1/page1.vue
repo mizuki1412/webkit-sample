@@ -21,10 +21,10 @@
   </div>
 </template>
 <script setup>
-import {ref, onMounted, watch} from 'vue'
+import {ref, onMounted} from 'vue'
 import {sleep} from "/lib/utils";
 import {useLoading} from "/lib/service";
-import {ElMessage, ElMessageBox} from "element-plus";
+import {ElMessageBox} from "element-plus";
 import {chartConfig} from "../../../lib/service/echarts-helper";
 import _ from "lodash";
 
@@ -65,8 +65,5 @@ onMounted(useLoading(loading,async ()=>{
   });
   modal.value.data.val1 = 0
 
-  let o={a:1, v:{aa:1}}
-  console.log(_.cloneDeep(o))
-  console.log(_.merge(o,{b:2},{v:{a:0,aa:44}}))
 }))
 </script>
