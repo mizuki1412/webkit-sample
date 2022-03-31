@@ -60,7 +60,7 @@ export const routes = [
   // web
   {
     path: '/',
-    name: 'index',
+    name: RouteName.index,
     redirect:{name:"page1"},
     component: () => import('../../lib/components-layout/kit-layout-admin.vue'),
     meta:{

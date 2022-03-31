@@ -1,14 +1,10 @@
 
 import {configKitInit} from "/lib/store";
-import {VueEcharts} from "/lib/plugin";
+import VueEcharts from "/lib/plugin/echarts";
 import {useRouter as _useRouter} from "/lib/router";
 import {routes} from "../router";
 import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter";
 
-// element messagebox style
-// import 'element-plus/theme-chalk/el-message-box.css'
-// import 'element-plus/theme-chalk/el-button.css'
-// import 'element-plus/theme-chalk/el-message.css'
 // todo 考虑到tailwind会覆盖其他element ui
 import 'element-plus/theme-chalk/index.css'
 import 'vant/lib/index.css';

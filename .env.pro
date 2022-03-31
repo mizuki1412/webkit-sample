@@ -1,2 +1,1 @@
-VITE_APP_NAME=demo_app
 VITE_REQUEST_BASE_URL=http://127.0.0.1:9000/server
