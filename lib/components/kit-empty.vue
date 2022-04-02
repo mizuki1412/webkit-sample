@@ -13,12 +13,11 @@
 defineProps({
   img: {
     type: String,
-    default: null
+    default: null,
   },
-  size:{
+  size: {
     type: Number,
-    default: 100
-  }
+    default: 100,
+  },
 })
-
 </script>

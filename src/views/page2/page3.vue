@@ -1,14 +1,12 @@
 <template>
-  <div>
-    page3 {{loading}}
-  </div>
+  <div>page3 {{ loading }}</div>
 </template>
 <script setup>
-  import {ref, onMounted} from 'vue'
+import { ref, onMounted } from "vue"
 
-  const loading = ref(false)
+const loading = ref(false)
 
-  onMounted(()=>{
-    console.log('mounted page3')
-  })
+onMounted(() => {
+  console.log("mounted page3")
+})
 </script>

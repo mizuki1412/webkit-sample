@@ -1,34 +1,34 @@
 <template>
   <div>
-    <slot/>
-    <kit-empty v-if="data.length===0">暂无内容</kit-empty>
+    <slot />
+    <kit-empty v-if="data.length === 0">暂无内容</kit-empty>
     <div class="flex justify-center">
       <el-pagination
-          v-if="fromServer"
-          background
-          class="mt-1"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="total"
-          :current-page.sync="currentPageInner"
-          @current-change="pageServerHandle0"
-          @size-change="handleSizeChange"
-          :page-sizes="pageSizes"
+        v-if="fromServer"
+        background
+        class="mt-1"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+        :current-page.sync="currentPageInner"
+        @current-change="pageServerHandle0"
+        @size-change="handleSizeChange"
+        :page-sizes="pageSizes"
       />
       <el-pagination
-          v-else
-          background
-          layout="total, sizes, prev, pager, next, jumper"
-          class="mt-2"
-          :total="data.length"
-          :page-sizes="pageSizes"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
+        v-else
+        background
+        layout="total, sizes, prev, pager, next, jumper"
+        class="mt-2"
+        :total="data.length"
+        :page-sizes="pageSizes"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
       />
     </div>
   </div>
 </template>
 <script setup>
-import {computed, onMounted, ref, watch} from "vue";
+import { computed, onMounted, ref, watch } from "vue"
 
 const props = defineProps({
   data: {
@@ -63,50 +63,65 @@ const props = defineProps({
     default: () => {},
   },
 })
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(["update:modelValue"])
 
-const pageCount = ref(1);
+const pageCount = ref(1)
 
 // 正常操作变化
-const currentPageInner = ref(props.currentPage);
-watch(() => props.currentPage, currentPage => currentPageInner.value = currentPage);
-const pageSizeInner = ref(props.pageSize);
-watch(() => props.pageSize, pageSize => pageSizeInner.value = pageSize);
-function handleSizeChange(val){
+const currentPageInner = ref(props.currentPage)
+watch(
+  () => props.currentPage,
+  (currentPage) => (currentPageInner.value = currentPage)
+)
+const pageSizeInner = ref(props.pageSize)
+watch(
+  () => props.pageSize,
+  (pageSize) => (pageSizeInner.value = pageSize)
+)
+
+function handleSizeChange(val) {
   pageSizeInner.value = val
 }
-function handleCurrentChange(val){
+
+function handleCurrentChange(val) {
   currentPageInner.value = val
 }
 
-function _displayData(){
+function _displayData() {
   if (props.fromServer) {
-    return dataList.value;
-  }else{
-    return props.data.slice((currentPageInner.value - 1) * pageSizeInner.value, currentPageInner.value * pageSizeInner.value);
+    return dataList.value
+  } else {
+    return props.data.slice(
+      (currentPageInner.value - 1) * pageSizeInner.value,
+      currentPageInner.value * pageSizeInner.value
+    )
   }
 }
-const displayData = computed(() => _displayData());
-watch(displayData, d=>emit('update:modelValue', _displayData()));
-onMounted(()=>{
-  emit('update:modelValue', _displayData())
+
+const displayData = computed(() => _displayData())
+watch(displayData, (d) => emit("update:modelValue", _displayData()))
+onMounted(() => {
+  emit("update:modelValue", _displayData())
 })
 
 // 服务端分页处理函数包装
-const dataList = ref([]);
-const currentPage = ref(1);
-const total = ref(0);
+const dataList = ref([])
+const currentPage = ref(1)
+const total = ref(0)
+
 async function pageServerHandle0(page) {
-  currentPageInner.value = page;
-  const data = await props.pageServerHandle(page,pageSizeInner.value);
-  dataList.value = data.data;
-  currentPage.value = data.currentPage;
-  total.value = data.total;
-  total.totalPage = data.totalPage;
+  currentPageInner.value = page
+  const data = await props.pageServerHandle(page, pageSizeInner.value)
+  dataList.value = data.data
+  currentPage.value = data.currentPage
+  total.value = data.total
+  total.totalPage = data.totalPage
 }
+
 // 服务端分页时外部调用刷新，也是初始触发的接口
 async function refresh(pageNo) {
-  await pageServerHandle0(pageNo?pageNo:currentPageInner.value)
+  await pageServerHandle0(pageNo ? pageNo : currentPageInner.value)
 }
-defineExpose({refresh})
+
+defineExpose({ refresh })
 </script>

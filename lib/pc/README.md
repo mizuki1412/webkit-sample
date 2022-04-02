@@ -3,6 +3,7 @@
 ## bridge的使用
 
 demo:
+
 ```js
 // bridge; router中需要query=port，将port传入init
 init(router.currentRoute.query.port?parseInt(router.currentRoute.query.port):8000)

@@ -5,7 +5,7 @@
 </template>
 <script setup>
 // vite-plugin-svg-icons，引入svg的icon
-import {computed} from "vue";
+import { computed } from "vue"
 
 const props = defineProps({
   name: {
@@ -14,7 +14,7 @@ const props = defineProps({
   },
 })
 
-const symbolId = computed(()=>{
-  return "#icon-"+props.name
+const symbolId = computed(() => {
+  return "#icon-" + props.name
 })
 </script>
