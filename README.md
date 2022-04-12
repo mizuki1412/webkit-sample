@@ -40,7 +40,6 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [x] route的props在layout中的应用
 - [x] vant和element在不同场景下切换 router
 - [x] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug
-- ？？[ ] elp bug: kit-modal中，datepicker不能显示； build后
 - [ ] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
 - [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
 - [ ] 增加补充示例页面

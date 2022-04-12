@@ -115,10 +115,14 @@ const displayData = computed(() => {
   } else if (props.noPagination) {
     return props.data
   } else {
-    return props.data.slice(
-      (currentPageInner.value - 1) * pageSizeInner.value,
-      currentPageInner.value * pageSizeInner.value
-    )
+    if(props.data){
+      return props.data.slice(
+          (currentPageInner.value - 1) * pageSizeInner.value,
+          currentPageInner.value * pageSizeInner.value
+      )
+    }else{
+      return []
+    }
   }
 })
 
@@ -128,7 +132,7 @@ function sortChange(p) {
   }
   // 存在children
   const ps = p.prop.split(".")
-  props.data.sort((a, b) => {
+  props.data?.sort((a, b) => {
     let aa = a[ps[0]]
     let bb = b[ps[0]]
     for (let i = 1; i < ps.length; i++) {
