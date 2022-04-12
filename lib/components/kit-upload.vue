@@ -6,25 +6,26 @@
       list-type="picture-card"
       :accept="accept"
       :http-request="action"
-      :show-file-list="false"
+      :file-list="fileList"
+      :on-preview="handlePictureCardPreview"
+      :on-remove="handleRm"
     >
-      <template #default>
-        <el-icon>
-          <plus />
-        </el-icon>
-      </template>
-      <!--      <template #file="{file}">-->
-      <!--        <img :src="file" >-->
-      <!--      </template>-->
+      <el-icon>
+        <plus />
+      </el-icon>
     </el-upload>
-    <div v-for="f in files" :key="f" class="_flex_center ml-1 gap-0.5">
-      <img :src="f" alt="" :style="{ maxHeight: fileMaxHeight + 'px' }" />
-    </div>
+<!--    <div v-for="f in files" :key="f" class="_flex_center ml-1 gap-0.5">-->
+<!--      <img :src="f" alt="" :style="{ maxHeight: fileMaxHeight + 'px' }" />-->
+<!--    </div>-->
+    <el-dialog v-model="modal.visible">
+      <img :src="modal.data" alt="Preview Image" />
+    </el-dialog>
   </div>
 </template>
 <script setup>
 import { Plus } from "@element-plus/icons-vue"
-import { ref } from "vue"
+import {onMounted, ref, watch} from "vue"
+import _ from 'lodash'
 
 const props = defineProps({
   action: {
@@ -48,4 +49,28 @@ const props = defineProps({
     default: 148,
   },
 })
+const fileList = ref([])
+const modal = ref({
+  visible:false,
+  data:null
+})
+
+const updateFiles = _.debounce(()=>{
+  fileList.value = []
+  for(let e of props.files){
+    fileList.value.push({
+      url: e
+    })
+  }
+},300,{leading:true, trailing:false})
+
+watch(()=>props.files, updateFiles)
+onMounted(updateFiles)
+
+const handlePictureCardPreview = (uploadFile) => {
+  modal.value = {visible:true, data: uploadFile.url}
+}
+const handleRm =  (uploadFile) => {
+  _.remove(props.files, (n)=>n===uploadFile.url)
+}
 </script>

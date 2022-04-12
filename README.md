@@ -8,7 +8,10 @@ The sample usage for Vue3/Vite2/Tailwind project.
 
 # env
 
-- BASE_URL: 该参数同步于vite的base，用于router的前缀。如果是静态文件的前缀，需要设置vite的base。（可通过build --base=xx设置）
+- VITE_ROUTE_BASE_URL: 用于router的前缀。
+- VITE_ASSETS_BASE_URL: 静态资源引入的前缀，同vite的base。
+- VITE_OSS_PREFIX: 使用oss的文件存储和获取时的前缀地址。
+
 
 # 模块
 
@@ -37,6 +40,7 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [x] route的props在layout中的应用
 - [x] vant和element在不同场景下切换 router
 - [x] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug
+- ？？[ ] elp bug: kit-modal中，datepicker不能显示； build后
 - [ ] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
 - [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
 - [ ] 增加补充示例页面

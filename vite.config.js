@@ -10,7 +10,7 @@ pluginAdd(plugins, "element")
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: getEnv('VITE_BASE_URL'),
+  base: getEnv('VITE_ASSETS_BASE_URL'),
   server:{
     host: '0.0.0.0'
   },
