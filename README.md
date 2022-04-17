@@ -36,19 +36,14 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [x] element-plus: auto import 在v-loading时有bug。
 - [ ] element-plus: 自动导入icon
 - [ ] element: Message/MessageBox单独使用时，style未自动导入
-- [ ] element modal drag 如果高度长时有bug
-- [x] route的props在layout中的应用
-- [x] vant和element在不同场景下切换 router
-- [x] element-plus bug: 1.3.0-beta1, el-select绑定问题/dialog内部popper z-index bug
-- [ ] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
+- [ ] element modal drag 如果高度过长时有bug
+- [x] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
 - [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
-- [ ] 增加补充示例页面
+- [x] 增加补充示例页面
 - [ ] bug：form的validate在初始打开时，会提示error msg
-- [x] table的服务端分页模式。
-- [ ] el-select bug: 多选时，不能自由取消
+- [x] el-select bug: 多选时，不能自由取消
 - [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。vant也同样问题。
 - [ ] feature: web和app的component分开，编译分开
-- [ ] el的全局配置中的中文问题，目前写在app.vue
 - [ ] 增加lodash示例页面
 - [ ] feature: 全局的loading、confirm
 

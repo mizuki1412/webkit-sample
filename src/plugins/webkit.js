@@ -1,8 +1,8 @@
-import { configKitInit } from "/lib/store"
+import {configKitInit} from "/lib/store"
 import VueEcharts from "/lib/plugin/echarts"
-import { useRouter as _useRouter } from "/lib/router"
-import { routes } from "../router"
-import { routeBaseAfter, routeBaseBefore } from "/lib/router/intercepter"
+import {useRouter as _useRouter} from "/lib/router"
+import {routes} from "../router"
+import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter"
 
 // todo 考虑到tailwind会覆盖其他element ui
 import "element-plus/theme-chalk/index.css"
@@ -13,6 +13,7 @@ import KitTable from "../../lib/components/kit-table"
 import KitIcon from "../../lib/components/kit-icon"
 import KitPaginationPage from "../../lib/components/kit-pagination-page"
 import KitRichText from "../../lib/components/kit-rich-text"
+import KitUpload from "../../lib/components/kit-upload"
 
 export function useWebkit(app) {
   configKitInit(import.meta.env)
@@ -24,6 +25,7 @@ export function useWebkit(app) {
   app.use(KitIcon)
   app.use(KitPaginationPage)
   app.use(KitRichText)
+  app.use(KitUpload)
 
   // router
   const router = _useRouter(app, routes)

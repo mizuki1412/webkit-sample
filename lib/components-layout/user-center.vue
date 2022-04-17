@@ -8,73 +8,75 @@
     </div>
     <div class="w-full">
       <el-button class="w-full" type="primary" @click="showUpdatePwd"
-        >修改密码</el-button
+      >修改密码
+      </el-button
       >
     </div>
     <div class="w-full">
       <el-button class="w-full" type="danger" @click="logout"
-        >退出登录</el-button
+      >退出登录
+      </el-button
       >
     </div>
     <kit-modal
-      id="update-pwd"
-      :modal="modal"
-      width="400px"
-      :confirm="updatePwd"
+        id="update-pwd"
+        :modal="modal"
+        width="400px"
+        :confirm="updatePwd"
     >
       <template #title>账户密码修改</template>
       <el-form
-        ref="form"
-        label-width="100px"
-        :model="modal.data"
-        v-if="modal.data"
+          ref="form"
+          label-width="100px"
+          :model="modal.data"
+          v-if="modal.data"
       >
         <el-form-item
-          label="原密码："
-          prop="oldPwd"
-          :rules="[{ required: true, message: '请填写密码' }]"
+            label="原密码："
+            prop="oldPwd"
+            :rules="[{ required: true, message: '请填写密码' }]"
         >
           <el-input
-            clearable
-            v-model="modal.data.oldPwd"
-            type="password"
-            autocomplete="new-password"
+              clearable
+              v-model="modal.data.oldPwd"
+              type="password"
+              autocomplete="new-password"
           />
         </el-form-item>
         <el-form-item
-          label="新密码："
-          prop="newPwd"
-          :rules="[
+            label="新密码："
+            prop="newPwd"
+            :rules="[
             { required: true, message: '请填写密码' },
             { type: 'string', min: 6, message: '密码长度不能小于6位' },
           ]"
         >
           <el-input
-            clearable
-            v-model="modal.data.newPwd"
-            type="password"
-            autocomplete="new-password"
+              clearable
+              v-model="modal.data.newPwd"
+              type="password"
+              autocomplete="new-password"
           />
         </el-form-item>
         <el-form-item
-          label="确认密码："
-          prop="pwdCheck"
-          :rules="[{ required: true, validator: passwordCheck }]"
+            label="确认密码："
+            prop="pwdCheck"
+            :rules="[{ required: true, validator: passwordCheck }]"
         >
-          <el-input clearable v-model="modal.data.pwdCheck" type="password" />
+          <el-input clearable v-model="modal.data.pwdCheck" type="password"/>
         </el-form-item>
       </el-form>
     </kit-modal>
   </div>
 </template>
 <script setup>
-import { ref } from "vue"
-import { useRouter } from "vue-router"
-import { storeUserInfo } from "../store"
-import { UserLogout, UserUpdatePwd } from "../dao/user"
-import { RouteName } from "../router"
-import { useLoadingModal } from "../service"
-import { ElMessage } from "element-plus"
+import {ref} from "vue"
+import {useRouter} from "vue-router"
+import {storeUserInfo} from "../store"
+import {UserLogout, UserUpdatePwd} from "../dao/user"
+import {RouteName} from "../router"
+import {useLoadingModal} from "../service"
+import {ElMessage} from "element-plus"
 
 const router = useRouter()
 const modal = ref({
@@ -87,7 +89,8 @@ const form = ref()
 let props = defineProps({
   beforeLogout: {
     type: Function,
-    default: async () => {},
+    default: async () => {
+    },
   },
 })
 
@@ -125,6 +128,6 @@ async function logout() {
   // todo global loading
   await props.beforeLogout()
   await UserLogout()
-  await router.push({ name: RouteName.login })
+  await router.push({name: RouteName.login})
 }
 </script>

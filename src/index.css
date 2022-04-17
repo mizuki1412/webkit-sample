@@ -4,29 +4,29 @@
 @tailwind utilities;
 
 @layer components {
-  ._flex_center {
-    @apply flex items-center justify-center;
-  }
+    ._flex_center {
+        @apply flex items-center justify-center;
+    }
 
-  ._flex_col_center {
-    @apply flex flex-col items-center justify-center;
-  }
+    ._flex_col_center {
+        @apply flex flex-col items-center justify-center;
+    }
 
-  /* 用于一行key:val */
-  ._text {
-    @apply flex;
-  }
+    /* 用于一行key:val */
+    ._text {
+        @apply flex;
+    }
 
-  ._text div:first-child {
-    width: 100px;
-    @apply shrink-0;
-  }
+    ._text div:first-child {
+        width: 100px;
+        @apply shrink-0;
+    }
 
-  ._text div:last-child {
-    @apply grow;
-  }
+    ._text div:last-child {
+        @apply grow;
+    }
 }
 /* css变量 */
 body {
-  --van-empty-padding: 10px 0;
+    --van-empty-padding: 10px 0;
 }

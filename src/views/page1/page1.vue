@@ -1,9 +1,9 @@
 <template>
   <div v-loading="loading">
     <div class="flex">
-      <kit-icon name="fee" class="h-4 w-4 text-red-600" />
+      <kit-icon name="fee" class="h-4 w-4 text-red-600"/>
       <kit-empty class="cursor-pointer" @click="modal.visible = true"
-        >test<span style="color: red">abc</span>
+      >test<span style="color: red">abc</span>
       </kit-empty>
       <v-chart style="width: 300px; height: 200px" :option="option1"></v-chart>
     </div>
@@ -23,11 +23,11 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue"
-import { sleep } from "/lib/utils"
-import { useLoading } from "/lib/service"
-import { ElMessageBox } from "element-plus"
-import { chartConfig } from "../../../lib/service/echarts-helper"
+import {ref, onMounted} from "vue"
+import {sleep} from "/lib/utils"
+import {useLoading} from "/lib/service"
+import {ElMessageBox} from "element-plus"
+import {chartConfig} from "../../../lib/service/echarts-helper"
 import _ from "lodash"
 
 const loading = ref(false)
@@ -37,20 +37,21 @@ const modal = ref({
   data: {},
 })
 
-function confirm2() {}
+function confirm2() {
+}
 
 const data1 = ref([
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-  { id: 8 },
-  { id: 9 },
-  { id: 10 },
-  { id: 11 },
+  {id: 1},
+  {id: 2},
+  {id: 3},
+  {id: 4},
+  {id: 5},
+  {id: 6},
+  {id: 7},
+  {id: 8},
+  {id: 9},
+  {id: 10},
+  {id: 11},
 ])
 const data = ref([])
 const dataDisplay = ref([])
@@ -60,24 +61,24 @@ function testMessage() {
 }
 
 onMounted(
-  useLoading(loading, async () => {
-    await sleep(1000)
-    option1.value = chartConfig({
-      xAxis: {
-        type: "category",
-        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      },
-      yAxis: {
-        type: "value",
-      },
-      series: [
-        {
-          data: [150, 230, 224, 218, 135, 147, 260],
-          type: "line",
+    useLoading(loading, async () => {
+      await sleep(1000)
+      option1.value = chartConfig({
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         },
-      ],
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [150, 230, 224, 218, 135, 147, 260],
+            type: "line",
+          },
+        ],
+      })
+      modal.value.data.val1 = 0
     })
-    modal.value.data.val1 = 0
-  })
 )
 </script>

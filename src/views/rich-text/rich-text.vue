@@ -5,10 +5,12 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue"
+import {ref, onMounted} from "vue"
 
 const loading = ref(false)
-const content = ref(false)
+const content = ref('demo')
 
-onMounted(async () => {})
+onMounted(async () => {
+
+})
 </script>

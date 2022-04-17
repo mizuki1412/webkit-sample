@@ -1,11 +1,11 @@
 <template>
   <svg aria-hidden="true">
-    <use v-if="symbolId" :xlink:href="symbolId" fill="currentColor" />
+    <use v-if="symbolId" :xlink:href="symbolId" fill="currentColor"/>
   </svg>
 </template>
 <script setup>
 // vite-plugin-svg-icons，引入svg的icon
-import { computed } from "vue"
+import {computed} from "vue"
 
 const props = defineProps({
   name: {

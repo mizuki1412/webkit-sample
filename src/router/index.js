@@ -1,11 +1,6 @@
-import { RouteName } from "../../lib/router"
+import {RouteName} from "../../lib/router"
 
 export const routes = [
-  {
-    path: "/full",
-    name: "full",
-    component: () => import("../views/page2/page3.vue"),
-  },
   // app
   {
     path: "/app/login",
@@ -61,10 +56,11 @@ export const routes = [
   {
     path: "/",
     name: RouteName.index,
-    redirect: { name: "page1" },
+    redirect: {name: "page1"},
     component: () => import("../../lib/components-layout/kit-layout-admin.vue"),
     meta: {
       menu: true,
+      authDisable: true,
     },
     children: [
       {
@@ -74,56 +70,60 @@ export const routes = [
         meta: {
           menuTitle: "子页面1",
           menuIcon: "fee",
-          authDisable: true,
+        },
+      },
+      {
+        path: "/modal",
+        name: "modal",
+        component: () => import("../views/dialog/modal.vue"),
+        meta: {
+          menuTitle: "弹出框",
+          menuIcon: "fee",
         },
       },
       // 无component的路由代表menu的分组信息
       {
-        path: "/_sub_page2",
-        name: "page2",
+        path: "/_sub_table",
+        name: "_sub_table",
         meta: {
-          menuTitle: "子页面组",
+          menuTitle: "表格",
           menuIcon: "fee",
         },
       },
       {
-        path: "/page2/p1",
-        name: "page2_p1",
-        component: () => import("../views/page2/page3.vue"),
+        path: "/table/normal",
+        name: "table_normal",
+        component: () => import("../views/tables/table-normal.vue"),
         meta: {
-          menuTitle: "子页面2p1",
-          menuBelong: "page2",
-          authDisable: true,
+          menuTitle: "一般表格",
+          menuBelong: "_sub_table",
         },
       },
       {
-        path: "/page3",
-        name: "page3",
-        component: () => import("../views/page2/page2.vue"),
+        path: "/table/server",
+        name: "table_server",
+        component: () => import("../views/tables/table-server.vue"),
         meta: {
-          menuTitle: "富文本测试",
-          menuIcon: "fee",
-          authDisable: true,
+          menuTitle: "服务端分页",
+          menuBelong: "_sub_table",
         },
       },
       {
-        path: "/page4",
-        name: "page4",
-        component: () => import("../views/page2/page2.vue"),
+        path: "/rich-text",
+        name: "rich-text",
+        component: () => import("../views/rich-text/rich-text.vue"),
         meta: {
-          menuTitle: "子页面4",
+          menuTitle: "富文本编辑",
           menuIcon: "fee",
-          authDisable: true,
         },
       },
       {
-        path: "/page5",
-        name: "page5",
-        component: () => import("../views/page2/page2.vue"),
+        path: "/pagination",
+        name: "pagination",
+        component: () => import("../views/pagination/pagination-page.vue"),
         meta: {
-          menuTitle: "子页面5",
+          menuTitle: "分页页面",
           menuIcon: "fee",
-          authDisable: true,
         },
       },
     ],

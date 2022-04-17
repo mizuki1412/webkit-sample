@@ -1,35 +1,35 @@
 <template>
   <el-dialog
-    v-model="modal.visible"
-    :draggable="false"
-    :close-on-click-modal="closeOnClickModal"
-    :close-on-press-escape="showClose"
-    :show-close="showClose"
-    :before-close="cancel"
-    :width="width"
+      v-model="modal.visible"
+      :draggable="false"
+      :close-on-click-modal="closeOnClickModal"
+      :close-on-press-escape="showClose"
+      :show-close="showClose"
+      :before-close="cancel"
+      :width="width"
   >
     <template #title>
       <div class="flex items-center justify-center">
-        <slot name="title" />
+        <slot name="title"/>
       </div>
     </template>
-    <slot />
-    <KitErrChannel class="mt-2" :id="id" />
+    <slot/>
+    <KitErrChannel class="mt-2" :id="id"/>
     <template #footer v-if="!noFooter">
       <div class="flex justify-end">
         <el-button
-          type="default"
-          plain
-          @click="cancel"
-          :loading="
+            type="default"
+            plain
+            @click="cancel"
+            :loading="
             Object.keys(modal).indexOf('loading') > -1 ? modal.loading : false
           "
-          >取消
+        >取消
         </el-button>
         <el-button
-          type="primary"
-          @click="ok"
-          :loading="
+            type="primary"
+            @click="ok"
+            :loading="
             Object.keys(modal).indexOf('loading') > -1 ? modal.loading : false
           "
         >
@@ -40,10 +40,10 @@
   </el-dialog>
 </template>
 <script setup>
-import { submitErrChanel } from "../store"
+import {submitErrChanel} from "../store"
 import KitErrChannel from "./kit-err-channel.vue"
-import { toRef } from "vue"
-import { useLoadingModal, useLoadingObject } from "../service"
+import {toRef} from "vue"
+import {useLoadingModal, useLoadingObject} from "../service"
 
 // const vDrag = {
 //   mounted(el) {
@@ -54,15 +54,17 @@ import { useLoadingModal, useLoadingObject } from "../service"
 const props = defineProps({
   confirm: {
     type: Function,
-    default: async () => {},
+    default: async () => {
+    },
   },
   close: {
     type: Function,
-    default: () => {},
+    default: () => {
+    },
   },
   modal: {
     type: Object,
-    default: { visible: true, loading: false },
+    default: {visible: true, loading: false},
   },
   width: {
     type: String,

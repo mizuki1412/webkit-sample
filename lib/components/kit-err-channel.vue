@@ -1,14 +1,14 @@
 <template>
   <div
-    v-if="
+      v-if="
       storeErrMsg.submitId === id && storeErrMsg.msg && storeErrMsg.msg !== ''
     "
   >
-    <el-alert :title="storeErrMsg.msg" type="error" show-icon> </el-alert>
+    <el-alert :title="storeErrMsg.msg" type="error" show-icon></el-alert>
   </div>
 </template>
 <script setup>
-import { storeErrMsg } from "../store"
+import {storeErrMsg} from "../store"
 
 defineProps({
   id: {

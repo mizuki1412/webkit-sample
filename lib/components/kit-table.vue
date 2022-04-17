@@ -1,41 +1,41 @@
 <template>
   <div>
     <el-table
-      ref="table"
-      stripe
-      :data="displayData"
-      @selection-change="selectChange"
-      @sort-change="sortChange"
+        ref="table"
+        stripe
+        :data="displayData"
+        @selection-change="selectChange"
+        @sort-change="sortChange"
     >
-      <slot />
+      <slot/>
     </el-table>
     <div class="flex justify-center">
       <el-pagination
-        v-if="fromServer"
-        background
-        class="mt-1"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="total"
-        :current-page.sync="currentPageInner"
-        @current-change="pageServerHandle0"
-        @size-change="handleSizeChange"
-        :page-sizes="pageSizes"
+          v-if="fromServer"
+          background
+          class="mt-1"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="total"
+          :current-page.sync="currentPageInner"
+          @current-change="pageServerHandle0"
+          @size-change="handleSizeChange"
+          :page-sizes="pageSizes"
       />
       <el-pagination
-        v-else-if="!noPagination"
-        background
-        layout="total, sizes, prev, pager, next, jumper"
-        class="mt-1"
-        :total="data.length"
-        :page-sizes="pageSizes"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
+          v-else-if="!noPagination"
+          background
+          layout="total, sizes, prev, pager, next, jumper"
+          class="mt-1"
+          :total="data.length"
+          :page-sizes="pageSizes"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
       />
     </div>
   </div>
 </template>
 <script setup>
-import { computed, ref, watch } from "vue"
+import {computed, ref, watch} from "vue"
 
 const props = defineProps({
   data: {
@@ -44,7 +44,8 @@ const props = defineProps({
   },
   selectChange: {
     type: Function,
-    default: () => {},
+    default: () => {
+    },
   },
   // 分页数
   pageSize: {
@@ -71,7 +72,8 @@ const props = defineProps({
   // 返回值 {data, currentPage-当前页, total-总数, totalPage-总页数}
   pageServerHandle: {
     type: Function,
-    default: () => {},
+    default: () => {
+    },
   },
   noPagination: {
     type: Boolean,
@@ -83,16 +85,16 @@ const emit = defineEmits(["update:currentPage", "update:pageSize", "ref"])
 // 正常操作变化
 const currentPageInner = ref(props.currentPage)
 watch(
-  () => props.currentPage,
-  (currentPage) => (currentPageInner.value = currentPage)
+    () => props.currentPage,
+    (currentPage) => (currentPageInner.value = currentPage)
 )
 watch(currentPageInner, (currentPageInner) =>
-  emit("update:currentPage", currentPageInner)
+    emit("update:currentPage", currentPageInner)
 )
 const pageSizeInner = ref(props.pageSize)
 watch(
-  () => props.pageSize,
-  (pageSize) => (pageSizeInner.value = pageSize)
+    () => props.pageSize,
+    (pageSize) => (pageSizeInner.value = pageSize)
 )
 watch(pageSizeInner, (pageSizeInner) => emit("update:pageSize", pageSizeInner))
 
@@ -115,12 +117,12 @@ const displayData = computed(() => {
   } else if (props.noPagination) {
     return props.data
   } else {
-    if(props.data){
+    if (props.data) {
       return props.data.slice(
           (currentPageInner.value - 1) * pageSizeInner.value,
           currentPageInner.value * pageSizeInner.value
       )
-    }else{
+    } else {
       return []
     }
   }
@@ -185,5 +187,5 @@ async function refresh(pageNo) {
   await pageServerHandle0(pageNo ? pageNo : currentPageInner.value)
 }
 
-defineExpose({ refresh })
+defineExpose({refresh})
 </script>
