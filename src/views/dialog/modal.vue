@@ -1,6 +1,7 @@
 <template>
   <div v-loading="loading">
     <el-button @click="show">弹出</el-button>
+    <el-button @click="modal2.visible=true">bug:过高时拖拽</el-button>
     <kit-modal
         id="demo1"
         :modal="modal"
@@ -21,6 +22,9 @@
             <el-option v-for="e in typeList" :label="e.name" :value="e.id"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="日期：" prop="dt">
+          <el-date-picker clearable v-model="modal.data.dt"/>
+        </el-form-item>
         <el-form-item label="标题：" prop="name" :rules="[{ required: true, message: '请填写' }]">
           <el-input clearable v-model="modal.data.name"/>
         </el-form-item>
@@ -28,6 +32,13 @@
           <el-input type="textarea" clearable v-model="modal.data.abstract"/>
         </el-form-item>
       </el-form>
+    </kit-modal>
+    <kit-modal
+        id="demo2"
+        :modal="modal2"
+        :draggable="true"
+        width="50%">
+      <div class="h-[2000px]">1</div>
     </kit-modal>
   </div>
 </template>
@@ -41,6 +52,11 @@ const router = useRouter()
 const loading = ref(false)
 const form = ref()
 const modal = ref({
+  visible: false,
+  loading: false,
+  data: null
+})
+const modal2 = ref({
   visible: false,
   loading: false,
   data: null

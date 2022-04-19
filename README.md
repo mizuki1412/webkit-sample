@@ -38,7 +38,6 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [ ] element: Message/MessageBox单独使用时，style未自动导入
 - [ ] element modal drag 如果高度过长时有bug
 - [x] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
-- [ ] tinymce: https://www.tiny.cloud/get-tiny/language-packages/
 - [x] 增加补充示例页面
 - [ ] bug：form的validate在初始打开时，会提示error msg
 - [x] el-select bug: 多选时，不能自由取消
