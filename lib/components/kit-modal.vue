@@ -7,13 +7,16 @@
       :show-close="showClose"
       :before-close="cancel"
       :width="width"
+      top="8vh"
   >
     <template #title>
       <div class="flex items-center justify-center">
         <slot name="title"/>
       </div>
     </template>
-    <slot/>
+    <el-scrollbar max-height="62vh">
+      <slot />
+    </el-scrollbar>
     <KitErrChannel class="mt-2" :id="id"/>
     <template #footer v-if="!noFooter">
       <div class="flex justify-end">
@@ -80,7 +83,7 @@ const props = defineProps({
   },
   draggable:{
     type: Boolean,
-    default:false
+    default:true
   },
   id: {
     type: String,

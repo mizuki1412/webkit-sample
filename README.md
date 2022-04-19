@@ -36,7 +36,7 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [x] element-plus: auto import 在v-loading时有bug。
 - [ ] element-plus: 自动导入icon
 - [ ] element: Message/MessageBox单独使用时，style未自动导入
-- [ ] element modal drag 如果高度过长时有bug
+- [x] element modal drag 如果高度过长时有bug; 改滚动条方式。
 - [x] consola临时依赖，https://github.com/vbenjs/vite-plugin-style-import/issues/66
 - [x] 增加补充示例页面
 - [ ] bug：form的validate在初始打开时，会提示error msg

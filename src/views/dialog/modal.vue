@@ -38,6 +38,7 @@
         :modal="modal2"
         :draggable="true"
         width="50%">
+      <template #title>课程信息</template>
       <div class="h-[2000px]">1</div>
     </kit-modal>
   </div>
