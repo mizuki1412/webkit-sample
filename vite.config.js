@@ -7,6 +7,7 @@ let plugins =  [
 ]
 pluginAdd(plugins, "icon")
 pluginAdd(plugins, "element")
+pluginAdd(plugins, "vant")
 
 // https://vitejs.dev/config/
 export default defineConfig({

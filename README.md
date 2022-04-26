@@ -12,7 +12,6 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - VITE_ASSETS_BASE_URL: 静态资源引入的前缀，同vite的base。
 - VITE_OSS_PREFIX: 使用oss的文件存储和获取时的前缀地址。
 
-
 # 模块
 
 ## request
@@ -45,8 +44,9 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [ ] feature: web和app的component分开，编译分开
 - [ ] 增加lodash示例页面
 - [ ] feature: 全局的loading、confirm
+- [ ] el bug: el-select 单选object时未显示label
 
 ## bug fix
 
 - 关于element auto import style引起的错误：因为在plugin/webkit中需要导入index.css，防止被tailwindcss的style覆盖，所以自动导入中取消了导入style。没有解决只是避免。
-- 因为项目是js的，el是ts的，所有官网上有些导入会报错，比如zhCn
+- 因为项目是js的，el是ts的，所以官网上有些导入会报错，比如zhCn

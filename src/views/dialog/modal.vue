@@ -18,8 +18,8 @@
           </el-select>
         </el-form-item>
         <el-form-item label="课程分类：" prop="type" :rules="{ required: true, message: '请选择' }">
-          <el-select v-model="modal.data.type" clearable filterable>
-            <el-option v-for="e in typeList" :label="e.name" :value="e.id"></el-option>
+          <el-select v-model="modal.data.type" clearable filterable value-key="id">
+            <el-option v-for="e in typeList" :label="e.name" :value="e"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="日期：" prop="dt">
