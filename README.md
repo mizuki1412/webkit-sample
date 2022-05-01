@@ -22,8 +22,6 @@ The sample usage for Vue3/Vite2/Tailwind project.
 
 将一组route指定为menu信息，menu是专用于后台管理界面框架。
 
-对应的页面demo为`src/views/main.vue`
-
 ## service
 
 ## components

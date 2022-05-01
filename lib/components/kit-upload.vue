@@ -60,9 +60,11 @@ const updateFiles = _.debounce(() => {
   fileList.value = []
   if (!props.files) return
   for (let e of props.files) {
-    fileList.value.push({
-      url: e
-    })
+    if(e){
+      fileList.value.push({
+        url: e
+      })
+    }
   }
 }, 300, {leading: true, trailing: false})
 
