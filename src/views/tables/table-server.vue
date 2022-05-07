@@ -5,10 +5,10 @@
       <el-select v-model="types" multiple collapse-tags collapse-tags-tooltip clearable>
         <el-option v-for="e in typeList" :label="e.name" :value="e.id"></el-option>
       </el-select>
-      <el-input placeholder="请输入搜索内容" clearable prefix-icon="Search" class="ml-1" style="width: 240px"
+      <el-input placeholder="请输入搜索内容" clearable prefix-icon="search" class="ml-1" style="width: 240px"
                 v-model="keywords"/>
       <div class="ml-1">
-        <el-button type="primary" @click="query">查询</el-button>
+        <el-button type="primary" icon="search" @click="query">查询</el-button>
       </div>
       <div class="ml-1">
         <el-button type="success">新增</el-button>

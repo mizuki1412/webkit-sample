@@ -23,7 +23,7 @@
       <el-input
           placeholder="请输入搜索内容"
           clearable
-          prefix-icon="Search"
+          prefix-icon="search"
           style="width:200px"
           v-model="input"/>
     </div>
