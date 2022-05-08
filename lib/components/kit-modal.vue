@@ -7,6 +7,7 @@
       :show-close="showClose"
       :before-close="cancel"
       :width="width"
+      append-to-body
       top="8vh"
   >
     <template #title>

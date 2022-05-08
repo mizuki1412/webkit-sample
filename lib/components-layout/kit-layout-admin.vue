@@ -16,50 +16,52 @@
         <div
             class="flex cursor-pointer items-center justify-center bg-blue-900 p-2 text-white shadow-md"
             @click="routeTo('index')"
-            :style="{ height: headerHeight }"
-        >
+            :style="{ height: headerHeight }">
           <div v-if="!isCollapse" class="text-center">
             {{ configKit.title }}
           </div>
           <div v-else class="text-center">{{ configKit.titleSimple }}</div>
         </div>
-        <template v-for="(item, index) in storePageMenu" :key="item.name">
-          <el-sub-menu
-              v-if="menuItemFilter(item.children).length > 0"
-              :index="item.name"
-          >
-            <template #title>
-              <el-icon>
-                <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
-              </el-icon>
-              <span>{{ item.menuTitle }}</span>
-            </template>
-            <el-menu-item
-                v-for="child in menuItemFilter(item.children)"
-                :key="child.name"
-                :index="child.name"
-            >
-              <template #title>
-                {{ child.menuTitle }}
-              </template>
-            </el-menu-item>
-          </el-sub-menu>
-          <el-menu-item
-              v-else-if="
+        <div :style="{height: 'calc(100vh - '+headerHeight+')'}">
+          <el-scrollbar max-height="100%">
+            <template v-for="(item, index) in storePageMenu" :key="item.name">
+              <el-sub-menu
+                  v-if="menuItemFilter(item.children).length > 0"
+                  :index="item.name">
+                <template #title>
+                  <el-icon>
+                    <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
+                  </el-icon>
+                  <span>{{ item.menuTitle }}</span>
+                </template>
+                <el-menu-item
+                    v-for="child in menuItemFilter(item.children)"
+                    :key="child.name"
+                    :index="child.name"
+                >
+                  <template #title>
+                    {{ child.menuTitle }}
+                  </template>
+                </el-menu-item>
+              </el-sub-menu>
+              <el-menu-item
+                  v-else-if="
               item.name && item.component && (!item.authFunc || item.authFunc())
             "
-              :index="item.name"
-          >
-            <el-icon>
-              <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
-            </el-icon>
-            <!--            <div class="flex justify-center items-center h-full">-->
-            <!--            </div>-->
-            <template #title>
-              <span>{{ item.menuTitle }}</span>
+                  :index="item.name"
+              >
+                <el-icon>
+                  <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
+                </el-icon>
+                <!--            <div class="flex justify-center items-center h-full">-->
+                <!--            </div>-->
+                <template #title>
+                  <span>{{ item.menuTitle }}</span>
+                </template>
+              </el-menu-item>
             </template>
-          </el-menu-item>
-        </template>
+          </el-scrollbar>
+        </div>
       </el-menu>
     </div>
     <div class="h-screen bg-gray-100">
