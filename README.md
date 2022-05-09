@@ -42,7 +42,6 @@ The sample usage for Vue3/Vite2/Tailwind project.
 - [ ] feature: web和app的component分开，编译分开
 - [ ] 增加lodash示例页面
 - [ ] feature: 全局的loading、confirm
-- [ ] el bug: el-select 单选object时未显示label
 
 ## bug fix
 

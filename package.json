@@ -15,29 +15,29 @@
     "@element-plus/icons-vue": "^1.1.4",
     "@tinymce/tinymce-vue": "^5.0.0",
     "ali-oss": "^6.17.1",
-    "axios": "^0.27.0",
+    "axios": "^0.27.2",
     "echarts": "^5.3.2",
-    "element-plus": "2.1.11",
+    "element-plus": "2.2.0",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "qs": "^6.10.3",
     "socket.io-client": "^4.5.0",
-    "vant": "^3.4.8",
+    "vant": "^3.4.9",
     "vue": "^3.2.33",
     "vue-echarts": "^6.0.2",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.1",
+    "@vitejs/plugin-vue": "^2.3.2",
     "@vue/compiler-sfc": "^3.2.33",
-    "autoprefixer": "^10.4.5",
-    "postcss": "^8.4.12",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.13",
     "prettier-plugin-tailwindcss": "^0.1.10",
     "tailwindcss": "^3.0.24",
     "unplugin-auto-import": "^0.7.1",
     "unplugin-icons": "^0.14.3",
     "unplugin-vue-components": "^0.19.3",
-    "vite": "^2.9.5",
+    "vite": "^2.9.8",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }

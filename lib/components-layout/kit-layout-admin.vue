@@ -11,8 +11,7 @@
           backgroundColor="#23479C"
           mode="vertical"
           :default-active="storeCurrentRoute.name"
-          @select="routeTo"
-      >
+          @select="routeTo">
         <div
             class="flex cursor-pointer items-center justify-center bg-blue-900 p-2 text-white shadow-md"
             @click="routeTo('index')"
@@ -32,13 +31,12 @@
                   <el-icon>
                     <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
                   </el-icon>
-                  <span>{{ item.menuTitle }}</span>
+                  <span v-if="!isCollapse">{{ item.menuTitle }}</span>
                 </template>
                 <el-menu-item
                     v-for="child in menuItemFilter(item.children)"
                     :key="child.name"
-                    :index="child.name"
-                >
+                    :index="child.name">
                   <template #title>
                     {{ child.menuTitle }}
                   </template>
