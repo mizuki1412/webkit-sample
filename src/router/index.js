@@ -126,6 +126,15 @@ export const routes = [
           menuIcon: "fee",
         },
       },
+      {
+        path: "/fabric",
+        name: "fabric",
+        component: () => import("../views/fabric/fabric.vue"),
+        meta: {
+          menuTitle: "fabric测试",
+          menuIcon: "fee",
+        },
+      },
     ],
   },
 ]

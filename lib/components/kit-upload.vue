@@ -27,6 +27,21 @@ import {Plus} from "@element-plus/icons-vue"
 import {onMounted, ref, watch} from "vue"
 import _ from 'lodash'
 
+/**
+ * action demo:
+ * async function parseJson(option){
+ *   if (option.file.size > 1024 * 1024) {
+ *     ElMessage.error('图片大小请小于1M');
+ *     throw Error('图片大小请小于1M');
+ *   }
+ *   await useLoadingModal(modal, async ()=>{
+ *     const key = await putObjectCommon(option.file);
+ *     modal.value.data.img = publicUrl(key)
+ *     ElMessage.success('上传成功');
+ *   })()
+ * }
+ */
+
 const props = defineProps({
   action: {
     type: Function,
