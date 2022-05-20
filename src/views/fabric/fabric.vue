@@ -12,10 +12,13 @@
       <el-button @click="initCanvas">重置</el-button>
       <el-button type="success" @click="showAdd">增加元素</el-button>
       <el-button type="warning" @click="del">删除</el-button>
-<!--      <el-button @click="move">移动测试</el-button>-->
-<!--      <el-button @click="light">闪烁</el-button>-->
+      <el-button type="success" @click="display">展示</el-button>
     </div>
-    <canvas id="c" width="1200" height="400" class="mt-2"></canvas>
+    <canvas id="c" width="900" height="300" class="mt-2"></canvas>
+    <el-divider>展示区</el-divider>
+    <div class="w-[900px] h-[300px]">
+      <kit-fabric-show v-if="displayObjs" :objects="displayObjs"></kit-fabric-show>
+    </div>
     <kit-modal :modal="addModal" :confirm="add">
       <template #title>增加元素</template>
       <el-form ref="form" label-width="100px" :model="addModal.data">
@@ -38,6 +41,7 @@
 
 <script setup>
 /**
+ * fabric 编辑器
  * http://fabricjs.com/docs/global.html
  */
 import {fabric} from 'fabric'
@@ -54,6 +58,8 @@ const addModal = ref({
   loading: false,
   data: undefined
 })
+// 展示用的objects
+const displayObjs = ref()
 
 onMounted(useLoading(loading, async () => {
   //画布初始化
@@ -177,6 +183,10 @@ function print() {
 
 function del() {
   canvas.value.remove(canvas.value.getActiveObject())
+}
+
+function display(){
+  displayObjs.value = canvas.value.toDatalessJSON().objects
 }
 
 function move() {
