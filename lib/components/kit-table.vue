@@ -42,10 +42,13 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  tableRef:{
+    type: Object,
+    default:()=>null
+  },
   selectChange: {
     type: Function,
-    default: () => {
-    },
+    default: () => {},
   },
   // 分页数
   pageSize: {
@@ -80,7 +83,7 @@ const props = defineProps({
     default: false,
   },
 })
-const emit = defineEmits(["update:currentPage", "update:pageSize", "ref"])
+const emit = defineEmits(["update:currentPage", "update:pageSize", "update:tableRef"])
 
 // 正常操作变化
 const currentPageInner = ref(props.currentPage)
@@ -164,7 +167,8 @@ function sortChange(p) {
 // 使用：v-on:ref="table = $event"
 const table = ref(null)
 watch(table, () => {
-  emit("ref", table.value)
+  console.log(table.value)
+  emit("update:tableRef", table.value)
 })
 
 // 服务端分页处理函数包装

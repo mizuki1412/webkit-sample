@@ -27,7 +27,12 @@
           style="width:200px"
           v-model="input"/>
     </div>
-    <kit-table :data="flist" class="mt-2 w-full">
+    <kit-table :data="flist" v-model:tableRef="tableRef" class="mt-2 w-full">
+      <el-table-column type="expand">
+        <template #default="{row}">
+          demo expand
+        </template>
+      </el-table-column>
       <el-table-column label="名称" prop="name" min-width="200"/>
       <el-table-column label="类型">
         <template #default="{row}">
@@ -44,7 +49,7 @@
         <template #default="{row}">
           <div class="flex gap-0.5">
             <el-button size="small" type="warning">修改</el-button>
-            <el-button size="small" type="primary">查看详情</el-button>
+            <el-button size="small" type="primary" @click="expand(row)">查看详情</el-button>
           </div>
         </template>
       </el-table-column>
@@ -62,9 +67,14 @@ const loading = ref(false)
 const list = ref([])
 const selectType = ref()
 const selectTime = ref()
+const tableRef = ref()
 const [input, flist] = useSearch(list, {
   includeProps: ['name'],
 })
+
+function expand(val){
+  tableRef.value.toggleRowExpansion(val);
+}
 
 onMounted(useLoading(loading, async () => {
   for (let i = 0; i < 80; i++) {
