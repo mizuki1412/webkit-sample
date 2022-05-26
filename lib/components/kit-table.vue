@@ -167,7 +167,6 @@ function sortChange(p) {
 // 使用：v-on:ref="table = $event"
 const table = ref(null)
 watch(table, () => {
-  console.log(table.value)
   emit("update:tableRef", table.value)
 })
 
