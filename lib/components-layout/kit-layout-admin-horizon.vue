@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen bg-gray-100">
+  <div class="h-screen w-screen overflow-hidden bg-gray-100">
     <div
         class="mb-1 flex w-full items-center justify-between shadow-md"
         :style="{

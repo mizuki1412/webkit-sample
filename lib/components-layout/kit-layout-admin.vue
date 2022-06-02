@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen w-screen" id="home_page">
+  <div class="flex h-screen w-screen overflow-hidden" id="home_page">
     <div :style="{ width: menuWidth }">
       <el-menu
           :collapse="isCollapse"
@@ -10,7 +10,7 @@
           :collapse-transition="false"
           backgroundColor="#23479C"
           mode="vertical"
-          :default-active="storeCurrentRoute.name"
+          :default-active="storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name"
           @select="routeTo">
         <div
             class="flex cursor-pointer items-center justify-center bg-blue-900 p-2 text-white shadow-md"
@@ -93,8 +93,7 @@
           :style="{
           width: 'calc(100vw - ' + menuWidth + ')',
           height: 'calc(100vh - ' + headerHeight + ')',
-        }"
-      >
+        }">
         <router-view/>
       </div>
     </div>
@@ -102,7 +101,7 @@
 </template>
 <script setup>
 import {ref, onMounted, computed} from "vue"
-import {storePageMenu} from "/lib/router"
+import {RouteMetaKey, storePageMenu} from "/lib/router"
 import {useRouter} from "vue-router"
 import {configKit, storeCurrentRoute} from "/lib/store"
 import UserCenter from "./user-center.vue"

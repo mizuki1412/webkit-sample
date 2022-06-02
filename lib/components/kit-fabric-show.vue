@@ -77,13 +77,10 @@ function initObjs(){
   }), canvas.value.renderAll.bind(canvas.value), function (o, object) {
     object.toObject = (function (toObject) {
       return function () {
-        let sr = {}
-        for(let k of Object.keys(o)){
-          if(k.indexOf("__")===0){
-            sr[k] = o[k]
-          }
-        }
-        return fabric.util.object.extend(toObject.call(this), sr)
+        return fabric.util.object.extend(toObject.call(this), {
+          __id: o.__id,
+          __type: o.__type
+        })
       }
     })(object.toObject)
   })

@@ -10,7 +10,7 @@
       append-to-body
       top="8vh"
   >
-    <template #title>
+    <template #header>
       <div class="flex items-center justify-center">
         <slot name="title"/>
       </div>
@@ -48,12 +48,6 @@ import {submitErrChanel} from "../store"
 import KitErrChannel from "./kit-err-channel.vue"
 import {toRef} from "vue"
 import {useLoadingModal, useLoadingObject} from "../service"
-
-// const vDrag = {
-//   mounted(el) {
-//     console.log(el)
-//   }
-// }
 
 const props = defineProps({
   confirm: {
