@@ -1019,6 +1019,11 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
+dhtmlx-gantt@^7.1.11:
+  version "7.1.11"
+  resolved "https://registry.npmjs.org/dhtmlx-gantt/-/dhtmlx-gantt-7.1.11.tgz#60a580df3775f2ef101edc666a3ce8d79d448e53"
+  integrity sha512-ivPv/7J/zaL9X8Tbsut0lONvje4IZqGtOdJwrarkIi3EnDmHDoq5gibYRp15zcAgvW7UAd6EnTsuBiTdJpYUQw==
+
 didyoumean@^1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/didyoumean/-/didyoumean-1.2.2.tgz#989346ffe9e839b4555ecf5666edea0d3e8ad037"

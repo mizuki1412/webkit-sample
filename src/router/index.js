@@ -135,6 +135,15 @@ export const routes = [
           menuIcon: "fee",
         },
       },
+      {
+        path: "/gantt",
+        name: "gantt",
+        component: () => import("../views/gantt/gantt.vue"),
+        meta: {
+          menuTitle: "甘特图测试",
+          menuIcon: "fee",
+        },
+      },
     ],
   },
 ]

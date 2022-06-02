@@ -15,6 +15,7 @@ import KitPaginationPage from "../../lib/components/kit-pagination-page"
 import KitRichText from "../../lib/components/kit-rich-text"
 import KitUpload from "../../lib/components/kit-upload"
 import KitFabricShow from "../../lib/components/kit-fabric-show"
+import KitGantt from "../../lib/components/kit-gantt"
 import "../after.css"
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
@@ -30,6 +31,7 @@ export function useWebkit(app) {
   app.use(KitRichText)
   app.use(KitUpload)
   app.use(KitFabricShow)
+  app.use(KitGantt)
 
   // element 全局导入icon
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
