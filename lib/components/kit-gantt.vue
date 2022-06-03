@@ -12,7 +12,7 @@
  *  parent 父id,
  *  color, textColor, progressColor
  */
-import {onMounted, ref, watch} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import { gantt } from 'dhtmlx-gantt'
 
 const props = defineProps({
@@ -47,8 +47,6 @@ const props = defineProps({
 const ganttRef = ref()
 
 function init(){
-  // 清空之前的配置
-  gantt.clearAll()
   // 默认配置
   gantt.config.xml_date = '%Y-%m-%d'
   gantt.i18n.setLocale('cn') // 设置中文
@@ -57,16 +55,18 @@ function init(){
   gantt.config.columns = props.columns
   gantt.config.scale_unit = props.scaleUnit
   gantt.config.date_scale = props.dateScale
-  // 初始化甘特图
   gantt.init(ganttRef.value)
   refresh()
 }
 
 function refresh(){
   // 渲染数据
+  gantt.clearAll()
   gantt.parse(props.tasks)
 }
 
-watch(()=>props.tasks, refresh)
 onMounted(init)
+// 不能destructor，否则$services为null
+// onUnmounted(()=>gantt.destructor())
+defineExpose({refresh})
 </script>

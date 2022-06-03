@@ -26,7 +26,7 @@
           background
           layout="total, sizes, prev, pager, next, jumper"
           class="mt-1"
-          :total="data.length"
+          :total="data?.length||0"
           :page-sizes="pageSizes"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
@@ -118,7 +118,7 @@ const displayData = computed(() => {
   if (props.fromServer) {
     return dataList.value
   } else if (props.noPagination) {
-    return props.data
+    return props.data || []
   } else {
     if (props.data) {
       return props.data.slice(
