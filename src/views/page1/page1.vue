@@ -60,6 +60,9 @@ function testMessage() {
   ElMessageBox.confirm("", "测试")
 }
 
+async function monitor(){
+}
+
 onMounted(
     useLoading(loading, async () => {
       await sleep(1000)
@@ -79,6 +82,7 @@ onMounted(
         ],
       })
       modal.value.data.val1 = 0
+      _.once(monitor)()
     })
 )
 </script>
