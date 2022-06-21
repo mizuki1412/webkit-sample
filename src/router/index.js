@@ -109,6 +109,15 @@ export const routes = [
         },
       },
       {
+        path: "/table/large",
+        name: "table_large",
+        component: () => import("../views/tables/table-large.vue"),
+        meta: {
+          menuTitle: "大数据量表格",
+          menuBelong: "_sub_table",
+        },
+      },
+      {
         path: "/rich-text",
         name: "rich-text",
         component: () => import("../views/rich-text/rich-text.vue"),
