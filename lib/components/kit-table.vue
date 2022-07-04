@@ -16,9 +16,10 @@
           class="mt-1"
           layout="total, sizes, prev, pager, next, jumper"
           :total="total"
-          :current-page.sync="currentPageInner"
+          v-model:currentPage="currentPageInner"
           @current-change="pageServerHandle0"
           @size-change="handleSizeChange"
+          v-model:page-size="pageSizeInner"
           :page-sizes="pageSizes"
       />
       <el-pagination
@@ -28,6 +29,7 @@
           class="mt-1"
           :total="data?.length||0"
           :page-sizes="pageSizes"
+          v-model:page-size="pageSizeInner"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
       />
