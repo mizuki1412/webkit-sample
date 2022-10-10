@@ -12,10 +12,10 @@
     "demo_up4lib": "rm -r lib/* && cp -r ../../webkit-sample/lib/* lib/"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.9",
+    "@element-plus/icons-vue": "^2.0.10",
     "@tinymce/tinymce-vue": "^5.0.0",
     "ali-oss": "^6.17.1",
-    "axios": "^1.0.0",
+    "axios": "^1.1.2",
     "dhtmlx-gantt": "^7.1.12",
     "echarts": "^5.4.0",
     "element-plus": "2.2.17",
@@ -24,7 +24,7 @@
     "nprogress": "^0.2.0",
     "qs": "^6.11.0",
     "socket.io-client": "^4.5.2",
-    "vant": "^3.6.3",
+    "vant": "^3.6.4",
     "vue": "^3.2.40",
     "vue-echarts": "^6.2.3",
     "vue-router": "^4.1.5"
@@ -39,7 +39,7 @@
     "unplugin-auto-import": "^0.11.2",
     "unplugin-icons": "^0.14.11",
     "unplugin-vue-components": "^0.22.8",
-    "vite": "^3.1.4",
+    "vite": "^3.1.7",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }
