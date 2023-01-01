@@ -15,18 +15,18 @@
     "@element-plus/icons-vue": "^2.0.10",
     "@tinymce/tinymce-vue": "^5.0.0",
     "ali-oss": "^6.17.1",
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "dhtmlx-gantt": "^7.1.13",
     "echarts": "^5.4.1",
-    "element-plus": "2.2.26",
-    "fabric": "^5.2.4",
+    "element-plus": "2.2.28",
+    "fabric": "^5.3.0",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "qs": "^6.11.0",
     "socket.io-client": "^4.5.4",
-    "vant": "^4.0.2",
+    "vant": "^4.0.6",
     "vue": "^3.2.45",
-    "vue-echarts": "^6.2.4",
+    "vue-echarts": "^6.4.0",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
     "unplugin-auto-import": "^0.12.1",
     "unplugin-icons": "^0.14.15",
     "unplugin-vue-components": "^0.22.12",
-    "vite": "^4.0.1",
+    "vite": "^4.0.3",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }

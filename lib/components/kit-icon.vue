@@ -7,6 +7,7 @@
 // vite-plugin-svg-icons，引入svg的icon
 import {computed} from "vue"
 
+// name: <dir>-<iconName>
 const props = defineProps({
   name: {
     type: String,
