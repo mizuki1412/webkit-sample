@@ -1,6 +1,6 @@
 # webkit-sample
 
-The sample usage for Vue3/Vite2/Tailwind project.
+The sample usage for Vue3+Vite+TailwindCSS3 project.
 
 # usage
 
