@@ -54,6 +54,11 @@ export const routes = [
   },
   // web
   {
+    path: "/login",
+    name: RouteName.login,
+    component: () => import("../views/login.vue"),
+  },
+  {
     path: "/",
     name: RouteName.index,
     redirect: {name: "page1"},
