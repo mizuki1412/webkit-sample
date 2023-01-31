@@ -8,7 +8,7 @@
         :confirm="update"
         width="50%">
       <template #title>{{ modal.data.id ? '修改' : '新增' }}课程信息</template>
-      <el-form ref="form" label-width="100px" :model="modal.data" v-loading="modal.loading">
+      <el-form ref="form" label-width="100px" :model="modal.data">
         <el-form-item label="题图：" prop="img" :rules="[{ required: true, message: '请填写' }]">
           <kit-upload :action="upload" :files="modal.data.img?[modal.data.img]:[]"></kit-upload>
         </el-form-item>
