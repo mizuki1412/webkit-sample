@@ -133,11 +133,12 @@ const displayData = computed(() => {
   }
 })
 
+// 因为用了分页，所以需要sortChange重新排序
 function sortChange(p) {
   if (!p.prop) {
     return
   }
-  // 存在children
+  // todo 存在children, 联合排序key
   const ps = p.prop.split(".")
   props.data?.sort((a, b) => {
     let aa = a[ps[0]]
@@ -146,22 +147,23 @@ function sortChange(p) {
       aa = aa[ps[i]]
       bb = bb[ps[i]]
     }
+    let res
+    if(p.column.sortMethod){
+      // 调用el-table-column的sort-method函数，注意参数是row
+      res = p.column.sortMethod(a,b)
+    }else{
+      if (aa > bb) {
+        res = 1
+      } else if (aa < bb) {
+        res = -1
+      } else {
+        res = 0
+      }
+    }
     if (p.order === "ascending") {
-      if (aa > bb) {
-        return 1
-      } else if (aa < bb) {
-        return -1
-      } else {
-        return 0
-      }
+      return res
     } else {
-      if (aa > bb) {
-        return -1
-      } else if (aa < bb) {
-        return 1
-      } else {
-        return 0
-      }
+      return 0-res
     }
   })
 }
