@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen w-screen flex-col bg-gray-100">
     <div
-        class="flex h-[48px] items-center bg-white bg-blue-500 text-lg text-white shadow-md"
+        class="flex h-[48px] items-center bg-blue-500 text-lg text-white shadow-md"
     >
       <div class="w-[25%] pl-4" @click="back">
         <kit-icon name="common-arrow-left" class="h-[20px] w-[20px]"/>

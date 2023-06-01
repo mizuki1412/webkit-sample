@@ -3,7 +3,7 @@
       class="flex h-screen w-screen flex-col place-content-between bg-gray-100"
   >
     <div
-        class="flex h-[48px] items-center justify-center bg-white bg-blue-500 text-lg text-white shadow-md"
+        class="flex h-[48px] items-center justify-center bg-blue-500 text-lg text-white shadow-md"
     >
       {{ configKit.titleApp }}
     </div>
