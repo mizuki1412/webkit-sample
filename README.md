@@ -34,7 +34,7 @@ App部分采用uniapp，参考uniapp-sample.
 
 [//]: # (- [ ] element-plus: 自动导入icon)
 - [ ] element: Message/MessageBox单独使用时，style未自动导入; 已经全局导入style
-- [ ] bug：form的validate在初始打开时，会提示error msg
+- [x] bug：form的validate在初始打开时，会提示error msg
 - [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。vant也同样问题。
 - [ ] 增加lodash示例页面
 
