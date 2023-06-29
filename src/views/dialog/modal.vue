@@ -12,7 +12,7 @@
         <el-form-item label="题图：" prop="img" :rules="[{ required: true, message: '请填写' }]">
           <kit-upload :action="upload" :files="modal.data.img?[modal.data.img]:[]"></kit-upload>
         </el-form-item>
-        <el-form-item label="课程分类：" prop="type" :rules="{ required: true, message: '请选择' }">
+        <el-form-item label="课程分类：" prop="types" :rules="{ required: true, message: '请选择' }">
           <el-select v-model="modal.data.types" multiple clearable filterable>
             <el-option v-for="e in typeList" :label="e.name" :value="e.id"></el-option>
           </el-select>
@@ -65,6 +65,7 @@ const modal2 = ref({
 const typeList = ref([{id: 1, name: "item1"}, {id: 2, name: "item2"}, {id: 3, name: "item3"}, {id: 4, name: "item4"}])
 
 function show() {
+  if(form.value) form.value.resetFields()
   modal.value.data = {types: []}
   modal.value.visible = true
 }
@@ -87,19 +88,6 @@ async function upload(option) {
     // modal.value.data.img = publicUrl(key)
     ElMessage.success('上传成功');
   })()
-}
-
-async function remove(row) {
-  ElMessageBox.confirm(
-      '', `确认删除？`, {
-        type: 'error',
-        center: true,
-      }).then(async () => {
-    await useLoading(loading, async function () {
-
-    })()
-    await query();
-  })
 }
 
 async function query() {

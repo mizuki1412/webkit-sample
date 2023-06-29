@@ -48,7 +48,7 @@
       <el-table-column label="操作" min-width="200">
         <template #default="{row}">
           <div class="flex gap-0.5">
-            <el-button size="small" type="warning">修改</el-button>
+            <el-button size="small" type="warning" @click="remove(row)">删除</el-button>
             <el-button size="small" type="primary" @click="expand(row)">查看详情</el-button>
           </div>
         </template>
@@ -61,6 +61,7 @@ import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
 import {useLoading, useSearch} from "/lib/service";
 import {formatDateTime} from "../../../lib/utils";
+import {ElMessageBox} from "element-plus";
 
 const router = useRouter()
 const loading = ref(false)
@@ -74,6 +75,18 @@ const [input, flist] = useSearch(list, {
 
 function expand(val){
   tableRef.value.toggleRowExpansion(val);
+}
+
+async function remove(row) {
+  ElMessageBox.confirm(
+    '确认删除？', ``, {
+      type: 'warning',
+    }).then(async () => {
+    await useLoading(loading, async function () {
+
+    })()
+    // await query();
+  })
 }
 
 onMounted(useLoading(loading, async () => {

@@ -2,6 +2,8 @@
 
 The sample usage for Vue3+Vite+TailwindCSS3 project.
 
+App部分采用uniapp，参考uniapp-sample.
+
 # usage
 
 将webkit1412的lib库内嵌入项目中，考虑到element-plus的自动导入问题、项目定制化需求。
@@ -30,13 +32,11 @@ The sample usage for Vue3+Vite+TailwindCSS3 project.
 
 ## TODO List
 
-- [ ] element-plus: 自动导入icon
+[//]: # (- [ ] element-plus: 自动导入icon)
 - [ ] element: Message/MessageBox单独使用时，style未自动导入; 已经全局导入style
 - [ ] bug：form的validate在初始打开时，会提示error msg
 - [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。vant也同样问题。
-- [ ] feature: web和app的component分开，编译分开
 - [ ] 增加lodash示例页面
-- [ ] feature: 全局的loading、confirm
 
 ## bug fix
 
