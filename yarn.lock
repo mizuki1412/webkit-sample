@@ -20,10 +20,10 @@
   resolved "https://registry.npmmirror.com/@antfu/utils/-/utils-0.7.2.tgz#3bb6f37a6b188056fe9e2f363b6aa735ed65d7ca"
   integrity sha512-vy9fM3pIxZmX07dL+VX1aZe7ynZ+YyB0jY+jE6r3hOK6GNY2t6W8rzpFC4tgpbXUYABkFQwgJq2XYXlxbXAI0g==
 
-"@antfu/utils@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.npmmirror.com/@antfu/utils/-/utils-0.7.3.tgz#aec3c1deaf1b620770fa7c48ef2b03a26ac01b20"
-  integrity sha512-sAPXKvlJFVQB4cvmdGoUa9IAavzRrm7N2ctxdD1GuAEIOZu8BRrv2SUzquGXTpRDUa0sY7OkkVHqhi6ySMnMTg==
+"@antfu/utils@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.7.4.tgz#b1c11b95f89f13842204d3d83de01e10bb9257db"
+  integrity sha512-qe8Nmh9rYI/HIspLSTwtbMFPj6dISG6+dJnOguTlPNXtCvS2uezdxscVBb7/3DrmNbQK49TDqpkSQ1chbRGdpQ==
 
 "@babel/parser@^7.20.15", "@babel/parser@^7.21.3":
   version "7.22.4"
@@ -172,16 +172,16 @@
   resolved "https://registry.npmmirror.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
-"@iconify/utils@^2.1.5":
-  version "2.1.5"
-  resolved "https://registry.npmmirror.com/@iconify/utils/-/utils-2.1.5.tgz#75c17410aadec724d2ab7bd71e8710e448102438"
-  integrity sha512-6MvDI+I6QMvXn5rK9KQGdpEE4mmLTcuQdLZEiX5N+uZB+vc4Yw9K1OtnOgkl8mp4d9X0UrILREyZgF1NUwUt+Q==
+"@iconify/utils@^2.1.6":
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.1.7.tgz#f6be175e08194925bf2cb091a8a3e36c88b8b636"
+  integrity sha512-P8S3z/L1LcV4Qem9AoCfVAaTFGySEMzFEY4CHZLkfRj0Fv9LiR+AwjDgrDrzyI93U2L2mg9JHsbTJ52mF8suNw==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
-    "@antfu/utils" "^0.7.2"
+    "@antfu/utils" "^0.7.4"
     "@iconify/types" "^2.0.0"
     debug "^4.3.4"
-    kolorist "^1.7.0"
+    kolorist "^1.8.0"
     local-pkg "^0.4.3"
 
 "@jridgewell/gen-mapping@^0.3.2":
@@ -270,11 +270,6 @@
     "@types/estree" "^1.0.0"
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
-
-"@socket.io/base64-arraybuffer@~1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmmirror.com/@socket.io/base64-arraybuffer/-/base64-arraybuffer-1.0.2.tgz#568d9beae00b0d835f4f8c53fd55714986492e61"
-  integrity sha512-dOlCBKnDw4iShaIsH/bxujKTM18+2TOAsYz+KSc11Am38H4q5Xw8Bbz97ZYdrVNM+um3p7w86Bvvmcn9q+5+eQ==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -1150,10 +1145,10 @@ detect-libc@^2.0.0:
   resolved "https://registry.npmjs.org/detect-libc/-/detect-libc-2.0.1.tgz#e1897aa88fa6ad197862937fbc0441ef352ee0cd"
   integrity sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==
 
-dhtmlx-gantt@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.npmmirror.com/dhtmlx-gantt/-/dhtmlx-gantt-8.0.1.tgz#3d45d9444aaae6a9b4a3985a70a7e975ff6c01b1"
-  integrity sha512-LBdqSJBmjURB1MLBKCFuajQAfJXjc344YKJIQ2WzMPkJJZkrKj6HvzMJFyNYq537IvqWZ+WFAE63an0i7GP84Q==
+dhtmlx-gantt@^8.0.3:
+  version "8.0.3"
+  resolved "https://registry.yarnpkg.com/dhtmlx-gantt/-/dhtmlx-gantt-8.0.3.tgz#3a40417e0b967ceb8d2e83f8fb06203e6aa0ede5"
+  integrity sha512-LN/stEtQi13SMEXujk6RLw24fWOXjB6bFQmU7yzRQcLGgsrxcPwNCcGEG194bkbACq6DQ/NsY6c419VMiEWX/w==
 
 didyoumean@^1.2.2:
   version "1.2.2"
@@ -1255,10 +1250,10 @@ electron-to-chromium@^1.4.284:
   resolved "https://registry.npmmirror.com/electron-to-chromium/-/electron-to-chromium-1.4.335.tgz#69c08baa608bbb58e290d83320190fa82c835efe"
   integrity sha512-l/eowQqTnrq3gu+WSrdfkhfNHnPgYqlKAwxz7MTOj6mom19vpEDHNXl6dxDxyTiYuhemydprKr/HCrHfgk+OfQ==
 
-element-plus@2.3.5:
-  version "2.3.5"
-  resolved "https://registry.npmmirror.com/element-plus/-/element-plus-2.3.5.tgz#5b04de44fd0ee1bd29ad6ed971d9155982cc1295"
-  integrity sha512-g27DHm2C5/tPwte9H6Juu+JOdzT9z1ALHTIvia6MwnBdCrI4kd77o6KcYdodU15/tYiPBoCEmobhl/7GUDb+1Q==
+element-plus@2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-2.3.7.tgz#544a127f0e65f51715e3b24ec3ebf545c46859cd"
+  integrity sha512-h6TxclbaLUJxg/Bv5j/ZKsK+K5yadQliw5+R30HWyE69pXlqXTX24oYx+yw3pA4Dy+lqEDi5501FQ0CORk3OSA==
   dependencies:
     "@ctrl/tinycolor" "^3.4.1"
     "@element-plus/icons-vue" "^2.0.6"
@@ -1298,23 +1293,21 @@ end-or-error@^1.0.1:
   resolved "https://registry.npmjs.org/end-or-error/-/end-or-error-1.0.1.tgz#dc7a6210fe78d372fee24a8b4899dbd155414dcb"
   integrity sha1-3HpiEP5403L+4kqLSJnb0VVBTcs=
 
-engine.io-client@~6.4.0:
-  version "6.4.0"
-  resolved "https://registry.npmmirror.com/engine.io-client/-/engine.io-client-6.4.0.tgz#88cd3082609ca86d7d3c12f0e746d12db4f47c91"
-  integrity sha512-GyKPDyoEha+XZ7iEqam49vz6auPnNJ9ZBfy89f+rMMas8AuiMWOZ9PVzu8xb9ZC6rafUqiGHSCfu22ih66E+1g==
+engine.io-client@~6.5.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/engine.io-client/-/engine.io-client-6.5.1.tgz#1735fb8ae3bae5ae13115e18d2f484daf005dd9c"
+  integrity sha512-hE5wKXH8Ru4L19MbM1GgYV/2Qo54JSMh1rlJbfpa40bEWkCKNo3ol2eOtGmowcr+ysgbI7+SGL+by42Q3pt/Ng==
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.3.1"
-    engine.io-parser "~5.0.3"
+    engine.io-parser "~5.1.0"
     ws "~8.11.0"
     xmlhttprequest-ssl "~2.0.0"
 
-engine.io-parser@~5.0.3:
-  version "5.0.3"
-  resolved "https://registry.npmmirror.com/engine.io-parser/-/engine.io-parser-5.0.3.tgz#ca1f0d7b11e290b4bfda251803baea765ed89c09"
-  integrity sha512-BtQxwF27XUNnSafQLvDi0dQ8s3i6VgzSoQMJacpIcGNrlUdfHSKbgm3jmjCVvQluGzqwujQMPAoMai3oYSTurg==
-  dependencies:
-    "@socket.io/base64-arraybuffer" "~1.0.2"
+engine.io-parser@~5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-5.1.0.tgz#d593d6372d7f79212df48f807b8cace1ea1cb1b8"
+  integrity sha512-enySgNiK5tyZFynt3z7iqBR+Bto9EVVVvDFuTT0ioHCGbzirZVGDGiQjZzEp8hWl6hd5FSVytJGuScX1C1C35w==
 
 entities@^1.1.1:
   version "1.1.2"
@@ -2191,10 +2184,10 @@ ko-sleep@^1.0.3:
   dependencies:
     ms "*"
 
-kolorist@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.npmmirror.com/kolorist/-/kolorist-1.7.0.tgz#8e22bc470ea2d2743dbd461808f8b5246b19f5f4"
-  integrity sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==
+kolorist@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/kolorist/-/kolorist-1.8.0.tgz#edddbbbc7894bc13302cdf740af6374d4a04743c"
+  integrity sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==
 
 levn@~0.3.0:
   version "0.3.0"
@@ -3350,20 +3343,20 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-socket.io-client@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.npmmirror.com/socket.io-client/-/socket.io-client-4.6.1.tgz#80d97d5eb0feca448a0fb6d69a7b222d3d547eab"
-  integrity sha512-5UswCV6hpaRsNg5kkEHVcbBIXEYoVbMQaHJBXJCyEQ+CiFPV1NIOY0XOFWG4XR4GZcB8Kn6AsRs/9cy9TbqVMQ==
+socket.io-client@^4.7.1:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/socket.io-client/-/socket.io-client-4.7.1.tgz#48e5f703abe4fb0402182bcf9c06b7820fb3453b"
+  integrity sha512-Qk3Xj8ekbnzKu3faejo4wk2MzXA029XppiXtTF/PkbTg+fcwaTw1PlDrTrrrU4mKoYC4dvlApOnSeyLCKwek2w==
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.3.2"
-    engine.io-client "~6.4.0"
-    socket.io-parser "~4.2.1"
+    engine.io-client "~6.5.1"
+    socket.io-parser "~4.2.4"
 
-socket.io-parser@~4.2.1:
-  version "4.2.1"
-  resolved "https://registry.npmmirror.com/socket.io-parser/-/socket.io-parser-4.2.1.tgz#01c96efa11ded938dcb21cbe590c26af5eff65e5"
-  integrity sha512-V4GrkLy+HeF1F/en3SpUaM+7XxYXpuMUWLGde1kSSh5nQMN4hLrbPIkD+otwh6q9R6NOQBN4AMaOZ2zVjui82g==
+socket.io-parser@~4.2.4:
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/socket.io-parser/-/socket.io-parser-4.2.4.tgz#c806966cf7270601e47469ddeec30fbdfda44c83"
+  integrity sha512-/GbIKmo8ioc+NIWIhwdecY0ge+qVBSMdgxGygevmdHj24bsfgtCmcUUcQ5ZzcylGFHsN3k4HB4Cgkl96KVnuew==
   dependencies:
     "@socket.io/component-emitter" "~3.1.0"
     debug "~4.3.1"
@@ -3820,25 +3813,25 @@ unplugin-auto-import@^0.16.4:
     unimport "^3.0.7"
     unplugin "^1.3.1"
 
-unplugin-icons@^0.16.1:
-  version "0.16.1"
-  resolved "https://registry.npmmirror.com/unplugin-icons/-/unplugin-icons-0.16.1.tgz#e341185e17f4a7a9171b6dd932b5bf26a2f31fb9"
-  integrity sha512-qTunFUkpAyDnwzwV7YV1ZgCWRYfLuURcCurhhXOWMy2ipY88qx1pADvral2hJu4Xymh0X0t3Zcll3BIru2AVLQ==
+unplugin-icons@^0.16.3:
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/unplugin-icons/-/unplugin-icons-0.16.3.tgz#2c8e5bedcb89309970eb8a3c09f051dcc3d06cf0"
+  integrity sha512-hivVVr6++WHSj6Iz+rjTa14/ALMYT+PFd2sPtTBKlQR3cdzui1VwM72TzSu94NkDm/KVncvOIiBwoHwUPeL9bg==
   dependencies:
     "@antfu/install-pkg" "^0.1.1"
-    "@antfu/utils" "^0.7.2"
-    "@iconify/utils" "^2.1.5"
+    "@antfu/utils" "^0.7.4"
+    "@iconify/utils" "^2.1.6"
     debug "^4.3.4"
-    kolorist "^1.7.0"
+    kolorist "^1.8.0"
     local-pkg "^0.4.3"
     unplugin "^1.3.1"
 
-unplugin-vue-components@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.npmmirror.com/unplugin-vue-components/-/unplugin-vue-components-0.25.0.tgz#e95c5edd16ad69c3afde9802e0b65f080656d0dc"
-  integrity sha512-HxrQ4GMSS1RwVww2av3a42cABo/v5AmTRN9iARv6e/xwkrfTyHhLh84kFwXxKkXK61vxDHxaryn694mQmkiVBg==
+unplugin-vue-components@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.25.1.tgz#84e30374460e2e6e30b6c5bfa6127c11097c1065"
+  integrity sha512-kzS2ZHVMaGU2XEO2keYQcMjNZkanDSGDdY96uQT9EPe+wqSZwwgbFfKVJ5ti0+8rGAcKHColwKUvctBhq2LJ3A==
   dependencies:
-    "@antfu/utils" "^0.7.3"
+    "@antfu/utils" "^0.7.4"
     "@rollup/pluginutils" "^5.0.2"
     chokidar "^3.5.3"
     debug "^4.3.4"
@@ -3929,10 +3922,10 @@ utility@^1.16.1, utility@^1.8.0:
     mz "^2.7.0"
     unescape "^1.0.1"
 
-vant@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.npmmirror.com/vant/-/vant-4.4.1.tgz#ba7499b681d940f6b521a3aec1a3929776c90de2"
-  integrity sha512-sHCyuXo6djVcR8H14tF/kF8FWAdk/ynrMGQt3F3adgNZ5vQR4MZrGJHKzfrY8y4EXU+vPbNTCPyaV5EBm67JAQ==
+vant@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/vant/-/vant-4.6.0.tgz#5c0279fd34271f2cf8eaf8cb45cad6094c4d7b81"
+  integrity sha512-MUwf/SLhI9FPRM12snI9CAUlowlS0LK3SquBZpEKbsIYijAZg0DfH1rAOnLfuQ3kgXCM8HnlCmeELaezT7X7nA==
   dependencies:
     "@vant/popperjs" "^1.3.0"
     "@vant/use" "^1.5.1"
@@ -3986,10 +3979,10 @@ vue-demi@^0.13.2:
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.2.tgz#f6081c2feb5b698549729a81683ce029b8da289e"
   integrity sha512-41ukrclEbMddAyP7PvxMSYqnOSzPV6r7GNnyTSKSCNTaz19GehxmTiXyP9kwHSUv2+Dr6hHqiUiF7L1VAw2KdQ==
 
-vue-echarts@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.npmmirror.com/vue-echarts/-/vue-echarts-6.5.5.tgz#d1a5c358c24754c034e884eae7a8bd17d5f65a02"
-  integrity sha512-KJD1MSyoMQ33q8M4hM45OYeSC+t7LzesIXQOrkRSXv4xhOi0iN+6yEjQuIuqRB9zZGCT2J4bK3eQ+1ttdz4Uag==
+vue-echarts@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/vue-echarts/-/vue-echarts-6.6.0.tgz#8f5088f42a4f603e8847a52c283616fbcb6630a5"
+  integrity sha512-PpXDe1wKKzOJTLM8RM4GJxpRi+9eiC0YUJR7i44/AAa0oDatvNctJcZlfq/bUV4KV+HDsCeQzaB6JocrXEy9LA==
   dependencies:
     resize-detector "^0.3.0"
     vue-demi "^0.13.2"
