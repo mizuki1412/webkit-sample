@@ -25,7 +25,7 @@ import {ref} from "vue";
 import {configKit, storeUserInfo, submitErrChanel, updateStoreUserInfo} from "../../lib/store";
 import {RouteName} from "../../lib/router";
 import {useRouter} from "vue-router";
-import {UserLogin} from "../../lib/dao/user";
+import {UserLogin} from "../../lib/api/user";
 
 const router = useRouter()
 const loading = ref(false)

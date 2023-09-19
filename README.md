@@ -32,6 +32,9 @@ App部分采用uniapp，参考uniapp-sample.
 
 ## TODO List
 
+- [ ] add arco
+- [ ] axios
+
 [//]: # (- [ ] element-plus: 自动导入icon)
 - [ ] element: Message/MessageBox单独使用时，style未自动导入; 已经全局导入style
 - [x] bug：form的validate在初始打开时，会提示error msg

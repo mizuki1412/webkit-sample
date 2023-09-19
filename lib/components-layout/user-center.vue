@@ -73,7 +73,7 @@
 import {ref} from "vue"
 import {useRouter} from "vue-router"
 import {storeUserInfo} from "../store"
-import {UserLogout, UserUpdatePwd} from "../dao/user"
+import {UserLogout, UserUpdatePwd} from "../api/user"
 import {RouteName} from "../router"
 import {useLoadingModal} from "../service"
 import {ElMessage} from "element-plus"
