@@ -32,7 +32,6 @@ App部分采用uniapp，参考uniapp-sample.
 
 ## TODO List
 
-- [ ] add arco
 - [ ] axios
 
 [//]: # (- [ ] element-plus: 自动导入icon)

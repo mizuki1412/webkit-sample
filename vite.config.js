@@ -4,7 +4,6 @@ import {getEnv} from "./lib/plugin/vite-helper";
 import {viteAddIcon} from "./lib/plugin/vite-add-icon";
 import {viteAddElement} from "./lib/plugin/vite-add-element";
 import {viteAddVant} from "./lib/plugin/vite-add-vant";
-import {viteAddArco} from "./lib/plugin/vite-add-arco";
 
 let plugins =  [
   vue(),
@@ -12,7 +11,12 @@ let plugins =  [
 viteAddIcon(plugins)
 viteAddElement(plugins)
 viteAddVant(plugins)
-viteAddArco(plugins)
+// 对chrome69的兼容
+// import legacy from '@vitejs/plugin-legacy'
+// plugins.push(legacy({
+//   targets: ['chrome >= 64'],
+//   modernPolyfills: ['es/global-this'],
+// }),)
 
 // https://vitejs.dev/config/
 export default defineConfig({
