@@ -158,6 +158,15 @@ export const routes = [
           menuIcon: "fee",
         },
       },
+      {
+        path: "/pdf",
+        name: "pdf",
+        component: () => import("../views/pdf/pdf.vue"),
+        meta: {
+          menuTitle: "pdf",
+          menuIcon: "fee",
+        },
+      },
     ],
   },
 ]

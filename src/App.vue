@@ -4,5 +4,5 @@
   </el-config-provider>
 </template>
 <script setup>
-import {zhCn} from "element-plus/lib/locales"
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 </script>
