@@ -3602,20 +3602,6 @@ pause-stream@~0.0.11:
   dependencies:
     through "~2.3"
 
-pdfjs-dist@2.5.207:
-  version "2.5.207"
-  resolved "https://registry.npmmirror.com/pdfjs-dist/-/pdfjs-dist-2.5.207.tgz#b5e8c19627be64269cd3fb6df3eaaf45ddffe7b6"
-  integrity sha512-xGDUhnCYPfHy+unMXCLCJtlpZaaZ17Ew3WIL0tnSgKFUZXHAPD49GO9xScyszSsQMoutNDgRb+rfBXIaX/lJbw==
-
-pdfvuer@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmmirror.com/pdfvuer/-/pdfvuer-2.0.1.tgz#0d0dbda6514ac861c73766a3d23c16a0b5e7afcc"
-  integrity sha512-5aEjPoYuaD9uc0Bw2gVadXw9Ez0J1s78xXrryUS1SqKaVVtCcTpyZ1eBllZXz3kD+DUVNhHr9O88ygxfYkLhzQ==
-  dependencies:
-    pdfjs-dist "2.5.207"
-    raw-loader "^0.5.1"
-    vue-resize-sensor "^2.0.0"
-
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
@@ -3818,11 +3804,6 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.npmmirror.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
-
-raw-loader@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.npmmirror.com/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
-  integrity sha512-sf7oGoLuaYAScB4VGr0tzetsYlS8EJH6qnTCfQ/WVEa89hALQ4RQfCKt5xCyPQKPDUbVUAIP1QsxAwfAjlDp7Q==
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -4780,15 +4761,10 @@ vue-echarts@^6.6.1:
     resize-detector "^0.3.0"
     vue-demi "^0.13.11"
 
-vue-pdf-embed@1:
+vue-pdf-embed@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmmirror.com/vue-pdf-embed/-/vue-pdf-embed-1.2.1.tgz#013ce78005b548eb5c74f2026afc00b633f00e3d"
   integrity sha512-4uUm4wxaEGT9cS1cyuagAmMJjBxfQXWG1MvdGPesD3CiXhhSp4i0VMUCYwhFXtZ5+QqWv4mXbfLJ29Wpt+Qcuw==
-
-vue-resize-sensor@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/vue-resize-sensor/-/vue-resize-sensor-2.0.0.tgz#3a587fd6802e1688709cf2c5aadae7a0075952bf"
-  integrity sha512-W+y2EAI/BxS4Vlcca9scQv8ifeBFck56DRtSwWJ2H4Cw1GLNUYxiZxUHHkuzuI5JPW/cYtL1bPO5xPyEXx4LmQ==
 
 vue-router@^4.2.5:
   version "4.2.5"

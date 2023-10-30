@@ -27,7 +27,7 @@
           background
           layout="total, sizes, prev, pager, next, jumper"
           class="mt-1"
-          :total="data?.length||0"
+          :total="data?data.length:0"
           :page-sizes="pageSizes"
           v-model:page-size="pageSizeInner"
           @size-change="handleSizeChange"
@@ -140,7 +140,8 @@ function sortChange(p) {
   }
   // todo 存在children, 联合排序key
   const ps = p.prop.split(".")
-  props.data?.sort((a, b) => {
+  if(!props.data) return;
+  props.data.sort((a, b) => {
     let aa = a[ps[0]]
     let bb = b[ps[0]]
     for (let i = 1; i < ps.length; i++) {
