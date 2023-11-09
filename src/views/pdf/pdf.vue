@@ -1,5 +1,7 @@
 <template>
-  <vue-pdf-embed :source="s" width="1000" height="600" />
+  <div class="h-[400px] overflow-y-auto w-full">
+    <vue-pdf-embed :source="s" class="w-full h-full" />
+  </div>
 </template>
 <script setup>
 import {ref, onMounted} from "vue"
