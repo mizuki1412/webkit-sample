@@ -26,6 +26,7 @@ App部分采用uniapp，参考uniapp-sample.
 - RequestConfig.errShowFunc 重载函数，错误信息展示
 - RequestConfig.errDataHandleFunc 重载函数，错误信息拦截处理
 - RequestConfig.defaultContentType 默认请求的body content type，控制是form还是json
+- RequestConfig.defaultCode: 默认的api响应码
 
 ## router
 
@@ -95,6 +96,10 @@ App部分采用uniapp，参考uniapp-sample.
 # 其他说明
 
 - lib/assets/icons 只是为了公用的svg，使用时需要复制到src中
+
+## 关于UI框架的定制化
+
+可以在index.css中的设置css变量来定制化控制。
 
 # TODO
 

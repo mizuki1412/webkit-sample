@@ -26,7 +26,8 @@
         @apply grow;
     }
 }
-/* css变量 */
+
+/* css变量：可以通过这里定制化element-ui */
 body {
     --van-empty-padding: 10px 0;
 }
