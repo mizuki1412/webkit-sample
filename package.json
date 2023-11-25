@@ -30,7 +30,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^5.1.0",
+    "@vitejs/plugin-legacy": "^5.2.0",
     "@vitejs/plugin-vue": "^4.5.0",
     "@vue/compiler-sfc": "^3.3.8",
     "autoprefixer": "^10.4.16",
@@ -41,7 +41,7 @@
     "unplugin-auto-import": "^0.16.7",
     "unplugin-icons": "^0.17.4",
     "unplugin-vue-components": "^0.25.2",
-    "vite": "^5.0.1",
+    "vite": "^5.0.2",
     "vite-plugin-svg-icons": "^2.0.1"
   }
 }
