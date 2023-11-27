@@ -22,7 +22,14 @@ viteAddVant(plugins)
 export default defineConfig({
   base: getEnv('VITE_ASSETS_BASE_URL'),
   server:{
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:10000/server",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
   },
   plugins: plugins,
 })
