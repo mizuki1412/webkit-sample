@@ -38,6 +38,7 @@
 </template>
 <script setup>
 import {computed, ref, watch} from "vue"
+import _ from 'lodash'
 
 const props = defineProps({
   data: {
@@ -122,14 +123,7 @@ const displayData = computed(() => {
   } else if (props.noPagination) {
     return props.data || []
   } else {
-    if (props.data) {
-      return props.data.slice(
-          (currentPageInner.value - 1) * pageSizeInner.value,
-          currentPageInner.value * pageSizeInner.value
-      )
-    } else {
-      return []
-    }
+    return _.slice(props.data, (currentPageInner.value - 1) * pageSizeInner.value, currentPageInner.value * pageSizeInner.value)
   }
 })
 

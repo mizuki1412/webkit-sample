@@ -82,7 +82,7 @@ onMounted(
         ],
       })
       modal.value.data.val1 = 0
-      _.once(monitor)()
+      // test
     })
 )
 </script>

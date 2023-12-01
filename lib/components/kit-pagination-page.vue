@@ -29,6 +29,7 @@
 </template>
 <script setup>
 import {computed, onMounted, ref, watch} from "vue"
+import _ from "lodash";
 
 const props = defineProps({
   data: {
@@ -92,10 +93,7 @@ function _displayData() {
   if (props.fromServer) {
     return dataList.value
   } else {
-    return props.data.slice(
-        (currentPageInner.value - 1) * pageSizeInner.value,
-        currentPageInner.value * pageSizeInner.value
-    )
+    return _.slice(props.data, (currentPageInner.value - 1) * pageSizeInner.value, currentPageInner.value * pageSizeInner.value)
   }
 }
 
