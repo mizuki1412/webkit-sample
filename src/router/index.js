@@ -59,6 +59,14 @@ export const routes = [
     component: () => import("../views/login.vue"),
   },
   {
+    path: "/login-joke",
+    name: "login-joke",
+    component: () => import("../views/login-joke.vue"),
+    meta: {
+      authDisable: true,
+    },
+  },
+  {
     path: "/",
     name: RouteName.index,
     redirect: {name: "page1"},

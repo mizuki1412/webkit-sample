@@ -1,5 +1,5 @@
 <template>
-  <div class="_flex_col_center bg-blue-800 w-screen h-screen" v-loading="loading">
+  <div class="_flex_col_center bg-blue-900 w-screen h-screen" v-loading="loading">
     <div class="flex">
       <div class="font-bold text-4xl text-white">{{configKit.title}}</div>
     </div>
