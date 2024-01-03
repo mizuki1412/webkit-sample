@@ -73,7 +73,7 @@
 import {ref} from "vue"
 import {useRouter} from "vue-router"
 import {storeUserInfo} from "../store"
-import {UserLogout, UserUpdatePwd} from "../api/user"
+import {getUserLogout, postUserUpdatePwd} from "../api/user"
 import {RouteName} from "../router"
 import {useLoadingModal} from "../service"
 import {ElMessage} from "element-plus"
@@ -115,7 +115,7 @@ async function updatePwd() {
   const valid = await form.value.validate()
   if (!valid) return
   await useLoadingModal(modal, async () => {
-    await UserUpdatePwd({
+    await postUserUpdatePwd({
       oldPwd: modal.value.data.oldPwd,
       newPwd: modal.value.data.newPwd,
     })
@@ -127,7 +127,7 @@ async function updatePwd() {
 async function logout() {
   // todo global loading
   await props.beforeLogout()
-  await UserLogout()
+  await getUserLogout()
   await router.push({name: RouteName.login})
 }
 </script>

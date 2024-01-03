@@ -25,7 +25,7 @@ import {ref} from "vue";
 import {configKit, storeUserInfo, submitErrChanel, updateStoreUserInfo} from "../../lib/store";
 import {RouteName} from "../../lib/router";
 import {useRouter} from "vue-router";
-import {UserLogin} from "../../lib/api/user";
+import {postUserLogin} from "../../lib/api/user";
 
 const router = useRouter()
 const loading = ref(false)
@@ -53,7 +53,7 @@ async function login() {
   const valid = await (formRef.value).validate();
   if(!valid) return
   submitErrChanel('login');
-  const data = await UserLogin({
+  const data = await postUserLogin({
     ...form.value,
     schema:configKit.schema,
   });
