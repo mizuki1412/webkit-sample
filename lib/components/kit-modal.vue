@@ -15,7 +15,7 @@
         <slot name="title"/>
       </div>
     </template>
-    <el-scrollbar max-height="62vh" v-loading="modal.loading">
+    <el-scrollbar max-height="71vh" v-loading="modal.loading">
       <slot />
     </el-scrollbar>
     <KitErrChannel class="mt-2" :id="id"/>
