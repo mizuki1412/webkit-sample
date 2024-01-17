@@ -4,9 +4,11 @@ import {getEnv} from "./lib/plugin/vite-helper";
 import {viteAddIcon} from "./lib/plugin/vite-add-icon";
 import {viteAddElement} from "./lib/plugin/vite-add-element";
 import {viteAddVant} from "./lib/plugin/vite-add-vant";
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 let plugins =  [
   vue(),
+  VueDevTools(),
 ]
 viteAddIcon(plugins)
 viteAddElement(plugins)
