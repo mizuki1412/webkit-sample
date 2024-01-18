@@ -93,6 +93,19 @@ App部分采用uniapp，参考uniapp-sample.
 
 滚动标题
 
+## KitRichText
+
+基于tinymce6
+
+汉化包需要下载后放在public/tinymce中。
+[汉化包下载](https://www.tiny.cloud/get-tiny/language-packages/)
+
+[配置文档](https://www.tiny.cloud/docs/tinymce/6/)
+
+[配置文档-plugins](https://www.tiny.cloud/docs/tinymce/latest/plugins/)
+
+[配置文档-toolbar列表](https://www.tiny.cloud/docs/tinymce/latest/available-toolbar-buttons/)
+
 # 其他说明
 
 - lib/assets/icons 只是为了公用的svg，使用时需要复制到src中
