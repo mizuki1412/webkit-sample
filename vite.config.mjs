@@ -2,17 +2,17 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {getEnv} from "./lib/plugin/vite-helper";
 import {viteAddIcon} from "./lib/plugin/vite-add-icon";
-import {viteAddElement} from "./lib/plugin/vite-add-element";
 import {viteAddVant} from "./lib/plugin/vite-add-vant";
-// import VueDevTools from 'vite-plugin-vue-devtools'
+import {viteAddAntD} from "./lib/plugin/vite-add-antd.js";
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 let plugins =  [
   vue(),
   // 启动有错误？？
-  // VueDevTools(),
+  VueDevTools(),
 ]
 viteAddIcon(plugins)
-viteAddElement(plugins)
+viteAddAntD(plugins)
 viteAddVant(plugins)
 // 对chrome69的兼容
 // import legacy from '@vitejs/plugin-legacy'

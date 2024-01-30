@@ -1,43 +1,42 @@
 <template>
   <div class="flex">
-    <el-upload
-        v-if="!disabled"
-        action=""
+    <a-upload
         list-type="picture-card"
         :accept="accept"
-        :http-request="action"
+        :custom-request="customAction"
+        :disabled="disabled"
         :file-list="fileList"
-        :on-preview="handlePictureCardPreview"
-        :on-remove="handleRm"
+        @preview="handlePictureCardPreview"
+        @remove="handleRm"
     >
-      <el-icon>
-        <plus/>
-      </el-icon>
-    </el-upload>
+      <loading-outlined v-if="loading"></loading-outlined>
+      <plus-outlined v-else></plus-outlined>
+    </a-upload>
     <!--    <div v-for="f in files" :key="f" class="_flex_center ml-1 gap-0.5">-->
     <!--      <img :src="f" alt="" :style="{ maxHeight: fileMaxHeight + 'px' }" />-->
     <!--    </div>-->
-    <el-dialog v-model="modal.visible">
+    <a-modal v-model="modal.visible">
       <img :src="modal.data" alt="Preview Image"/>
-    </el-dialog>
+    </a-modal>
   </div>
 </template>
 <script setup>
-import {Plus} from "@element-plus/icons-vue"
 import {onMounted, ref, watch} from "vue"
 import _ from 'lodash'
+import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
+import {useLoading, useLoadingObject} from "../service";
 
 /**
  * action demo:
  * async function parseJson(option){
  *   if (option.file.size > 1024 * 1024) {
- *     ElMessage.error('图片大小请小于1M');
+ *     message.error('图片大小请小于1M');
  *     throw Error('图片大小请小于1M');
  *   }
  *   await useLoadingModal(modal, async ()=>{
  *     const key = await putObjectCommon(option.file);
  *     modal.value.data.img = publicUrl(key)
- *     ElMessage.success('上传成功');
+ *     message.success('上传成功');
  *   })()
  * }
  */
@@ -70,6 +69,7 @@ const modal = ref({
   visible: false,
   data: null
 })
+const loading = ref(false)
 
 const updateFiles = _.debounce(() => {
   fileList.value = []
@@ -92,4 +92,6 @@ const handlePictureCardPreview = (uploadFile) => {
 const handleRm = (uploadFile) => {
   _.remove(props.files, (n) => n === uploadFile.url)
 }
+
+const customAction = useLoading(loading, props.action)
 </script>

@@ -3,5 +3,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  corePlugins:{
+    // 去掉默认配置，这里配合使用了antdv的reset.css
+    preflight: false
+  }
 }

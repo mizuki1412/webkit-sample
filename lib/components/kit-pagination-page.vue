@@ -1,30 +1,24 @@
 <template>
   <div>
     <slot/>
-    <kit-empty v-if="data.length === 0">暂无内容</kit-empty>
-    <div class="flex justify-center">
-      <el-pagination
-          v-if="fromServer"
-          background
-          class="mt-1"
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="total"
-          :current-page.sync="currentPageInner"
-          @current-change="pageServerHandle0"
-          @size-change="handleSizeChange"
-          :page-sizes="pageSizes"
-      />
-      <el-pagination
-          v-else
-          background
-          layout="total, sizes, prev, pager, next, jumper"
-          class="mt-2"
-          :total="data.length"
-          :page-sizes="pageSizes"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
-      />
-    </div>
+    <a-empty v-if="data.length === 0"></a-empty>
+    <a-pagination
+        v-if="fromServer"
+        class="mt-1"
+        :total="total"
+        :current="currentPageInner"
+        @change="pageServerHandle0"
+        @show-size-change="handleSizeChange"
+        :page-size-options="pageSizes"
+    />
+    <a-pagination
+        v-else
+        class="mt-1"
+        :total="data.length"
+        @change="handleCurrentChange"
+        @show-size-change="handleSizeChange"
+        :page-size-options="pageSizes"
+    />
   </div>
 </template>
 <script setup>

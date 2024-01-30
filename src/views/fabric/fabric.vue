@@ -47,7 +47,8 @@
 import {fabric} from 'fabric'
 import {onMounted, ref} from "vue";
 import {useLoading} from "../../../lib/service";
-import {ElMessage} from "element-plus";
+import { message } from 'ant-design-vue';
+const [messageApi, contextHolder] = message.useMessage();
 
 const canvas = ref({})
 const loading = ref(false);
@@ -156,7 +157,7 @@ async function importJson(option) {
   reader.onload = ()=>{
     let data = JSON.parse(reader.result.toString())
     if(!data || !data.objects){
-      ElMessage.error("json解析错误，未包含objects")
+      messageApi.error("json解析错误，未包含objects")
       return
     }
     canvas.value.loadFromJSON(JSON.stringify({
@@ -246,7 +247,7 @@ async function showAdd(){
 
 async function add(){
   if(!addModal.value.data.type){
-    ElMessage.error("请填写完整")
+    messageApi.error("请填写完整")
     return
   }
   switch (addModal.value.data.type){

@@ -1,12 +1,12 @@
 <template>
-  <div v-loading="loading">
+  <a-spin :spinning="loading">
     <Editor
         :disabled="disabled"
         ref="editor"
         v-model="content"
         :init="option"
     />
-  </div>
+  </a-spin>
 </template>
 <script setup>
 import Editor from "@tinymce/tinymce-vue"

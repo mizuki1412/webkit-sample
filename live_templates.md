@@ -47,7 +47,8 @@
   import {ref, onMounted} from 'vue';
   import {useRouter} from "vue-router";
   import {useLoading} from "/lib/service";
-  import {ElMessage, ElMessageBox} from "element-plus";
+  import { message } from 'ant-design-vue';
+  const [messageApi, contextHolder] = message.useMessage();
   import _ from "lodash";
 
   const router = useRouter()
@@ -90,7 +91,7 @@
       return;
     }
 
-    ElMessage.success("操作成功")
+    messageApi.success("操作成功")
     await _query()
   }
 

@@ -1,77 +1,46 @@
 <template>
-  <div class="flex h-screen w-screen overflow-hidden" id="home_page">
-    <div :style="{ width: menuWidth }">
-      <el-menu
-          :collapse="isCollapse"
-          class="h-screen"
-          activeTextColor="#00d0FF"
-          textColor="white"
-          :unique-opened="true"
-          :collapse-transition="false"
-          backgroundColor="#23479C"
-          mode="vertical"
-          :default-active="storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name"
-          @select="routeTo">
-        <div
-            class="flex cursor-pointer items-center justify-center bg-blue-900 p-2 text-white shadow-md"
-            @click="routeTo('index')"
-            :style="{ height: headerHeight }">
-          <div v-if="!isCollapse" class="text-center">
-            {{ configKit.title }}
-          </div>
-          <div v-else class="text-center">{{ configKit.titleSimple }}</div>
-        </div>
-        <div :style="{height: 'calc(100vh - '+headerHeight+')'}">
-          <el-scrollbar max-height="100%">
-            <template v-for="(item, index) in storePageMenu" :key="item.name">
-              <el-sub-menu
-                  v-if="menuItemFilter(item.children).length > 0"
-                  :index="item.name">
-                <template #title>
-                  <el-icon>
-                    <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
-                  </el-icon>
-                  <span v-if="!isCollapse">{{ item.menuTitle }}</span>
-                </template>
-                <el-menu-item
-                    v-for="child in menuItemFilter(item.children)"
-                    :key="child.name"
-                    :index="child.name">
-                  <template #title>
-                    {{ child.menuTitle }}
-                  </template>
-                </el-menu-item>
-              </el-sub-menu>
-              <el-menu-item
-                  v-else-if="
-              item.name && item.component && (!item.authFunc || item.authFunc())
-            "
-                  :index="item.name"
-              >
-                <el-icon>
-                  <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
-                </el-icon>
-                <!--            <div class="flex justify-center items-center h-full">-->
-                <!--            </div>-->
-                <template #title>
-                  <span>{{ item.menuTitle }}</span>
-                </template>
-              </el-menu-item>
+  <a-layout id="home_page">
+    <a-layout-sider v-model:collapsed="isCollapse" :trigger="null" collapsible>
+      <div class="text-white text-center cursor-pointer h-[64px] _flex_center text-lg" @click="routeTo('index')">
+        {{ isCollapse?configKit.titleSimple:configKit.title }}
+      </div>
+      <a-menu
+          :collapsed="isCollapse"
+          theme="dark"
+          mode="inline"
+          @click="tap"
+          v-model:openKeys="openKeys"
+          v-model:selectedKeys="selectedKeys">
+        <template v-for="(item, index) in storePageMenu" :key="item.name">
+          <a-sub-menu
+              v-if="menuItemFilter(item.children).length > 0"
+              :key="item.name" :title="item.menuTitle">
+            <template #icon>
+              <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
             </template>
-          </el-scrollbar>
-        </div>
-      </el-menu>
-    </div>
-    <div class="h-screen bg-gray-100">
-      <div
-          class="mb-1 flex w-full items-center justify-between bg-white shadow-md"
-          :style="{ height: headerHeight }"
-      >
-        <kit-icon
-            :name="isCollapse ? 'common-menu-open' : 'common-menu-close'"
-            class="ml-2 h-5 w-5"
-            @click="setCollapse(!isCollapse)"
-        />
+            <span>{{item.menuTitle}}</span>
+            <a-menu-item
+                v-for="child in menuItemFilter(item.children)"
+                :key="child.name" :title="child.menuTitle">
+              <kit-icon class="w-4 h-4" :name="child.menuIcon"></kit-icon>
+              <span>{{child.menuTitle}}</span>
+            </a-menu-item>
+          </a-sub-menu>
+          <a-menu-item
+              v-else-if="item.name && item.component && (!item.authFunc || item.authFunc())"
+              :key="item.name" :title="item.menuTitle">
+            <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
+            <span>{{item.menuTitle}}</span>
+          </a-menu-item>
+        </template>
+      </a-menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header style="background: #fff; padding: 0" class="w-full flex items-center justify-between">
+        <a-button type="text" size="large" class="" @click="setCollapse(!isCollapse)">
+          <MenuUnfoldOutlined v-if="isCollapse" />
+          <MenuFoldOutlined v-else />
+        </a-button>
         <div class="mr-4 rounded-full border border-solid border-blue-600">
           <kit-icon
               name="common-avatar"
@@ -79,43 +48,54 @@
               @click="usercenter = true"
           ></kit-icon>
         </div>
-        <el-drawer
+        <a-drawer
             v-model="usercenter"
             title="个人中心"
-            size="200px"
-            direction="rtl"
+            width="200"
+            placement="right"
         >
           <user-center/>
-        </el-drawer>
-      </div>
-      <div
-          class="overflow-auto p-2"
-          :style="{
-          width: 'calc(100vw - ' + menuWidth + ')',
-          height: 'calc(100vh - ' + headerHeight + ')',
-        }">
-        <router-view/>
-      </div>
-    </div>
-  </div>
+        </a-drawer>
+      </a-layout-header>
+      <a-layout-content class="overflow-auto p-2" :style="{height: 'calc(100vh - 64px)'}">
+        <div class="w-full h-full bg-white p-2">
+          <router-view/>
+        </div>
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
 <script setup>
-import {ref, onMounted, computed} from "vue"
+import {ref, onMounted, computed, watch} from "vue"
 import {RouteMetaKey, storePageMenu} from "/lib/router"
 import {useRouter} from "vue-router"
 import {configKit, storeCurrentRoute} from "/lib/store"
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from '@ant-design/icons-vue';
 import UserCenter from "./user-center.vue"
 
 const router = useRouter()
 // 顶部高
-const headerHeight = ref("60px")
-// menu width
-const menuWidth = ref("200px")
+// const headerHeight = ref("64px")
 const isCollapse = ref(false)
 const usercenter = ref(false)
 
+const selectedKeys = ref([])
+const openKeys = ref([])
+const preOpenKeys = ref([])
+watch(openKeys, (_val, oldVal) => {preOpenKeys.value = oldVal});
+watch(()=>storeCurrentRoute.name, ()=>{
+  selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
+})
+
 function routeTo(name) {
   router.push({name})
+}
+
+function tap(item){
+  routeTo(item.key)
 }
 
 function menuChange() {
@@ -125,11 +105,7 @@ function menuChange() {
 
 function setCollapse(collapse) {
   isCollapse.value = collapse
-  if (isCollapse.value) {
-    menuWidth.value = "63px"
-  } else {
-    menuWidth.value = "200px"
-  }
+  openKeys.value = isCollapse.value ? [] : preOpenKeys.value
 }
 
 // menu
@@ -140,6 +116,7 @@ function menuItemFilter(itemChildren) {
 
 onMounted(() => {
   menuChange()
+  selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
   // window.onresize = menuChange
 })
 </script>
