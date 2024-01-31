@@ -4,61 +4,57 @@
       <div class="text-white text-center cursor-pointer h-[64px] _flex_center text-lg" @click="routeTo('index')">
         {{ isCollapse?configKit.titleSimple:configKit.title }}
       </div>
-      <a-menu
-          :collapsed="isCollapse"
-          theme="dark"
-          mode="inline"
-          @click="tap"
-          v-model:openKeys="openKeys"
-          v-model:selectedKeys="selectedKeys">
-        <template v-for="(item, index) in storePageMenu" :key="item.name">
-          <a-sub-menu
-              v-if="menuItemFilter(item.children).length > 0"
-              :key="item.name" :title="item.menuTitle">
-            <template #icon>
-              <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
-            </template>
-            <span>{{item.menuTitle}}</span>
+      <div class="overflow-auto no-scrollbar" :style="{height: 'calc(100vh - 64px)'}">
+        <a-menu
+            :collapsed="isCollapse"
+            theme="dark"
+            mode="inline"
+            @click="tap"
+            v-model:openKeys="openKeys"
+            v-model:selectedKeys="selectedKeys">
+          <template v-for="(item, index) in storePageMenu" :key="index">
+            <a-sub-menu
+                v-if="menuItemFilter(item.children).length > 0"
+                :key="item.name" :title="item.menuTitle">
+              <template #icon>
+                <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
+              </template>
+              <a-menu-item
+                  v-for="child in menuItemFilter(item.children)"
+                  :key="child.name" :title="child.menuTitle">
+                <span>{{child.menuTitle}}</span>
+              </a-menu-item>
+            </a-sub-menu>
             <a-menu-item
-                v-for="child in menuItemFilter(item.children)"
-                :key="child.name" :title="child.menuTitle">
-              <kit-icon class="w-4 h-4" :name="child.menuIcon"></kit-icon>
-              <span>{{child.menuTitle}}</span>
+                v-else-if="item.name && item.component && (!item.authFunc || item.authFunc())"
+                :key="item.name" :title="item.menuTitle">
+              <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
+              <span>{{item.menuTitle}}</span>
             </a-menu-item>
-          </a-sub-menu>
-          <a-menu-item
-              v-else-if="item.name && item.component && (!item.authFunc || item.authFunc())"
-              :key="item.name" :title="item.menuTitle">
-            <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
-            <span>{{item.menuTitle}}</span>
-          </a-menu-item>
-        </template>
-      </a-menu>
+          </template>
+        </a-menu>
+      </div>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0" class="w-full flex items-center justify-between">
-        <a-button type="text" size="large" class="" @click="setCollapse(!isCollapse)">
+        <a-button type="text" size="large" @click="setCollapse(!isCollapse)">
           <MenuUnfoldOutlined v-if="isCollapse" />
           <MenuFoldOutlined v-else />
         </a-button>
-        <div class="mr-4 rounded-full border border-solid border-blue-600">
-          <kit-icon
-              name="common-avatar"
-              class="h-7 w-7 text-blue-600"
-              @click="usercenter = true"
-          ></kit-icon>
-        </div>
+        <a-button type="text" size="large" @click="usercenter = true" class="mr-2">
+          <UserOutlined />
+        </a-button>
         <a-drawer
-            v-model="usercenter"
+            v-model:open="usercenter"
             title="个人中心"
-            width="200"
+            width="300"
             placement="right"
         >
           <user-center/>
         </a-drawer>
       </a-layout-header>
       <a-layout-content class="overflow-auto p-2" :style="{height: 'calc(100vh - 64px)'}">
-        <div class="w-full h-full bg-white p-2">
+        <div class="w-full min-h-full bg-white p-2">
           <router-view/>
         </div>
       </a-layout-content>
@@ -73,6 +69,7 @@ import {configKit, storeCurrentRoute} from "/lib/store"
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  UserOutlined
 } from '@ant-design/icons-vue';
 import UserCenter from "./user-center.vue"
 
@@ -115,6 +112,7 @@ function menuItemFilter(itemChildren) {
 }
 
 onMounted(() => {
+  console.log(storePageMenu)
   menuChange()
   selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
   // window.onresize = menuChange

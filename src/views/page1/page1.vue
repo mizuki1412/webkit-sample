@@ -18,9 +18,7 @@
   </a-spin>
   <kit-modal :modal="modal" :confirm="confirm2">
     <template #title>abc</template>
-    <a-select v-model="modal.data.val1">
-      <a-select-option label="xx" :value="0"></a-select-option>
-    </a-select>
+    <a-select class="w-[50%]" v-model="modal.data.val1" :options="[{label: 'aaa', value: 'aaa'}]"></a-select>
   </kit-modal>
 </template>
 <script setup>

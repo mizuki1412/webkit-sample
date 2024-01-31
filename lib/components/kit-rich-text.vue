@@ -113,7 +113,7 @@ async function checkInit() {
   if (editor.value.editor && editor.value.editor.initialized) {
     editor.value.editor.setContent(props.modelValue)
   } else {
-    console.log("tinymce init error", editor.value)
+    console.error("tinymce init error", editor.value)
     setTimeout(checkInit, 1000)
   }
 }

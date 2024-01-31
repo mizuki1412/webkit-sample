@@ -36,7 +36,7 @@
     "@vitejs/plugin-vue": "^5.0.3",
     "@vue/compiler-sfc": "^3.4.15",
     "autoprefixer": "^10.4.17",
-    "daisyui": "^4.6.0",
+    "daisyui": "^4.6.1",
     "postcss": "^8.4.33",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",

@@ -1,27 +1,41 @@
 <template>
-  <div class="_flex_col_center bg-blue-900 w-screen h-screen" v-loading="loading">
-    <div class="flex">
-      <div class="font-bold text-4xl text-white">login joke</div>
+  <a-spin :spinning="loading">
+    <div class="_flex_col_center bg-blue-900 w-screen h-screen gap-6">
+      <div class="flex">
+        <div class="font-bold text-4xl text-white">login joke</div>
+      </div>
+      <div class="bg-white rounded-md shadow-md py-8 px-6 w-[300px]">
+        <a-form
+            :label-col="{ style: { width: '70px' } }"
+            autocomplete="off"
+            ref="formRef" :model="form" :rules="rule">
+          <a-form-item name="username" label="账户">
+            <a-input v-model:value="form.username" placeholder="用户名" @keyup.enter.native="login()">
+              <template #prefix>
+                <UserOutlined/>
+              </template>
+            </a-input>
+          </a-form-item>
+          <a-form-item name="pwd" label="密码">
+            <a-input-password v-model:value="form.pwd" placeholder="密  码" @keyup.enter.native="login()">
+              <template #prefix>
+                <LockOutlined/>
+              </template>
+            </a-input-password>
+          </a-form-item>
+          <a-button size="large" class="w-full" type="primary" ref="btnRef" :style="btnStyle" @click="login()">登录</a-button>
+          <kit-err-channel id="login" class="mb-1" />
+        </a-form>
+      </div>
     </div>
-    <div class="bg-white rounded-md shadow-md py-8 px-6 mt-4 w-[300px]">
-      <el-form
-          label-width="70px"
-          class="flex flex-col justify-around" ref="formRef" :model="form" :rules="rule">
-        <el-form-item prop="username" label="账户：">
-          <el-input v-model="form.username" autofocus autocomplete="off" placeholder="用户名" />
-        </el-form-item>
-        <el-form-item prop="pwd" label="密码：">
-          <el-input type="password" autocomplete="off" v-model="form.pwd" placeholder="密  码" />
-        </el-form-item>
-        <el-button ref="btnRef" size="large" class="w-full" type="primary" :style="btnStyle" @click="login">登录</el-button>
-      </el-form>
-    </div>
-  </div>
+  </a-spin>
 </template>
 <script setup>
 
 import {ref,onMounted} from "vue";
 import {useRouter} from "vue-router";
+import {configKit} from "../../lib/store";
+import {LockOutlined, UserOutlined} from "@ant-design/icons-vue";
 
 const router = useRouter()
 const loading = ref(false)

@@ -22,33 +22,33 @@
       <a-form
           ref="form"
           autocomplete="off"
-          :label-col="{ style: { width: '100px' } }"
+          :label-col="{style:{width:'100px'}}"
           :model="modal.data"
           v-if="modal.data"
       >
         <a-form-item
-            label="原密码："
+            label="原密码"
             name="oldPwd"
             :rules="[{ required: true, message: '请填写密码' }]"
         >
-          <a-input-password allow-clear v-model="modal.data.oldPwd"/>
+          <a-input-password allow-clear v-model:value="modal.data.oldPwd"/>
         </a-form-item>
         <a-form-item
-            label="新密码："
+            label="新密码"
             name="newPwd"
             :rules="[
             { required: true, message: '请填写密码' },
             { type: 'string', min: 6, message: '密码长度不能小于6位' },
           ]"
         >
-          <a-input-password allow-clear v-model="modal.data.newPwd"/>
+          <a-input-password allow-clear v-model:value="modal.data.newPwd"/>
         </a-form-item>
         <a-form-item
-            label="确认密码："
+            label="确认密码"
             name="pwdCheck"
             :rules="[{ required: true, validator: passwordCheck }]"
         >
-          <a-input-password allow-clear v-model="modal.data.pwdCheck"/>
+          <a-input-password allow-clear v-model:value="modal.data.pwdCheck"/>
         </a-form-item>
       </a-form>
     </kit-modal>

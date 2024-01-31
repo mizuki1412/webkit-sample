@@ -1,7 +1,7 @@
 <template>
-  <div v-loading="loading">
+  <a-spin :spinning="loading">
     <kit-gantt :tasks="ganttTasks" :columns="ganttColumns" class="h-[400px]"></kit-gantt>
-  </div>
+  </a-spin>
 </template>
 <script setup>
 import { ref,onMounted } from 'vue';

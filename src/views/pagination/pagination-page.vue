@@ -1,13 +1,13 @@
 <template>
-  <div v-loading="loading">
+  <a-spin :spinning="loading">
     <kit-pagination-page :data="list" v-model="listShow">
       <div class="flex flex-col gap-2">
-        <div class="bg-white shadow rounded w-[100px]" v-for="item in listShow">
+        <div class="bg-white shadow rounded w-[100px] h-[30px] _flex_center" v-for="item in listShow">
           {{ item.name }}
         </div>
       </div>
     </kit-pagination-page>
-  </div>
+  </a-spin>
 </template>
 <script setup>
 import {ref, onMounted} from 'vue';

@@ -1,25 +1,25 @@
 <template>
-  <div>
-    <slot/>
-    <a-empty v-if="data.length === 0"></a-empty>
-    <a-pagination
-        v-if="fromServer"
-        class="mt-1"
-        :total="total"
-        :current="currentPageInner"
-        @change="pageServerHandle0"
-        @show-size-change="handleSizeChange"
-        :page-size-options="pageSizes"
-    />
-    <a-pagination
-        v-else
-        class="mt-1"
-        :total="data.length"
-        @change="handleCurrentChange"
-        @show-size-change="handleSizeChange"
-        :page-size-options="pageSizes"
-    />
-  </div>
+  <slot/>
+  <a-empty v-if="data.length === 0"></a-empty>
+  <a-pagination
+      v-if="fromServer"
+      class="mt-2"
+      :show-total="total => `共 ${total} 条`"
+      :total="total"
+      :current="currentPageInner"
+      @change="pageServerHandle0"
+      @show-size-change="handleSizeChange"
+      :page-size-options="pageSizes"
+  />
+  <a-pagination
+      v-else
+      class="mt-2"
+      :show-total="total => `共 ${total} 条`"
+      :total="data.length"
+      @change="handleCurrentChange"
+      @show-size-change="handleSizeChange"
+      :page-size-options="pageSizes"
+  />
 </template>
 <script setup>
 import {computed, onMounted, ref, watch} from "vue"
@@ -30,6 +30,11 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  // 当前显示的数据列表
+  modelValue: {
+    type: Array,
+    default: () => [],
+  },
   // 分页
   pageSize: {
     type: Number,
@@ -37,7 +42,7 @@ const props = defineProps({
   },
   pageSizes: {
     type: Array,
-    default: () => [10, 20, 30, 50],
+    default: () => ['10', '20', '30', '40', '50'],
   },
   currentPage: {
     type: Number,
@@ -75,8 +80,8 @@ watch(
     (pageSize) => (pageSizeInner.value = pageSize)
 )
 
-function handleSizeChange(val) {
-  pageSizeInner.value = val
+function handleSizeChange(current, size) {
+  pageSizeInner.value = size
 }
 
 function handleCurrentChange(val) {

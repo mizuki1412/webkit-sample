@@ -6,7 +6,6 @@
       </svg>
     </template>
   </icon>
-
 </template>
 <script setup>
 // vite-plugin-svg-icons，引入svg的icon

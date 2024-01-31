@@ -4,50 +4,33 @@
       :width="width"
       :ok-text="confirmText"
       :cancel-text="cancelText"
-      :confirm-loading="Object.keys(modal).indexOf('loading') > -1 ? modal.loading : false"
-      :footer="noFooter?null:true"
+      :confirm-loading="modal.loading"
       :mask-closable="closeOnClickModal"
       :keyboard="showClose"
       :closable="showClose"
       :after-close="cancel"
       @close="cancel"
-      @ok="ok"
-  >
+      @ok="ok">
     <template #title>
-      <div ref="modalTitleRef" class="flex items-center justify-center w-full cursor-pointer">
+      <div ref="modalTitleRef" class="flex items-center justify-center w-full cursor-move">
         <slot name="title"/>
       </div>
+    </template>
+    <a-spin :spinning="!!modal.loading">
+      <div class="max-h-[71vh] w-full overflow-auto">
+        <slot></slot>
+      </div>
+    </a-spin>
+    <KitErrChannel class="mt-2" :id="id"/>
+    <template #footer v-if="noFooter"></template>
+    <template #footer v-if="customFooter">
+      <slot name="footer"/>
     </template>
     <template #modalRender="{ originVNode }">
       <div :style="transformStyle">
         <component :is="originVNode" />
       </div>
     </template>
-    <a-spin :spinning="modal.loading">
-      <div class="max-h-[71vh] w-full">
-        {{renderSlot()}}
-      </div>
-    </a-spin>
-    <KitErrChannel class="mt-2" :id="id"/>
-<!--    <template #footer v-if="!noFooter">-->
-<!--      <div class="flex justify-end">-->
-<!--        <a-button-->
-<!--            type="default"-->
-<!--            @click="cancel"-->
-<!--            :loading="Object.keys(modal).indexOf('loading') > -1 ? modal.loading : false"-->
-<!--        >{{ cancelText }}-->
-<!--        </a-button>-->
-<!--        <a-button-->
-<!--            type="primary"-->
-<!--            @click="ok"-->
-<!--            :loading="-->
-<!--            Object.keys(modal).indexOf('loading') > -1 ? modal.loading : false-->
-<!--          "-->
-<!--        >-->
-<!--          {{ confirmText }}-->
-<!--        </a-button>-->
-<!--      </div>-->
-<!--    </template>-->
   </a-modal>
 </template>
 <script setup>
@@ -57,11 +40,13 @@ import KitErrChannel from "./kit-err-channel.vue"
 import {useLoadingObject} from "../service"
 import {useDraggable} from "@vueuse/core";
 const props = defineProps({
+  // 确认逻辑
   confirm: {
     type: Function,
     default: async () => {
     },
   },
+  // 取消逻辑
   close: {
     type: Function,
     default: () => {
@@ -75,7 +60,13 @@ const props = defineProps({
     type: String,
     default: "40%",
   },
+  // 无footer
   noFooter: {
+    type: Boolean,
+    default: false,
+  },
+  // 是否自定义footer
+  customFooter: {
     type: Boolean,
     default: false,
   },

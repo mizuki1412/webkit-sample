@@ -3,6 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    /* 隐藏滚动条 Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
 @layer components {
     ._flex_center {
         @apply flex items-center justify-center;

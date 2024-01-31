@@ -53,19 +53,19 @@ export const routes = [
   //   ],
   // },
   // web
-  // {
-  //   path: "/login",
-  //   name: RouteName.login,
-  //   component: () => import("../views/login.vue"),
-  // },
-  // {
-  //   path: "/login-joke",
-  //   name: "login-joke",
-  //   component: () => import("../views/login-joke.vue"),
-  //   meta: {
-  //     authDisable: true,
-  //   },
-  // },
+  {
+    path: "/login",
+    name: RouteName.login,
+    component: () => import("../views/login.vue"),
+  },
+  {
+    path: "/login-joke",
+    name: "login-joke",
+    component: () => import("../views/login-joke.vue"),
+    meta: {
+      authDisable: true,
+    },
+  },
   {
     path: "/",
     name: RouteName.index,
@@ -85,69 +85,69 @@ export const routes = [
           menuIcon: "fee",
         },
       },
-      // {
-      //   path: "/modal",
-      //   name: "modal",
-      //   component: () => import("../views/dialog/modal.vue"),
-      //   meta: {
-      //     menuTitle: "弹出框",
-      //     menuIcon: "fee",
-      //   },
-      // },
-      // // 无component的路由代表menu的分组信息
-      // {
-      //   path: "/_sub_table",
-      //   name: "_sub_table",
-      //   meta: {
-      //     menuTitle: "表格",
-      //     menuIcon: "fee",
-      //   },
-      // },
-      // {
-      //   path: "/table/normal",
-      //   name: "table_normal",
-      //   component: () => import("../views/tables/table-normal.vue"),
-      //   meta: {
-      //     menuTitle: "一般表格",
-      //     menuBelong: "_sub_table",
-      //   },
-      // },
-      // {
-      //   path: "/table/server",
-      //   name: "table_server",
-      //   component: () => import("../views/tables/table-server.vue"),
-      //   meta: {
-      //     menuTitle: "服务端分页",
-      //     menuBelong: "_sub_table",
-      //   },
-      // },
-      // {
-      //   path: "/table/large",
-      //   name: "table_large",
-      //   component: () => import("../views/tables/table-large.vue"),
-      //   meta: {
-      //     menuTitle: "大数据量表格",
-      //     menuBelong: "_sub_table",
-      //   },
-      // },
-      // {
-      //   path: "/rich-text",
-      //   name: "rich-text",
-      //   component: () => import("../views/rich-text/rich-text.vue"),
-      //   meta: {
-      //     menuTitle: "富文本编辑",
-      //     menuIcon: "fee",
-      //   },
-      // },
-      // {
-      //   path: "/pagination",
-      //   name: "pagination",
-      //   component: () => import("../views/pagination/pagination-page.vue"),
-      //   meta: {
-      //     menuTitle: "分页页面",
-      //     menuIcon: "fee",
-      //   },
-      // },
+      {
+        path: "/modal",
+        name: "modal",
+        component: () => import("../views/dialog/modal.vue"),
+        meta: {
+          menuTitle: "弹出框",
+          menuIcon: "fee",
+        },
+      },
+      // 无component的路由代表menu的分组信息
+      {
+        path: "/_sub_table",
+        name: "_sub_table",
+        meta: {
+          menuTitle: "表格",
+          menuIcon: "fee",
+        },
+      },
+      {
+        path: "/table/normal",
+        name: "table_normal",
+        component: () => import("../views/tables/table-normal.vue"),
+        meta: {
+          menuTitle: "一般表格",
+          menuBelong: "_sub_table",
+        },
+      },
+      {
+        path: "/table/server",
+        name: "table_server",
+        component: () => import("../views/tables/table-server.vue"),
+        meta: {
+          menuTitle: "服务端分页",
+          menuBelong: "_sub_table",
+        },
+      },
+      {
+        path: "/table/large",
+        name: "table_large",
+        component: () => import("../views/tables/table-large.vue"),
+        meta: {
+          menuTitle: "大数据量表格",
+          menuBelong: "_sub_table",
+        },
+      },
+      {
+        path: "/rich-text",
+        name: "rich-text",
+        component: () => import("../views/rich-text/rich-text.vue"),
+        meta: {
+          menuTitle: "富文本编辑",
+          menuIcon: "fee",
+        },
+      },
+      {
+        path: "/pagination",
+        name: "pagination",
+        component: () => import("../views/pagination/pagination-page.vue"),
+        meta: {
+          menuTitle: "分页页面",
+          menuIcon: "fee",
+        },
+      },
       
       // {
       //   path: "/fabric",
@@ -159,15 +159,15 @@ export const routes = [
       //   },
       // },
       
-      // {
-      //   path: "/gantt",
-      //   name: "gantt",
-      //   component: () => import("../views/gantt/gantt.vue"),
-      //   meta: {
-      //     menuTitle: "甘特图测试",
-      //     menuIcon: "fee",
-      //   },
-      // },
+      {
+        path: "/gantt",
+        name: "gantt",
+        component: () => import("../views/gantt/gantt.vue"),
+        meta: {
+          menuTitle: "甘特图测试",
+          menuIcon: "fee",
+        },
+      },
       {
         path: "/pdf",
         name: "pdf",
