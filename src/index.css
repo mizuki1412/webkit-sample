@@ -27,18 +27,53 @@
     ._text {
         @apply flex;
     }
-
     ._text div:first-child {
         width: 100px;
         @apply shrink-0;
     }
-
     ._text div:last-child {
         @apply grow;
     }
+    
+    /* 按钮自定义颜色 */
+    
+    ._btn_success {
+        color: #fff !important;
+        background-color: #00cc66 !important;
+        border-color: #00cc66 !important;
+    }
+    ._btn_success:hover {
+        color: #fff !important;
+        background-color: #03e071 !important;
+        border-color: #00cc66 !important;
+    }
+    ._btn_success[disabled], ._btn_success[disabled]:hover, ._btn_success[disabled]:focus, ._btn_success[disabled]:active {
+        color: rgba(0, 0, 0, 0.25);
+        background: #f5f5f5 !important;
+        border-color: #d9d9d9 !important;
+        text-shadow: none;
+        box-shadow: none;
+    }
+    ._btn_warn {
+        color: #fff !important;
+        background-color: #ff9900 !important;
+        border-color: #ff9900 !important;
+    }
+    ._btn_warn:hover {
+        color: #fff !important;
+        background-color: #fcac35 !important;
+        border-color: #ff9900 !important;
+    }
+    ._btn_warn[disabled], ._btn_warn[disabled]:hover, ._btn_warn[disabled]:focus, ._btn_warn[disabled]:active {
+        color: rgba(0, 0, 0, 0.25);
+        background: #f5f5f5;
+        border-color: #d9d9d9;
+        text-shadow: none;
+        box-shadow: none;
+    }
 }
 
-/* css变量：可以通过这里定制化element-ui */
+/* css变量：可以通过这里定制化var */
 body {
     --van-empty-padding: 10px 0;
 }

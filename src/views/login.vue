@@ -23,7 +23,7 @@
               </template>
             </a-input-password>
           </a-form-item>
-          <a-button size="large" class="w-full" type="primary" @click="login()">登录</a-button>
+          <a-button size="large" block type="primary" @click="login()">登录</a-button>
           <kit-err-channel id="login" class="mb-1" />
         </a-form>
       </div>

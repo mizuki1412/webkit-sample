@@ -34,7 +34,7 @@
   </a-modal>
 </template>
 <script setup>
-import {ref, watch, computed, watchEffect, renderSlot} from "vue"
+import {ref, watch, computed, watchEffect} from "vue"
 import {submitErrChanel} from "../store"
 import KitErrChannel from "./kit-err-channel.vue"
 import {useLoadingObject} from "../service"

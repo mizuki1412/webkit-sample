@@ -54,7 +54,7 @@
         </a-drawer>
       </a-layout-header>
       <a-layout-content class="overflow-auto p-2" :style="{height: 'calc(100vh - 64px)'}">
-        <div class="w-full min-h-full bg-white p-2">
+        <div class="w-full min-h-full bg-white p-2 rounded">
           <router-view/>
         </div>
       </a-layout-content>
@@ -82,7 +82,7 @@ const usercenter = ref(false)
 const selectedKeys = ref([])
 const openKeys = ref([])
 const preOpenKeys = ref([])
-watch(openKeys, (_val, oldVal) => {preOpenKeys.value = oldVal});
+watch(openKeys, (_val, oldVal) => {preOpenKeys.value = oldVal; console.log(openKeys.value)});
 watch(()=>storeCurrentRoute.name, ()=>{
   selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
 })
@@ -112,9 +112,17 @@ function menuItemFilter(itemChildren) {
 }
 
 onMounted(() => {
-  console.log(storePageMenu)
   menuChange()
+  // 初始化选中的menu项
   selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
+  // 初始化选中的组
+  openKeys.value = []
+  for (let item of storePageMenu){
+    if(menuItemFilter(item.children).filter((x)=>x.name===selectedKeys.value[0]).length>0){
+      openKeys.value = [item.name]
+      break
+    }
+  }
   // window.onresize = menuChange
 })
 </script>

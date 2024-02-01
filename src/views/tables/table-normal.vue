@@ -1,101 +1,111 @@
 <template>
-  <div v-loading="loading">
+  <a-spin :spinning="loading">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-2">
         <div>类型筛选:</div>
-        <el-select v-model="selectType" placeholder="类型" clearable class="w-[120px]">
-          <el-option label="课程" :value="1"/>
-          <el-option label="活动" :value="2"/>
-        </el-select>
+        <a-select v-model:value="selectType" placeholder="类型" allowClear class="w-[120px]" :options="[{label:'课程', value:1},{label:'活动', value:2},]"></a-select>
         <div class="ml-1">时间范围筛选:</div>
-        <el-date-picker
-            clearable
-            style="width: 280px"
-            v-model="selectTime"
-            type="daterange"/>
-        <div>
-          <el-button type="primary">查询</el-button>
-        </div>
-        <div>
-          <el-button type="success">新增</el-button>
-        </div>
+        <a-range-picker
+            allowClear
+            style="width: 320px"
+            show-time
+            v-model:value="selectTime"/>
+        <a-button type="primary">查询</a-button>
+        <a-button class="_btn_success">成功</a-button>
+        <a-button class="_btn_warn">警告</a-button>
       </div>
-      <el-input
-          placeholder="请输入搜索内容"
-          clearable
-          prefix-icon="search"
-          style="width:200px"
-          v-model="input"/>
     </div>
-    <kit-table :data="flist" v-model:tableRef="tableRef" class="mt-2 w-full">
-      <el-table-column type="expand">
-        <template #default="{row}">
-          demo expand
-        </template>
-      </el-table-column>
-      <el-table-column label="名称" prop="name" min-width="200"/>
-      <el-table-column label="类型">
-        <template #default="{row}">
-          <div v-if="row.type===1">课程</div>
+    <a-table :data-source="list" sticky class="mt-2" :columns="columns" :scroll="{ x: 2000 }" :expand-column-width="100" row-key="name">
+      <template #expandedRowRender="{ record }">
+        {{record.name}}
+      </template>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'type'">
+          <div v-if="record.type===1">课程</div>
           <div v-else>活动</div>
         </template>
-      </el-table-column>
-      <el-table-column label="开始时间" min-width="150">
-        <template #default="{row}">
-          <div v-if="row.start">{{ formatDateTime(row.start) }}</div>
+        <template v-else-if="column.key === 'start'">
+          <div v-if="record.start">{{ formatDateTime(record.start) }}</div>
         </template>
-      </el-table-column>
-      <el-table-column label="操作" min-width="200">
-        <template #default="{row}">
-          <div class="flex gap-0.5">
-            <el-button size="small" type="warning" @click="remove(row)">删除</el-button>
-            <el-button size="small" type="primary" @click="expand(row)">查看详情</el-button>
+        <template v-else-if="column.key === 'action'">
+          <div class="flex gap-1">
+            <a-button size="small" type="primary">
+              <template #icon>
+                <InfoOutlined />
+              </template>
+            </a-button>
+            <a-popconfirm title="确认删除?" @confirm="remove(record)">
+              <a-button size="small" danger>
+                <template #icon>
+                  <DeleteFilled />
+                </template>
+              </a-button>
+            </a-popconfirm>
           </div>
         </template>
-      </el-table-column>
-    </kit-table>
-  </div>
+      </template>
+    </a-table>
+  </a-spin>
 </template>
 <script setup>
 import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
-import {useLoading, useSearch} from "/lib/service";
+import {useLoading} from "/lib/service";
 import {formatDateTime} from "../../../lib/utils";
-import {ElMessageBox} from "element-plus";
+import {DeleteFilled, InfoOutlined} from '@ant-design/icons-vue';
 
 const router = useRouter()
 const loading = ref(false)
+const columns = ref([
+  { title: '名称', dataIndex: 'name', key: 'name', fixed:true, width:'300px',
+    sorter:{compare: (a,b)=>a.name>=b.name},
+    filters: [
+      {
+        text: '小于10',
+        value: 1,
+      },
+      {
+        text: '大于20',
+        value: 2,
+      }
+    ],
+    onFilter: (value, record) => {
+      if(value===1 && record.val<10){
+        return true
+      }else if(value===2 && record.val>20){
+        return true
+      }
+      return false
+    }
+  },
+  { title: '值', dataIndex: 'val', key: 'val', sorter:(a,b)=>a.val>=b.val },
+  { title: '类型', dataIndex: 'type', key: 'type' },
+  { title: '开始时间', dataIndex: 'start', key: 'start' },
+  { title: '操作', key: 'action', fixed: 'right', width:'100px' },
+])
 const list = ref([])
 const selectType = ref()
 const selectTime = ref()
-const tableRef = ref()
-const [input, flist] = useSearch(list, {
-  includeProps: ['name'],
-})
-
-function expand(val){
-  tableRef.value.toggleRowExpansion(val);
-}
 
 async function remove(row) {
-  ElMessageBox.confirm(
-    '确认删除？', ``, {
-      type: 'warning',
-    }).then(async () => {
-    await useLoading(loading, async function () {
-
-    })()
-    // await query();
-  })
+  // useConfirm(
+  //   '确认删除？', async () => {
+  //   await useLoading(loading, async function () {
+  //
+  //   })()
+  // })
+  console.log(row)
 }
 
 onMounted(useLoading(loading, async () => {
-  for (let i = 0; i < 80; i++) {
+  for (let i = 0; i < 30; i++) {
     list.value.push({
       name: "item" + i,
+      val: i,
       type: i % 2,
       start: new Date()
     })
   }
 }))
+
 </script>
