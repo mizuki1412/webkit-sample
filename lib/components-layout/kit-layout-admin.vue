@@ -82,7 +82,7 @@ const usercenter = ref(false)
 const selectedKeys = ref([])
 const openKeys = ref([])
 const preOpenKeys = ref([])
-watch(openKeys, (_val, oldVal) => {preOpenKeys.value = oldVal; console.log(openKeys.value)});
+watch(openKeys, (_val, oldVal) => {preOpenKeys.value = oldVal});
 watch(()=>storeCurrentRoute.name, ()=>{
   selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
 })

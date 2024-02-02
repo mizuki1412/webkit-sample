@@ -44,6 +44,9 @@
           </div>
         </template>
       </template>
+      <template #customFilterDropdown="params">
+        <kit-table-custom-filter :params="params" />
+      </template>
     </a-table>
   </a-spin>
 </template>
@@ -52,11 +55,12 @@ import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
 import {useLoading} from "/lib/service";
 import {formatDateTime} from "../../../lib/utils";
-import {DeleteFilled, InfoOutlined} from '@ant-design/icons-vue';
+import {DeleteFilled, InfoOutlined,SearchOutlined} from '@ant-design/icons-vue';
+import KitTableCustomFilter from "../../../lib/components/table/kit-table-custom-filter.vue";
 
 const router = useRouter()
 const loading = ref(false)
-const columns = ref([
+const columns = [
   { title: '名称', dataIndex: 'name', key: 'name', fixed:true, width:'300px',
     sorter:{compare: (a,b)=>a.name>=b.name},
     filters: [
@@ -79,10 +83,19 @@ const columns = ref([
     }
   },
   { title: '值', dataIndex: 'val', key: 'val', sorter:(a,b)=>a.val>=b.val },
-  { title: '类型', dataIndex: 'type', key: 'type' },
+  { title: '类型', dataIndex: 'type', key: 'type',
+    customFilterDropdown: true,
+    onFilter: (value, record) => {
+      let s = "活动";
+      if(record.type===1){
+        s = "课程"
+      }
+      return s.includes(value.toLowerCase())
+    }
+  },
   { title: '开始时间', dataIndex: 'start', key: 'start' },
   { title: '操作', key: 'action', fixed: 'right', width:'100px' },
-])
+]
 const list = ref([])
 const selectType = ref()
 const selectTime = ref()

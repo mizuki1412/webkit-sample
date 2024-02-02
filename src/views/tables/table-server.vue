@@ -1,75 +1,96 @@
 <template>
-  <div v-loading="loading">
-    <div class="flex flex-wrap items-center">
-      <div>课程分类筛选：</div>
-      <el-select v-model="types" multiple collapse-tags collapse-tags-tooltip clearable>
-        <el-option v-for="e in typeList" :label="e.name" :value="e.id"></el-option>
-      </el-select>
-      <el-input placeholder="请输入搜索内容" clearable prefix-icon="search" class="ml-1" style="width: 240px"
-                v-model="keywords"/>
-      <div class="ml-1">
-        <el-button type="primary" icon="search" @click="query">查询</el-button>
-      </div>
-      <div class="ml-1">
-        <el-button type="success">新增</el-button>
-      </div>
-    </div>
-    <kit-table ref="table" :from-server="true" :page-server-handle="pageHandle" class="mt-2">
-      <el-table-column label="标题" prop="name" min-width="180"/>
-      <el-table-column label="状态" width="110">
-        <template #default="{ row }">
-          <el-tag v-if="row.status===0" type="warning">未审核</el-tag>
-          <el-tag v-else-if="row.status===1" type="success">通过审核</el-tag>
-          <el-tag v-else-if="row.status===-1" type="danger">审核拒绝</el-tag>
-          <el-tag v-else type="info">已结束</el-tag>
+  <a-spin :spinning="loading">
+    <a-table
+        :data-source="list" sticky
+        :columns="columns"
+        :expand-column-width="100" row-key="name">
+      <template #expandedRowRender="{ record }">
+        {{record.name}}
+      </template>
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'type'">
+          <div v-if="record.type===1">课程</div>
+          <div v-else>活动</div>
         </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" width="155">
-        <template #default="{ row }">
-          <div class="flex justify-center">
-            <el-button type="primary" size="small">修改</el-button>
+        <template v-else-if="column.key === 'start'">
+          <div v-if="record.start">{{ formatDateTime(record.start) }}</div>
+        </template>
+        <template v-else-if="column.key === 'action'">
+          <div class="flex gap-1">
+            <a-button size="small" type="primary">
+              <template #icon>
+                <InfoOutlined />
+              </template>
+            </a-button>
+            <a-popconfirm title="确认删除?" @confirm="remove(record)">
+              <a-button size="small" danger>
+                <template #icon>
+                  <DeleteFilled />
+                </template>
+              </a-button>
+            </a-popconfirm>
           </div>
         </template>
-      </el-table-column>
-    </kit-table>
-  </div>
+      </template>
+      <template #customFilterDropdown="params">
+        <kit-table-custom-filter :params="params" />
+      </template>
+    </a-table>
+  </a-spin>
 </template>
 <script setup>
 import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
 import {useLoading} from "/lib/service";
+import {formatDateTime} from "../../../lib/utils";
+import {DeleteFilled, InfoOutlined, SearchOutlined} from '@ant-design/icons-vue';
+import KitTableCustomFilter from "../../../lib/components/table/kit-table-custom-filter.vue";
 
 const router = useRouter()
 const loading = ref(false)
-const table = ref()
-const types = ref([])
-const typeList = ref([])
-const keywords = ref()
-
-async function pageHandle(pageNo, countInPage) {
-  let data
-  await useLoading(loading, async () => {
-    console.log(`起始页=${pageNo}, 每页个数=${countInPage}`)
-    // query rest api
-    let res = []
-    for (let i = 0; i < countInPage; i++) {
-      res.push({name: "item" + pageNo + '-' + i, status: 1})
+const columns = [
+  {
+    title: '名称', dataIndex: 'name', key: 'name', fixed: true, width: '300px',
+    sorter: {compare: (a, b) => a.name >= b.name},
+  },
+  {title: '值', dataIndex: 'val', key: 'val', sorter: (a, b) => a.val >= b.val},
+  {
+    title: '类型', dataIndex: 'type', key: 'type',
+    customFilterDropdown: true,
+    onFilter: (value, record) => {
+      let s = "活动";
+      if (record.type === 1) {
+        s = "课程"
+      }
+      return s.includes(value.toLowerCase())
     }
-    data = {
-      data: res,
-      currentPage: pageNo,
-      totalPage: 3,
-      total: 3 * countInPage
-    }
-  })()
-  return data
-}
+  },
+  {title: '开始时间', dataIndex: 'start', key: 'start'},
+  {title: '操作', key: 'action', fixed: 'right', width: '100px'},
+]
+const list = ref([])
+const selectType = ref()
+const selectTime = ref()
 
-async function query() {
-  await table.value.refresh(1)
+async function remove(row) {
+  // useConfirm(
+  //   '确认删除？', async () => {
+  //   await useLoading(loading, async function () {
+  //
+  //   })()
+  // })
+  console.log(row)
 }
 
 onMounted(useLoading(loading, async () => {
-  await query()
+  for (let i = 0; i < 30; i++) {
+    list.value.push({
+      name: "item" + i,
+      val: i,
+      type: i % 2,
+      start: new Date()
+    })
+  }
 }))
+
 </script>
