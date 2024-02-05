@@ -72,8 +72,3 @@
         box-shadow: none;
     }
 }
-
-/* css变量：可以通过这里定制化var */
-body {
-    --van-empty-padding: 10px 0;
-}

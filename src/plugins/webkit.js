@@ -7,12 +7,11 @@ import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter"
 // 同时用于tailwind的初始css
 import 'ant-design-vue/dist/reset.css'
 // 引入tailwind
-import "../index.css"
+import "/lib/tailwind.css"
 // 引入其他框架的css，如果自动引入可能被tailwind覆盖。
 import "vant/lib/index.css"
 
 import KitModal from "../../lib/components/kit-modal"
-// import KitTable from "../../lib/components/kit-table"
 import KitIcon from "../../lib/components/kit-icon"
 import KitPaginationPage from "../../lib/components/kit-pagination-page"
 import KitRichText from "../../lib/components/kit-rich-text"
@@ -27,7 +26,6 @@ export function useWebkit(app) {
   // 全局注册lib组件
   app.use(VueEcharts)
   app.use(KitModal)
-  // app.use(KitTable)
   app.use(KitIcon)
   app.use(KitPaginationPage)
   app.use(KitRichText)
