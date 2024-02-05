@@ -10,11 +10,29 @@
       <v-chart style="width: 300px; height: 200px" :option="option1"></v-chart>
     </div>
     <a-button @click="testMessage">测试messagebox</a-button>
-    <kit-pagination-page :data="data" v-model="dataDisplay">
-      <div v-for="item in dataDisplay" :key="item.id">
-        <div class="text-blue-600">{{ item.id }}</div>
+    <div class="card shadow mt-2 w-[300px]">
+      <div class="card-body">
+        <div class="card-title">abc</div>
+        cbb
       </div>
-    </kit-pagination-page>
+    </div>
+    <div class="stats shadow mt-2">
+      <div class="stat place-items-center">
+        <div class="stat-title">Downloads</div>
+        <div class="stat-value">31K</div>
+        <div class="stat-desc">From January 1st to February 1st</div>
+      </div>
+      <div class="stat place-items-center">
+        <div class="stat-title">Users</div>
+        <div class="stat-value text-secondary">4,200</div>
+        <div class="stat-desc text-secondary">↗︎ 40 (2%)</div>
+      </div>
+      <div class="stat place-items-center">
+        <div class="stat-title">New Registers</div>
+        <div class="stat-value">1,200</div>
+        <div class="stat-desc">↘︎ 90 (14%)</div>
+      </div>
+    </div>
   </a-spin>
   <kit-modal :modal="modal" :confirm="confirm2">
     <template #title>abc</template>
