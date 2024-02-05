@@ -122,12 +122,20 @@ export const routes = [
         },
       },
       {
-        path: "/rich-text",
-        name: "rich-text",
-        component: () => import("../views/rich-text/rich-text.vue"),
+        path: "/_sub_demo",
+        name: "_sub_demo",
         meta: {
-          menuTitle: "富文本编辑",
+          menuTitle: "Demo模板",
           menuIcon: "fee",
+        },
+      },
+      {
+        path: "/code/table",
+        name: "code_table",
+        component: () => import("../views/code_demo/init_table_vue.vue"),
+        meta: {
+          menuTitle: "table page",
+          menuBelong: "_sub_demo",
         },
       },
       {
@@ -136,6 +144,15 @@ export const routes = [
         component: () => import("../views/pagination/pagination-page.vue"),
         meta: {
           menuTitle: "分页页面",
+          menuIcon: "fee",
+        },
+      },
+      {
+        path: "/rich-text",
+        name: "rich-text",
+        component: () => import("../views/rich-text/rich-text.vue"),
+        meta: {
+          menuTitle: "富文本编辑",
           menuIcon: "fee",
         },
       },

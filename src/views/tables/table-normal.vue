@@ -57,6 +57,7 @@ import {useLoading} from "/lib/service";
 import {formatDateTime} from "../../../lib/utils";
 import {DeleteFilled, InfoOutlined,SearchOutlined} from '@ant-design/icons-vue';
 import KitTableCustomFilter from "../../../lib/components/table/kit-table-custom-filter.vue";
+import {antTableFilter} from "../../../lib/utils/antdv";
 
 const router = useRouter()
 const loading = ref(false)
@@ -93,6 +94,8 @@ const columns = [
       return s.includes(value.toLowerCase())
     }
   },
+  { title: 'string', dataIndex: 'str', key: 'str',customFilterDropdown: true,
+    onFilter: antTableFilter('str') },
   { title: '开始时间', dataIndex: 'start', key: 'start' },
   { title: '操作', key: 'action', fixed: 'right', width:'100px' },
 ]
@@ -114,6 +117,7 @@ onMounted(useLoading(loading, async () => {
   for (let i = 0; i < 30; i++) {
     list.value.push({
       name: "item" + i,
+      str: "item" + i,
       val: i,
       type: i % 2,
       start: new Date()
