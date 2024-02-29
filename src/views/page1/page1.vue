@@ -46,6 +46,7 @@ import {useLoading} from "/lib/service"
 import {chartConfig} from "../../../lib/service/echarts-helper"
 import _ from "lodash"
 import {useConfirm} from "../../../lib/service/confirm";
+import {message} from "ant-design-vue";
 
 const loading = ref(false)
 const option1 = ref()
@@ -57,25 +58,12 @@ const modal = ref({
 function confirm2() {
 }
 
-const data1 = ref([
-  {id: 1},
-  {id: 2},
-  {id: 3},
-  {id: 4},
-  {id: 5},
-  {id: 6},
-  {id: 7},
-  {id: 8},
-  {id: 9},
-  {id: 10},
-  {id: 11},
-])
 const data = ref([])
 const dataDisplay = ref([])
 
 function testMessage() {
   useConfirm("确定？", ()=>{
-    console.log(12333)
+    message.info(12333)
   })
 }
 
