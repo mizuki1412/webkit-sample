@@ -14,7 +14,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
     "@tinymce/tinymce-vue": "^5.1.1",
-    "@vueuse/core": "^10.8.0",
+    "@vueuse/core": "^10.9.0",
     "ali-oss": "^6.20.0",
     "ant-design-vue": "^4.1.2",
     "axios": "^1.6.7",
@@ -26,7 +26,7 @@
     "socket.io-client": "^4.7.4",
     "tinymce": "^6.8.3",
     "vant": "^4.8.5",
-    "vue": "^3.4.20",
+    "vue": "^3.4.21",
     "vue-echarts": "^6.6.9",
     "vue-pdf-embed": "^2.0.2",
     "vue-router": "^4.3.0"
@@ -34,8 +34,8 @@
   "devDependencies": {
     "@vitejs/plugin-legacy": "^5.3.1",
     "@vitejs/plugin-vue": "^5.0.4",
-    "@vue/compiler-sfc": "^3.4.20",
-    "autoprefixer": "^10.4.17",
+    "@vue/compiler-sfc": "^3.4.21",
+    "autoprefixer": "^10.4.18",
     "daisyui": "^4.7.2",
     "postcss": "^8.4.35",
     "prettier-plugin-tailwindcss": "^0.5.11",
@@ -44,6 +44,6 @@
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.1.4",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vite-plugin-vue-devtools": "^7.0.15"
+    "vite-plugin-vue-devtools": "^7.0.16"
   }
 }
