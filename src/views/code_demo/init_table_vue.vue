@@ -90,7 +90,6 @@ import {DeleteFilled, FormOutlined} from '@ant-design/icons-vue';
 import KitTableCustomFilter from "/lib/components/table/kit-table-custom-filter.vue";
 import {antRenderDate, antSortDate, antTableFilter} from "/lib/utils/antdv";
 
-const [messageApi, contextHolder] = message.useMessage();
 const router = useRouter()
 const loading = ref(false)
 const form = ref()
@@ -127,7 +126,7 @@ async function update() {
     return;
   }
   // todo
-  messageApi.success("操作成功")
+  message.success("操作成功")
   await _query()
 }
 
