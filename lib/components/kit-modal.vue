@@ -158,11 +158,7 @@ async function ok() {
   if (props.id) {
     submitErrChanel(props.id)
   }
-  try{
-    await useLoadingObject(props.modal, props.confirm)()
-  }finally {
-    submitErrChanel("")
-  }
+  await useLoadingObject(props.modal, props.confirm)()
   props.modal.visible = false
 }
 </script>
