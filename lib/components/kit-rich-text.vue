@@ -47,7 +47,6 @@ import 'tinymce/plugins/quickbars'
 import 'tinymce/plugins/save'
 import 'tinymce/plugins/searchreplace'
 import 'tinymce/plugins/table'
-import 'tinymce/plugins/template'
 import 'tinymce/plugins/visualblocks'
 import 'tinymce/plugins/visualchars'
 import 'tinymce/plugins/wordcount'
@@ -72,7 +71,7 @@ const option = ref({
   menubar: true,
   branding: false, // 隐藏右下角技术支持
   promotion: false, // 右上角升级
-  plugins: "accordion advlist anchor autolink autoresize autosave charmap code codesample directionality emoticons fullscreen image importcss insertdatetime link lists media nonbreaking pagebreak preview quickbars save searchreplace table template visualblocks visualchars wordcount",
+  plugins: "accordion advlist anchor autolink autoresize autosave charmap code codesample directionality emoticons fullscreen image importcss insertdatetime link lists media nonbreaking pagebreak preview quickbars save searchreplace table visualblocks visualchars wordcount",
   language_url: configKit.assetsBaseUrl + 'tinymce/langs/zh-Hans.js',
   language: 'zh-Hans',
   // https://www.tiny.cloud/docs/tinymce/latest/available-menu-items/
@@ -86,7 +85,7 @@ const option = ref({
   //   table: { title: 'Table', items: 'inserttable | cell row column | advtablesort | tableprops deletetable' },
   // },
   toolbar_mode: 'sliding',
-  toolbar: 'blocks fontfamily fontsize align lineheight | bold forecolor backcolor | language | removeformat',
+  toolbar: 'blocks fontfamily fontsize align lineheight | bold forecolor backcolor | removeformat',
 
   async images_upload_handler(blobInfo, success, failure) {
     const key = await putObjectCommon(blobInfo.blob())
