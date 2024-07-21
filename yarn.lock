@@ -1665,6 +1665,14 @@
   resolved "https://registry.npmmirror.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.14.3.tgz#5b2fb4d8cd44c05deef8a7b0e6deb9ccb8939d18"
   integrity sha512-/BypzV0H1y1HzgYpxqRaXGBRqfodgoBBCcsrujT6QRcakDQdfU+Lq9PENPh5jB4I44YWq+0C2eHsHya+nZY1sA==
 
+"@simonwep/pickr@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.npmmirror.com/@simonwep/pickr/-/pickr-1.9.1.tgz#10d86dab514b8888b2d6b90299a477f254067c43"
+  integrity sha512-fR3qmfAcPf/HSFS7GEnTmZLM3+xERv1+jyMBbzT63ilRRM8veYjI7ELvkHHKk0/du3lHp7uh/FqatjM3646X1g==
+  dependencies:
+    core-js "3.37.0"
+    nanopop "2.4.2"
+
 "@simonwep/pickr@~1.8.0":
   version "1.8.2"
   resolved "https://registry.npmmirror.com/@simonwep/pickr/-/pickr-1.8.2.tgz#96dc86675940d7cad63d69c22083dd1cbb9797cb"
@@ -2558,6 +2566,11 @@ core-js-compat@^3.36.1:
   integrity sha512-9TNiImhKvQqSUkOvk/mMRZzOANTiEVC7WaBNhHcKM7x+/5E1l5NvsysR19zuDQScE8k+kfQXWRN3AtS/eOSHpg==
   dependencies:
     browserslist "^4.23.0"
+
+core-js@3.37.0:
+  version "3.37.0"
+  resolved "https://registry.npmmirror.com/core-js/-/core-js-3.37.0.tgz#d8dde58e91d156b2547c19d8a4efd5c7f6c426bb"
+  integrity sha512-fu5vHevQ8ZG4og+LXug8ulUtVxjOcEYvifJr7L5Bfq9GOztVqsKd9/59hUk2ZSbCrS3BqUr3EpaYGIYzq7g3Ug==
 
 core-js@^3.15.1:
   version "3.35.1"
@@ -4116,6 +4129,11 @@ nanomatch@^1.2.1:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+nanopop@2.4.2:
+  version "2.4.2"
+  resolved "https://registry.npmmirror.com/nanopop/-/nanopop-2.4.2.tgz#b55482135be7e64f2d0f5aa8ef51a58104ac7b13"
+  integrity sha512-NzOgmMQ+elxxHeIha+OG/Pv3Oc3p4RU2aBhwWwAqDpXrdTbtRylbRLQztLy8dMMwfl6pclznBdfUhccEn9ZIzw==
 
 nanopop@^2.1.0:
   version "2.4.1"
