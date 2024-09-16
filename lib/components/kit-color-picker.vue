@@ -90,9 +90,9 @@ function init(){
 }
 
 watch(()=>props.modelValue, ()=>{
-  console.log(111, props.modelValue)
   if(pickr.value) {
     pickr.value.options.default = props.modelValue
+    pickr.value.setColor(props.modelValue)
   }
 })
 onMounted(init)
