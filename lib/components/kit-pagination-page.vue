@@ -25,13 +25,9 @@
 import {computed, onMounted, ref, watch} from "vue"
 import _ from "lodash";
 
+const modelValue = defineModel()
 const props = defineProps({
   data: {
-    type: Array,
-    default: () => [],
-  },
-  // 当前显示的数据列表
-  modelValue: {
     type: Array,
     default: () => [],
   },
@@ -64,7 +60,6 @@ const props = defineProps({
     },
   },
 })
-const emit = defineEmits(["update:modelValue"])
 
 const pageCount = ref(1)
 
@@ -97,9 +92,9 @@ function _displayData() {
 }
 
 const displayData = computed(() => _displayData())
-watch(displayData, (d) => emit("update:modelValue", _displayData()))
+watch(displayData, (d) => modelValue.value = _displayData())
 onMounted(() => {
-  emit("update:modelValue", _displayData())
+  modelValue.value = _displayData()
 })
 
 // 服务端分页处理函数包装

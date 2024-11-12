@@ -19,7 +19,6 @@ import KitUpload from "../../lib/components/kit-upload"
 import KitGantt from "../../lib/components/kit-gantt"
 // tailwind中覆盖用的css
 import "../after.css"
-// import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 export function useWebkit(app) {
   configKitInit(import.meta.env)

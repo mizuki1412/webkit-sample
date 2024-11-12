@@ -88,7 +88,9 @@ async function handleTableChange(pag={current:1, pageSize:10}, filters, sorter){
   let res = list.value
   for(let k of Object.keys(filters)){
     // console.log(k, f[k], f[k][0])
-    res = res.filter(x=>x[k].indexOf(filters[k][0])>-1)
+    if(filters[k]){
+      res = res.filter(x=>x[k].indexOf(filters[k][0])>-1)
+    }
   }
   pagination.value.total = res.length
   res = res.slice((pag.current-1)*pag.pageSize, (pag.current)*pag.pageSize)

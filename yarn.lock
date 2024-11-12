@@ -1611,10 +1611,10 @@
     regenerator-runtime "^0.14.1"
     systemjs "^6.15.1"
 
-"@vitejs/plugin-vue@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.npmmirror.com/@vitejs/plugin-vue/-/plugin-vue-5.1.4.tgz#72b8b705cfce36b00b59af196195146e356500c4"
-  integrity sha512-N2XSI2n3sQqp5w7Y/AN/L2XDjBIRGqXko+eDp42sydYSBeJuSm5a1sLf8zakmo8u7tA8NmBgoDLA1HeOESjp9A==
+"@vitejs/plugin-vue@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.npmmirror.com/@vitejs/plugin-vue/-/plugin-vue-5.1.5.tgz#ef1d7e19f8cecb0d1301c987dc0bdf8b778e3c82"
+  integrity sha512-dlnib73G05CDBAUR/YpuZcQQ47fpjihnnNouAAqN62z+oqSsWJ+kh52GRzIxpkgFG3q11eXK7Di7RMmoCwISZA==
 
 "@vue/babel-helper-vue-transform-on@^1.1.6":
   version "1.1.6"
@@ -1702,24 +1702,24 @@
   resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.6.4.tgz#cbe97fe0162b365edc1dba80e173f90492535343"
   integrity sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==
 
-"@vue/devtools-core@^7.6.3":
-  version "7.6.3"
-  resolved "https://registry.npmmirror.com/@vue/devtools-core/-/devtools-core-7.6.3.tgz#801ca8aca7e6eaf1b7142c16c05c78ad488dffee"
-  integrity sha512-C7FOuh3Z+EmXXzDU9eRjHQL7zW7/CFovM6yCNNpUb+zXxhrn4fiqTum+a3gNau9DuzYfEtQXwZ9F7MeK0JKYVw==
+"@vue/devtools-core@^7.6.4":
+  version "7.6.4"
+  resolved "https://registry.npmmirror.com/@vue/devtools-core/-/devtools-core-7.6.4.tgz#592549458a3281728643f94cec42242d1147b158"
+  integrity sha512-blSwGVYpb7b5TALMjjoBiAl5imuBF7WEOAtaJaBMNikR8SQkm6mkUt4YlIKh9874/qoimwmpDOm+GHBZ4Y5m+g==
   dependencies:
-    "@vue/devtools-kit" "^7.6.3"
-    "@vue/devtools-shared" "^7.6.3"
+    "@vue/devtools-kit" "^7.6.4"
+    "@vue/devtools-shared" "^7.6.4"
     mitt "^3.0.1"
     nanoid "^3.3.4"
     pathe "^1.1.2"
     vite-hot-client "^0.2.3"
 
-"@vue/devtools-kit@^7.6.3":
-  version "7.6.3"
-  resolved "https://registry.npmmirror.com/@vue/devtools-kit/-/devtools-kit-7.6.3.tgz#df4d43376d1c729793ef8f9033ad48525a707349"
-  integrity sha512-ETsFc8GlOp04rSFN79tB2TpVloWfsSx9BoCSElV3w3CaJTSBfz42KsIi5Ka+dNTJs1jY7QVLTDeoBmUGgA9h2A==
+"@vue/devtools-kit@^7.6.4":
+  version "7.6.4"
+  resolved "https://registry.npmmirror.com/@vue/devtools-kit/-/devtools-kit-7.6.4.tgz#2a74750d5604b6b3c2fe3388a454c9eac2c6c1f4"
+  integrity sha512-Zs86qIXXM9icU0PiGY09PQCle4TI750IPLmAJzW5Kf9n9t5HzSYf6Rz6fyzSwmfMPiR51SUKJh9sXVZu78h2QA==
   dependencies:
-    "@vue/devtools-shared" "^7.6.3"
+    "@vue/devtools-shared" "^7.6.4"
     birpc "^0.2.19"
     hookable "^5.5.3"
     mitt "^3.0.1"
@@ -1727,10 +1727,10 @@
     speakingurl "^14.0.1"
     superjson "^2.2.1"
 
-"@vue/devtools-shared@^7.6.3":
-  version "7.6.3"
-  resolved "https://registry.npmmirror.com/@vue/devtools-shared/-/devtools-shared-7.6.3.tgz#c8c55cf4d8d50b9b5c45e3c87ab054c131f2a37d"
-  integrity sha512-wJW5QF27i16+sNQIaes8QoEZg1eqEgF83GkiPUlEQe9k7ZoHXHV7PRrnrxOKem42sIHPU813J2V/ZK1uqTJe6g==
+"@vue/devtools-shared@^7.6.4":
+  version "7.6.4"
+  resolved "https://registry.npmmirror.com/@vue/devtools-shared/-/devtools-shared-7.6.4.tgz#110044c88bafee3b2daa992fd90730546dec7b11"
+  integrity sha512-nD6CUvBEel+y7zpyorjiUocy0nh77DThZJ0k1GRnJeOmY3ATq2fWijEp7wk37gb023Cb0R396uYh5qMSBQ5WFg==
   dependencies:
     rfdc "^1.4.1"
 
@@ -1874,10 +1874,10 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-ant-design-vue@^4.2.5:
-  version "4.2.5"
-  resolved "https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-4.2.5.tgz#53ed82c0900f61a915911e036038b76756baec26"
-  integrity sha512-dh5CBXSaxJZBFQBd156sOUuZPfxI7pZsNXDYpHNBt/JyKZoYlbetRp/nJmSragS2Oo0mVC23Ote+TQSGc0TX6g==
+ant-design-vue@^4.2.6:
+  version "4.2.6"
+  resolved "https://registry.npmmirror.com/ant-design-vue/-/ant-design-vue-4.2.6.tgz#e4ce6944457cd1cd61d8b3fe52793ab58b94e337"
+  integrity sha512-t7eX13Yj3i9+i5g9lqFyYneoIb3OzTvQjq9Tts1i+eiOd3Eva/6GagxBSXM1fOCjqemIu0FYVE1ByZ/38epR3Q==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons-vue" "^7.0.0"
@@ -2638,10 +2638,10 @@ detect-libc@^2.0.0:
   resolved "https://registry.npmmirror.com/detect-libc/-/detect-libc-2.0.2.tgz#8ccf2ba9315350e1241b88d0ac3b0e1fbd99605d"
   integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
 
-dhtmlx-gantt@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.npmmirror.com/dhtmlx-gantt/-/dhtmlx-gantt-9.0.1.tgz#3bbac13608fff3a24c273f4bafc8cb5980336d88"
-  integrity sha512-8yCRtCH8I3HmVyAt5Tth97NyJizrDJvoqEz1c551VLIRgjV//yvVPO1mRGFMy1FhwPHnIeOYf8I8pzRr3LHxxA==
+dhtmlx-gantt@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.npmmirror.com/dhtmlx-gantt/-/dhtmlx-gantt-9.0.2.tgz#8c1b227bb24c970086d58903002dc46ba4efa623"
+  integrity sha512-5wNpvhMqcsRZw0CkLyMqPSW+yWNay6mu8nVq5TVSibFsE/mhFp5ZJKxkVfDcibiemEuuIduVcyRWjs0gZ0fa9w==
 
 didyoumean@^1.2.2:
   version "1.2.2"
@@ -4149,7 +4149,7 @@ picocolors@^1.0.1:
   resolved "https://registry.npmmirror.com/picocolors/-/picocolors-1.0.1.tgz#a8ad579b571952f0e5d25892de5445bcfe25aaa1"
   integrity sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==
 
-picocolors@^1.1.0:
+picocolors@^1.1.0, picocolors@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmmirror.com/picocolors/-/picocolors-1.1.1.tgz#3d321af3eab939b083c8f929a1d12cda81c26b6b"
   integrity sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==
@@ -4286,6 +4286,15 @@ postcss@^8.4.43, postcss@^8.4.47:
   dependencies:
     nanoid "^3.3.7"
     picocolors "^1.1.0"
+    source-map-js "^1.2.1"
+
+postcss@^8.4.49:
+  version "8.4.49"
+  resolved "https://registry.npmmirror.com/postcss/-/postcss-8.4.49.tgz#4ea479048ab059ab3ae61d082190fabfd994fe19"
+  integrity sha512-OCVPnIObs4N29kxTjzLfUryOkvZEq+pf8jTF0lg8E7uETuWHA+v7j3c/xJmiqpX450191LlmZfUKkXxkTry7nA==
+  dependencies:
+    nanoid "^3.3.7"
+    picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
 posthtml-parser@^0.2.0, posthtml-parser@^0.2.1:
@@ -5441,14 +5450,14 @@ vite-plugin-svg-icons@^2.0.1:
     svg-baker "1.7.0"
     svgo "^2.8.0"
 
-vite-plugin-vue-devtools@^7.6.3:
-  version "7.6.3"
-  resolved "https://registry.npmmirror.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-7.6.3.tgz#c0ff8e16be0597da1e445a9c934a6d702314f392"
-  integrity sha512-p1rZMKzreWqxj9U05RaxY1vDoOhGYhA6iX8vKfo4nD6jqTmVoGjjk+U1g5HYwwTCdr/eck3kzO2f4gnPCjqVKA==
+vite-plugin-vue-devtools@^7.6.4:
+  version "7.6.4"
+  resolved "https://registry.npmmirror.com/vite-plugin-vue-devtools/-/vite-plugin-vue-devtools-7.6.4.tgz#84743162aecba41f089775078874d403c1de229c"
+  integrity sha512-jxSsLyuETfmZ1OSrmnDp28BG6rmURrP7lkeyHW2gBFDyo+4dUcqVeQNMhbV7uKZn80mDdv06Mysw/5AdGxDvJQ==
   dependencies:
-    "@vue/devtools-core" "^7.6.3"
-    "@vue/devtools-kit" "^7.6.3"
-    "@vue/devtools-shared" "^7.6.3"
+    "@vue/devtools-core" "^7.6.4"
+    "@vue/devtools-kit" "^7.6.4"
+    "@vue/devtools-shared" "^7.6.4"
     execa "^8.0.1"
     sirv "^3.0.0"
     vite-plugin-inspect "^0.8.7"
@@ -5469,10 +5478,10 @@ vite-plugin-vue-inspector@^5.2.0:
     kolorist "^1.8.0"
     magic-string "^0.30.4"
 
-vite@^5.4.10:
-  version "5.4.10"
-  resolved "https://registry.npmmirror.com/vite/-/vite-5.4.10.tgz#d358a7bd8beda6cf0f3b7a450a8c7693a4f80c18"
-  integrity sha512-1hvaPshuPUtxeQ0hsVH3Mud0ZanOLwVTneA1EgbAM5LhaZEqyPWGRQ7BtaMvUrTDeEaC8pxtj6a6jku3x4z6SQ==
+vite@^5.4.11:
+  version "5.4.11"
+  resolved "https://registry.npmmirror.com/vite/-/vite-5.4.11.tgz#3b415cd4aed781a356c1de5a9ebafb837715f6e5"
+  integrity sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==
   dependencies:
     esbuild "^0.21.3"
     postcss "^8.4.43"

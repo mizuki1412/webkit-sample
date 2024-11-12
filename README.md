@@ -72,7 +72,7 @@ App部分采用uniapp，参考uniapp-sample.
 
 ### loading
 
-应用element的v-loading，对请求转圈的封装。
+应用antdv的v-loading，对请求转圈的封装。
 
 ### search
 
@@ -123,12 +123,6 @@ App部分采用uniapp，参考uniapp-sample.
 
 ## TODO List
 
-[//]: # (- [ ] element-plus: 自动导入icon)
-- [ ] element: Message/MessageBox单独使用时，style未自动导入; 已经全局导入style
 - [x] bug：form的validate在初始打开时，会提示error msg
 - [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。vant也同样问题。
 
-## bug fix
-
-- 关于element auto import style引起的错误：因为在plugin/webkit中需要导入index.css，防止被tailwindcss的style覆盖，所以自动导入中取消了导入style。没有解决只是避免。
-- 因为项目是js的，el是ts的，所以官网上有些导入会报错，比如zhCn

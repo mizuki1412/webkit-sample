@@ -10,13 +10,7 @@
 import {onMounted, watch, ref} from "vue";
 import Pickr from "@simonwep/pickr";
 
-const props = defineProps({
-  modelValue: {
-    type: String,
-    default: null
-  },
-})
-const emit = defineEmits(["update:modelValue"])
+const modelValue = defineModel()
 
 const picker = ref()
 const pickr = ref();
@@ -64,17 +58,17 @@ function init(){
       'btn:clear': '清空',
     }
   });
-  pickr.value.options.default = props.modelValue
+  pickr.value.options.default = modelValue.value
   pickr.value.on('init', instance => {
     // console.log('Event: "init"', instance);
   }).on('hide', instance => {
     // console.log('Event: "hide"', instance);
   }).on('show', (color, instance) => {
     // console.log('Event: "show"', color, instance);
-    pickr.value.options.default = props.modelValue
+    pickr.value.options.default = modelValue.value
   }).on('save', (color, instance) => {
     // console.log('Event: "save"', color, instance);
-    emit("update:modelValue", color?color.toHEXA().toString():null)
+    modelValue.value = color?color.toHEXA().toString():null
     pickr.value.hide()
   }).on('clear', instance => {
     // console.log('Event: "clear"', instance);
@@ -89,10 +83,10 @@ function init(){
   });
 }
 
-watch(()=>props.modelValue, ()=>{
+watch(modelValue, ()=>{
   if(pickr.value) {
-    pickr.value.options.default = props.modelValue
-    pickr.value.setColor(props.modelValue)
+    pickr.value.options.default = modelValue.value
+    pickr.value.setColor(modelValue.value)
   }
 })
 onMounted(init)

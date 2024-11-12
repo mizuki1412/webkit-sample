@@ -3,16 +3,15 @@
     <Editor
         :disabled="disabled"
         ref="editor"
-        v-model="content"
+        v-model="modelValue"
         :init="option"
     />
   </a-spin>
 </template>
 <script setup>
 import Editor from "@tinymce/tinymce-vue"
-import {onMounted, ref, watch} from "vue"
+import {onMounted, ref} from "vue"
 import {publicUrl, putObjectCommon} from "../service3/oss/oss-helper"
-import {useLoading} from "../service"
 import {configKit} from "../store"
 
 import tinymce from 'tinymce/tinymce'
@@ -51,17 +50,13 @@ import 'tinymce/plugins/visualblocks'
 import 'tinymce/plugins/visualchars'
 import 'tinymce/plugins/wordcount'
 
+const modelValue = defineModel()
 const props = defineProps({
-  modelValue: {
-    type: String,
-    default: "",
-  },
   disabled: {
     type: Boolean,
     default: false,
   },
 })
-const emit = defineEmits(["update:modelValue"])
 
 const loading = ref(false)
 const content = ref()
@@ -93,36 +88,16 @@ const option = ref({
   },
 })
 
-watch(
-    () => props.modelValue,
-    function () {
-      if (props.modelValue !== content.value) {
-        content.value = props.modelValue
-      }
-    }
-)
-watch(content, function () {
-  if (content.value !== props.modelValue) {
-    emit("update:modelValue", content.value)
-  }
-})
-
 // 初始化时赋值, editor需要等待初始化完成
 async function checkInit() {
   if (editor.value.editor && editor.value.editor.initialized) {
-    editor.value.editor.setContent(props.modelValue)
+    editor.value.editor.setContent(modelValue.value)
   } else {
     console.error("tinymce init error", editor.value)
     setTimeout(checkInit, 1000)
   }
 }
 
-onMounted(
-    useLoading(loading, async () => {
-      // await checkInit();
-      content.value = props.modelValue
-    })
-)
 </script>
 <style>
 .tox-tinymce-aux {

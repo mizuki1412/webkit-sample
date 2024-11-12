@@ -5,11 +5,14 @@
   </div>
 </template>
 <script setup>
-import {ref, onMounted} from "vue"
+import {ref, onMounted, watch} from "vue"
 
 const loading = ref(false)
 const content = ref('demo')
 
+watch(content, ()=>{
+  console.log(content.value)
+})
 onMounted(async () => {
 
 })
