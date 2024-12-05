@@ -4,6 +4,8 @@ The sample usage for Vue3+Vite+TailwindCSS/DaisyUI project.
 
 App部分采用uniapp，参考uniapp-sample.
 
+Node v18.20.5
+
 # 环境变量说明
 
 `.env`文件是公共环境变量，`.env.dev`开发环境，`.env.pro`生产环境。（自定义环境可以在vite build --mode指定）
