@@ -4,7 +4,7 @@ The sample usage for Vue3+Vite+TailwindCSS/DaisyUI project.
 
 App部分采用uniapp，参考uniapp-sample.
 
-Node v18.20.5
+npm i --force
 
 # 环境变量说明
 
