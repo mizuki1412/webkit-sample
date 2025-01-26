@@ -125,6 +125,5 @@ npm i --force
 
 ## TODO List
 
-- [x] bug：form的validate在初始打开时，会提示error msg
-- [ ] 考虑到tailwind会覆盖其他element ui？在index.css之后引入了element.css。vant也同样问题。
+- [ ] daisyui5 更新 https://v5.daisyui.com/docs/v5-beta/
 

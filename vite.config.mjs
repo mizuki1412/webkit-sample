@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import {getEnv} from "./lib/plugin/vite-helper";
+import tailwindcss from '@tailwindcss/vite'
 import {viteAddIcon} from "./lib/plugin/vite-add-icon";
 import {viteAddVant} from "./lib/plugin/vite-add-vant";
 import {viteAddAntD} from "./lib/plugin/vite-add-antd.js";
@@ -8,6 +9,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 let plugins =  [
   vue(),
+  tailwindcss(),
   // 启动有错误？？
   VueDevTools(),
 ]
