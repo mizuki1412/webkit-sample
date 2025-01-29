@@ -10,13 +10,13 @@
       <v-chart style="width: 300px; height: 200px" :option="option1"></v-chart>
     </div>
     <a-button @click="testMessage">测试messagebox</a-button>
-    <div class="card shadow mt-2 w-[300px]">
+    <div class="card shadow-sm mt-2 w-[300px]">
       <div class="card-body">
         <div class="card-title">abc</div>
         cbb
       </div>
     </div>
-    <div class="stats shadow mt-2">
+    <div class="stats shadow-sm mt-2">
       <div class="stat place-items-center">
         <div class="stat-title">Downloads</div>
         <div class="stat-value">31K</div>

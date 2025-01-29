@@ -54,7 +54,7 @@
         </a-drawer>
       </a-layout-header>
       <a-layout-content class="overflow-auto p-2" :style="{height: 'calc(100vh - 64px)'}">
-        <div class="w-full min-h-full bg-white p-2 rounded">
+        <div class="w-full min-h-full bg-white p-2 rounded-sm">
           <router-view/>
         </div>
       </a-layout-content>

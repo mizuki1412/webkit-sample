@@ -127,3 +127,5 @@ npm i --force
 
 - [ ] daisyui5 更新 https://v5.daisyui.com/docs/v5-beta/
 
+tailwindcss4 改默认的layer方式加载。
+

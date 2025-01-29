@@ -2,7 +2,7 @@
   <a-spin :spinning="loading">
     <kit-pagination-page :data="list" v-model="listShow">
       <div class="flex flex-col gap-2">
-        <div class="bg-white shadow rounded w-[100px] h-[30px] _flex_center" v-for="item in listShow">
+        <div class="bg-white shadow-sm rounded-xs w-[100px] h-[30px] _flex_center" v-for="item in listShow">
           {{ item.name }}
         </div>
       </div>

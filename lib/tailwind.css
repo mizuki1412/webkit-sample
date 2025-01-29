@@ -1,9 +1,12 @@
 /*! @import */
-@import "tailwindcss";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*@import "tailwindcss";*/
+/* layer的优先级设置 */
+@layer antd, theme, base, components, utilities;
+@import "tailwindcss/theme.css";
+/* 对应以前的preflight=false */
+/*@import "tailwindcss/preflight.css" layer(base);*/
+@import "tailwindcss/utilities.css" ;
+@import 'ant-design-vue/dist/reset.css';
 
 @layer utilities {
     /* 隐藏滚动条 Chrome, Safari and Opera */

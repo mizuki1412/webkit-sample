@@ -10,7 +10,7 @@
     <div class="overflow-auto" style="height: calc(100% - 48px - 50px)">
       <router-view/>
     </div>
-    <div class="flex w-full bg-white shadow">
+    <div class="flex w-full bg-white shadow-sm">
       <div
           v-for="(item, index) in storeAppMenu"
           :key="item.name"
