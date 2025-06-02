@@ -4,7 +4,10 @@ The sample usage for Vue3+Vite+TailwindCSS/DaisyUI project.
 
 App部分采用uniapp，参考uniapp-sample.
 
-npm i --force
+`npm i --force`
+
+依赖说明：
+- fast-glob 是 vite-plugin-svg-icons需要的
 
 # 环境变量说明
 
@@ -125,7 +128,6 @@ npm i --force
 
 ## TODO List
 
-- [ ] daisyui5 更新 https://v5.daisyui.com/docs/v5-beta/
-
-tailwindcss4 改默认的layer方式加载。
+- [ ] daisyui 有问题 更新 https://v5.daisyui.com/docs/v5-beta/
+- tailwindcss4 改默认的layer方式加载。
 
