@@ -130,4 +130,5 @@ App部分采用uniapp，参考uniapp-sample.
 
 - [ ] daisyui 有问题 更新 https://v5.daisyui.com/docs/v5-beta/
 - tailwindcss4 改默认的layer方式加载。
+- [ ] TinyMCE license
 
