@@ -185,6 +185,32 @@ export const routes = [
           menuIcon: "fee",
         },
       },
+      {
+        path: "/_sub_fc",
+        name: "_sub_fc",
+        meta: {
+          menuTitle: "动态表单",
+          menuIcon: "fee",
+        },
+      },
+      {
+        path: "/fc/1",
+        name: "fc1",
+        component: () => import("../views/form-create/form1.vue"),
+        meta: {
+          menuTitle: "设计",
+          menuBelong: "_sub_fc",
+        },
+      },
+      {
+        path: "/fc/2",
+        name: "fc2",
+        component: () => import("../views/form-create/form2.vue"),
+        meta: {
+          menuTitle: "渲染",
+          menuBelong: "_sub_fc",
+        },
+      },
     ],
   },
 ]
