@@ -41,7 +41,6 @@ const formRules = ref([
     "_fc_drag_tag": "upload"
   }
 ]);
-const key = ref()
 onMounted(async () => {
   const keysToRemove = [];
   for (let i = 0; i < sessionStorage.length; i++) {
