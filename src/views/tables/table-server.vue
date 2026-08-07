@@ -83,11 +83,9 @@ async function remove(row) {
 async function handleTableChange(pag={current:1, pageSize:10}, filters, sorter){
   loading.value = true
   await sleep(1000)
-  console.log(pag, filters, sorter)
   // api
   let res = list.value
   for(let k of Object.keys(filters)){
-    // console.log(k, f[k], f[k][0])
     if(filters[k]){
       res = res.filter(x=>x[k].indexOf(filters[k][0])>-1)
     }

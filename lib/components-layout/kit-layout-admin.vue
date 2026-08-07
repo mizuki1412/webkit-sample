@@ -75,7 +75,6 @@ import UserCenter from "./user-center.vue"
 
 const router = useRouter()
 // 顶部高
-// const headerHeight = ref("64px")
 const isCollapse = ref(false)
 const usercenter = ref(false)
 
@@ -113,9 +112,7 @@ function menuItemFilter(itemChildren) {
 
 onMounted(() => {
   menuChange()
-  // 初始化选中的menu项
   selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
-  // 初始化选中的组
   openKeys.value = []
   for (let item of storePageMenu){
     if(menuItemFilter(item.children).filter((x)=>x.name===selectedKeys.value[0]).length>0){

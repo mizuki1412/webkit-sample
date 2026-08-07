@@ -1,57 +1,6 @@
 import {RouteName} from "../../lib/router"
 
 export const routes = [
-  // app
-  // {
-  //   path: "/app/login",
-  //   name: RouteName.loginApp,
-  //   component: () => import("../views-app/login.vue"),
-  //   meta: {
-  //     authDisable: true,
-  //   },
-  // },
-  // {
-  //   path: "/app",
-  //   name: RouteName.indexApp,
-  //   component: () => import("../../lib/components-layout/kit-layout-app.vue"),
-  //   meta: {
-  //     menuApp: true,
-  //     authDisable: true,
-  //   },
-  //   props: true,
-  //   children: [
-  //     {
-  //       path: "/app/index",
-  //       name: "app:index-page",
-  //       component: () => import("../views-app/demo-app1.vue"),
-  //       meta: {
-  //         menuTitle: "一",
-  //         menuIcon: "common-index",
-  //         menuAppIndex: true,
-  //       },
-  //     },
-  //     {
-  //       path: "/app/page2",
-  //       name: "app:page2",
-  //       component: () => import("../views-app/demo-app2.vue"),
-  //       meta: {
-  //         menuTitle: "二",
-  //         menuIcon: "common-index",
-  //         menuAppIndex: true,
-  //       },
-  //     },
-  //     {
-  //       path: "/app/page3",
-  //       name: "app:page3",
-  //       component: () => import("../views-app/demo-app3.vue"),
-  //       meta: {
-  //         menuTitle: "三",
-  //         menuIcon: "common-index",
-  //         menuAppIndex: true,
-  //       },
-  //     },
-  //   ],
-  // },
   // web
   {
     path: "/login",

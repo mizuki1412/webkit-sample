@@ -44,7 +44,6 @@ import {ref, onMounted} from "vue"
 import {sleep} from "/lib/utils"
 import {useLoading} from "/lib/service"
 import {chartConfig} from "../../../lib/service/echarts-helper"
-import _ from "lodash"
 import {useConfirm} from "../../../lib/service/confirm";
 import {message} from "ant-design-vue";
 

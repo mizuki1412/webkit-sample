@@ -94,8 +94,6 @@ function initObjs(){
     } else if (objWidth * canvas.value.height < objHeight * canvas.value.width) {
       // 自适应-缩放
       canvas.value.zoomToPoint({x: 0, y: 0}, canvas.value.height / objHeight)
-      // todo 缩放的有点多
-      // console.log(canvas.value.height/objHeight)
       // 自适应-移动中心点-x轴
       canvas.value.relativePan(new fabric.Point(canvas.value.width / 2 - (canvas.value.height * objWidth / objHeight) / 2, 0));
     } else {

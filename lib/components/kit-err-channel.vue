@@ -16,12 +16,4 @@ defineProps({
     default: null,
   },
 })
-
-// watch(() => storeErrMsg.time, () => {
-//   console.log(storeErrMsg.submitId)
-//   if (storeErrMsg.submitId === props.id) {
-//     console.log(msg.value)
-//     msg.value = storeErrMsg.msg;
-//   }
-// });
 </script>

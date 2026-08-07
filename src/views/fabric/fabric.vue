@@ -180,10 +180,6 @@ async function importJson(option) {
   }
 }
 
-function print() {
-  console.log(canvas.value.getObjects())
-}
-
 function del() {
   canvas.value.remove(canvas.value.getActiveObject())
 }
@@ -197,7 +193,6 @@ function move() {
     duration: 1000,
     onChange: canvas.value.renderAll.bind(canvas.value),
     onComplete: function () {
-      console.log("播放结束!");
     },
     easing: fabric.util.ease.easeInCubic
   });
@@ -209,7 +204,6 @@ async function light() {
       duration: 1000,
       onChange: canvas.value.renderAll.bind(canvas.value),
       onComplete: function () {
-        console.log("透明!")
         black()
       },
       easing: fabric.util.ease.easeInCubic,
@@ -225,7 +219,6 @@ async function light() {
               onChange: canvas.value.renderAll.bind(canvas.value),
               easing: fabric.util.ease.easeInCubic,
               onComplete: function () {
-                console.log("恢复!");
                 white()
               },
             })

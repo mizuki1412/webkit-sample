@@ -29,15 +29,8 @@ export function useWebkit(app) {
   app.use(KitPaginationPage)
   app.use(KitRichText)
   app.use(KitUpload)
-  // app.use(KitFabricShow)
   app.use(KitGantt)
 
-  // element 全局导入icon
-  // for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  //   app.component(key, component)
-  // }
-
-  // router
   const router = _useRouter(app, routes)
   router.beforeEach(routeBaseBefore)
   router.afterEach(routeBaseAfter)

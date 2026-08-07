@@ -85,7 +85,6 @@ import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
 import {useLoading} from "/lib/service";
 import {message} from 'ant-design-vue';
-import _ from "lodash";
 import {DeleteFilled, FormOutlined} from '@ant-design/icons-vue';
 import KitTableCustomFilter from "/lib/components/table/kit-table-custom-filter.vue";
 import {antRenderDate, antSortDate, antTableFilter} from "/lib/utils/antdv";
@@ -115,7 +114,7 @@ async function remove(row) {
 }
 
 function showModal(row) {
-  modal.value.data = row ? _.cloneDeep(row) : {}
+  modal.value.data = row ? JSON.parse(JSON.stringify(row)) : {}
   // todo
   modal.value.visible = true
 }

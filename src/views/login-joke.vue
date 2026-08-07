@@ -66,7 +66,6 @@ const rule = {
 };
 
 function login(){
-  console.log("login")
 }
 
 const distanceBetween = (p1x, p1y, p2x, p2y) => {

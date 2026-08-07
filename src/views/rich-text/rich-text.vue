@@ -5,15 +5,7 @@
   </div>
 </template>
 <script setup>
-import {ref, onMounted, watch} from "vue"
+import {ref} from "vue"
 
-const loading = ref(false)
 const content = ref('demo')
-
-watch(content, ()=>{
-  console.log(content.value)
-})
-onMounted(async () => {
-
-})
 </script>

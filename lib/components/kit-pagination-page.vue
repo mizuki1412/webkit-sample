@@ -23,7 +23,6 @@
 </template>
 <script setup>
 import {computed, onMounted, ref, watch} from "vue"
-import _ from "lodash";
 
 const modelValue = defineModel()
 const props = defineProps({
@@ -87,7 +86,7 @@ function _displayData() {
   if (props.fromServer) {
     return dataList.value
   } else {
-    return _.slice(props.data, (currentPageInner.value - 1) * pageSizeInner.value, currentPageInner.value * pageSizeInner.value)
+    return props.data.slice((currentPageInner.value - 1) * pageSizeInner.value, currentPageInner.value * pageSizeInner.value)
   }
 }
 
@@ -101,6 +100,7 @@ onMounted(() => {
 const dataList = ref([])
 const currentPage = ref(1)
 const total = ref(0)
+const totalPage = ref(0)
 
 async function pageServerHandle0(page) {
   currentPageInner.value = page
@@ -108,7 +108,7 @@ async function pageServerHandle0(page) {
   dataList.value = data.data
   currentPage.value = data.currentPage
   total.value = data.total
-  total.totalPage = data.totalPage
+  totalPage.value = data.totalPage
 }
 
 // 服务端分页时外部调用刷新，也是初始触发的接口

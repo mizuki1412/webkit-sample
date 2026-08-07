@@ -59,27 +59,13 @@ function init(){
     }
   });
   pickr.value.options.default = modelValue.value
-  pickr.value.on('init', instance => {
-    // console.log('Event: "init"', instance);
-  }).on('hide', instance => {
-    // console.log('Event: "hide"', instance);
-  }).on('show', (color, instance) => {
-    // console.log('Event: "show"', color, instance);
+  pickr.value.on('show', (color, instance) => {
     pickr.value.options.default = modelValue.value
   }).on('save', (color, instance) => {
-    // console.log('Event: "save"', color, instance);
     modelValue.value = color?color.toHEXA().toString():null
     pickr.value.hide()
-  }).on('clear', instance => {
-    // console.log('Event: "clear"', instance);
-  }).on('change', (color, source, instance) => {
-    // console.log('Event: "change"', color, source, instance);
-  }).on('changestop', (source, instance) => {
-    // console.log('Event: "changestop"', source, instance);
   }).on('cancel', instance => {
     pickr.value.hide()
-  }).on('swatchselect', (color, instance) => {
-    // console.log('Event: "swatchselect"', color, instance);
   });
 }
 

@@ -110,7 +110,6 @@ async function remove(row) {
   //
   //   })()
   // })
-  console.log(row)
 }
 
 onMounted(useLoading(loading, async () => {

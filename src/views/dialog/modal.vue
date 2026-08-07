@@ -63,13 +63,10 @@ const typeList = ref([{value: 1, name: "item1"}, {value: 2, name: "item2", text:
 function show() {
   if(form.value) form.value.resetFields()
   modal.value.data = {types: []}
-  console.log(modal.value.data)
   modal.value.visible = true
 }
 
 async function update() {
-  console.log(modal.value.data)
-  console.log(modal.value.data.dt?.valueOf())
   const valid = await form.value.validate();
   if (!valid) {
     return;

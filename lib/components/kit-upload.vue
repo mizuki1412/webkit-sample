@@ -22,7 +22,6 @@
 </template>
 <script setup>
 import {onMounted, ref, watch} from "vue"
-import _ from 'lodash'
 import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
 import {useLoading, useLoadingObject} from "../service";
 
@@ -71,17 +70,21 @@ const modal = ref({
 })
 const loading = ref(false)
 
-const updateFiles = _.debounce(() => {
-  fileList.value = []
-  if (!props.files) return
-  for (let e of props.files) {
-    if(e){
-      fileList.value.push({
-        url: e
-      })
+let debounceTimer = null
+const updateFiles = () => {
+  if (debounceTimer) clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => {
+    fileList.value = []
+    if (!props.files) return
+    for (let e of props.files) {
+      if(e){
+        fileList.value.push({
+          url: e
+        })
+      }
     }
-  }
-}, 300, {leading: true, trailing: false})
+  }, 300)
+}
 
 watch(() => props.files, updateFiles)
 onMounted(updateFiles)
@@ -90,7 +93,8 @@ const handlePictureCardPreview = (uploadFile) => {
   modal.value = {visible: true, data: uploadFile.url}
 }
 const handleRm = (uploadFile) => {
-  _.remove(props.files, (n) => n === uploadFile.url)
+  const idx = props.files.findIndex((n) => n === uploadFile.url)
+  if (idx > -1) props.files.splice(idx, 1)
 }
 
 const customAction = useLoading(loading, props.action)
