@@ -30,26 +30,13 @@
   </div>
 </template>
 <script setup>
-import {ref, onMounted} from "vue"
 import {useRouter} from "vue-router"
-import {useLoading} from "/lib/service"
 import {storeAppMenu} from "../router"
 import {configKit, storeCurrentRoute} from "../store"
 
-const props = defineProps({
-  // todo
-  noPadding: {
-    type: Boolean,
-    default: false,
-  },
-})
 const router = useRouter()
-const loading = ref(false)
 
 function jump(name) {
   router.push({name})
 }
-
-onMounted(useLoading(loading, async () => {
-}))
 </script>

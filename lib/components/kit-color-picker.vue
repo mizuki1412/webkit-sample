@@ -1,5 +1,5 @@
 <template>
-  <div class=".kit-color-picker" ref="picker"></div>
+  <div class="kit-color-picker" ref="picker"></div>
 </template>
 
 <script setup>

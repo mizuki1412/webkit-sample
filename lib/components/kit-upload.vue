@@ -12,9 +12,6 @@
       <loading-outlined v-if="loading"></loading-outlined>
       <plus-outlined v-else></plus-outlined>
     </a-upload>
-    <!--    <div v-for="f in files" :key="f" class="_flex_center ml-1 gap-0.5">-->
-    <!--      <img :src="f" alt="" :style="{ maxHeight: fileMaxHeight + 'px' }" />-->
-    <!--    </div>-->
     <a-modal v-model="modal.visible">
       <img :src="modal.data" alt="Preview Image"/>
     </a-modal>
@@ -23,22 +20,9 @@
 <script setup>
 import {onMounted, ref, watch} from "vue"
 import { PlusOutlined, LoadingOutlined } from '@antdv-next/icons';
-import {useLoading, useLoadingObject} from "../service";
+import {useLoading} from "../service";
 
-/**
- * action demo:
- * async function parseJson(option){
- *   if (option.file.size > 1024 * 1024) {
- *     message.error('图片大小请小于1M');
- *     throw Error('图片大小请小于1M');
- *   }
- *   await useLoadingModal(modal, async ()=>{
- *     const key = await putObjectCommon(option.file);
- *     modal.value.data.img = publicUrl(key)
- *     message.success('上传成功');
- *   })()
- * }
- */
+const emit = defineEmits(['update:files'])
 
 const props = defineProps({
   action: {
@@ -58,10 +42,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  fileMaxHeight: {
-    type: Number,
-    default: 148,
-  },
 })
 const fileList = ref([])
 const modal = ref({
@@ -70,31 +50,15 @@ const modal = ref({
 })
 const loading = ref(false)
 
-let debounceTimer = null
-const updateFiles = () => {
-  if (debounceTimer) clearTimeout(debounceTimer)
-  debounceTimer = setTimeout(() => {
-    fileList.value = []
-    if (!props.files) return
-    for (let e of props.files) {
-      if(e){
-        fileList.value.push({
-          url: e
-        })
-      }
-    }
-  }, 300)
-}
-
-watch(() => props.files, updateFiles)
-onMounted(updateFiles)
+watch(() => props.files, () => {
+  fileList.value = (props.files || []).filter(e => e).map(e => ({ url: e }))
+}, { immediate: true })
 
 const handlePictureCardPreview = (uploadFile) => {
   modal.value = {visible: true, data: uploadFile.url}
 }
 const handleRm = (uploadFile) => {
-  const idx = props.files.findIndex((n) => n === uploadFile.url)
-  if (idx > -1) props.files.splice(idx, 1)
+  emit('update:files', props.files.filter(n => n !== uploadFile.url))
 }
 
 const customAction = useLoading(loading, props.action)

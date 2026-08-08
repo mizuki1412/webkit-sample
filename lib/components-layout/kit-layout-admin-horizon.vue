@@ -94,7 +94,7 @@
   </div>
 </template>
 <script setup>
-import {ref, onMounted, computed} from "vue"
+import {ref, computed} from "vue"
 import {storePageMenu} from "/lib/router"
 import {useRouter} from "vue-router"
 import {configKit, storeCurrentRoute} from "/lib/store"
@@ -135,9 +135,6 @@ const navigator = computed(() => {
     }
   }
   return navigatorArray
-})
-
-onMounted(() => {
 })
 </script>
 <style>

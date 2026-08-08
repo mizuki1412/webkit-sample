@@ -17,17 +17,11 @@
   </div>
 </template>
 <script setup>
-import {ref, onMounted} from "vue"
 import {useRouter} from "vue-router"
-import {useLoading} from "/lib/service"
 
 const router = useRouter()
-const loading = ref(false)
 
 function back() {
   router.back()
 }
-
-onMounted(useLoading(loading, async () => {
-}))
 </script>

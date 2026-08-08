@@ -58,10 +58,9 @@ import {message} from "antdv-next";
 const router = useRouter()
 const pwdVisible = ref(false)
 const pwdForm = ref(null)
-const passwordLoading = ref(false)
 const form = ref()
 
-let props = defineProps({
+const props = defineProps({
   beforeLogout: {
     type: Function,
     default: async () => {
@@ -96,17 +95,12 @@ async function updatePwd() {
     }
     return false
   }
-  passwordLoading.value = true
-  try {
-    await postUserUpdatePwd({
-      oldPwd: pwdForm.value.oldPwd,
-      newPwd: pwdForm.value.newPwd,
-    })
-    message.success("修改成功")
-    pwdVisible.value = false
-  } finally {
-    passwordLoading.value = false
-  }
+  await postUserUpdatePwd({
+    oldPwd: pwdForm.value.oldPwd,
+    newPwd: pwdForm.value.newPwd,
+  })
+  message.success("修改成功")
+  pwdVisible.value = false
 }
 
 async function logout() {

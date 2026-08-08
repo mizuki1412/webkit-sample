@@ -1,9 +1,5 @@
 <template>
-  <div
-      v-if="
-      storeErrMsg.submitId === id && storeErrMsg.msg && storeErrMsg.msg !== ''
-    "
-  >
+  <div v-if="storeErrMsg.submitId === id && storeErrMsg.msg">
     <a-alert :title="storeErrMsg.msg" type="error" show-icon></a-alert>
   </div>
 </template>

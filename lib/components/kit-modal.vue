@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import {ref, watch, watchEffect} from "vue"
+import {ref, watch} from "vue"
 import {submitErrChanel} from "../store"
 import KitErrChannel from "./kit-err-channel.vue"
 import {useDraggable} from "@vueuse/core"
@@ -58,6 +58,8 @@ const modalTitleRef = ref()
 const panelEl = ref()
 const { x, y, isDragging } = useDraggable(modalTitleRef)
 
+watch(isDragging, (val) => { if (!val) startedDrag.value = false })
+
 const startX = ref(0)
 const startY = ref(0)
 const startedDrag = ref(false)
@@ -79,12 +81,6 @@ watch([x, y], () => {
     prevY.value = offsetY.value
   }
   startedDrag.value = true
-})
-
-watch(isDragging, () => { startedDrag.value = false })
-
-watchEffect(() => {
-  if (!startedDrag.value) return
   offsetX.value = prevX.value + Math.min(Math.max(0, x.value), bounds.value.right) - startX.value
   offsetY.value = prevY.value + Math.min(Math.max(0, y.value), bounds.value.bottom) - startY.value
   if (panelEl.value) {
