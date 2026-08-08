@@ -55,7 +55,7 @@
       :confirm="update"
       width="50%">
     <template #title>{{ formData.id ? '修改' : '新增' }}课程信息</template>
-    <a-form ref="form" :model="formData">
+    <a-form ref="form" :label-col="{ style: { width: '80px' } }" :model="formData">
       <a-form-item label="分类多选" name="types" :rules="[{ required: true, message: '请选择' }]">
         <a-select
             v-model:value="formData.types" mode="multiple" allow-clear

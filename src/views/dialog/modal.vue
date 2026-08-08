@@ -9,7 +9,7 @@
         :confirm="update"
         width="50%">
       <template #title>{{ formData?.id ? '修改' : '新增' }}课程信息</template>
-      <a-form ref="formRef" :model="formData">
+      <a-form ref="formRef" :label-col="{ style: { width: '80px' } }" :model="formData">
         <a-form-item label="题图" name="img" :rules="[{ required: true, message: '请填写' }]">
           <kit-upload :action="upload" :files="formData.img?[formData.img]:[]"></kit-upload>
         </a-form-item>

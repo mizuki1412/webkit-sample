@@ -6,7 +6,8 @@
       </div>
       <div class="bg-white rounded-md shadow-md py-8 px-6 w-[300px]">
         <a-form
-            :label-col="{ style: { width: '70px' } }"
+            :label-col="{ style: { width: '56px' } }"
+            label-align="right"
             autocomplete="off"
             ref="formRef" :model="form" :rules="rule">
           <a-form-item name="username" label="账户">

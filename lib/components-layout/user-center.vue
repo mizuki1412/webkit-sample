@@ -19,6 +19,7 @@
       <template #title>账户密码修改</template>
       <a-form
           ref="form"
+          :label-col="{ style: { width: '80px' } }"
           autocomplete="off"
           :model="pwdForm"
           v-if="pwdForm">
