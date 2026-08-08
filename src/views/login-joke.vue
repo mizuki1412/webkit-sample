@@ -35,7 +35,7 @@
 import {ref,onMounted} from "vue";
 import {useRouter} from "vue-router";
 import {configKit} from "../../lib/store";
-import {LockOutlined, UserOutlined} from "@ant-design/icons-vue";
+import {LockOutlined, UserOutlined} from "@antdv-next/icons";
 
 const router = useRouter()
 const loading = ref(false)

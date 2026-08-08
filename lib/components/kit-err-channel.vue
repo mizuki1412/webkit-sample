@@ -4,7 +4,7 @@
       storeErrMsg.submitId === id && storeErrMsg.msg && storeErrMsg.msg !== ''
     "
   >
-    <a-alert :message="storeErrMsg.msg" type="error" show-icon></a-alert>
+    <a-alert :title="storeErrMsg.msg" type="error" show-icon></a-alert>
   </div>
 </template>
 <script setup>

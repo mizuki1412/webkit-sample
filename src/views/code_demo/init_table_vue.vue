@@ -50,31 +50,31 @@
     </template>
   </a-table>
   <kit-modal
-      id="demo1"
-      :modal="modal"
+      v-model:visible="modalVisible"
+      channel-id="demo1"
       :confirm="update"
       width="50%">
-    <template #title>{{ modal.data.id ? '修改' : '新增' }}课程信息</template>
-    <a-form ref="form" :model="modal.data">
-      <a-form-item label="分类多选" name="types" :rules="{ required: true, message: '请选择' }">
+    <template #title>{{ formData.id ? '修改' : '新增' }}课程信息</template>
+    <a-form ref="form" :model="formData">
+      <a-form-item label="分类多选" name="types" :rules="[{ required: true, message: '请选择' }]">
         <a-select
-            v-model:value="modal.data.types" mode="multiple" allow-clear
+            v-model:value="formData.types" mode="multiple" allow-clear
             :field-names="{label: 'name'}"
             :options="[]"></a-select>
       </a-form-item>
-      <a-form-item label="分类对象" name="type" :rules="{ required: true, message: '请选择' }">
+      <a-form-item label="分类对象" name="type" :rules="[{ required: true, message: '请选择' }]">
         <a-select
-            v-model:value="modal.data.type" allow-clear label-in-value :field-names="{label: 'name'}"
+            v-model:value="formData.type" allow-clear label-in-value :field-names="{label: 'name'}"
             :options="[]"></a-select>
       </a-form-item>
       <a-form-item label="日期" name="dt">
-        <a-date-picker show-time allow-clear v-model:value="modal.data.dt"/>
+        <a-date-picker show-time allow-clear v-model:value="formData.dt"/>
       </a-form-item>
       <a-form-item label="标题" name="name" :rules="[{ required: true, message: '请填写' }]">
-        <a-input allow-clear v-model:value="modal.data.name"/>
+        <a-input allow-clear v-model:value="formData.name"/>
       </a-form-item>
-      <a-form-item label="简介" name="abstract" :rules="{ required: true, message: '请填写' }">
-        <a-textarea allow-clear v-model:value="modal.data.abstract"/>
+      <a-form-item label="简介" name="abstract" :rules="[{ required: true, message: '请填写' }]">
+        <a-textarea allow-clear v-model:value="formData.abstract"/>
       </a-form-item>
     </a-form>
   </kit-modal>
@@ -84,8 +84,8 @@
 import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
 import {useLoading} from "/lib/service";
-import {message} from 'ant-design-vue';
-import {DeleteFilled, FormOutlined} from '@ant-design/icons-vue';
+import {message} from 'antdv-next';
+import {DeleteFilled, FormOutlined} from '@antdv-next/icons';
 import KitTableCustomFilter from "/lib/components/table/kit-table-custom-filter.vue";
 import {antRenderDate, antSortDate, antTableFilter} from "/lib/utils/antdv";
 
@@ -93,10 +93,8 @@ const router = useRouter()
 const loading = ref(false)
 const form = ref()
 const list = ref([])
-const modal = ref({
-  visible: false,
-  data: {}
-})
+const modalVisible = ref(false)
+const formData = ref({})
 
 async function query() {
   await useLoading(loading, _query)()
@@ -114,15 +112,22 @@ async function remove(row) {
 }
 
 function showModal(row) {
-  modal.value.data = row ? JSON.parse(JSON.stringify(row)) : {}
-  // todo
-  modal.value.visible = true
+  formData.value = row ? JSON.parse(JSON.stringify(row)) : {types: [], type: null, dt: null, name: '', abstract: ''}
+  modalVisible.value = true
 }
 
 async function update() {
-  const valid = await form.value.validate();
-  if (!valid) {
-    return;
+  try {
+    const values = await form.value.validateFields()
+    formData.value = values
+  } catch (e) {
+    if (e?.errorFields) {
+      form.value.setFields(e.errorFields.map(f => ({
+        name: f.name,
+        errors: f.errors,
+      })))
+    }
+    return false
   }
   // todo
   message.success("操作成功")

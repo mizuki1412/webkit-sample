@@ -25,7 +25,7 @@
   </div>
 </template>
 <script setup>
-import {SearchOutlined} from '@ant-design/icons-vue';
+import {SearchOutlined} from '@antdv-next/icons';
 import {ref, onMounted} from 'vue';
 
 const props = defineProps({

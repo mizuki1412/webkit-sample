@@ -14,13 +14,13 @@
             v-model:selectedKeys="selectedKeys">
           <template v-for="(item, index) in storePageMenu" :key="index">
             <a-sub-menu
-                v-if="menuItemFilter(item.children).length > 0"
+                v-if="visibleChildren(item).length > 0"
                 :key="item.name" :title="item.menuTitle">
               <template #icon>
                 <kit-icon class="h-4 w-4" :name="item.menuIcon"></kit-icon>
               </template>
               <a-menu-item
-                  v-for="child in menuItemFilter(item.children)"
+                  v-for="child in visibleChildren(item)"
                   :key="child.name" :title="child.menuTitle">
                 <span>{{child.menuTitle}}</span>
               </a-menu-item>
@@ -28,7 +28,9 @@
             <a-menu-item
                 v-else-if="item.name && item.component && (!item.authFunc || item.authFunc())"
                 :key="item.name" :title="item.menuTitle">
-              <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
+              <template #icon>
+                <kit-icon class="w-4 h-4" :name="item.menuIcon"></kit-icon>
+              </template>
               <span>{{item.menuTitle}}</span>
             </a-menu-item>
           </template>
@@ -44,14 +46,6 @@
         <a-button type="text" size="large" @click="usercenter = true" class="mr-2">
           <UserOutlined />
         </a-button>
-        <a-drawer
-            v-model:open="usercenter"
-            title="个人中心"
-            width="300"
-            placement="right"
-        >
-          <user-center/>
-        </a-drawer>
       </a-layout-header>
       <a-layout-content class="overflow-auto p-2" :style="{height: 'calc(100vh - 64px)'}">
         <div class="w-full min-h-full bg-white p-2 rounded-sm">
@@ -60,9 +54,16 @@
       </a-layout-content>
     </a-layout>
   </a-layout>
+  <a-drawer
+      v-model:open="usercenter"
+      title="个人中心"
+      size="300"
+      placement="right">
+    <user-center/>
+  </a-drawer>
 </template>
 <script setup>
-import {ref, onMounted, computed, watch} from "vue"
+import {ref, watch} from "vue"
 import {RouteMetaKey, storePageMenu} from "/lib/router"
 import {useRouter} from "vue-router"
 import {configKit, storeCurrentRoute} from "/lib/store"
@@ -70,56 +71,46 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   UserOutlined
-} from '@ant-design/icons-vue';
+} from '@antdv-next/icons';
 import UserCenter from "./user-center.vue"
 
 const router = useRouter()
-// 顶部高
 const isCollapse = ref(false)
 const usercenter = ref(false)
-
 const selectedKeys = ref([])
 const openKeys = ref([])
+
+watch(() => storeCurrentRoute.name, () => {
+  selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] || storeCurrentRoute.name]
+}, { immediate: true })
+
 const preOpenKeys = ref([])
-watch(openKeys, (_val, oldVal) => {preOpenKeys.value = oldVal});
-watch(()=>storeCurrentRoute.name, ()=>{
-  selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
+watch(openKeys, (_val, oldVal) => { preOpenKeys.value = oldVal })
+
+watch(selectedKeys, (keys) => {
+  if (!keys[0]) return
+  const parent = storePageMenu.find(item =>
+    visibleChildren(item).some(child => child.name === keys[0])
+  )
+  if (parent && !openKeys.value.includes(parent.name)) {
+    openKeys.value = [parent.name]
+  }
 })
 
 function routeTo(name) {
   router.push({name})
 }
 
-function tap(item){
+function tap(item) {
   routeTo(item.key)
-}
-
-function menuChange() {
-  const element = document.getElementById("home_page")
-  setCollapse(element.offsetWidth < 1200)
 }
 
 function setCollapse(collapse) {
   isCollapse.value = collapse
-  openKeys.value = isCollapse.value ? [] : preOpenKeys.value
+  openKeys.value = collapse ? [] : preOpenKeys.value
 }
 
-// menu
-function menuItemFilter(itemChildren) {
-  if (!itemChildren) itemChildren = []
-  return itemChildren.filter((child) => !child.authFunc || child.authFunc())
+function visibleChildren(item) {
+  return (item.children || []).filter(child => !child.authFunc || child.authFunc())
 }
-
-onMounted(() => {
-  menuChange()
-  selectedKeys.value = [storeCurrentRoute.meta[RouteMetaKey.parentName] ||storeCurrentRoute.name]
-  openKeys.value = []
-  for (let item of storePageMenu){
-    if(menuItemFilter(item.children).filter((x)=>x.name===selectedKeys.value[0]).length>0){
-      openKeys.value = [item.name]
-      break
-    }
-  }
-  // window.onresize = menuChange
-})
 </script>

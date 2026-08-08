@@ -2,7 +2,7 @@
   <a-spin :spinning="loading">
     <div class="flex">
       <kit-icon name="fee" class="h-4 w-4 text-red-600"/>
-      <a-empty class="cursor-pointer" @click="modal.visible = true">
+      <a-empty class="cursor-pointer" @click="modalVisible = true">
         <template #description>
           test<span style="color: red">abc</span>
         </template>
@@ -34,9 +34,9 @@
       </div>
     </div>
   </a-spin>
-  <kit-modal :modal="modal" :confirm="confirm2">
+  <kit-modal v-model:visible="modalVisible" v-model:loading="modalLoading" :confirm="confirm2">
     <template #title>abc</template>
-    <a-select class="w-[50%]" v-model="modal.data.val1" :options="[{label: 'aaa', value: 'aaa'}]"></a-select>
+    <a-select class="w-[50%]" v-model="val1" :options="[{label: 'aaa', value: 'aaa'}]"></a-select>
   </kit-modal>
 </template>
 <script setup>
@@ -45,14 +45,13 @@ import {sleep} from "/lib/utils"
 import {useLoading} from "/lib/service"
 import {chartConfig} from "../../../lib/service/echarts-helper"
 import {useConfirm} from "../../../lib/service/confirm";
-import {message} from "ant-design-vue";
+import {message} from "antdv-next";
 
 const loading = ref(false)
 const option1 = ref()
-const modal = ref({
-  visible: false,
-  data: {},
-})
+const modalVisible = ref(false)
+const modalLoading = ref(false)
+const val1 = ref()
 
 function confirm2() {
 }
@@ -87,7 +86,7 @@ onMounted(
           },
         ],
       })
-      modal.value.data.val1 = 0
+      val1.value = 0
       // test
     })
 )

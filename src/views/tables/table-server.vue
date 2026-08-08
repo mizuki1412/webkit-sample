@@ -44,7 +44,7 @@ import {ref, onMounted, computed} from 'vue';
 import {useRouter} from "vue-router";
 import {useLoading} from "/lib/service";
 import {formatDateTime, sleep} from "../../../lib/utils";
-import {DeleteFilled, InfoOutlined, SearchOutlined} from '@ant-design/icons-vue';
+import {DeleteFilled, InfoOutlined, SearchOutlined} from '@antdv-next/icons';
 import KitTableCustomFilter from "../../../lib/components/table/kit-table-custom-filter.vue";
 
 const router = useRouter()

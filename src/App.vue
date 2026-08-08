@@ -1,10 +1,12 @@
 <template>
   <a-config-provider :locale="zhCn">
-    <router-view/>
+    <a-app>
+      <router-view/>
+    </a-app>
   </a-config-provider>
 </template>
 <script setup>
-import zhCn from 'ant-design-vue/es/locale/zh_CN';
+import zhCn from 'antdv-next/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 dayjs.locale('zh-cn');

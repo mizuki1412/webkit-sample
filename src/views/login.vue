@@ -39,7 +39,7 @@ import {postUserLogin} from "../../lib/api/user";
 import {
   UserOutlined,
   LockOutlined,
-} from '@ant-design/icons-vue';
+} from '@antdv-next/icons';
 
 const router = useRouter()
 const loading = ref(false)
@@ -63,9 +63,17 @@ const rule = {
 };
 
 async function login() {
-  const valid = await (formRef.value).validate();
-  if(!valid) return
-  submitErrChanel('login');
+  try {
+    await formRef.value.validateFields()
+  } catch (e) {
+    if (e?.errorFields) {
+      formRef.value.setFields(e.errorFields.map(f => ({
+        name: f.name,
+        errors: f.errors,
+      })))
+    }
+    return
+  }
   const data = await postUserLogin({
     ...form.value,
     schema:configKit.schema,

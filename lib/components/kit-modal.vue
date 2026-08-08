@@ -1,164 +1,129 @@
 <template>
   <a-modal
-      v-model:open="modal.visible"
+      :open="visible"
+      @update:open="handleOpenUpdate"
       :width="width"
       :ok-text="confirmText"
       :cancel-text="cancelText"
-      :confirm-loading="modal.loading"
-      :mask-closable="closeOnClickModal"
-      :keyboard="showClose"
-      :closable="showClose"
-      :after-close="cancel"
-      @close="cancel"
-      @ok="ok">
+      :confirm-loading="loading"
+      :mask-closable="maskClosable"
+      :keyboard="closable"
+      :closable="closable"
+      :after-close="handleCancel"
+      :panel-ref="setPanelRef"
+      v-bind="$attrs"
+      @cancel="handleCancel"
+      @ok="handleOk">
     <template #title>
       <div ref="modalTitleRef" class="flex items-center justify-center w-full cursor-move">
         <slot name="title"/>
       </div>
     </template>
-    <a-spin :spinning="!!modal.loading">
+    <a-spin :spinning="loading">
       <div class="max-h-[71vh] w-full overflow-auto">
-        <slot></slot>
+        <slot/>
       </div>
     </a-spin>
-    <KitErrChannel class="mt-2" :id="id"/>
-    <template #footer v-if="noFooter"></template>
-    <template #footer v-if="customFooter">
+    <KitErrChannel v-if="channelId" class="mt-2" :id="channelId"/>
+    <template v-if="footer === false" #footer/>
+    <template v-else-if="footer" #footer>
       <slot name="footer"/>
-    </template>
-    <template #modalRender="{ originVNode }">
-      <div :style="transformStyle">
-        <component :is="originVNode" />
-      </div>
     </template>
   </a-modal>
 </template>
+
 <script setup>
-import {ref, watch, computed, watchEffect} from "vue"
+import {ref, watch, watchEffect} from "vue"
 import {submitErrChanel} from "../store"
 import KitErrChannel from "./kit-err-channel.vue"
-import {useLoadingObject} from "../service"
-import {useDraggable} from "@vueuse/core";
+import {useDraggable} from "@vueuse/core"
+
 const props = defineProps({
-  // 确认逻辑
-  confirm: {
-    type: Function,
-    default: async () => {
-    },
-  },
-  // 取消逻辑
-  close: {
-    type: Function,
-    default: () => {
-    },
-  },
-  modal: {
-    type: Object,
-    default: {visible: true, loading: false},
-  },
-  width: {
-    type: String,
-    default: "40%",
-  },
-  // 无footer
-  noFooter: {
-    type: Boolean,
-    default: false,
-  },
-  // 是否自定义footer
-  customFooter: {
-    type: Boolean,
-    default: false,
-  },
-  showClose: {
-    type: Boolean,
-    default: true,
-  },
-  draggable:{
-    type: Boolean,
-    default:true
-  },
-  id: {
-    type: String,
-    default: null,
-  },
-  closeOnClickModal: {
-    type: Boolean,
-    default: false,
-  },
-  confirmText: {
-    type: String,
-    default: "确定",
-  },
-  cancelText: {
-    type: String,
-    default: "取消",
-  },
+  visible: { type: Boolean, default: false },
+  loading: { type: Boolean, default: false },
+  width: { type: String, default: '40%' },
+  confirm: { type: Function, default: async () => {} },
+  close: { type: Function, default: () => {} },
+  closable: { type: Boolean, default: true },
+  maskClosable: { type: Boolean, default: false },
+  confirmText: { type: String, default: '确定' },
+  cancelText: { type: String, default: '取消' },
+  footer: { type: [Boolean, Object], default: undefined },
+  channelId: { type: String, default: null },
 })
 
-// 拖拽部分
-const modalTitleRef = ref();
-const { x, y, isDragging } = useDraggable(modalTitleRef);
-const startX = ref(0);
-const startY = ref(0);
-const startedDrag = ref(false);
-const transformX = ref(0);
-const transformY = ref(0);
-const preTransformX = ref(0);
-const preTransformY = ref(0);
-const dragRect = ref({ left: 0, right: 0, top: 0, bottom: 0 });
+const emit = defineEmits(['update:visible', 'update:loading'])
+
+const modalTitleRef = ref()
+const panelEl = ref()
+const { x, y, isDragging } = useDraggable(modalTitleRef)
+
+const startX = ref(0)
+const startY = ref(0)
+const startedDrag = ref(false)
+const offsetX = ref(0)
+const offsetY = ref(0)
+const prevX = ref(0)
+const prevY = ref(0)
+const bounds = ref({ right: 0, bottom: 0 })
+
 watch([x, y], () => {
   if (!startedDrag.value) {
-    startX.value = x.value;
-    startY.value = y.value;
-    const bodyRect = document.body.getBoundingClientRect();
-    const titleRect = modalTitleRef.value.getBoundingClientRect();
-    dragRect.value.right = bodyRect.width - titleRect.width;
-    dragRect.value.bottom = bodyRect.height - titleRect.height;
-    preTransformX.value = transformX.value;
-    preTransformY.value = transformY.value;
+    startX.value = x.value
+    startY.value = y.value
+    const bodyRect = document.body.getBoundingClientRect()
+    const titleRect = modalTitleRef.value.getBoundingClientRect()
+    bounds.value.right = bodyRect.width - titleRect.width
+    bounds.value.bottom = bodyRect.height - titleRect.height
+    prevX.value = offsetX.value
+    prevY.value = offsetY.value
   }
-  startedDrag.value = true;
-});
-watch(isDragging, () => {
-  if (!isDragging) {
-    startedDrag.value = false;
-  }
-});
+  startedDrag.value = true
+})
+
+watch(isDragging, () => { startedDrag.value = false })
 
 watchEffect(() => {
-  if (startedDrag.value) {
-    transformX.value =
-        preTransformX.value +
-        Math.min(Math.max(dragRect.value.left, x.value), dragRect.value.right) -
-        startX.value;
-    transformY.value =
-        preTransformY.value +
-        Math.min(Math.max(dragRect.value.top, y.value), dragRect.value.bottom) -
-        startY.value;
+  if (!startedDrag.value) return
+  offsetX.value = prevX.value + Math.min(Math.max(0, x.value), bounds.value.right) - startX.value
+  offsetY.value = prevY.value + Math.min(Math.max(0, y.value), bounds.value.bottom) - startY.value
+  if (panelEl.value) {
+    panelEl.value.style.transform = `translate(${offsetX.value}px, ${offsetY.value}px)`
   }
-});
-const transformStyle = computed(() => {
-  return {
-    transform: `translate(${transformX.value}px, ${transformY.value}px)`,
-  };
-});
+})
 
-function cancel() {
-  if (props.id) {
-    // clearErrMsg(props.id);
-    // 关闭后还原err channel
-    submitErrChanel("")
+function setPanelRef(el) {
+  panelEl.value = el
+  if (el && (offsetX.value || offsetY.value)) {
+    el.style.transform = `translate(${offsetX.value}px, ${offsetY.value}px)`
   }
-  props.close()
-  props.modal.visible = false
 }
 
-async function ok() {
-  if (props.id) {
-    submitErrChanel(props.id)
+function handleCancel() {
+  if (props.channelId) submitErrChanel('')
+  props.close()
+}
+
+function handleOpenUpdate(val) {
+  if (!val) {
+    if (props.channelId) submitErrChanel('')
+    props.close()
   }
-  await useLoadingObject(props.modal, props.confirm)()
-  props.modal.visible = false
+  emit('update:visible', val)
+}
+
+async function handleOk() {
+  if (props.channelId) submitErrChanel(props.channelId)
+  emit('update:loading', true)
+  let shouldClose = true
+  try {
+    const result = await props.confirm()
+    if (result === false) shouldClose = false
+  } catch {
+    shouldClose = false
+  } finally {
+    emit('update:loading', false)
+  }
+  if (shouldClose) emit('update:visible', false)
 }
 </script>

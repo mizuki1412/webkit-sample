@@ -19,20 +19,20 @@
     <div class="w-[900px] h-[300px]">
       <kit-fabric-show v-if="displayObjs" :objects="displayObjs"></kit-fabric-show>
     </div>
-    <kit-modal :modal="addModal" :confirm="add">
+    <kit-modal v-model:visible="addVisible" v-model:loading="addLoading" :confirm="add">
       <template #title>增加元素</template>
-      <el-form ref="form" label-width="100px" :model="addModal.data">
+      <el-form ref="form" label-width="100px" :model="addForm">
         <el-form-item label="类型：" prop="type">
-          <el-select v-model="addModal.data.type" filterable>
+          <el-select v-model="addForm.type" filterable>
             <el-option label="图片" :value="1"></el-option>
             <el-option label="文字" :value="2"></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="内容：" prop="content">
-          <el-input v-model="addModal.data.content"></el-input>
+          <el-input v-model="addForm.content"></el-input>
         </el-form-item>
-        <el-form-item label="大小：" prop="content" v-if="addModal.data.type===2">
-          <el-input-number v-model="addModal.data.size"></el-input-number>
+        <el-form-item label="大小：" prop="content" v-if="addForm.type===2">
+          <el-input-number v-model="addForm.size"></el-input-number>
         </el-form-item>
       </el-form>
     </kit-modal>
@@ -47,17 +47,15 @@
 import {fabric} from 'fabric'
 import {onMounted, ref} from "vue";
 import {useLoading} from "../../../lib/service";
-import { message } from 'ant-design-vue';
+import { message } from 'antdv-next';
 
 const canvas = ref({})
 const loading = ref(false);
 const panning = ref(false);
 const rect = ref({})
-const addModal = ref({
-  visible:false,
-  loading: false,
-  data: undefined
-})
+const addVisible = ref(false)
+const addLoading = ref(false)
+const addForm = ref({})
 // 展示用的objects
 const displayObjs = ref()
 
@@ -231,20 +229,18 @@ async function light() {
 }
 
 async function showAdd(){
-  addModal.value = {
-    visible:true,
-    data: {}
-  }
+  addForm.value = {}
+  addVisible.value = true
 }
 
 async function add(){
-  if(!addModal.value.data.type){
+  if(!addForm.value.type){
     message.error("请填写完整")
     return
   }
-  switch (addModal.value.data.type){
+  switch (addForm.value.type){
     case 1:
-      fabric.Image.fromURL(addModal.value.data.content, function(oImg) {
+      fabric.Image.fromURL(addForm.value.content, function(oImg) {
 
         canvas.value.add(oImg);
       });
@@ -253,13 +249,13 @@ async function add(){
       break
     case 2:
       let o={fontSize:15}
-      if(addModal.value.data.size){
-        o.fontSize=addModal.value.data.size
+      if(addForm.value.size){
+        o.fontSize=addForm.value.size
       }
-      canvas.value.add(new fabric.IText(addModal.value.data.content,o))
+      canvas.value.add(new fabric.IText(addForm.value.content,o))
       break
   }
-  addModal.value.visible = false
+  addVisible.value = false
 }
 
 </script>

@@ -22,7 +22,7 @@
 </template>
 <script setup>
 import {onMounted, ref, watch} from "vue"
-import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
+import { PlusOutlined, LoadingOutlined } from '@antdv-next/icons';
 import {useLoading, useLoadingObject} from "../service";
 
 /**

@@ -5,12 +5,10 @@ import {useWebkit} from "./plugins/webkit"
 const app = createApp(App)
 useWebkit(app)
 
-// todo fc需要完整注册
-import antd from 'ant-design-vue';
+import antd from 'antdv-next';
 app.use(antd)
-import FcDesigner from '@form-create/antd-designer'
-app.use(FcDesigner)
-app.use(FcDesigner.formCreate)
+import formCreate from '@form-create/antdv-next'
+app.use(formCreate)
 
 
 app.config.productionTip = false

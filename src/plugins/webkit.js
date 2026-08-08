@@ -5,7 +5,7 @@ import {routes} from "../router"
 import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter"
 
 // 同时用于tailwind的初始css
-import 'ant-design-vue/dist/reset.css'
+import 'antdv-next/dist/reset.css'
 // 引入tailwind
 import "/lib/tailwind.css"
 // 引入其他框架的css，如果自动引入可能被tailwind覆盖。
