@@ -16,3 +16,6 @@ weekly.*
 .history
 
 *.local
+
+# OpenCode config
+opencode.json
