@@ -6,6 +6,8 @@
 /* 对应以前的preflight=false */
 /*@import "tailwindcss/preflight.css" layer(base);*/
 @import "tailwindcss/utilities.css" ;
+/* antdv-next token 映射为 tailwind 工具类（命名空间安全，避免覆盖原生 utility） */
+@import "@antdv-next/tailwind/compat.css";
 @import 'antdv-next/dist/reset.css';
 
 @layer utilities {

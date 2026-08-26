@@ -9,8 +9,7 @@
       :mask-closable="maskClosable"
       :keyboard="closable"
       :closable="closable"
-      :mask-style="maskStyle"
-      :modal-style="modalStyle"
+      :styles="{ mask: maskStyle, root: modalStyle }"
       :after-close="handleCancel"
       :panel-ref="setPanelRef"
       v-bind="$attrs"
@@ -39,6 +38,7 @@ import {ref, watch} from "vue"
 import {submitErrChanel} from "../store"
 import KitErrChannel from "./kit-err-channel.vue"
 import {useDraggable} from "@vueuse/core"
+import {modalFrostedMask} from "./kit-modal.js"
 
 const props = defineProps({
   visible: { type: Boolean, default: false },
@@ -54,7 +54,7 @@ const props = defineProps({
   channelId: { type: String, default: null },
   maskStyle: {
     type: Object,
-    default: () => ({ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }),
+    default: () => ({ ...modalFrostedMask }),
   },
   modalStyle: {
     type: Object,
