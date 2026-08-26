@@ -9,6 +9,8 @@
       :mask-closable="maskClosable"
       :keyboard="closable"
       :closable="closable"
+      :mask-style="maskStyle"
+      :modal-style="modalStyle"
       :after-close="handleCancel"
       :panel-ref="setPanelRef"
       v-bind="$attrs"
@@ -50,6 +52,19 @@ const props = defineProps({
   cancelText: { type: String, default: '取消' },
   footer: { type: [Boolean, Object], default: undefined },
   channelId: { type: String, default: null },
+  maskStyle: {
+    type: Object,
+    default: () => ({ backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }),
+  },
+  modalStyle: {
+    type: Object,
+    default: () => ({
+      borderRadius: '14px',
+      border: '1px solid rgba(0, 0, 0, 0.06)',
+      boxShadow: '0 16px 48px rgba(0, 0, 0, 0.16)',
+      overflow: 'hidden',
+    }),
+  },
 })
 
 const emit = defineEmits(['update:visible', 'update:loading'])
