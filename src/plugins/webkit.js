@@ -1,5 +1,4 @@
 import {configKitInit} from "/lib/store"
-import VueEcharts from "/lib/plugin/echarts"
 import {useRouter as _useRouter} from "/lib/router"
 import {routes} from "../router"
 import {routeBaseAfter, routeBaseBefore} from "/lib/router/intercepter"
@@ -22,22 +21,18 @@ import { Modal } from "antdv-next"
 })
 import KitIcon from "../../lib/components/kit-icon"
 import KitPaginationPage from "../../lib/components/kit-pagination-page"
-import KitRichText from "../../lib/components/kit-rich-text"
-import KitUpload from "../../lib/components/kit-upload"
-import KitGantt from "../../lib/components/kit-gantt"
 // tailwind中覆盖用的css
 import "../after.css"
 
 export function useWebkit(app) {
   configKitInit(import.meta.env)
-  // 全局注册lib组件
-  app.use(VueEcharts)
+  // 全局注册轻量 lib 组件。
+  // 重库组件（KitRichText/tinymce、KitGantt/dhtmlx、v-chart/echarts、form-create）
+  // 不在此注册——全局注册会把它们拉进首屏主包；在使用页面按需 import 即可
+  // （antdv 组件由 unplugin-vue-components 自动按需引入，无需 app.use）。
   app.use(KitModal)
   app.use(KitIcon)
   app.use(KitPaginationPage)
-  app.use(KitRichText)
-  app.use(KitUpload)
-  app.use(KitGantt)
 
   const router = _useRouter(app, routes)
   router.beforeEach(routeBaseBefore)

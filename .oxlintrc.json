@@ -1,0 +1,38 @@
+{
+    "$schema": "./node_modules/oxlint/configuration_schema.json",
+    "categories": {
+        "correctness": "error",
+        "perf": "warn"
+    },
+    "plugins": [
+        "import",
+        "unicorn",
+        "oxc"
+    ],
+    "env": {
+        "browser": true,
+        "es2024": true
+    },
+    "globals": {
+        // unplugin-vue-components 自动引入的组件与宏
+        "defineProps": "readonly",
+        "defineEmits": "readonly",
+        "defineModel": "readonly",
+        "defineExpose": "readonly",
+        "withDefaults": "readonly"
+    },
+    // 存量代码风格债（date.js 的 && 表达式、插件 config 未用参数、正则多余转义）
+    // 降为 warn，待重构对应文件时一并清零；新写代码按 error 收紧。
+    "rules": {
+        "no-unused-expressions": "warn",
+        "no-unused-vars": "warn",
+        "no-useless-escape": "warn",
+        "no-useless-catch": "warn"
+    },
+    "ignorePatterns": [
+        "dist/**",
+        "node_modules/**",
+        "auto-imports.d.ts",
+        "components.d.ts"
+    ]
+}

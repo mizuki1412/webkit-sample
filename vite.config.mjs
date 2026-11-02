@@ -19,8 +19,11 @@ export default defineConfig({
   server:{
     host: '0.0.0.0',
     proxy: {
+      // 与 go-frame 对齐：rest.port 默认 10000，rest.base 默认空。
+      // 后端若配置了 rest.base（如 /server），用 VITE_PROXY_TARGET 覆盖目标即可：
+      //   VITE_PROXY_TARGET=http://127.0.0.1:10000/server
       "/api": {
-        target: "http://127.0.0.1:10000/server",
+        target: getEnv('VITE_PROXY_TARGET') || "http://127.0.0.1:10000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
