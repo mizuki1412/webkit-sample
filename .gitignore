@@ -17,5 +17,4 @@ weekly.*
 
 *.local
 
-# OpenCode config
-opencode.json
+.openidea
