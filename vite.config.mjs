@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import {getEnv} from "./web-frame/plugin/vite-helper";
+import {getEnv} from "./web-frame/plugin/vite-helper.js";
 import tailwindcss from '@tailwindcss/vite'
-import {viteAddIcon} from "./web-frame/plugin/vite-add-icon";
-import {viteAddVant} from "./web-frame/plugin/vite-add-vant";
+import {viteAddIcon} from "./web-frame/plugin/vite-add-icon.js";
+import {viteAddVant} from "./web-frame/plugin/vite-add-vant.js";
 import {viteAddAntD} from "./web-frame/plugin/vite-add-antd.js";
 
 let plugins =  [
