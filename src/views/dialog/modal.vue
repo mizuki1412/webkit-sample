@@ -37,8 +37,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from "vue-router";
-import { useLoading } from "/lib/service";
-import { postCommonUpload } from "/lib/backend/go-frame";
+import { useLoading } from "/web-frame/service";
+import { postCommonUpload } from "/web-frame/backend/go-frame";
 import { message } from "antdv-next";
 
 const router = useRouter()

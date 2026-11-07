@@ -53,11 +53,11 @@
 <script setup>
 import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
-import {useLoading} from "/lib/service";
-import {formatDateTime} from "/lib/utils";
+import {useLoading} from "/web-frame/service";
+import {formatDateTime} from "/web-frame/utils";
 import {DeleteFilled, InfoOutlined,SearchOutlined} from '@antdv-next/icons';
-import KitTableCustomFilter from "/lib/components/table/kit-table-custom-filter.vue";
-import {antTableFilter} from "/lib/utils/antdv";
+import KitTableCustomFilter from "/web-frame/components/table/kit-table-custom-filter.vue";
+import {antTableFilter} from "/web-frame/utils/antdv";
 
 const router = useRouter()
 const loading = ref(false)

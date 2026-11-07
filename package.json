@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "npx vite --mode dev",
         "build": "npx vite build --mode pro",
-        "lint": "oxlint --config .oxlintrc.json src lib",
+        "lint": "oxlint --config .oxlintrc.json src web-frame",
         "test": "vitest run",
         "update-dep": "npx npm-check-updates -i"
     },

@@ -7,7 +7,7 @@
 <script setup>
 import { ref } from "vue"
 // tinymce 体积大，仅本页引入
-import KitRichText from "/lib/components/kit-rich-text.vue"
+import KitRichText from "/web-frame/components/kit-rich-text.vue"
 
 const content = ref('demo')
 </script>

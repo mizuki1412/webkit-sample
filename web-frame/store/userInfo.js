@@ -31,5 +31,5 @@ export function rmStoreUserInfo() {
 }
 
 // 权限判定（matchPrivilege/userHasPrivilege/checkPrivilege）属后端权限模型语义，
-// 不在核心层：go-frame 的实现（tokenkit.Principal 前端镜像）见 lib/backend/go-frame/principal.js。
+// 不在核心层：go-frame 的实现（tokenkit.Principal 前端镜像）见web-frame/backend/go-frame/principal.js。
 // 核心层只提供会话状态与 authFunc 约定，由路由 meta / 菜单过滤消费。

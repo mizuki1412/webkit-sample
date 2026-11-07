@@ -4,7 +4,7 @@ import {reactive} from "vue"
  * webkit需要的环境配置项，允许从import.meta.env中加载.
  *
  * 本文件只持有配置状态，不 import request——configKitInit 后由装配入口
- * （lib/index.js 的 setupWebkit）显式调 request 的 setAxiosDefaultBaseUrl()，
+ * web-frame/index.js 的 setupWebkit）显式调 request 的 setAxiosDefaultBaseUrl()，
  * 避免 store ↔ request 循环引用。
  */
 

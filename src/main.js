@@ -1,10 +1,10 @@
 import {createApp} from "vue"
 import App from "./App.vue"
-import {setupWebkit} from "/lib"
-import {goFrameBackend} from "/lib/backend/go-frame"
+import {setupWebkit} from "/web-frame"
+import {goFrameBackend} from "/web-frame/backend/go-frame"
 import {routes} from "./router"
 
-// antdv reset 与 tailwind 由 /lib 装配入口引入。
+// antdv reset 与 tailwind 由 /web-frame 装配入口引入。
 // 引入其他框架的css，如果自动引入可能被tailwind覆盖。
 import "vant/lib/index.css"
 // tailwind中覆盖用的css

@@ -41,12 +41,12 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue"
-// echarts 按需：仅本页引入 v-chart（组件本体在 /lib/plugin/echarts 具名导出）
-import { ECharts as VChart } from "/lib/plugin/echarts"
-import { sleep } from "/lib/utils"
-import { useLoading } from "/lib/service"
-import { chartConfig } from "/lib/service/echarts-helper"
-import { useConfirm } from "/lib/service/confirm";
+// echarts 按需：仅本页引入 v-chart（组件本体在 web-frame/plugin/echarts 具名导出）
+import { ECharts as VChart } from "/web-frame/plugin/echarts"
+import { sleep } from "/web-frame/utils"
+import { useLoading } from "/web-frame/service"
+import { chartConfig } from "/web-frame/service/echarts-helper"
+import { useConfirm } from "/web-frame/service/confirm";
 import { message } from "antdv-next";
 
 const loading = ref(false)

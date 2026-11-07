@@ -18,13 +18,13 @@ export default {
   plugins: [vue()],
   resolve: {
     alias: {
-      // 与 src 内的裸绝对路径 import（如 /lib/request）对齐
-      "/lib": fileURLToPath(new URL("./lib", import.meta.url)),
+      // 与 src 内的裸绝对路径 import（如 /web-frame/request）对齐
+      "/web-frame": fileURLToPath(new URL("./web-frame", import.meta.url)),
     },
   },
   test: {
     environment: "jsdom",
-    include: ["lib/**/*.test.js", "src/**/*.test.js"],
+    include: ["web-frame/**/*.test.js", "src/**/*.test.js"],
     setupFiles: ["./vitest.setup.js"],
   },
   define: {

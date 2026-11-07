@@ -96,7 +96,7 @@ export function routeBaseAfter(to) {
 
 // 用于router interceptor的自定义代码块
 export const RouteInterceptorConfig = {
-  // 校验用户登录：由后端适配器装配时注入（go-frame 的实现见 lib/backend/go-frame/index.js，
+  // 校验用户登录：由后端适配器装配时注入（go-frame 的实现见web-frame/backend/go-frame/index.js，
   // 逻辑：initToken → getUserInfo(false) 校验 → update/rm 本地会话）。
   // 核心层默认 fail-closed：未装配适配器时视作未登录，并给出明确提示。
   checkUserLogin: async function () {

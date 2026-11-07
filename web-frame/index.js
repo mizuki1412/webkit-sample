@@ -1,14 +1,14 @@
 /**
  * webkit 通用前端框架层 —— 标准装配入口。
  *
- * lib 分层（详见 lib/AGENTS.md）：
+ * 分层（详见 web-frame/AGENTS.md）：
  *   - 顶层目录（request/store/router/service/components/components-layout/utils/plugin）
- *     为后端中立的核心层，禁止 import lib/backend/*；
- *   - lib/backend/<name>/ 为后端适配器层（go-frame 是第一个适配器），允许 import 核心层。
+ *     为后端中立的核心层，禁止 import web-frame/backend/*；
+ *   - web-frame/backend/<name>/ 为后端适配器层（go-frame 是第一个适配器），允许 import 核心层。
  *
  * 新项目 main.js 一行接入：
- *   import {setupWebkit} from "/lib"
- *   import {goFrameBackend} from "/lib/backend/go-frame"
+ *   import {setupWebkit} from "/web-frame"
+ *   import {goFrameBackend} from "/web-frame/backend/go-frame"
  *   setupWebkit(app, {env: import.meta.env, backend: goFrameBackend, routes})
  */
 import "antdv-next/dist/reset.css"
@@ -41,7 +41,7 @@ const defaultComponents = [KitModal, KitIcon, KitPaginationPage]
  * webkit 标准装配：环境配置 → 后端适配器安装 → 组件注册 → 路由与全局守卫。
  * @param app Vue app 实例
  * @param opts env        环境变量，默认 import.meta.env
- *             backend    后端适配器（契约见 lib/AGENTS.md；go-frame 用 goFrameBackend）
+ *             backend    后端适配器（契约见web-frame/AGENTS.md；go-frame 用 goFrameBackend）
  *             routes     路由表；传入则创建 router、构建菜单并挂全局守卫
  *             components 全局注册的组件插件，默认 defaultComponents，传 [] 可全手动
  * @returns router（opts.routes 传入时）

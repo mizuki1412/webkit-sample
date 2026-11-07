@@ -37,7 +37,7 @@ use([
 ])
 
 // 默认导出为 install 插件（app.use 全局注册 v-chart）。
-// 推荐用法：在使用页面 `import VChart from "/lib/plugin/echarts/components"`
+// 推荐用法：在使用页面 `import VChart from "/web-frame/plugin/echarts/components"`
 // 局部引入，避免 echarts 进首屏主包。
 export default {
   install: function (Vue) {

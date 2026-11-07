@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "/lib/*": ["lib/*"]
+      "/web-frame/*": ["web-frame/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

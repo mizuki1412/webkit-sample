@@ -16,7 +16,7 @@ export function setBackend(backend) {
 /// getBackend: 取当前后端适配器（未装配时抛错并指路）
 export function getBackend() {
   if (!currentBackend) {
-    throw new Error("[webkit] 后端适配器未装配：请先 setupWebkit(app, {backend}) （见 lib/AGENTS.md）")
+    throw new Error("[webkit] 后端适配器未装配：请先 setupWebkit(app, {backend}) （见web-frame/AGENTS.md）")
   }
   return currentBackend
 }

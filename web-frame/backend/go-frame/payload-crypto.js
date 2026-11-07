@@ -11,10 +11,10 @@
  * WebCrypto，纯 JS 实现任何环境可用；后端 RSADecrypt 先试 OAEP 后回退 PKCS1v15，两种实现均兼容。
  *
  * 用法（app 启动时按需开启，未开启时 request() 行为不变）：
- *   import {payloadCryptoEnable} from "/lib/backend/go-frame"
+ *   import {payloadCryptoEnable} from "/web-frame/backend/go-frame"
  *   payloadCryptoEnable({exclude: ["/common/"]})
  *
- * 开启后 lib/request 的 request() 经 RequestConfig.payloadCodec 钩子自动：
+ * 开启后web-frame/request 的 request() 经 RequestConfig.payloadCodec 钩子自动：
  * JSON 请求体加密为信封 + 携带 X-Enc-Key；响应头带 X-Enc-Payload: 1 时自动解密；
  * 上传(multipart)/下载(blob) 请求自动跳过。服务端重启换钥（未配置 crypto.rsaPrivateKey
  * 时自动生成临时密钥）导致的「报文解密失败」会自动清公钥缓存并重试一次，无需手动刷新页面。
@@ -57,7 +57,7 @@ export function payloadCryptoDisable() {
   RequestConfig.payloadCodec = null
 }
 
-// RequestConfig.payloadCodec 契约（见 lib/request/index.js）的 go-frame 实现
+// RequestConfig.payloadCodec 契约（见web-frame/request/index.js）的 go-frame 实现
 const goFramePayloadCodec = {
   encKeyHeader: EncKeyHeader,
   match: payloadCryptoMatch,
