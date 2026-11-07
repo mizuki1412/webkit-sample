@@ -1,6 +1,8 @@
 import {createApp} from "vue"
 import App from "./App.vue"
-import {setupWebkit} from "/web-frame"
+import {defaultComponents, setupWebkit} from "/web-frame"
+import KitModal from "/web-frame/components/kit-modal"
+import KitPaginationPage from "/web-frame/components/kit-pagination-page"
 import {goFrameBackend} from "/web-frame/backend/go-frame"
 import {routes} from "./router"
 
@@ -15,6 +17,8 @@ setupWebkit(app, {
   env: import.meta.env,
   backend: goFrameBackend,
   routes,
+  // web-frame 新版 defaultComponents 仅保留 KitIcon，KitModal/KitPaginationPage 改按需传入
+  components: [...defaultComponents, KitModal, KitPaginationPage],
 })
 
 // antdv 组件由 unplugin-vue-components（AntdvNextResolver）按需自动引入；
