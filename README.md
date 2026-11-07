@@ -1,6 +1,6 @@
 # webkit-sample
 
-The sample usage for Vue3+Vite+TailwindCSS/DaisyUI project.
+The sample usage for Vue3+Vite+TailwindCSS project.
 
 App部分采用uniapp，参考uniapp-sample.
 
