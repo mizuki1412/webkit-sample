@@ -46,7 +46,7 @@
  */
 import {fabric} from 'fabric'
 import {onMounted, ref} from "vue";
-import {useLoading} from "/web-frame/service";
+import {useLoading} from "web-frame/service";
 import { message } from 'antdv-next';
 
 const canvas = ref({})

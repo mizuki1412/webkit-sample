@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "npx vite --mode dev",
         "build": "npx vite build --mode pro",
-        "lint": "oxlint --config .oxlintrc.json src web-frame",
+        "lint": "oxlint --config .oxlintrc.json src",
         "test": "vitest run",
         "update-dep": "npx npm-check-updates -i"
     },
@@ -37,7 +37,8 @@
         "vue": "^3.5.44",
         "vue-echarts": "^8.3.2",
         "vue-pdf-embed": "^2.1.7",
-        "vue-router": "^5.4.0"
+        "vue-router": "^5.4.0",
+        "web-frame": "file:../web-frame"
     },
     "devDependencies": {
         "@antdv-next/auto-import-resolver": "^1.2.0",

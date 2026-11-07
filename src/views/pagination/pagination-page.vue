@@ -12,7 +12,7 @@
 <script setup>
 import {ref, onMounted} from 'vue';
 import {useRouter} from "vue-router";
-import {useLoading} from "/web-frame/service";
+import {useLoading} from "web-frame/service";
 
 const router = useRouter()
 const loading = ref(false)
