@@ -1,4 +1,4 @@
-import {RouteName} from "../../lib/router"
+import {RouteName} from "/lib/router"
 
 export const routes = [
   // web
@@ -19,7 +19,7 @@ export const routes = [
     path: "/",
     name: RouteName.index,
     redirect: {name: "page1"},
-    component: () => import("../../lib/components-layout/kit-layout-admin.vue"),
+    component: () => import("/lib/components-layout/kit-layout-admin.vue"),
     meta: {
       menu: true,
       authDisable: true,

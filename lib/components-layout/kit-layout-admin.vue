@@ -64,9 +64,9 @@
 </template>
 <script setup>
 import {ref, watch} from "vue"
-import {RouteMetaKey, storePageMenu} from "/lib/router"
+import {RouteMetaKey, storePageMenu} from "../router"
 import {useRouter} from "vue-router"
-import {configKit, storeCurrentRoute} from "/lib/store"
+import {configKit, storeCurrentRoute} from "../store"
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,

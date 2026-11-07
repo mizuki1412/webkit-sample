@@ -33,10 +33,10 @@
 <script setup>
 
 import {ref} from "vue";
-import {configKit, storeUserInfo, submitErrChanel, updateStoreUserInfo} from "../../lib/store";
-import {RouteName} from "../../lib/router";
+import {configKit, storeUserInfo, submitErrChanel, updateStoreUserInfo} from "/lib/store";
+import {RouteName} from "/lib/router";
 import {useRouter} from "vue-router";
-import {postUserLogin} from "../../lib/api/user";
+import {postUserLogin} from "/lib/backend/go-frame";
 import {
   UserOutlined,
   LockOutlined,

@@ -35,8 +35,7 @@
 <script setup>
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import { storeUserInfo } from "../store"
-import { postUserLogout, postUserUpdatePwd } from "../api/user"
+import { getBackend, storeUserInfo } from "../store"
 import { RouteName } from "../router"
 import { message } from "antdv-next";
 
@@ -80,7 +79,7 @@ async function updatePwd() {
         }
         return false
     }
-    await postUserUpdatePwd({
+    await getBackend().user.updatePwd({
         oldPwd: pwdForm.value.oldPwd,
         newPwd: pwdForm.value.newPwd,
     })
@@ -91,7 +90,7 @@ async function updatePwd() {
 async function logout() {
     // todo global loading
     await props.beforeLogout()
-    await postUserLogout()
+    await getBackend().user.logout()
     await router.push({ name: RouteName.login })
 }
 </script>

@@ -45,8 +45,8 @@ import { ref, onMounted } from "vue"
 import { ECharts as VChart } from "/lib/plugin/echarts"
 import { sleep } from "/lib/utils"
 import { useLoading } from "/lib/service"
-import { chartConfig } from "../../../lib/service/echarts-helper"
-import { useConfirm } from "../../../lib/service/confirm";
+import { chartConfig } from "/lib/service/echarts-helper"
+import { useConfirm } from "/lib/service/confirm";
 import { message } from "antdv-next";
 
 const loading = ref(false)

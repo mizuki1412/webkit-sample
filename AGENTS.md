@@ -1,5 +1,7 @@
 # WebKit Sample — Agent Guide
 
+go-frame 后端的示例前端工程。**框架层（lib/）的分层规则、适配器契约、go-frame 对接约定、新项目引导模板见 [lib/AGENTS.md](lib/AGENTS.md)**——改 lib、接新后端、起新项目先读它；本文件只记 sample 工程自身的事项。
+
 ## Stack
 
 Vue 3 + Vite 8 (Rolldown) + Tailwind CSS 4 + antdv-next (+ Vant for mobile views)
@@ -16,51 +18,31 @@ npm i --force    # required: force install due to peer dep conflicts
 npm run dev      # npx vite --mode dev       → loads .env + .env.dev
 npm run build    # npx vite build --mode pro → loads .env + .env.pro
 npm run lint     # oxlint（0 error 才算过；存量 warning 见 .oxlintrc.json 注释）
-npm run test     # vitest run（纯函数单测：权限判定、分页解析）
+npm run test     # vitest run（纯函数单测：分页解析、权限镜像、报文加密互操作向量）
 ```
 
 Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mjs`.
 
-## Backend (go-frame) 对接约定
-
-- 后端为 `go-frame`（默认 `rest.port=10000`、`rest.base` 空）；dev 代理 `/api → VITE_PROXY_TARGET || http://127.0.0.1:10000`。
-- 响应包裹 `{result, message, data, total}`：0 成功、**401 登录失效**、**403 权限不足**、500 业务错误。
-  401 → `lib/request/index.js` 清会话跳登录页（带 redirect）；403 → 仅提示。**勿把任何 401 处理改回 reload**（会死循环）。
-- 权限判定权威在后端 `tokenkit.Principal`；前端镜像实现在 `lib/store/userInfo.js`（`matchPrivilege`/`userHasPrivilege`，多角色并集 − extend.privilegeExclude，支持 `*` 与 `user:*` 通配），与后端语义逐条对齐，两边改一处必须同步另一处。数据形状：`user.roles[].privileges`。
-- 登出 `postUserLogout` 是 **POST /user/logout**，先请求成功（finally 里也清本地）再清 store——顺序反了会假登出。
-- 服务端分页：后端 `JsonSuccessWithPage` 返回顶层 `{data, total}`；用 `lib/utils/page.js` 的 `parsePage(ret, currentPage, pageSize)` 映射成 kit-pagination-page 的 `{data, currentPage, total, totalPage}`。
-- 文件上传/下载走 `lib/api/common.js`（`/common/upload`、`/common/download[/private]`、`/common/file/list|del`），私有下载靠 cookie 免 header；已删除的 OSS/service3 链路勿再引用。
-
 ## Architecture
 
-- **Entry**: `src/main.js` → `src/plugins/webkit.js` bootstraps router, store, 轻量全局组件（KitModal/KitIcon/KitPaginationPage）
-- **App shell**: `src/App.vue` — wraps `<router-view>` in antdv's `a-config-provider` + `a-app`
-- **Router**: defined in `src/router/index.js`, uses `lib/router` for base setup + interceptors (`routeBaseBefore`/`routeBaseAfter`)
-- **Lib** (`lib/`): reusable toolkit — components, layout, request, store, router, service, utils. Imported via absolute paths (e.g. `/lib/router`)
-- **Views**: admin views in `src/views/`, mobile views in `src/views-app/`
+- **Entry**: `src/main.js` → `setupWebkit(app, {env, backend: goFrameBackend, routes})`（lib 标准装配入口）
+- **App shell**: `src/App.vue` — wraps `<router-view>` in antdv's `a-config-provider` + `a-app`（中文 locale 在此设置）
+- **Router**: `src/router/index.js` 定义路由表，布局组件取 `/lib/components-layout/kit-layout-admin.vue`
+- **Business api**: `src/api/`（示例 `test.js`），页面不裸发 axios
+- **Views**: admin 视图 `src/views/`，移动端视图 `src/views-app/`（当前未接路由，处于闲置状态）
 
-## Bundle 纪律（主包体积）
+## Backend (go-frame)
 
-主包目前 ~196KB (gzip ~57KB)。重库**禁止**进 `main.js`/`webkit.js` 全局注册：
+- 后端为 `go-frame`（默认 `rest.port=10000`、`rest.base` 空）；dev 代理 `/api → VITE_PROXY_TARGET || http://127.0.0.1:10000`。生产走同源 nginx 反代（若后端配了 `rest.base` 则反代目标为 `/server`）。
+- 响应信封/401/403 语义、登出顺序、parsePage 分页、payloadCryptoEnable 报文加密、权限镜像同步——全部见 [lib/AGENTS.md](lib/AGENTS.md) 的「go-frame 适配器对接约定」。
+- 本工程默认未开启报文加密；需要时在 `src/main.js` 调 `payloadCryptoEnable()`（自 `/lib/backend/go-frame` 引入）。
 
-- antdv 组件靠 `unplugin-vue-components`（AntdvNextResolver）按需——**不要** `app.use(antd)`
-- `KitRichText`(tinymce)、`KitGantt`(dhtmlx)、`v-chart`(echarts)、`form-create` 只在使用页面局部 import（页面在 `import {ECharts as VChart} from "/lib/plugin/echarts"` 这类具名导入）
-- 新增重组件同样处理；构建后主包超 ~300KB 需要说明理由
+## Sample 专属约定
 
-## UI Frameworks
-
-- **antdv-next** (no import needed): auto-imported by `unplugin-vue-components` via `@antdv-next/auto-import-resolver`
-- **Vant** (for mobile pages): also auto-imported; CSS loaded globally in `webkit.js`
-- **Icons**: `vite-plugin-svg-icons` — put SVGs in `src/assets/icons/`, use `<KitIcon>` component
-
-## Key Conventions
-
-- Vite base URL comes from env var `VITE_ASSETS_BASE_URL`
-- `lib/plugin/vite-helper.js` reads env with `loadEnv(mode, process.cwd())` — only `VITE_*` vars are exposed
-- TinyMCE: place language pack in `public/tinymce/`
-- `lib/plugin/vite-add-element.js` exists but is **not wired** into `vite.config.mjs`
-- Tests: vitest（`lib/**/*.test.js`）；lint: oxlint（配置 `.oxlintrc.json`）；typecheck 仍无 — only Prettier (`semi: false`)
-- Chinese locale (antdv + dayjs) set in `App.vue`
+- `src/after.css`：tailwind 之上的覆盖样式，在 `src/main.js` 于 tailwind 之后引入。
+- TinyMCE 语言包放 `public/tinymce/`；`vite-plugin-svg-icons` 扫 `src/assets/icons/`，图标组件用 `<KitIcon>`（lib/assets/icons/common 有公共 svg，用时复制过来）。
+- form-create 只在 `/fc/*` demo 页局部引入；重库（tinymce/dhtmlx/echarts）同样页面局部 import——Bundle 纪律详见 lib/AGENTS.md。
+- Tests: vitest（`lib/**/*.test.js` + `src/**/*.test.js`）；lint: oxlint（`.oxlintrc.json`）；typecheck 仍无 — only Prettier (`semi: false`)。
 
 ## Prettier
 

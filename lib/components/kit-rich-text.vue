@@ -6,8 +6,7 @@
 <script setup>
 import Editor from "@tinymce/tinymce-vue"
 import { onMounted, ref } from "vue"
-import { FileLink, postCommonUpload } from "../api/common"
-import { configKit } from "../store"
+import { configKit, getBackend } from "../store"
 
 import tinymce from 'tinymce/tinymce'
 import 'tinymce/skins/ui/oxide/skin'
@@ -79,9 +78,9 @@ const option = ref({
 
     async images_upload_handler(blobInfo, success, failure) {
         try {
-            // 富文本图片走公共上传：下载免鉴权，<img> 标签可直接渲染
-            const { path } = await postCommonUpload({ file: blobInfo.blob(), public: true })
-            success(FileLink(path))
+            // 富文本图片走后端适配器的公共上传：下载免鉴权，<img> 标签可直接渲染
+            const { path } = await getBackend().file.upload({ file: blobInfo.blob(), public: true })
+            success(getBackend().file.link(path))
         } catch (e) {
             failure(e?.message || "图片上传失败")
         }
