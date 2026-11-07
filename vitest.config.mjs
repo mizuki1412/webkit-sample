@@ -3,9 +3,9 @@ import vue from "@vitejs/plugin-vue"
 
 // vitest 复用 vite 插件链；unplugin-vue-components 的 antdv resolver 对
 // 单测（目前只覆盖纯函数）不必要，未接入以保持测试启动轻量。
-// 注意：config 文件自身不能用根绝对路径 import（别名此时尚未生效），
+// 注意：config 文件自身不能用 /web-frame 根绝对路径 import（别名此时尚未生效），
 // 初始化放在 vitest.setup.js 中完成。
-// web-frame 框架自身的单测在框架仓库内运行（../web-frame 下 npm test）。
+// web-frame 框架自身的单测在框架仓库内运行（web-frame/ 下 npm test）。
 const fakeEnv = {
   VITE_APP_NAME: "test",
   VITE_REQUEST_BASE_URL: "/api",
@@ -17,6 +17,12 @@ const fakeEnv = {
 
 export default {
   plugins: [vue()],
+  resolve: {
+    alias: {
+      // 与 src 内的裸绝对路径 import（如 /web-frame/request）对齐
+      "/web-frame": fileURLToPath(new URL("./web-frame", import.meta.url)),
+    },
+  },
   test: {
     environment: "jsdom",
     include: ["src/**/*.test.js"],

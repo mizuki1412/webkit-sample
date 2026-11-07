@@ -1,7 +1,7 @@
 import {createApp} from "vue"
 import App from "./App.vue"
-import {setupWebkit} from "web-frame"
-import {goFrameBackend} from "web-frame/backend/go-frame"
+import {setupWebkit} from "/web-frame"
+import {goFrameBackend} from "/web-frame/backend/go-frame"
 import {routes} from "./router"
 
 // antdv reset 与 tailwind 由 /web-frame 装配入口引入。

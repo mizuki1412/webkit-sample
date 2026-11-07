@@ -6,9 +6,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from "vue-router";
-import { useLoading } from "web-frame/service";
+import { useLoading } from "/web-frame/service";
 // dhtmlx-gantt 体积大，仅本页引入
-import KitGantt from "web-frame/components/kit-gantt.vue";
+import KitGantt from "/web-frame/components/kit-gantt.vue";
 
 const router = useRouter()
 const loading = ref(false)

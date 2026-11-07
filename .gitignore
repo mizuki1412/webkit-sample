@@ -18,3 +18,6 @@ weekly.*
 *.local
 
 .openidea
+
+# web-frame 框架仓库：独立 git 仓库嵌套在项目内，不入父仓库
+/web-frame/

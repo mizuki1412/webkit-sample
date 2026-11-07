@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "/web-frame/*": ["web-frame/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
