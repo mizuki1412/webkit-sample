@@ -48,7 +48,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 
 - `src/after.css`：tailwind 之上的覆盖样式，在 `src/main.js` 于 tailwind 之后引入。
 - TinyMCE 语言包放 `public/tinymce/`；`vite-plugin-svg-icons` 扫 `src/assets/icons/`，图标组件用 `<KitIcon>`（web-frame/assets/icons/common 有公共 svg，用时复制过来）。
-- form-create 只在 `/fc/*` demo 页局部引入；重库（tinymce/dhtmlx/echarts）同样页面局部 import——Bundle 纪律详见 web-frame/AGENTS.md。
+- 重库（tinymce/echarts）在用到它的页面局部 import，避免整库进首屏主包——Bundle 纪律详见 web-frame/AGENTS.md。
 - Tests: vitest（`src/**/*.test.js`；框架测试随 web-frame 仓库）；lint: oxlint（`.oxlintrc.json`）；typecheck 仍无 — only Prettier (`semi: false`)。
 
 ## Prettier
