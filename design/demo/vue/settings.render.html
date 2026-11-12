@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Volt Settings · token-driven render check</title>
+<!-- Uses the REAL generated tokens (out/tailwind.v4.css) via out/theme.css.
+     This is a static stand-in for the Vue SFC (demo/vue/SettingsView.vue); the
+     SFC uses identical class names (bg-surface, rounded-[16px], text-text-faint…). -->
+<link rel="stylesheet" href="../../out/theme.css">
+<link rel="stylesheet" href="../../out/tailwind.v4.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{width:1440px;min-height:900px;background:var(--color-bg);color:var(--color-text);
+    font-family:"Segoe UI",Inter,system-ui,sans-serif;font-variant-numeric:tabular-nums;
+    -webkit-font-smoothing:antialiased}
+  .app{display:grid;grid-template-columns:var(--layout-sidebar) minmax(0,1fr);min-height:100vh}
+  .side{border-right:1px solid var(--color-border);padding:var(--space-6);display:flex;flex-direction:column}
+  .logo{display:flex;align-items:center;gap:10px;padding:0 var(--space-2) var(--space-6)}
+  .logo-mark{width:26px;height:26px;border-radius:8px;background:var(--color-accent);color:var(--color-accent-ink);
+    display:grid;place-items:center;font-weight:700}
+  .logo-word{font-size:15px;font-weight:700;letter-spacing:.14em}
+  .nav{display:flex;flex-direction:column;gap:var(--space-1)}
+  .nav a{display:flex;align-items:center;gap:11px;height:40px;padding:0 var(--space-3);border-radius:10px;color:var(--color-text-muted);text-decoration:none;font-size:var(--font-size-base);font-weight:500}
+  .nav a.on{background:var(--color-surface-raised);color:var(--color-text)}
+  .side-foot{margin-top:auto}
+  .plan{border:1px solid var(--color-border);background:var(--color-surface);border-radius:14px;padding:var(--space-4)}
+  .plan b{display:block;font-size:var(--font-size-sm);font-weight:600}
+  .plan p{margin:var(--space-1) 0 var(--space-3);font-size:var(--font-size-xs);line-height:1.45;color:var(--color-text-faint)}
+  .plan a{display:block;text-align:center;border:1px solid var(--color-border);color:var(--color-text-muted);border-radius:8px;padding:var(--space-2) 0;font-size:var(--font-size-xs);font-weight:600;text-decoration:none}
+  .main{display:flex;flex-direction:column;min-width:0}
+  .top{height:var(--layout-topbar);display:flex;align-items:center;gap:var(--space-3);padding:0 var(--layout-content-x);border-bottom:1px solid var(--color-border)}
+  .search{display:flex;align-items:center;width:280px;height:36px;background:var(--color-surface-raised);border:1px solid var(--color-border);border-radius:10px;padding:0 var(--space-3);color:var(--color-text-faint);font-size:var(--font-size-sm)}
+  .top-right{margin-left:auto;display:flex;align-items:center;gap:var(--space-3)}
+  .saved{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--font-size-xs);color:var(--color-text-faint)}
+  .saved i{width:6px;height:6px;border-radius:999px;background:var(--color-positive)}
+  .avatar{width:36px;height:36px;border-radius:999px;background:var(--color-surface-raised);border:1px solid var(--color-border);display:grid;place-items:center;font-size:var(--font-size-sm);font-weight:600;color:var(--color-text-muted)}
+  .btn-primary{height:36px;padding:0 var(--space-4);border:0;border-radius:10px;background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--font-size-sm);font-weight:700}
+  .content{padding:var(--layout-content-y) var(--layout-content-x);display:flex;flex-direction:column;gap:var(--space-5)}
+  .page-head h1{margin:0;font-size:var(--font-size-xl);line-height:1.1;letter-spacing:-.01em;font-weight:600}
+  .page-head p{margin:5px 0 0;font-size:var(--font-size-sm);color:var(--color-text-faint)}
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:var(--layout-gap);align-items:start}
+  .stack{display:flex;flex-direction:column;gap:var(--layout-gap)}
+  .card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:16px;padding:var(--layout-card-pad)}
+  .card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4)}
+  .card-head h2{margin:0;font-size:var(--font-size-base);font-weight:600}
+  .card-head span{font-size:var(--font-size-xs);color:var(--color-text-faint)}
+  .profile{display:flex;align-items:center;gap:var(--space-4)}
+  .avatar-lg{width:56px;height:56px;border-radius:999px;background:var(--color-surface-raised);border:1px solid var(--color-border);display:grid;place-items:center;font-size:var(--font-size-md);font-weight:600;color:var(--color-text-muted)}
+  .profile h3{margin:0;font-size:var(--font-size-lg);font-weight:600}
+  .profile p{margin:2px 0 0;font-size:var(--font-size-sm);color:var(--color-text-faint)}
+  .profile .pill{display:inline-flex;align-items:center;height:22px;padding:0 var(--space-2);margin-top:var(--space-2);border-radius:999px;background:var(--color-accent-weak);color:var(--color-accent);font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .profile .btn-ghost{margin-left:auto;height:36px;padding:0 var(--space-3);border:1px solid var(--color-border);border-radius:10px;background:transparent;color:var(--color-text-muted);font-size:var(--font-size-xs);font-weight:600}
+  .rows{display:flex;flex-direction:column}
+  .row{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--color-border)}
+  .row:last-child{border-bottom:0;padding-bottom:0}
+  .row:first-child{padding-top:0}
+  .row-body{flex:1;min-width:0}
+  .row-body b{display:block;font-size:var(--font-size-sm);font-weight:600}
+  .row-body small{display:block;margin-top:2px;font-size:var(--font-size-xs);line-height:1.45;color:var(--color-text-faint)}
+  .toggle{width:34px;height:20px;border-radius:999px;background:var(--color-accent);position:relative;flex:none}
+  .toggle::after{content:"";position:absolute;top:3px;right:3px;width:14px;height:14px;border-radius:999px;background:var(--color-accent-ink)}
+  .toggle.off{background:var(--color-data-3)}
+  .toggle.off::after{right:auto;left:3px;background:var(--color-text-muted)}
+  .pill{display:inline-flex;align-items:center;height:22px;padding:0 var(--space-2);border-radius:999px;font-size:10.5px;font-weight:700}
+  .pill.neutral{background:var(--color-surface-raised);color:var(--color-text-muted)}
+  .btn-secondary{height:36px;padding:0 var(--space-4);border:1px solid var(--color-border);border-radius:10px;background:transparent;color:var(--color-text);font-size:var(--font-size-xs);font-weight:600}
+  .btn-quiet{height:36px;padding:0 var(--space-3);border:0;background:transparent;color:var(--color-text-muted);font-size:var(--font-size-xs)}
+  .device{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:1px solid var(--color-border)}
+  .device:last-child{border-bottom:0;padding-bottom:0}
+  .device:first-of-type{padding-top:0}
+  .device-icon{width:30px;height:30px;border-radius:8px;background:var(--color-surface-raised);border:1px solid var(--color-border);flex:none}
+  .device b{display:block;font-size:var(--font-size-sm);font-weight:600}
+  .device small{display:block;margin-top:2px;font-size:10.5px;color:var(--color-text-faint)}
+  .device .link-btn{margin-left:auto;height:28px;padding:0 var(--space-2);border:0;background:transparent;color:var(--color-text-muted);font-size:var(--font-size-xs);font-weight:600}
+  .help p{margin:0 0 var(--space-3);font-size:var(--font-size-xs);line-height:1.45;color:var(--color-text-faint)}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><div class="logo-mark">V</div><div class="logo-word">VOLT</div></div>
+    <nav class="nav">
+      <a href="#">Overview</a>
+      <a class="on" href="#">Settings</a>
+    </nav>
+    <div class="side-foot">
+      <div class="plan">
+        <b>Volt Pro</b>
+        <p>Renews Dec 1 · 0 fees on your first $50k.</p>
+        <a href="#">Manage plan</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="top">
+      <div class="search">Search settings…</div>
+      <div class="top-right">
+        <span class="saved"><i></i>All changes saved</span>
+        <div class="avatar">AK</div>
+        <div class="btn-primary" style="display:grid;place-items:center">Save changes</div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-head">
+        <div>
+          <h1>Settings</h1>
+          <p>Manage your profile, preferences and account security.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="stack">
+          <section class="card">
+            <div class="card-head"><h2>Profile</h2><span>Visible to your team</span></div>
+            <div class="profile">
+              <div class="avatar-lg">AK</div>
+              <div>
+                <h3>Alex Kim</h3>
+                <p>alex@volt.finance</p>
+                <span class="pill">Pro member</span>
+              </div>
+              <button class="btn-ghost">Edit profile</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2>Preferences</h2><span>3 enabled</span></div>
+            <div class="rows">
+              <div class="row">
+                <div class="row-body"><b>Weekly portfolio report</b><small>A summary every Monday at 09:00, delivered by email.</small></div>
+                <div class="toggle"></div>
+              </div>
+              <div class="row">
+                <div class="row-body"><b>Price alerts</b><small>Notify me when a held asset moves more than 5% in 24h.</small></div>
+                <div class="toggle"></div>
+              </div>
+              <div class="row">
+                <div class="row-body"><b>Hide balances</b><small>Blur portfolio values until you hover over them.</small></div>
+                <div class="toggle off"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="stack">
+          <section class="card">
+            <div class="card-head"><h2>Plan</h2><span class="pill neutral">PRO</span></div>
+            <div style="display:flex;align-items:baseline;gap:var(--space-2);margin:var(--space-2) 0 var(--space-1)">
+              <b style="font-size:var(--font-size-xl);font-weight:600;letter-spacing:-.01em;line-height:1.1">$12</b>
+              <small style="font-size:var(--font-size-xs);color:var(--color-text-faint)">/ month</small>
+            </div>
+            <p style="margin:0 0 var(--space-4);font-size:var(--font-size-xs);color:var(--color-text-faint)">Billed annually · next charge Dec 1, 2026</p>
+            <div style="display:flex;gap:var(--space-2)">
+              <button class="btn-secondary">Manage plan</button>
+              <button class="btn-quiet">Billing history</button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-head"><h2>Devices</h2><span>2 active</span></div>
+            <div class="device">
+              <div class="device-icon"></div>
+              <div><b>MacBook Pro</b><small>San Francisco · current session</small></div>
+              <button class="link-btn">Sign out</button>
+            </div>
+            <div class="device">
+              <div class="device-icon"></div>
+              <div><b>iPhone 16</b><small>San Francisco · 2 hours ago</small></div>
+              <button class="link-btn">Sign out</button>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </div>
+</div>
+</body>
+</html>
