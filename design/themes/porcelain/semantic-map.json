@@ -1,0 +1,22 @@
+{
+  "$comment": "Porcelain 语义映射。证据源 themes/porcelain/measurements.json + 原图 pics/ec71aa5bdb76f08b598df0c55ed63b3c.webp",
+  "source": "pics/ec71aa5bdb76f08b598df0c55ed63b3c.webp",
+  "product": "Commercehq 电商运营台（销售总览 + 柱图 + 漏斗表 + 右侧活动流）",
+  "roles": [
+    { "token": "color.bg", "value": "#E9EDF5", "evidence": "palette[0] #DCE3EF share=29.2%", "why": "外层画布淡紫灰；应用内取淡化值，面板浮在其上" },
+    { "token": "color.surface", "value": "#FFFFFF", "evidence": "palette[1] share=28.5%", "why": "三大面板（侧栏/主区/右栏）均为白" },
+    { "token": "color.surface-raised", "value": "#F5F7FB", "evidence": "palette[2] share=23.4%", "why": "表格行斑马纹/内嵌区块底" },
+    { "token": "color.accent", "value": "#3A78F2", "evidence": "palette[4] share=4.1%", "why": "柱图/主按钮/导航选中/进度线同色" },
+    { "token": "color.text-heading", "value": "#0B1B4D", "evidence": "palette[10] #010B48", "why": "海军蓝标题是签名（大写字距标签 + 深蓝大数字）" },
+    { "token": "tracking.caps", "value": "0.08em", "evidence": "TOTAL SALES / GROWING AT... / REVENUE BY CHANNEL 目测", "why": "全大写宽字距区块标签贯穿全图" },
+    { "token": "color.positive/negative", "value": "#17A34A/#E5484D", "evidence": "↑27%绿 ↓34%红 目测", "why": "KPI 涨跌三角 + 渠道百分比" },
+    { "token": "radius.lg", "value": "10px", "evidence": "blocks 边缘检测", "why": "面板小圆角，商务克制" },
+    { "token": "layout.sidebar", "value": "232px", "evidence": "blocks[侧栏包围盒]", "why": "白底侧栏，选中项为蓝底白字按钮（左侧带蓝 notch）" }
+  ],
+  "states": {
+    "note": "样图为静态；交互态按商务惯例补齐（推断）",
+    "hover": "面板描边加深 + 行底 surface-raised",
+    "selected-nav": "蓝底白字圆角按钮 + 左侧 3px 蓝 notch（样图 Dashboard 项）",
+    "progress": "渠道条目下 3px 蓝色进度线（样图 REVENUE BY CHANNEL）"
+  }
+}

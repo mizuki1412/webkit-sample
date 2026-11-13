@@ -1,0 +1,23 @@
+{
+  "$comment": "Noir 语义映射。证据源 themes/noir/measurements.json + 原图 pics/9e86025a06aa77238927e02082f6b2fd.jpg",
+  "source": "pics/9e86025a06aa77238927e02082f6b2fd.jpg",
+  "product": "金融/资产仪表盘（同一界面的明暗双样图，本语言取暗色变体为唯一主体）",
+  "roles": [
+    { "token": "color.bg", "value": "#131118", "evidence": "palette[5] #15141A 与暗框 #221F2A 之间", "why": "近黑带紫的画布，靠亮度极小差分层" },
+    { "token": "color.surface", "value": "#1B1920", "evidence": "palette 实测 #1B1920", "why": "卡片一级表面" },
+    { "token": "color.surface-raised", "value": "#26232E", "evidence": "palette 实测 #27242F/#221F2A", "why": "输入框、选中态、tooltip" },
+    { "token": "color.border", "value": "#FFFFFF14", "evidence": "分隔线目测白 6-8%", "why": "描边分层（无阴影语言）" },
+    { "token": "color.accent", "value": "#4972FE", "evidence": "palette[11] share=0.4%", "why": "Transfer 主按钮/选中图表/卡片左强调条。面积小但语义权重最高" },
+    { "token": "color.warning(金)", "value": "#E8B339", "evidence": "Total Saved 折线目测", "why": "金色仅做数据第二语义，不做状态警告以外复用" },
+    { "token": "color.data-2", "value": "#723DED", "evidence": "palette[10] share=0.6%", "why": "暗色变体会员卡紫色" },
+    { "token": "layout.sidebar", "value": "72px", "evidence": "blocks[窄栏包围盒]", "why": "纯图标窄栏 + 蓝色圆角方块选中态，是布局签名" },
+    { "token": "radius.lg", "value": "12px", "evidence": "blocks 边缘检测", "why": "卡片小圆角，金融克制剂" },
+    { "token": "font.size.base", "value": "13px", "evidence": "type 高度聚类 h11x29/h8x52", "why": "整体比常规缩一档，高密度" }
+  ],
+  "states": {
+    "note": "样图为静态；交互态按极简金融惯例补齐（推断）",
+    "hover": "描边由 8% 升至 15%，无阴影",
+    "selected": "accent 底 + 白字（图表页签、侧栏项）",
+    "deltas": "正负值用 positive/negative 弱底胶囊（+$ 绿 / -$ 红，样图明确出现）"
+  }
+}

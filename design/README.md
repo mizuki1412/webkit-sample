@@ -1,7 +1,10 @@
-# 从一张 UI 样图到可执行的设计语言（webkit-sample 集成版）
+# 从 UI 样图到可执行的设计语言（webkit-sample 集成版）
 
 > 这套方法把一张 UI 样图**反演**成能约束后续开发的设计语言：design tokens、组件规范、准入门禁。
 > 本目录已经跑通并适配本仓库（**Vue 3 + Vite 8 + Tailwind CSS 4 + antdv-next**）。
+>
+> **当前状态：四套设计语言。** volt（`sample/mock.png`，单主题管线参考）+ 三套多主题管线语言：
+> **Aurora**（蓝调活泼）、**Noir**（暗夜金融）、**Porcelain**（素瓷商务），见 §3.5 多主题机制。
 
 ## 0. 一句话结论
 
@@ -107,39 +110,73 @@ tokens.radius.lg         // '16px'
 - `web-frame/tailwind.css`：已有 `@source "./"`，框架类会被扫描；v4 的 `@theme` 加在这里最稳妥。
 - antdv-next 组件走 `@antdv-next/tailwind/compat.css` 映射 token；本设计 token 需要一张到 antdv 的映射表（后续按需补）。
 
+## 3.5 多主题机制：原图 → 设计语言 → CSS 素材 → 页面加载 → 切换
+
+三套新语言共用一份 **token 语义契约**（同名 `--color-* / --space-* / --radius-* / --layout-*` 变量，值域各异），
+因此一套应用代码可以在运行时整站切换语言：
+
+```
+design/pics/*.webp|jpg                原图（单一事实源）
+  └─ design/themes/<id>/
+       ├─ measurements.json           tools/analyze.py 像素实测证据
+       ├─ semantic-map.json           角色（语义）映射
+       ├─ tokens.json                 DTCG tokens（$scheme = light|dark）
+       ├─ DESIGN.md                   人/Agent 可读规范
+       └─ build/                      build.py 产物（theme.css / tailwind.v4.css / tokens.js / tokens.flat.json）
+             └─ themes/build/all-themes.css   三套合并：:root 兜底 + [data-design="<id>"] 逐套覆盖
+             └─ themes/build/designs.json     注册表（id/scheme/swatch/source）
+
+src/main.js       import all-themes.css（变量）→ src/design/adapter.css（布局/antd 覆盖层）
+src/App.vue       <a-config-provider :theme="designTheme">（antd 组件跟随）+ <design-switcher/>
+src/design/       registry.js（antd token 映射）· use-design-theme.js（切换+localStorage 持久化）
+                  design-tokens.js（CSS 变量→JS，供 echarts 等读取）· design-switcher.vue（右下角开关）
+```
+
+**切换原理**：`<html data-design="noir">` 一个属性即完成 CSS 级联切换（all-themes.css 变量重定义），
+antdv-next 侧由 ConfigProvider 的 `theme.token` 映射（registry.js）+ darkAlgorithm 同步重渲染。
+图表等 JS 用色通过 `designTokens()` 实时读 CSS 变量跟随。选择持久化在 `localStorage["webkit.design"]`。
+
+**新增一套语言**：`design/themes/<id>/tokens.json`（沿用语义契约）→ `python design/tools/build.py`
+→ `src/design/registry.js` 加 antd 映射 → 切换器自动出现新选项。
+
+**页面词汇**（adapter.css 提供，页面内直接用）：`.d-card` / `.d-card-raised` / `.d-label`，
+全部走语义变量，天然跟随当前语言。
+
 ## 4. 在新页面里使用设计语言（给 Agent / 工程师）
 
+多主题（页面跟随 `data-design` 切换）：
+
 ```text
-Read design/out/DESIGN.md, design/out/theme.css and design/out/tokens.js before writing UI.
-Use only CSS variables / generated Tailwind utilities. Do not invent colors, sizes or spacing.
-If a value is missing, add it to design/out/tokens.json, run design/tools/build.py, then use it.
-Model new screens on design/out/kitchen-sink.html and design/demo/vue/SettingsView.vue;
-add component samples to kitchen-sink.html. Run design/tools/design_lint.py before finishing.
+Read design/themes/<id>/DESIGN.md and design/themes/<id>/build/theme.css before writing UI.
+Use only the shared semantic CSS variables (--color-*/--space-*/...); never raw hex or magic px.
+Prefer the page vocabulary .d-card / .d-card-raised / .d-label plus antd components
+（antd 走 ConfigProvider 映射，自动跟随）。ECharts 等用 src/design/design-tokens.js 读色。
+If a value is missing, add it to design/themes/<id>/tokens.json, run design/tools/build.py, then use it.
+Run: python design/tools/design_lint.py --all-themes <files>（0 error 才算完成）。
 ```
+
+单主题 volt（demo/ 沿用）：同上，路径换 `design/out/*`，lint 不带 `--all-themes`。
 
 ## 5. 在本仓库里跑
 
 ```bash
-cd D:/codes/web/webkit-sample
-
-# 1. 重新编译 tokens（theme.css / tailwind.v4.css / tokens.js / tokens.flat.json）
+# 1. 重新编译全部主题（volt: out/ + 三主题: themes/<id>/build/ + themes/build/all-themes.css）
 python design/tools/build.py
 
-# 2. 准入门禁（默认检查 demo 页面；传参可查自己的文件）
+# 2. 准入门禁（默认检查 demo 页面，volt 白名单；多主题共用文件用 --all-themes）
 python design/tools/design_lint.py
 python design/tools/design_lint.py demo/drift-example.html   # 验证能抓到 9 处跑偏
+python design/tools/design_lint.py --all-themes design/themes/kitchen-sink.html src/design/adapter.css
 
 # 3. 重新测量样图（先有 Chrome 截图）
-python design/tools/analyze.py design/sample/mock.png design/out
+python design/tools/analyze.py design/pics/<pic> design/themes/<id>
 ```
 
 ### 看效果
 
-- 组件陈列页：[`out/kitchen-sink.html`](out/kitchen-sink.html)（截图 [`out/kitchen-sink.png`](out/kitchen-sink.png)）
-- 原生新页面：[`demo/settings.html`](demo/settings.html)
-- **Vue 版新页面**（本仓库真实栈）：[`demo/vue/SettingsView.vue`](demo/vue/SettingsView.vue)
-  离线验证页：[`demo/vue/settings.render.html`](demo/vue/settings.render.html)（CDN：[`demo/vue/settings.cdn.html`](demo/vue/settings.cdn.html)）
-  截图：[`demo/vue/settings.png`](demo/vue/settings.png)
+- **应用内切换**：`npm run dev` → 任意页面右下角「设计语言」开关（选择持久化）
+- **三语言对照**：[`themes/kitchen-sink.html`](themes/kitchen-sink.html)（同一标记 × 3 个 data-design 容器）
+- volt 单主题参考：[`out/kitchen-sink.html`](out/kitchen-sink.html)、[`demo/settings.html`](demo/settings.html)、[`demo/vue/SettingsView.vue`](demo/vue/SettingsView.vue)
 
 ## 6. 方法论的边界
 

@@ -11,6 +11,9 @@ import {routes} from "./router"
 import "vant/lib/index.css"
 // tailwind中覆盖用的css
 import "./after.css"
+// 设计语言（原图→tokens→build.py 产物）：变量定义在前，适配层在后
+import "../design/themes/build/all-themes.css"
+import "./design/adapter.css"
 
 const app = createApp(App)
 setupWebkit(app, {

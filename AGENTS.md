@@ -51,6 +51,13 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 - 重库（tinymce/echarts）在用到它的页面局部 import，避免整库进首屏主包——Bundle 纪律详见 web-frame/AGENTS.md。
 - Tests: vitest（`src/**/*.test.js`；框架测试随 web-frame 仓库）；lint: oxlint（`.oxlintrc.json`）；typecheck 仍无 — only Prettier (`semi: false`)。
 
+## 设计语言（design/ 多主题）
+
+- 三套可切换设计语言：**Aurora / Noir / Porcelain**，各自从 `design/pics/` 样图反演（tokens + DESIGN.md + 测量证据）。web-frame 保持 UI 无关，主题机制全在本仓库。
+- 全链路：原图 → `design/themes/<id>/tokens.json` → `python design/tools/build.py`（产物 `design/themes/build/all-themes.css`）→ `<html data-design="<id>">` 级联切换 + antd ConfigProvider 映射 → 右下角切换器（localStorage 持久化）。
+- 页面写 UI：只用语义 CSS 变量（`--color-*` 等）与 `.d-card` / `.d-label` 词汇（`src/design/adapter.css`）；antd 组件自动跟随。图表用色走 `src/design/design-tokens.js`。
+- 改 token 后必须重跑 `python design/tools/build.py`；提交前 `python design/tools/design_lint.py --all-themes <files>` 0 error。新语言接入见 `design/README.md` §3.5。
+
 ## Prettier
 
 ```bash

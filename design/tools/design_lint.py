@@ -2,7 +2,7 @@
 """
 design_lint.py - keep UI code inside the design language.
 
-Checks HTML / CSS / JSX-ish files for values that are not in out/tokens.json:
+Checks HTML / CSS / JSX-ish files for values that are not in the token set:
   color/hex        hex not present in the token set
   color/function   rgb()/rgba()/hsl()/hsla() not driven by a var
   type/scale       font-size not a token or var
@@ -11,8 +11,10 @@ Checks HTML / CSS / JSX-ish files for values that are not in out/tokens.json:
   shadow/token     box-shadow without a var (the language has no card shadows)
 
 Usage:
-  python tools/design_lint.py                     # lint the demo pages
+  python tools/design_lint.py                     # lint the demo pages（volt 白名单）
   python tools/design_lint.py path1 path2 ...     # lint specific files
+  python tools/design_lint.py --theme noir f.css  # 用指定主题的白名单
+  python tools/design_lint.py --all-themes f.html # 合并全部主题白名单（多语言共用文件用）
 Exit code 1 when any error is found.
 """
 from __future__ import annotations
@@ -23,21 +25,31 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-FLAT = json.loads((ROOT / "out" / "tokens.flat.json").read_text(encoding="utf-8"))
 
 HEX_ALLOWED: set[str] = set()
 FONT_SIZES: set[float] = set()
 RADII: set[float] = set()
 SPACING: set[float] = set()
 
-for var, meta in FLAT.items():
-    kind, value = meta["type"], meta["value"]
-    if kind == "color" and isinstance(value, str) and value.startswith("#"):
-        HEX_ALLOWED.add(value.lower())
-    if var.startswith("--font-size-"):
-        FONT_SIZES.add(round(float(str(value).replace("px", "")), 2))
-    if var.startswith("--radius-"):
-        RADII.add(round(float(str(value).replace("px", "")), 2))
+
+def load_whitelist(flat_files: list[Path]) -> None:
+    """用给定的 tokens.flat.json 集合重建白名单（多主题取并集）。"""
+    HEX_ALLOWED.clear()
+    FONT_SIZES.clear()
+    RADII.clear()
+    SPACING.clear()
+    for flat_path in flat_files:
+        flat = json.loads(flat_path.read_text(encoding="utf-8"))
+        for var, meta in flat.items():
+            kind, value = meta["type"], meta["value"]
+            if kind == "color" and isinstance(value, str) and value.startswith("#"):
+                HEX_ALLOWED.add(value.lower())
+            if var.startswith("--font-size-"):
+                FONT_SIZES.add(round(float(str(value).replace("px", "")), 2))
+            if var.startswith("--radius-"):
+                RADII.add(round(float(str(value).replace("px", "")), 2))
+            if var.startswith("--space-"):
+                SPACING.add(round(float(str(value).replace("px", "")), 2))
     if var.startswith("--space-"):
         SPACING.add(round(float(str(value).replace("px", "")), 2))
 
@@ -104,6 +116,20 @@ def lint_file(path: Path) -> list[tuple[int, str, str]]:
 
 def main() -> None:
     args = sys.argv[1:]
+
+    # 白名单选择：默认 volt（out/）；--theme <id> 用单主题；--all-themes 取并集
+    flat_files = [ROOT / "out" / "tokens.flat.json"]
+    if "--all-themes" in args:
+        args.remove("--all-themes")
+        flat_files = [ROOT / "out" / "tokens.flat.json"]
+        flat_files += sorted((ROOT / "themes").glob("*/build/tokens.flat.json"))
+    elif "--theme" in args:
+        i = args.index("--theme")
+        theme_id = args[i + 1]
+        del args[i:i + 2]
+        flat_files = [ROOT / "themes" / theme_id / "build" / "tokens.flat.json"]
+    load_whitelist(flat_files)
+
     if args:
         paths = [Path(a).resolve() for a in args]
     else:

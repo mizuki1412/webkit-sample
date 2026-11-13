@@ -1,0 +1,41 @@
+[
+  {
+    "id": "aurora",
+    "scheme": "light",
+    "source": "pics/30b0f259164b06e182a77f475edc3c34.webp",
+    "description": "Aurora design language. Source: design/pics/30b0f259164b06e182a77f475edc3c34.webp (PROJEX 项目管理看板). 活泼的 SaaS 蓝：皇家蓝大色块 + 白卡片 + 粉彩分类色 + 大圆角。DTCG format.",
+    "swatch": [
+      "#005EFD",
+      "#F0F3FA",
+      "#FFFFFF",
+      "#6B7A99"
+    ],
+    "tokens": 78
+  },
+  {
+    "id": "noir",
+    "scheme": "dark",
+    "source": "pics/9e86025a06aa77238927e02082f6b2fd.jpg",
+    "description": "Noir design language. Source: design/pics/9e86025a06aa77238927e02082f6b2fd.jpg (金融仪表盘，双明暗样图，取其暗色变体为本语言主体). 极简金融风：近黑紫底 + 细描边 + 蓝主色 + 金色数据强调，小圆角、高密度。DTCG format.",
+    "swatch": [
+      "#4972FE",
+      "#131118",
+      "#1B1920",
+      "#9A94AC"
+    ],
+    "tokens": 78
+  },
+  {
+    "id": "porcelain",
+    "scheme": "light",
+    "source": "pics/ec71aa5bdb76f08b598df0c55ed63b3c.webp",
+    "description": "Porcelain design language. Source: design/pics/ec71aa5bdb76f08b598df0c55ed63b3c.webp (Commercehq 电商运营台). 干净的浅色商务风：淡紫灰画布 + 纯白面板 + 商务蓝 + 海军蓝标题 + 全大写字距标签，小圆角、紧凑。DTCG format.",
+    "swatch": [
+      "#3A78F2",
+      "#E9EDF5",
+      "#FFFFFF",
+      "#6E7891"
+    ],
+    "tokens": 79
+  }
+]
