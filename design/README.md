@@ -3,8 +3,8 @@
 > 这套方法把一张 UI 样图**反演**成能约束后续开发的设计语言：design tokens、组件规范、准入门禁。
 > 本目录已经跑通并适配本仓库（**Vue 3 + Vite 8 + Tailwind CSS 4 + antdv-next**）。
 >
-> **当前状态：四套设计语言。** volt（`sample/mock.png`，单主题管线参考）+ 三套多主题管线语言：
-> **Aurora**（蓝调活泼）、**Noir**（暗夜金融）、**Porcelain**（素瓷商务），见 §3.5 多主题机制。
+> **当前状态：三套设计语言。** volt（`sample/mock.png`，单主题管线参考）+ 两套多主题管线语言：
+> **Noir**（暗夜金融）、**Porcelain**（素瓷商务），见 §3.5 多主题机制。
 
 ## 0. 一句话结论
 
@@ -112,7 +112,7 @@ tokens.radius.lg         // '16px'
 
 ## 3.5 多主题机制：原图 → 设计语言 → CSS 素材 → 页面加载 → 切换
 
-三套新语言共用一份 **token 语义契约**（同名 `--color-* / --space-* / --radius-* / --layout-*` 变量，值域各异），
+两套新语言共用一份 **token 语义契约**（同名 `--color-* / --space-* / --radius-* / --layout-*` 变量，值域各异），
 因此一套应用代码可以在运行时整站切换语言：
 
 ```
@@ -123,7 +123,7 @@ design/pics/*.webp|jpg                原图（单一事实源）
        ├─ tokens.json                 DTCG tokens（$scheme = light|dark）
        ├─ DESIGN.md                   人/Agent 可读规范
        └─ build/                      build.py 产物（theme.css / tailwind.v4.css / tokens.js / tokens.flat.json）
-             └─ themes/build/all-themes.css   三套合并：:root 兜底 + [data-design="<id>"] 逐套覆盖
+             └─ themes/build/all-themes.css   各套合并：:root 兜底 + [data-design="<id>"] 逐套覆盖
              └─ themes/build/designs.json     注册表（id/scheme/swatch/source）
 
 src/main.js       import all-themes.css（变量）→ src/design/adapter.css（布局/antd 覆盖层）

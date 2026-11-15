@@ -5,7 +5,7 @@
 >
 > - 机器可读：`tokens.json`（DTCG）→ `build/theme.css` / `build/tailwind.v4.css` / `build/tokens.js`
 > - 证据：`measurements.json` + `semantic-map.json`
-> - 与其他语言的关系：共享 token 语义契约，值域不兼容。与 Aurora 同为 light，但更克制：蓝色面积 ≤5%，靠字距与层级表达专业感。
+> - 与其他语言的关系：共享 token 语义契约，值域不兼容。同为 light 时与 Noir（dark）互补：蓝色面积 ≤5%，靠字距与层级表达专业感。
 
 ## 1. 设计主张
 

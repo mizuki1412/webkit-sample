@@ -1,18 +1,5 @@
 [
   {
-    "id": "aurora",
-    "scheme": "light",
-    "source": "pics/30b0f259164b06e182a77f475edc3c34.webp",
-    "description": "Aurora design language. Source: design/pics/30b0f259164b06e182a77f475edc3c34.webp (PROJEX 项目管理看板). 活泼的 SaaS 蓝：皇家蓝大色块 + 白卡片 + 粉彩分类色 + 大圆角。DTCG format.",
-    "swatch": [
-      "#005EFD",
-      "#F0F3FA",
-      "#FFFFFF",
-      "#6B7A99"
-    ],
-    "tokens": 78
-  },
-  {
     "id": "noir",
     "scheme": "dark",
     "source": "pics/9e86025a06aa77238927e02082f6b2fd.jpg",

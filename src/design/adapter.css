@@ -16,10 +16,7 @@ html[data-design] body {
   font-size: var(--font-size-base);
 }
 
-/* 每套语言专属的派生变量（tokens.json 之外的组装值；阴影来自 token --shadow-card） */
-[data-design="aurora"] {
-  --d-login-backdrop: var(--color-accent);
-}
+/* 每套语言专属的派生变量（tokens.json 之外的组装值） */
 [data-design="noir"] {
   --d-login-backdrop: var(--color-bg);
 }
@@ -129,16 +126,6 @@ html[data-design] .ant-modal .ant-modal-content {
 /* ------------------------------------------------------------- 登录页 */
 html[data-design] .bg-blue-900 {
   background: var(--d-login-backdrop);
-}
-
-/* ------------------------------------------------------------ Aurora */
-[data-design="aurora"] #home_page .ant-menu .ant-menu-item {
-  border-radius: var(--radius-full);
-  margin-inline: var(--space-3);
-  width: auto;
-}
-[data-design="aurora"] #home_page .ant-menu .ant-menu-item-selected {
-  box-shadow: var(--shadow-card);
 }
 
 /* -------------------------------------------------------------- Noir */

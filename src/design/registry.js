@@ -12,7 +12,7 @@ import {theme} from "antdv-next"
 import designsMeta from "../../design/themes/build/designs.json"
 
 /** designs.json 的 meta（id/scheme/swatch/source）+ antd 映射，顺序即构建顺序。 */
-const labels = {aurora: "Aurora · 蓝调活泼", noir: "Noir · 暗夜金融", porcelain: "Porcelain · 素瓷商务"}
+const labels = {noir: "Noir · 暗夜金融", porcelain: "Porcelain · 素瓷商务"}
 export const designs = designsMeta.map((meta) =>
   Object.assign({}, meta, {label: labels[meta.id] || meta.id}))
 
@@ -27,28 +27,6 @@ const byId = Object.fromEntries(designs.map((d) => [d.id, d]))
  *   controlHeight=layout.control-h, fontSize=font.size.base
  */
 const antdTokens = {
-  aurora: {
-    colorPrimary: "#005EFD",
-    colorInfo: "#005EFD",
-    colorLink: "#005EFD",
-    colorSuccess: "#2FBF71",
-    colorWarning: "#F5A623",
-    colorError: "#F25555",
-    colorTextBase: "#253044",
-    colorText: "#253044",
-    colorTextSecondary: "#6B7A99",
-    colorTextTertiary: "#9AA6BE",
-    colorBgLayout: "#F0F3FA",
-    colorBgContainer: "#FFFFFF",
-    colorBgElevated: "#FFFFFF",
-    colorBorder: "#D5DCEC",
-    colorBorderSecondary: "#E8ECF6",
-    borderRadius: 14,
-    borderRadiusLG: 20,
-    borderRadiusSM: 10,
-    controlHeight: 40,
-    fontSize: 14,
-  },
   noir: {
     colorPrimary: "#4972FE",
     colorInfo: "#4972FE",
@@ -98,7 +76,7 @@ const antdTokens = {
 }
 
 /** 当前激活的设计（default = 第一套）。 */
-export const defaultDesignId = designs[0]?.id || "aurora"
+export const defaultDesignId = designs[0]?.id || "noir"
 
 /**
  * ConfigProvider 的 :theme 值。
