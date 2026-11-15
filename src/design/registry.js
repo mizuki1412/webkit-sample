@@ -1,15 +1,14 @@
 /**
  * 设计语言注册表 —— antdv-next ConfigProvider 映射。
  *
- * 职责边界（对应 design/README.md 的四层流水线）：
- *   - design/themes/<id>/tokens.json 是唯一事实源（build.py 编译出 all-themes.css）；
- *   - 本文件只做「语义 token → antdv-next theme.token」的映射，不发明值；
- *     每个 token 值都能在对应 tokens.json 里找到（key 相同、值相同）。
- *
- * 新增设计语言：design/themes/<id>/tokens.json + 本文件加一条映射即可。
+ * 职责边界：
+ *   - 本文件与 designs.json / themes.css 是旧 noir+porcelain 双主题的过渡期冻结产物
+ *     （源 tokens 已随 design/themes/ 清理，git 历史可查）；
+ *   - 流程见 design/README.md：assets → /design → lang+demo → /design-implement，
+ *     落地时本文件会被重写为单语言 antd 映射（值取 design/lang/DESIGN.md 映射表）。
  */
 import {theme} from "antdv-next"
-import designsMeta from "../../design/themes/build/designs.json"
+import designsMeta from "./designs.json"
 
 /** designs.json 的 meta（id/scheme/swatch/source）+ antd 映射，顺序即构建顺序。 */
 const labels = {noir: "Noir · 暗夜金融", porcelain: "Porcelain · 素瓷商务"}

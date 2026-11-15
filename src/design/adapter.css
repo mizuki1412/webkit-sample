@@ -1,7 +1,8 @@
 /**
  * 设计语言适配层 —— 语义变量 → web-frame 布局 / antd 细节 / 页面词汇。
  *
- * 依赖链：design/themes/build/all-themes.css（变量定义，build.py 产物）必须先于本文件加载。
+ * 依赖链：src/design/themes.css（变量定义，旧双主题冻结产物）必须先于本文件加载；
+ *         /design-implement 落地后为 src/design/theme.css（design/lang 单语言）。
  * 作用域：全部规则挂在 html[data-design="<id>"] 下，切换即整站生效，无需改动 web-frame 代码。
  * 本文件是 webkit-sample 专属（web-frame 保持 UI 无关核心层，见 web-frame/AGENTS.md）。
  *
@@ -10,150 +11,170 @@
 
 /* ---------------------------------------------------------------- 基座 */
 html[data-design] body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
 }
 
 /* 每套语言专属的派生变量（tokens.json 之外的组装值） */
 [data-design="noir"] {
-  --d-login-backdrop: var(--color-bg);
+    --d-login-backdrop: var(--color-bg);
 }
+
 [data-design="porcelain"] {
-  --d-login-backdrop: var(--color-bg);
+    --d-login-backdrop: var(--color-bg);
 }
 
 /* ------------------------------------------------ 页面词汇（给业务页用） */
 /* 区块标签：Porcelain 签名，其他语言自动降级为普通小标签 */
 .d-label {
-  font-size: var(--font-size-micro);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-caps, var(--tracking-micro));
-  text-transform: uppercase;
-  color: var(--color-text-faint);
+    font-size: var(--font-size-micro);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--tracking-caps, var(--tracking-micro));
+    text-transform: uppercase;
+    color: var(--color-text-faint);
 }
+
 /* 设计跟随卡片：页面里替代裸写 bg-white/rounded */
 .d-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--layout-card-pad);
-  box-shadow: var(--shadow-card);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--layout-card-pad);
+    box-shadow: var(--shadow-card);
 }
+
 .d-card-raised {
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
 }
 
 /* --------------------------------------- kit-layout-admin（web-frame 布局） */
 /* 侧栏 */
 html[data-design] #home_page .ant-layout-sider {
-  background: var(--color-sidebar) !important;
+    background: var(--color-sidebar) !important;
 }
-html[data-design] #home_page .ant-layout-sider > .ant-layout-sider-children > div:first-child {
-  color: var(--color-sidebar-text);
-  font-weight: var(--font-weight-semibold);
+
+html[data-design] #home_page .ant-layout-sider>.ant-layout-sider-children>div:first-child {
+    color: var(--color-sidebar-text);
+    font-weight: var(--font-weight-semibold);
 }
+
 /* 菜单：三套语言统一从变量取色（布局里写死的 theme="dark" 被覆盖成跟随设计） */
 html[data-design] #home_page .ant-menu {
-  background: transparent !important;
-  border-inline-end: 0 !important;
+    background: transparent !important;
+    border-inline-end: 0 !important;
 }
+
 html[data-design] #home_page .ant-menu .ant-menu-item {
-  color: var(--color-sidebar-text);
-  border-radius: var(--radius-md);
+    color: var(--color-sidebar-text);
+    border-radius: var(--radius-md);
 }
+
 html[data-design] #home_page .ant-menu .ant-menu-item:hover {
-  color: var(--color-sidebar-active-text);
-  background: var(--color-surface-raised);
+    color: var(--color-sidebar-active-text);
+    background: var(--color-surface-raised);
 }
+
 html[data-design] #home_page .ant-menu .ant-menu-item-selected {
-  color: var(--color-sidebar-active-text) !important;
-  background: var(--color-sidebar-active-bg) !important;
+    color: var(--color-sidebar-active-text) !important;
+    background: var(--color-sidebar-active-bg) !important;
 }
+
 html[data-design] #home_page .ant-menu .ant-menu-sub {
-  background: transparent !important;
+    background: transparent !important;
 }
+
 html[data-design] #home_page .ant-menu .ant-menu-submenu-title {
-  color: var(--color-sidebar-text);
+    color: var(--color-sidebar-text);
 }
 
 /* 顶栏 */
 html[data-design] #home_page .ant-layout-header {
-  background: var(--color-header) !important;
-  border-bottom: 1px solid var(--color-border);
+    background: var(--color-header) !important;
+    border-bottom: 1px solid var(--color-border);
 }
 
 /* 内容容器：原布局的 bg-white/p-2/rounded-sm 由变量接管 */
 html[data-design] #home_page .ant-layout-content {
-  padding: var(--layout-content-y) var(--layout-content-x) !important;
+    padding: var(--layout-content-y) var(--layout-content-x) !important;
 }
-html[data-design] #home_page .ant-layout-content > div {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--layout-card-pad);
-  box-shadow: var(--shadow-card);
+
+html[data-design] #home_page .ant-layout-content>div {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--layout-card-pad);
+    box-shadow: var(--shadow-card);
 }
 
 /* ------------------------------------------------------ antd 组件细节 */
 /* 表头 */
-html[data-design] .ant-table-thead > tr > th {
-  background: var(--color-surface-raised);
-  color: var(--color-text-muted);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-xs);
+html[data-design] .ant-table-thead>tr>th {
+    background: var(--color-surface-raised);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-xs);
 }
-[data-design="porcelain"] .ant-table-thead > tr > th {
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-caps);
-  font-size: var(--font-size-micro);
+
+[data-design="porcelain"] .ant-table-thead>tr>th {
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+    font-size: var(--font-size-micro);
 }
+
 /* 分割线统一走 border token */
-html[data-design] .ant-table-tbody > tr > td,
-html[data-design] .ant-table-tbody > tr > td {
-  border-bottom-color: var(--color-border);
+html[data-design] .ant-table-tbody>tr>td,
+html[data-design] .ant-table-tbody>tr>td {
+    border-bottom-color: var(--color-border);
 }
+
 /* 弹窗/抽屉圆角跟随卡片 */
 html[data-design] .ant-modal .ant-modal-content {
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
 }
 
 /* ------------------------------------------------------------- 登录页 */
 html[data-design] .bg-blue-900 {
-  background: var(--d-login-backdrop);
+    background: var(--d-login-backdrop);
 }
 
 /* -------------------------------------------------------------- Noir */
 /* 高密度：内容容器与表格行距收紧 */
-[data-design="noir"] #home_page .ant-layout-content > div {
-  border-radius: var(--radius-lg);
+[data-design="noir"] #home_page .ant-layout-content>div {
+    border-radius: var(--radius-lg);
 }
-[data-design="noir"] .ant-table-thead > tr > th {
-  background: transparent;
-  border-bottom: 1px solid var(--color-border-strong);
+
+[data-design="noir"] .ant-table-thead>tr>th {
+    background: transparent;
+    border-bottom: 1px solid var(--color-border-strong);
 }
+
 /* 描边分层语言：卡片禁阴影（antd 默认阴影改描边） */
 [data-design="noir"] .ant-dropdown .ant-dropdown-menu,
 [data-design="noir"] .ant-select-dropdown {
-  border: 1px solid var(--color-border-strong);
-  box-shadow: none;
+    border: 1px solid var(--color-border-strong);
+    box-shadow: none;
 }
 
 /* --------------------------------------------------------- Porcelain */
 /* 侧栏白底：菜单项即商务风（选中 = 蓝色圆角块） */
-[data-design="porcelain"] #home_page .ant-layout-sider > .ant-layout-sider-children > div:first-child {
-  color: var(--color-text-heading);
+[data-design="porcelain"] #home_page .ant-layout-sider>.ant-layout-sider-children>div:first-child {
+    color: var(--color-text-heading);
 }
-[data-design="porcelain"] .ant-table-thead > tr > th {
-  background: var(--color-surface-raised);
+
+[data-design="porcelain"] .ant-table-thead>tr>th {
+    background: var(--color-surface-raised);
 }
+
 /* 区块标题用海军蓝（文本角色 text-heading 只在 porcelain 出现） */
-[data-design="porcelain"] .ant-table-thead > tr > th,
-[data-design="porcelain"] h1, [data-design="porcelain"] h2, [data-design="porcelain"] h3 {
-  color: var(--color-text-heading, var(--color-text));
+[data-design="porcelain"] .ant-table-thead>tr>th,
+[data-design="porcelain"] h1,
+[data-design="porcelain"] h2,
+[data-design="porcelain"] h3 {
+    color: var(--color-text-heading, var(--color-text));
 }

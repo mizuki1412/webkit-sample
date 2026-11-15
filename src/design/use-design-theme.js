@@ -1,7 +1,7 @@
 /**
  * 设计语言切换 composable —— 全链路的最后一环：
  *
- *   原图(pics) → tokens.json(设计语言) → build.py(all-themes.css)
+ *   原图(assets) → tokens.json(设计语言) → build.py → CSS 变量
  *     → <html data-design="<id>">（CSS 级联生效）
  *     → antdThemeOf(id)（antdv-next 组件跟随）
  *     → localStorage 持久化
@@ -22,7 +22,7 @@ function initialId() {
 
 const designId = ref(initialId())
 
-// data-design 挂在 <html> 上：all-themes.css 的变量级联 + adapter.css 覆盖层都依赖它。
+// data-design 挂在 <html> 上：themes.css 的变量级联 + adapter.css 覆盖层都依赖它。
 watchEffect(() => {
   document.documentElement.dataset.design = designId.value
 })
