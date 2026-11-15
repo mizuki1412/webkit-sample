@@ -55,9 +55,10 @@ python design/tools/design_lint.py <files>                                      
 像素反推字号有 ±1–2px 误差；高分辨率、扁平纯色块多的图最准。
 用本流程提取自己产品的视觉规则或做竞品抽象；**不要复制他人受版权保护的界面**。
 
-## 当前状态（过渡期）
+## 当前状态
 
-- `design/lang/`、`design/demo/` 为空，待首次 `/design` 生成（assets/ 已有两张初始样图）。
-- `src/design/`（themes.css / designs.json / registry.js…）是旧 noir+porcelain 双主题的
-  **过渡期冻结皮肤**——源 tokens 已随旧 `design/themes/` 清理（git 历史可查）；
-  首个 `/design-implement` 会将其整体替换为 `design/lang` 的单语言实现。
+- 设计语言 **Lumen** 已走完全流程：assets（两张样图）→ /design 融合 → demo 审查（多轮裁决）
+  → /design-implement 落地。`src/design/`（theme.css + adapter.css + registry.js + design-tokens.js）
+  为 Lumen 单语言实现态；裁决历史见 `lang/DESIGN.md` §8 与 git 历史。
+- 重推语言：改 `lang/tokens.json`（或重跑 /design）→ `build.py` → 同步 `src/design/theme.css`
+  （复制 `lang/build/theme.css`）→ adapter/registry 按 DESIGN.md 对齐。

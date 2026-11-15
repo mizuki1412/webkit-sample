@@ -119,7 +119,9 @@ def main() -> None:
     if args:
         paths = [Path(a).resolve() for a in args]
     else:
-        paths = sorted(p for p in DEMO.glob("*") if p.suffix in {".html", ".css"})
+        # theme.css 是 build.py 产物复制（含 token 原始 rgba 值），不参与 lint
+        paths = sorted(p for p in DEMO.glob("*")
+                       if p.suffix in {".html", ".css"} and p.name != "theme.css")
 
     total = 0
     for path in paths:

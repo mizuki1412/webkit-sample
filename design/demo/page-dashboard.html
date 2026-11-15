@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen · 运营台整页（2.webp 意象）</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="demo.css">
+<style>
+  .app {
+    max-width: 1280px;
+    margin: var(--space-8) auto;
+    display: grid;
+    grid-template-columns: var(--layout-sidebar) 1fr 320px;
+    background: var(--color-surface-raised);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-pop);
+    overflow: hidden;
+    min-height: 760px;
+  }
+  /* 侧栏：列底透明（透出窗口底），菜单条为白色圆角面板（1.jpg 形式） */
+  .side { display: flex; flex-direction: column; padding: var(--space-4); }
+  .brand { margin-bottom: var(--space-2); padding: var(--space-3) var(--space-4); background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-card); display: flex; align-items: center; gap: var(--space-3); font-weight: var(--font-weight-bold); }
+  .side-foot { margin-top: auto; padding-top: var(--space-4); }
+  .foot-btn { display: block; width: 100%; text-align: center; }
+  /* 主区：白色浮层，方向性投影——朝侧栏浅（联动近），朝右栏深（分层清）。
+     position+z-index 必须高于右栏，否则右投影被不透明邻块盖住 */
+  .main { position: relative; z-index: 1; background: var(--color-surface); box-shadow: var(--shadow-sheet); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
+  .topbar { display: flex; gap: var(--space-4); }
+  .topbar .d-input { flex: 1; }
+  .kpi-head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .kpi-delta { display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-2); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-positive); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+  .prod { display: flex; align-items: center; gap: var(--space-3); min-width: 0; }
+  .prod-name { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+  .prod-sub { font-size: var(--font-size-xs); color: var(--color-text-muted); }
+  /* 右栏：surface-raised 底（实测 #F5F7FB），无描边，靠主区投影分隔；
+     左内距加大让内容避开阴影带 */
+  .aside { background: var(--color-surface-raised); padding: var(--space-6) var(--space-5) var(--space-6) var(--space-8); display: flex; flex-direction: column; gap: var(--space-5); }
+  .aside-head { display: flex; justify-content: space-between; align-items: center; }
+  .pulse { margin-top: var(--space-5); }
+  .pulse-num { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); line-height: var(--leading-tight); margin-top: var(--space-2); }
+  .pulse-bars { display: flex; align-items: flex-end; gap: var(--space-1); height: 56px; margin-top: var(--space-4); }
+  .pulse-bars > i { flex: 1; background: var(--color-surface); opacity: 0.55; border-radius: var(--radius-xs); }
+  .notif { padding: var(--space-5); }
+  .notif-text { font-size: var(--font-size-sm); margin-top: var(--space-3); }
+  .notif-foot { display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-4); }
+  .rev-row { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+  .rev-line { display: flex; justify-content: space-between; align-items: baseline; }
+  .rev-name { font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); }
+  .rev-val { font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); }
+  .rev-pct { font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); margin-left: var(--space-3); }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- 侧栏：sidebar 底 + 品牌白卡 + 选中实心块 + 底部 CTA -->
+  <div class="side">
+    <div class="brand"><span class="d-avatar" style="width: 26px; height: 26px;">C</span> Commercehq</div>
+    <div class="d-nav-strip" style="flex: 1;">
+      <div class="d-nav d-nav--active">◔&nbsp; Dashboard</div>
+      <div class="d-nav">▣&nbsp; Products</div>
+      <div class="d-nav">▽&nbsp; Funnls</div>
+      <div class="d-nav">✦&nbsp; Orders</div>
+      <div class="d-nav">▤&nbsp; Membership</div>
+      <div class="d-nav">✎&nbsp; Content Area</div>
+      <div class="d-nav">⚙&nbsp; Settings</div>
+    </div>
+    <div class="side-foot"><button class="d-btn foot-btn">Upgrade your plan</button></div>
+  </div>
+
+  <!-- 主区 -->
+  <div class="main">
+    <div class="topbar">
+      <div class="d-input">⌕&nbsp;<input placeholder="Search..."></div>
+      <button class="d-btn d-btn--soft">Last year ▾</button>
+    </div>
+
+    <div class="d-card">
+      <div class="kpi-head">
+        <div>
+          <span class="d-label">Total Sales</span>
+          <div class="d-h1" style="margin-top: var(--space-2);">$549,735.00</div>
+          <div class="kpi-delta">↑ $15,686.65</div>
+        </div>
+        <button class="d-btn d-btn--soft d-btn--sm">Last year ▾</button>
+      </div>
+      <div class="d-bars" style="margin-top: var(--space-6);">
+        <span><i style="height: 34%;"></i></span><span><i style="height: 52%;"></i></span>
+        <span><i style="height: 88%;"></i></span><span><i style="height: 62%;"></i></span>
+        <span><i style="height: 74%;"></i></span><span><i style="height: 55%;"></i></span>
+        <span><i style="height: 40%;"></i></span><span><i style="height: 68%;"></i></span>
+        <span><i style="height: 86%;"></i></span><span><i style="height: 48%;"></i></span>
+        <span style="background: var(--color-chart-area);"><i style="height: 30%;"></i></span>
+        <span><i style="height: 24%;"></i></span>
+      </div>
+      <div class="d-bars-labels">
+        <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+        <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="d-label">Growing at superhuman rate</span>
+      <div class="stats" style="margin-top: var(--space-4);">
+        <div class="d-stat"><span class="d-icon-dot">◔</span><div><div class="d-sub">Daily Visitors</div><div class="d-stat-value">31,512 <span class="up">↑ 37%</span></div></div></div>
+        <div class="d-stat"><span class="d-icon-dot">▤</span><div><div class="d-sub">Total Orders</div><div class="d-stat-value">23,50 <span class="up">↑ 47%</span></div></div></div>
+        <div class="d-stat"><span class="d-icon-dot">◑</span><div><div class="d-sub">Conversion Rate</div><div class="d-stat-value">10.5% <span class="up">↑ 32%</span></div></div></div>
+        <div class="d-stat"><span class="d-icon-dot">✦</span><div><div class="d-sub">Average Orders</div><div class="d-stat-value">11,654 <span class="down">↓ 34%</span></div></div></div>
+      </div>
+    </div>
+
+    <div>
+      <span class="d-label">Top Funnls</span>
+      <div class="d-table" style="margin-top: var(--space-4);">
+        <div class="d-row">
+          <div class="prod"><span class="d-icon-dot" style="background: var(--color-accent-weak);">▯</span><div><div class="prod-name"><a href="#">iPhone XR 256 GB</a></div><div class="prod-sub">iPhone XR Black&nbsp;&nbsp;○&nbsp;&nbsp;10 orders</div></div></div>
+          <div><div class="head">Inventory</div><div class="val">573</div></div>
+          <div><div class="head">Price</div><div class="val">$ 2,318.90</div></div>
+          <div><div class="head">Sale</div><div class="val">$ 3,318.90</div></div>
+          <div><div class="head">Today</div><div class="val">$ 7,318.90</div></div>
+        </div>
+        <div class="d-row">
+          <div class="prod"><span class="d-icon-dot" style="background: var(--color-ink); color: var(--color-ink-text);">▮</span><div><div class="prod-name"><a href="#">iPhone XR 256 GB</a></div><div class="prod-sub">iPhone XR Black&nbsp;&nbsp;○&nbsp;&nbsp;20 orders</div></div></div>
+          <div><div class="head">Inventory</div><div class="val">453</div></div>
+          <div><div class="head">Price</div><div class="val">$ 4,338</div></div>
+          <div><div class="head">Sales</div><div class="val">$ 3,318.90</div></div>
+          <div><div class="head">Today</div><div class="val">$ 6,638.12</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右栏：ACTIVITY / 通知 / REVENUE -->
+  <div class="aside">
+    <div class="aside-head">
+      <span class="d-label">Activity</span>
+      <button class="d-btn d-btn--soft d-btn--sm">✦ Insight ▾</button>
+    </div>
+
+    <div class="d-btn" style="border-radius: var(--radius-lg); height: auto; padding: var(--space-5); flex-direction: column; align-items: stretch; text-align: left; cursor: default; display: block;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); opacity: 0.9;">Active Visitors right now</span>
+        <span style="opacity: 0.7;">↗</span>
+      </div>
+      <div class="pulse-num">3467</div>
+      <div style="font-size: var(--font-size-xs); opacity: 0.75;">Page view per minute</div>
+      <div class="pulse-bars">
+        <i style="height: 40%;"></i><i style="height: 62%;"></i><i style="height: 48%;"></i><i style="height: 80%;"></i>
+        <i style="height: 56%;"></i><i style="height: 90%;"></i><i style="height: 44%;"></i><i style="height: 70%;"></i>
+        <i style="height: 34%;"></i><i style="height: 66%;"></i><i style="height: 52%;"></i><i style="height: 84%;"></i>
+        <i style="height: 46%;"></i><i style="height: 60%;"></i><i style="height: 38%;"></i><i style="height: 74%;"></i>
+      </div>
+      <div style="margin-top: var(--space-4); text-align: right; font-size: var(--font-size-micro); letter-spacing: var(--tracking-caps); text-transform: uppercase; font-weight: var(--font-weight-semibold);">Real-time report ▸</div>
+    </div>
+
+    <div class="d-card notif">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span class="d-avatar d-avatar--teal">MS</span>
+        <span style="color: var(--color-text-faint);">⋮</span>
+      </div>
+      <div class="notif-text"><b>In the last 30 days</b><br>45.1% of your abandoned checkout recovery email were succesful.</div>
+      <div class="notif-foot">
+        <span style="font-size: var(--font-size-xs); color: var(--color-accent); font-weight: var(--font-weight-semibold);">Last 30 days ▾</span>
+        <button class="d-btn d-btn--soft d-btn--sm">Check data ▸</button>
+      </div>
+    </div>
+
+    <div>
+      <span class="d-label">Revenue by channel</span>
+      <div style="margin-top: var(--space-2);">
+        <div class="rev-row">
+          <div class="rev-line"><span class="rev-name">Direct</span><span><span class="rev-val">$1,24,685</span><span class="rev-pct" style="color: var(--color-positive);">65.6%</span></span></div>
+          <div class="d-progress" style="margin-top: var(--space-2);"><i style="width: 65.6%;"></i></div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-line"><span class="rev-name">Organic Search</span><span><span class="rev-val">$1,24,685</span><span class="rev-pct" style="color: var(--color-positive);">45.2%</span></span></div>
+          <div class="d-progress" style="margin-top: var(--space-2);"><i style="width: 45.2%;"></i></div>
+        </div>
+        <div class="rev-row">
+          <div class="rev-line"><span class="rev-name">Referral</span><span><span class="rev-val">$1,24,685</span><span class="rev-pct" style="color: var(--color-negative);">15.6%</span></span></div>
+          <div class="d-progress" style="margin-top: var(--space-2);"><i style="width: 15.6%;"></i></div>
+        </div>
+        <div class="rev-row" style="border-bottom: 0;">
+          <div class="rev-line"><span class="rev-name">Social</span><span><span class="rev-val">$1,24,685</span><span class="rev-pct" style="color: var(--color-negative);">25.2%</span></span></div>
+          <div class="d-progress" style="margin-top: var(--space-2);"><i style="width: 25.2%;"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

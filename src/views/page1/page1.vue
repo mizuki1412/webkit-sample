@@ -17,17 +17,17 @@
         <div class="flex gap-2 mt-2">
             <div class="d-card flex-1">
                 <div class="d-label">Downloads</div>
-                <div class="mt-1" style="font-size: var(--font-size-display); font-weight: var(--font-weight-bold)">31K</div>
+                <div class="mt-1" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">31K</div>
                 <div style="color: var(--color-text-faint); font-size: var(--font-size-xs)">From January 1st to February 1st</div>
             </div>
             <div class="d-card flex-1">
                 <div class="d-label">Users</div>
-                <div class="mt-1" style="font-size: var(--font-size-display); font-weight: var(--font-weight-bold); color: var(--color-accent)">4,200</div>
+                <div class="mt-1" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--color-accent)">4,200</div>
                 <div style="color: var(--color-positive); font-size: var(--font-size-xs)">↗︎ 40 (2%)</div>
             </div>
             <div class="d-card flex-1">
                 <div class="d-label">New Registers</div>
-                <div class="mt-1" style="font-size: var(--font-size-display); font-weight: var(--font-weight-bold)">1,200</div>
+                <div class="mt-1" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">1,200</div>
                 <div style="color: var(--color-negative); font-size: var(--font-size-xs)">↘︎ 90 (14%)</div>
             </div>
         </div>
@@ -46,7 +46,6 @@ import { useLoading } from "/web-frame/service"
 import { chartConfig } from "/web-frame/service/echarts-helper"
 import { useConfirm } from "/web-frame/service/confirm";
 import { message } from "antdv-next";
-import { useDesignTheme } from "../../design/use-design-theme"
 import { designTokens } from "../../design/design-tokens"
 
 const loading = ref(false)
@@ -54,10 +53,9 @@ const modalVisible = ref(false)
 const modalLoading = ref(false)
 const val1 = ref()
 
-// 图表颜色跟随设计语言：designTokens(designId.value) 同时建立响应式依赖
-const {designId} = useDesignTheme()
+// 图表颜色取自设计语言 token（单语言，无切换；designTokens 运行时读 CSS 变量）
 const option1 = computed(() => {
-  const t = designTokens(designId.value)
+  const t = designTokens()
   return chartConfig({
     color: [t["--color-accent"], t["--color-data-2"], t["--color-data-3"]],
     xAxis: {

@@ -1,0 +1,624 @@
+{
+  "image": {
+    "file": "2.webp",
+    "width": 3201,
+    "height": 2400
+  },
+  "palette": [
+    {
+      "hex": "#DCE3EF",
+      "peak_hex": "#DDE4EF",
+      "share": 0.2916,
+      "pixels": 2240204
+    },
+    {
+      "hex": "#FFFFFF",
+      "peak_hex": "#FFFFFF",
+      "share": 0.28509,
+      "pixels": 2190210
+    },
+    {
+      "hex": "#F5F7FB",
+      "peak_hex": "#F5F7FB",
+      "share": 0.23396,
+      "pixels": 1797356
+    },
+    {
+      "hex": "#D4DBE9",
+      "peak_hex": "#D1D8E8",
+      "share": 0.06149,
+      "pixels": 472424
+    },
+    {
+      "hex": "#3A78F2",
+      "peak_hex": "#3A78F2",
+      "share": 0.04087,
+      "pixels": 313981
+    },
+    {
+      "hex": "#EFF1F7",
+      "peak_hex": "#EFF1F7",
+      "share": 0.03588,
+      "pixels": 275651
+    },
+    {
+      "hex": "#D0D6E7",
+      "peak_hex": "#CFD5E7",
+      "share": 0.00617,
+      "pixels": 47420
+    },
+    {
+      "hex": "#F4FFFF",
+      "peak_hex": "#F4FFFF",
+      "share": 0.00487,
+      "pixels": 37407
+    },
+    {
+      "hex": "#ECF1FF",
+      "peak_hex": "#ECF1FF",
+      "share": 0.00391,
+      "pixels": 30043
+    },
+    {
+      "hex": "#E7EBF7",
+      "peak_hex": "#E6E8F5",
+      "share": 0.00201,
+      "pixels": 15473
+    },
+    {
+      "hex": "#010B48",
+      "peak_hex": "#010B48",
+      "share": 0.00188,
+      "pixels": 14470
+    },
+    {
+      "hex": "#4077E4",
+      "peak_hex": "#3F78E6",
+      "share": 0.00152,
+      "pixels": 11701
+    },
+    {
+      "hex": "#000101",
+      "peak_hex": "#000000",
+      "share": 0.00127,
+      "pixels": 9766
+    },
+    {
+      "hex": "#EBFAFF",
+      "peak_hex": "#E8F8FF",
+      "share": 0.00102,
+      "pixels": 7800
+    },
+    {
+      "hex": "#4677D7",
+      "peak_hex": "#4577D8",
+      "share": 0.00087,
+      "pixels": 6712
+    },
+    {
+      "hex": "#DEE6F8",
+      "peak_hex": "#D9E4F9",
+      "share": 0.00079,
+      "pixels": 6086
+    }
+  ],
+  "accents": [
+    {
+      "hex": "#3A78F2",
+      "share": 0.04812,
+      "hue": 111,
+      "pixels": 369704
+    },
+    {
+      "hex": "#85D394",
+      "share": 0.00049,
+      "hue": 67,
+      "pixels": 3792
+    },
+    {
+      "hex": "#16D7AF",
+      "share": 0.00047,
+      "hue": 84,
+      "pixels": 3622
+    },
+    {
+      "hex": "#FF2B63",
+      "share": 0.00025,
+      "hue": 175,
+      "pixels": 1929
+    }
+  ],
+  "blocks": [
+    {
+      "color": "#FFFFFF",
+      "bbox": [
+        694,
+        326,
+        1594,
+        1750
+      ],
+      "area_px": 1949906,
+      "radius_px": 0.0
+    },
+    {
+      "color": "#EFF1F7",
+      "bbox": [
+        188,
+        325,
+        506,
+        1751
+      ],
+      "area_px": 641841,
+      "radius_px": 0.0
+    },
+    {
+      "color": "#CFD5E7",
+      "bbox": [
+        200,
+        2076,
+        2800,
+        116
+      ],
+      "area_px": 297874,
+      "radius_px": 75.0
+    },
+    {
+      "color": "#F5F7FB",
+      "bbox": [
+        771,
+        1652,
+        1439,
+        170
+      ],
+      "area_px": 225496,
+      "radius_px": 5.0
+    },
+    {
+      "color": "#F5F7FB",
+      "bbox": [
+        770,
+        1841,
+        1440,
+        170
+      ],
+      "area_px": 225465,
+      "radius_px": 7.0
+    },
+    {
+      "color": "#3A78F2",
+      "bbox": [
+        2351,
+        663,
+        574,
+        386
+      ],
+      "area_px": 196371,
+      "radius_px": 7.0
+    },
+    {
+      "color": "#FFFFFF",
+      "bbox": [
+        2352,
+        1102,
+        572,
+        384
+      ],
+      "area_px": 187630,
+      "radius_px": 3.5
+    },
+    {
+      "color": "#F5F7FB",
+      "bbox": [
+        771,
+        389,
+        1440,
+        91
+      ],
+      "area_px": 129402,
+      "radius_px": 10.0
+    },
+    {
+      "color": "#EFF1F7",
+      "bbox": [
+        771,
+        389,
+        1439,
+        91
+      ],
+      "area_px": 122990,
+      "radius_px": 13.5
+    },
+    {
+      "color": "#FFFFFF",
+      "bbox": [
+        250,
+        372,
+        381,
+        125
+      ],
+      "area_px": 40806,
+      "radius_px": 10.0
+    },
+    {
+      "color": "#3A78F2",
+      "bbox": [
+        248,
+        579,
+        372,
+        90
+      ],
+      "area_px": 30441,
+      "radius_px": 10.0
+    },
+    {
+      "color": "#3A78F2",
+      "bbox": [
+        251,
+        1932,
+        372,
+        77
+      ],
+      "area_px": 24350,
+      "radius_px": 8.5
+    },
+    {
+      "color": "#F4FFFF",
+      "bbox": [
+        328,
+        1645,
+        248,
+        160
+      ],
+      "area_px": 18399,
+      "radius_px": 155.5
+    },
+    {
+      "color": "#ECF1FF",
+      "bbox": [
+        1974,
+        623,
+        236,
+        76
+      ],
+      "area_px": 16171,
+      "radius_px": 3.5
+    },
+    {
+      "color": "#FFFFFF",
+      "bbox": [
+        2699,
+        539,
+        227,
+        76
+      ],
+      "area_px": 15727,
+      "radius_px": 3.5
+    }
+  ],
+  "layout": {
+    "vertical_gutters": [
+      {
+        "x": 0,
+        "width_px": 187
+      },
+      {
+        "x": 194,
+        "width_px": 52
+      },
+      {
+        "x": 251,
+        "width_px": 14
+      },
+      {
+        "x": 593,
+        "width_px": 28
+      },
+      {
+        "x": 626,
+        "width_px": 67
+      },
+      {
+        "x": 694,
+        "width_px": 80
+      },
+      {
+        "x": 1151,
+        "width_px": 6
+      },
+      {
+        "x": 1243,
+        "width_px": 40
+      },
+      {
+        "x": 1459,
+        "width_px": 18
+      },
+      {
+        "x": 1478,
+        "width_px": 65
+      },
+      {
+        "x": 1567,
+        "width_px": 6
+      },
+      {
+        "x": 1701,
+        "width_px": 8
+      },
+      {
+        "x": 1729,
+        "width_px": 8
+      },
+      {
+        "x": 1742,
+        "width_px": 11
+      },
+      {
+        "x": 1754,
+        "width_px": 16
+      },
+      {
+        "x": 1777,
+        "width_px": 6
+      },
+      {
+        "x": 1894,
+        "width_px": 10
+      },
+      {
+        "x": 1943,
+        "width_px": 16
+      },
+      {
+        "x": 1960,
+        "width_px": 43
+      },
+      {
+        "x": 2007,
+        "width_px": 11
+      },
+      {
+        "x": 2202,
+        "width_px": 8
+      },
+      {
+        "x": 2211,
+        "width_px": 76
+      },
+      {
+        "x": 2289,
+        "width_px": 61
+      },
+      {
+        "x": 2927,
+        "width_px": 73
+      },
+      {
+        "x": 3001,
+        "width_px": 200
+      }
+    ],
+    "horizontal_gutters": [
+      {
+        "y": 0,
+        "height_px": 324
+      },
+      {
+        "y": 326,
+        "height_px": 77
+      },
+      {
+        "y": 407,
+        "height_px": 9
+      },
+      {
+        "y": 457,
+        "height_px": 11
+      },
+      {
+        "y": 469,
+        "height_px": 98
+      },
+      {
+        "y": 609,
+        "height_px": 29
+      },
+      {
+        "y": 672,
+        "height_px": 35
+      },
+      {
+        "y": 733,
+        "height_px": 26
+      },
+      {
+        "y": 786,
+        "height_px": 40
+      },
+      {
+        "y": 843,
+        "height_px": 12
+      },
+      {
+        "y": 856,
+        "height_px": 14
+      },
+      {
+        "y": 872,
+        "height_px": 22
+      },
+      {
+        "y": 899,
+        "height_px": 8
+      },
+      {
+        "y": 963,
+        "height_px": 24
+      },
+      {
+        "y": 1107,
+        "height_px": 50
+      },
+      {
+        "y": 1187,
+        "height_px": 53
+      },
+      {
+        "y": 1261,
+        "height_px": 28
+      },
+      {
+        "y": 1318,
+        "height_px": 18
+      },
+      {
+        "y": 1350,
+        "height_px": 41
+      },
+      {
+        "y": 1469,
+        "height_px": 78
+      },
+      {
+        "y": 1569,
+        "height_px": 17
+      },
+      {
+        "y": 1608,
+        "height_px": 21
+      },
+      {
+        "y": 1651,
+        "height_px": 31
+      },
+      {
+        "y": 1688,
+        "height_px": 14
+      },
+      {
+        "y": 1777,
+        "height_px": 13
+      },
+      {
+        "y": 1796,
+        "height_px": 42
+      },
+      {
+        "y": 1866,
+        "height_px": 29
+      },
+      {
+        "y": 1921,
+        "height_px": 9
+      },
+      {
+        "y": 1931,
+        "height_px": 9
+      },
+      {
+        "y": 1979,
+        "height_px": 26
+      },
+      {
+        "y": 2012,
+        "height_px": 63
+      },
+      {
+        "y": 2077,
+        "height_px": 323
+      }
+    ]
+  },
+  "spacing": {
+    "base_unit_px": 4,
+    "base_unit_fit": 1.0,
+    "rhythm_8px_fit": 0.33,
+    "sample_gaps_px": [
+      19,
+      48,
+      53
+    ],
+    "gap_counts": {
+      "19": 1,
+      "48": 1,
+      "53": 1
+    }
+  },
+  "type": {
+    "height_clusters_px": [
+      {
+        "height_px": 34.0,
+        "count": 4,
+        "est_font_px_range": [
+          36,
+          49
+        ]
+      },
+      {
+        "height_px": 29.0,
+        "count": 3,
+        "est_font_px_range": [
+          31,
+          41
+        ]
+      },
+      {
+        "height_px": 27.0,
+        "count": 20,
+        "est_font_px_range": [
+          28,
+          39
+        ]
+      },
+      {
+        "height_px": 24.0,
+        "count": 6,
+        "est_font_px_range": [
+          25,
+          34
+        ]
+      },
+      {
+        "height_px": 22.0,
+        "count": 30,
+        "est_font_px_range": [
+          23,
+          31
+        ]
+      },
+      {
+        "height_px": 19.0,
+        "count": 20,
+        "est_font_px_range": [
+          20,
+          27
+        ]
+      },
+      {
+        "height_px": 17.0,
+        "count": 8,
+        "est_font_px_range": [
+          18,
+          24
+        ]
+      },
+      {
+        "height_px": 10.5,
+        "count": 2,
+        "est_font_px_range": [
+          11,
+          15
+        ]
+      },
+      {
+        "height_px": 7.0,
+        "count": 10,
+        "est_font_px_range": [
+          7,
+          10
+        ]
+      }
+    ],
+    "text_lines": 103
+  }
+}

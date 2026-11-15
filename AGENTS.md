@@ -57,7 +57,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 - `design/lang/tokens.json` 是唯一事实源；改 token 后必须重跑 `python design/tools/build.py`。
 - 页面写 UI：只用语义 CSS 变量（`--color-*` 等）与 `.d-card` / `.d-label` 词汇（`src/design/adapter.css`）；antd 组件自动跟随。图表用色走 `src/design/design-tokens.js`。
 - 提交前 `python design/tools/design_lint.py`（demo）与 `python design/tools/design_lint.py src/design/adapter.css` 0 error。
-- 过渡期现状：`src/design/`（themes.css / designs.json / registry.js / 切换器）仍是旧 noir+porcelain 双主题冻结皮肤，首个 `/design-implement` 后被新语言整体替换。
+- **当前实现态**：`src/design/`（theme.css + adapter.css + registry.js + design-tokens.js）为 Lumen 单语言皮肤；侧栏为文本侧栏（1.jpg 菜单条形式，形态由 adapter.css 驱动，无主题切换器）。
 
 ## Prettier
 

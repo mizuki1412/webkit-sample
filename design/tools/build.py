@@ -63,8 +63,14 @@ def css_value(value, type_: str) -> str:
     if type_ == "shadow":
         if isinstance(value, str):  # e.g. "none"
             return value
-        return ("{offsetX}px {offsetY}px {blur}px {spread}px {color}".format(**value))
+        if isinstance(value, list):  # DTCG 多层阴影
+            return ", ".join(_shadow_css(v) for v in value)
+        return _shadow_css(value)
     return str(value)
+
+
+def _shadow_css(value: dict) -> str:
+    return "{offsetX}px {offsetY}px {blur}px {spread}px {color}".format(**value)
 
 
 def tw_value(value, type_: str) -> str:

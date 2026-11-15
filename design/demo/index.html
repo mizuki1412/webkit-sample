@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen · 设计语言总览</title>
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="demo.css">
+<style>
+  .wrap { max-width: 1180px; margin: 0 auto; padding: var(--space-10) var(--space-6) var(--space-16); }
+  .hero { margin-bottom: var(--space-10); }
+  .hero p { margin: var(--space-2) 0 0; color: var(--color-text-muted); font-size: var(--font-size-sm); max-width: 560px; }
+  section { margin-bottom: var(--space-10); }
+  section > .d-label { display: block; margin-bottom: var(--space-4); }
+  .grid { display: grid; gap: var(--space-4); }
+  .g6 { grid-template-columns: repeat(6, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  /* 色卡 */
+  .sw-card { padding: 0; overflow: hidden; }
+  .sw { height: 44px; }
+  .sw-meta { padding: var(--space-2) var(--space-3); }
+  .sw-name { font-size: var(--font-size-xs); font-weight: var(--font-weight-semibold); }
+  .sw-val { font-size: var(--font-size-xs); color: var(--color-text-muted); }
+  /* 字阶 */
+  .type-row { display: flex; align-items: baseline; gap: var(--space-5); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+  .type-meta { width: 150px; flex-shrink: 0; }
+  /* 间距标尺 */
+  .ruler { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-1) 0; }
+  .ruler i { display: inline-block; height: var(--space-3); background: var(--color-accent); border-radius: var(--radius-xs); }
+  .ruler em { font-style: normal; font-size: var(--font-size-xs); color: var(--color-text-muted); width: 64px; }
+  /* 圆角/阴影样片 */
+  .chip { display: flex; align-items: center; justify-content: center; height: 72px; background: var(--color-surface-raised); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+  /* 页面入口 */
+  .entry { display: flex; align-items: center; justify-content: space-between; }
+  .entry b { font-size: var(--font-size-base); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="d-label">Lumen · Design Language</div>
+    <h1 class="d-h1">融合设计语言总览</h1>
+    <p>主体 assets/2.webp（Commercehq 电商运营台），元素补充 assets/1.jpg 亮色变体（金融仪表盘：竖条 mark / 深色对比卡 / 多彩数据系列）。浅色单 scheme。整页意象见 page-dashboard.html 与 page-billing.html。</p>
+  </div>
+
+  <!-- 色板 -->
+  <section>
+    <span class="d-label">Color · 语义色板</span>
+    <div class="grid g6" id="swatches">
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-bg);"></div><div class="sw-meta"><div class="sw-name">bg</div><div class="sw-val">#DDE4EF</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-surface);"></div><div class="sw-meta"><div class="sw-name">surface</div><div class="sw-val">#FFFFFF</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-surface-raised);"></div><div class="sw-meta"><div class="sw-name">surface-raised</div><div class="sw-val">#F5F7FB</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-sidebar);"></div><div class="sw-meta"><div class="sw-name">sidebar</div><div class="sw-val">#FFFFFF</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-border);"></div><div class="sw-meta"><div class="sw-name">border</div><div class="sw-val">#D1D8E8</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-border-strong);"></div><div class="sw-meta"><div class="sw-name">border-strong</div><div class="sw-val">#B9C3DA</div></div></div>
+
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-accent);"></div><div class="sw-meta"><div class="sw-name">accent</div><div class="sw-val">#3A78F2</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-accent-weak);"></div><div class="sw-meta"><div class="sw-name">accent-weak</div><div class="sw-val">10%</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-positive);"></div><div class="sw-meta"><div class="sw-name">positive</div><div class="sw-val">#0EA129</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-negative);"></div><div class="sw-meta"><div class="sw-name">negative</div><div class="sw-val">#E5484D</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-warning);"></div><div class="sw-meta"><div class="sw-name">warning</div><div class="sw-val">#C6792A</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-ink);"></div><div class="sw-meta"><div class="sw-name">ink</div><div class="sw-val">#151933</div></div></div>
+
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-text);"></div><div class="sw-meta"><div class="sw-name">text</div><div class="sw-val">#151827</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-text-muted);"></div><div class="sw-meta"><div class="sw-name">text-muted</div><div class="sw-val">#939AB1</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-text-faint);"></div><div class="sw-meta"><div class="sw-name">text-faint</div><div class="sw-val">#B4BCD0</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-data-2);"></div><div class="sw-meta"><div class="sw-name">data-2</div><div class="sw-val">#4A6ACE</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-data-3);"></div><div class="sw-meta"><div class="sw-name">data-3</div><div class="sw-val">#D4A03A</div></div></div>
+      <div class="d-card sw-card"><div class="sw" style="background: var(--color-data-4);"></div><div class="sw-meta"><div class="sw-name">data-4</div><div class="sw-val">#16D7AF</div></div></div>
+    </div>
+  </section>
+
+  <!-- 字阶 -->
+  <section>
+    <span class="d-label">Type · 字阶</span>
+    <div class="d-card">
+      <div class="type-row"><span class="type-meta"><span class="sw-name">xl · 22 / bold</span><br><span class="sw-val">hero 数字</span></span><span style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); line-height: var(--leading-tight);">$549,735.00</span></div>
+      <div class="type-row"><span class="type-meta"><span class="sw-name">lg · 18 / bold</span><br><span class="sw-val">统计值</span></span><span style="font-size: var(--font-size-lg); font-weight: var(--font-weight-bold); line-height: var(--leading-tight);">31,512</span></div>
+      <div class="type-row"><span class="type-meta"><span class="sw-name">base · 14</span><br><span class="sw-val">正文 / 菜单</span></span><span style="font-size: var(--font-size-base);">Products · Orders · Membership</span></div>
+      <div class="type-row"><span class="type-meta"><span class="sw-name">sm · 13</span><br><span class="sw-val">次级正文</span></span><span style="font-size: var(--font-size-sm); color: var(--color-text-muted);">iPhone XR Black ○ 10 orders</span></div>
+      <div class="type-row"><span class="type-meta"><span class="sw-name">xs · 12</span><br><span class="sw-val">辅助 / 时间戳</span></span><span style="font-size: var(--font-size-xs); color: var(--color-text-muted);">13:21 pm · 07 / 24</span></div>
+      <div class="type-row" style="border-bottom: 0;"><span class="type-meta"><span class="sw-name">micro · 10 / caps</span><br><span class="sw-val">节标签（签名）</span></span><span class="d-label">Total Sales</span></div>
+    </div>
+  </section>
+
+  <!-- 间距 / 圆角 / 阴影 -->
+  <section>
+    <span class="d-label">Space · Radius · Shadow</span>
+    <div class="grid g2">
+      <div class="d-card">
+        <div class="d-label" style="margin-bottom: var(--space-3);">间距标尺（4px 网格）</div>
+        <div class="ruler"><em>space-1</em><i style="width: var(--space-1);"></i></div>
+        <div class="ruler"><em>space-2</em><i style="width: var(--space-2);"></i></div>
+        <div class="ruler"><em>space-3</em><i style="width: var(--space-3);"></i></div>
+        <div class="ruler"><em>space-4</em><i style="width: var(--space-4);"></i></div>
+        <div class="ruler"><em>space-6</em><i style="width: var(--space-6);"></i></div>
+        <div class="ruler"><em>space-8</em><i style="width: var(--space-8);"></i></div>
+        <div class="ruler"><em>space-16</em><i style="width: var(--space-16);"></i></div>
+      </div>
+      <div class="d-card">
+        <div class="d-label" style="margin-bottom: var(--space-3);">圆角 / 阴影</div>
+        <div class="grid g4">
+          <div class="chip" style="border-radius: var(--radius-xs);">xs·4</div>
+          <div class="chip" style="border-radius: var(--radius-sm);">sm·6</div>
+          <div class="chip" style="border-radius: var(--radius-md);">md·8</div>
+          <div class="chip" style="border-radius: var(--radius-lg);">lg·12</div>
+        </div>
+        <div class="grid g2" style="margin-top: var(--space-4);">
+          <div class="chip" style="border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-card);">shadow-card</div>
+          <div class="chip" style="border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-pop);">shadow-pop</div>
+        </div>
+        <div style="margin-top: var(--space-4);"><span class="d-badge" style="border-radius: var(--radius-full); background: var(--color-surface-raised); color: var(--color-text-muted);">radius-full · 999px 胶囊</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 组件陈列 -->
+  <section>
+    <span class="d-label">Components · 组件陈列</span>
+    <div class="grid g2">
+      <div class="d-card">
+        <div class="d-label" style="margin-bottom: var(--space-3);">按钮</div>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <button class="d-btn">Exchange →</button>
+          <button class="d-btn d-btn--ghost">View All</button>
+          <button class="d-btn d-btn--soft">Insight ▾</button>
+          <button class="d-btn d-btn--sm" style="border-radius: var(--radius-full);">＋</button>
+        </div>
+        <div class="d-label" style="margin: var(--space-5) 0 var(--space-3);">输入 / 徽章</div>
+        <div class="d-input" style="max-width: 320px;">⌕ <input placeholder="Search..."></div>
+        <div style="display: flex; gap: var(--space-3); margin-top: var(--space-4);">
+          <span class="d-badge d-badge--up">↑ 37%</span>
+          <span class="d-badge d-badge--down">↓ 34%</span>
+          <span class="d-badge d-badge--up">+2.43%</span>
+        </div>
+        <div class="d-label" style="margin: var(--space-5) 0 var(--space-3);">头像 / 图标点</div>
+        <div style="display: flex; gap: var(--space-3); align-items: center;">
+          <span class="d-avatar">MS</span>
+          <span class="d-avatar d-avatar--teal">IN</span>
+          <span class="d-avatar d-avatar--gold">M</span>
+          <span class="d-avatar d-avatar--red">N</span>
+          <span class="d-avatar d-avatar--green">S</span>
+          <span class="d-avatar d-avatar--indigo">↯</span>
+          <span class="d-icon-dot">▢</span>
+          <span class="d-icon-dot" style="background: var(--color-surface-raised); color: var(--color-text-muted);">⇩</span>
+        </div>
+        <div class="d-label" style="margin: var(--space-5) 0 var(--space-3);">进度条</div>
+        <div style="display: grid; gap: var(--space-3);">
+          <div class="d-progress"><i style="width: 65.6%;"></i></div>
+          <div class="d-progress"><i style="width: 45.2%;"></i></div>
+          <div class="d-progress"><i style="width: 25.2%;"></i></div>
+        </div>
+      </div>
+      <div class="d-card">
+        <div class="d-label" style="margin-bottom: var(--space-3);">mark 卡（左竖条 · 1.jpg 元素）</div>
+        <div class="grid g3">
+          <div class="d-card d-card--mark" style="padding: var(--space-4);"><div class="d-sub">Fraund Score</div><div class="d-stat-value">6.9</div><div class="d-sub">Out of 10</div></div>
+          <div class="d-card d-card--mark mark-warning" style="padding: var(--space-4);"><div class="d-sub">Total Saved</div><div class="d-stat-value">6 342</div><div class="d-sub">1390 x 50.4 CPC</div></div>
+          <div class="d-card d-card--mark mark-indigo" style="padding: var(--space-4);"><div class="d-sub">Refunds</div><div class="d-stat-value">128</div><div class="d-sub">this month</div></div>
+        </div>
+        <div class="d-label" style="margin: var(--space-5) 0 var(--space-3);">ink 卡（深色对比 · 1.jpg 元素）</div>
+        <div class="d-card--ink">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="d-label">My card</span>
+            <span style="font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-micro);">VISA</span>
+          </div>
+          <div style="margin-top: var(--space-4); font-size: var(--font-size-lg); font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-micro);">•••• •••• •••• 9546</div>
+          <div style="display: flex; justify-content: space-between; margin-top: var(--space-4);">
+            <span class="d-sub">Debra Flores</span><span class="d-sub">07 / 24</span>
+          </div>
+        </div>
+        <div class="d-label" style="margin: var(--space-5) 0 var(--space-3);">柱图 / sparkline（data 系列）</div>
+        <div class="d-bars" style="height: 90px;">
+          <span><i style="height: 30%;"></i></span>
+          <span><i style="height: 55%;"></i></span>
+          <span><i style="height: 78%;"></i></span>
+          <span><i style="height: 42%;"></i></span>
+          <span><i style="height: 66%;"></i></span>
+          <span><i style="height: 50%;"></i></span>
+          <span style="background: var(--color-chart-area);"><i style="height: 88%;"></i></span>
+        </div>
+        <svg viewBox="0 0 120 36" width="160" height="48" style="margin-top: var(--space-4);" aria-hidden="true">
+          <polyline points="0,28 15,24 30,26 45,14 60,18 75,8 90,16 105,6 120,12"
+                    style="fill: none; stroke: var(--color-data-3); stroke-width: 2; stroke-linecap: round;"></polyline>
+          <polyline points="0,30 15,26 30,20 45,22 60,12 75,18 90,10 105,14 120,8"
+                    style="fill: none; stroke: var(--color-data-2); stroke-width: 2; stroke-linecap: round;"></polyline>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 侧栏形态 + 页面入口 -->
+  <section>
+    <span class="d-label">Sidebar · 布局形态</span>
+    <div class="grid g2">
+      <div class="d-card" style="padding: 0; overflow: hidden;">
+        <div class="d-sidebar" style="background: var(--color-surface-raised);">
+          <div class="d-card d-card--flat" style="background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-card); display: flex; align-items: center; gap: var(--space-3); font-weight: var(--font-weight-bold);"><span class="d-avatar" style="width: 24px; height: 24px;">C</span> Commercehq</div>
+          <div class="d-nav-strip" style="flex: 1;">
+            <div class="d-nav d-nav--active">◔ Dashboard</div>
+            <div class="d-nav">▣ Products</div>
+            <div class="d-nav">▽ Funnls</div>
+            <div class="d-nav">✦ Orders</div>
+            <div class="d-nav">☰ Membership</div>
+            <div class="d-nav">⚙ Settings</div>
+          </div>
+          <div style="height: var(--space-2);"></div>
+          <button class="d-btn" style="width: 100%;">Upgrade your plan</button>
+        </div>
+      </div>
+      <div class="grid g2" style="align-content: start;">
+        <a class="d-card entry" href="page-dashboard.html"><b>page-dashboard</b><span class="d-sub">2.webp 意象 · 运营台</span></a>
+        <a class="d-card entry" href="page-billing.html"><b>page-billing</b><span class="d-sub">1.jpg 元素 · 账务</span></a>
+        <div class="d-card d-card--flat" style="grid-column: 1 / -1;">
+          <div class="d-label" style="margin-bottom: var(--space-2);">审查清单</div>
+          <div class="d-sub" style="line-height: 1.8;">
+            1. 色板与素材气质是否一致（淡紫灰画布 + 商务蓝）<br>
+            2. 全大写标签 / 数字层级是否符合预期<br>
+            3. mark 卡 / ink 卡 / 多彩数据系列的融入程度<br>
+            4. 通过后下指令「实现ui」落地 src/design
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
