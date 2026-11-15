@@ -69,8 +69,8 @@ export const tokens = {
   },
   layout: {
     'card-pad': '24px',
-    'content-x': '24px',
-    'content-y': '24px',
+    'content-x': '12px',
+    'content-y': '12px',
     'control-h': '40px',
     'header-h': '64px',
     'sidebar': '200px',

@@ -27,7 +27,6 @@ export const antdTheme = {
     borderRadius: 8,
     borderRadiusLG: 12,
     borderRadiusSM: 6,
-    controlHeight: 40,
     fontSize: 14,
   },
 }

@@ -27,6 +27,7 @@ body {
     text-transform: uppercase;
     color: var(--color-text-muted);
 }
+
 /* 设计跟随卡片：页面里替代裸写 bg-white/rounded */
 .d-card {
     background: var(--color-surface);
@@ -34,6 +35,7 @@ body {
     padding: var(--layout-card-pad);
     box-shadow: var(--shadow-card);
 }
+
 /* 嵌入式浅灰卡（表格条/次级块）：无影 */
 .d-card-raised,
 .d-card--flat {
@@ -41,11 +43,13 @@ body {
     border-radius: var(--radius-lg);
     padding: var(--space-4) var(--space-5);
 }
+
 /* 左侧 3px 彩条 mark 卡（源自 1.jpg）：默认 accent，可换 warning / indigo */
 .d-card--mark {
     position: relative;
     overflow: hidden;
 }
+
 .d-card--mark::before {
     content: "";
     position: absolute;
@@ -55,12 +59,15 @@ body {
     width: 3px;
     background: var(--color-accent);
 }
+
 .d-card--mark.mark-warning::before {
     background: var(--color-warning);
 }
+
 .d-card--mark.mark-indigo::before {
     background: var(--color-data-2);
 }
+
 /* 深色对比卡（源自 1.jpg 信用卡/tooltip） */
 .d-card--ink {
     background: var(--color-ink);
@@ -69,6 +76,7 @@ body {
     padding: var(--layout-card-pad);
     box-shadow: var(--shadow-card);
 }
+
 .d-card--ink .d-label {
     color: var(--color-ink-text-muted);
 }
@@ -78,45 +86,75 @@ body {
 #home_page .ant-layout-sider {
     background: transparent !important;
 }
-/* 顶栏区：无贯通条带（语言规则），控件浮于窗口底 */
-#home_page .ant-layout-header {
-    background: var(--color-surface-raised) !important;
-    border-bottom: 0 !important;
+
+/* 布局容器/内容区：全部透明——只有窗口底一层，白卡直接浮于其上
+   （antd colorBgLayout 的画布色不再参与，避免白卡底下多出一层背景） */
+#home_page .ant-layout,
+#home_page .ant-layout-content {
+    background: transparent !important;
 }
 
-/* 菜单条 */
-.ant-menu {
+/* 顶栏：高度钉死 64px（不依赖 antd 默认值），块内居中，12px 统一沟槽 */
+#home_page .ant-layout-header {
+    background: transparent !important;
+    border-bottom: 0 !important;
+    height: var(--space-16) !important;
+    line-height: normal !important;
+    padding: 0 var(--space-3) 0 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-3);
+}
+
+/* 菜单条：#home_page 提权（压过 antd 主题内部选择器；menu 用 light 主题 + 本层覆盖）。
+   留白由 .sider-menu-scroll 的 padding 提供（menu 本身 width:100%，加 margin 会溢出被裁） */
+#home_page .ant-menu {
     background: var(--color-sidebar) !important;
     border-inline-end: 0 !important;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-card);
     padding: var(--space-2) !important;
+    margin: 0 0 var(--space-3) !important;
 }
-.ant-menu-item,
-.ant-menu-submenu-title {
+
+#home_page .ant-menu-item,
+#home_page .ant-menu-submenu-title {
     margin-inline: 0 !important;
-    width: 100%;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding-inline: var(--space-3) !important;
     height: var(--layout-control-h);
     line-height: var(--layout-control-h);
     border-radius: var(--radius-md);
     color: var(--color-sidebar-text);
+    white-space: nowrap;
+    overflow: hidden;
 }
-.ant-menu-item:hover,
-.ant-menu-submenu-title:hover {
+
+#home_page .ant-menu-title-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#home_page .ant-menu-item:not(.ant-menu-item-selected):hover,
+#home_page .ant-menu-submenu-title:hover {
     color: var(--color-text);
     background: var(--color-surface-raised) !important;
 }
-.ant-menu-submenu-selected > .ant-menu-submenu-title {
+
+#home_page .ant-menu-submenu-selected>.ant-menu-submenu-title {
     color: var(--color-text);
 }
-.ant-menu-item-selected {
+
+#home_page .ant-menu-item-selected {
     position: relative;
     background: var(--color-sidebar-active-bg) !important;
     color: var(--color-sidebar-active-text) !important;
     box-shadow: var(--shadow-pop);
 }
+
 /* 菜单条左缘 accent 胶囊标（2.webp 签名，贴菜单条左边缘） */
-.ant-menu-item-selected::before {
+#home_page .ant-menu-item-selected::before {
     content: "";
     position: absolute;
     left: calc(-1 * var(--space-2) - 3px);
@@ -126,45 +164,59 @@ body {
     border-radius: var(--radius-full);
     background: var(--color-sidebar-active-bg);
 }
+
 /* 内嵌子菜单：透明，保持在白条内 */
-.ant-menu-sub.ant-menu-inline {
+#home_page .ant-menu-sub.ant-menu-inline {
     background: transparent !important;
     box-shadow: none;
 }
-/* 折叠态弹出子菜单：白卡浮层 */
+
+/* 折叠态：图标项居中，保持 40px 方块 */
+#home_page .ant-menu-inline-collapsed {
+    padding: var(--space-2) !important;
+}
+
+#home_page .ant-menu-inline-collapsed .ant-menu-item,
+#home_page .ant-menu-inline-collapsed .ant-menu-submenu-title {
+    width: 40px;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+}
+
+/* 折叠态弹出子菜单（portal，不在 #home_page 内）：白卡浮层 */
 .ant-menu-submenu-popup .ant-menu-sub {
     background: var(--color-surface) !important;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-pop);
 }
 
-/* 内容容器：白卡浮于窗口底 */
-#home_page .ant-layout-content {
-    padding: var(--layout-content-y) var(--layout-content-x) !important;
+.ant-menu-submenu-popup .ant-menu-item,
+.ant-menu-submenu-popup .ant-menu-submenu-title {
+    color: var(--color-text);
+    border-radius: var(--radius-sm);
 }
-#home_page .ant-layout-content > div {
+
+.ant-menu-submenu-popup .ant-menu-item-selected {
+    background: var(--color-sidebar-active-bg) !important;
+    color: var(--color-sidebar-active-text) !important;
+}
+
+/* ------------------------------------------------------ antd 组件细节
+   除菜单条外，antdv 组件保持原生样式（用户裁决 2026-11-15）：
+   颜色/圆角/密度走 registry.js 的 ConfigProvider 官方通道，不用 CSS 覆盖，
+   避免与 antd 内部选择器打架产生偏差。 */
+
+/* 内容容器：左缘与顶栏标签卡对齐（0），右/下留 12px 沟槽露出窗口底 */
+#home_page .ant-layout-content {
+    padding: 0 var(--space-3) var(--space-3) 0 !important;
+    color: var(--color-text);
+}
+
+#home_page .ant-layout-content>div {
     background: var(--color-surface);
     border-radius: var(--radius-lg);
     padding: var(--layout-card-pad);
     box-shadow: var(--shadow-card);
-}
-
-/* ------------------------------------------------------ antd 组件细节 */
-/* 表头：surface-raised 底 + muted 小字（2.webp 表格形态） */
-.ant-table-thead > tr > th {
-    background: var(--color-surface-raised);
-    color: var(--color-text-muted);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-xs);
-}
-/* 分割线统一走 border token */
-.ant-table-tbody > tr > td {
-    border-bottom-color: var(--color-border);
-}
-/* 弹窗/抽屉圆角跟随卡片，pop 阴影 */
-.ant-modal .ant-modal-content {
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-pop);
 }
 
 /* ------------------------------------------------------------- 登录页 */

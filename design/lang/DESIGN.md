@@ -25,68 +25,69 @@
 
 ## 3. 语义变量表（核心）
 
-| 变量 | 值 | 证据 |
-|---|---|---|
-| `--color-bg` | `#DDE4EF` | 实测 29.2%（画布，淡紫灰蓝） |
-| `--color-surface` | `#FFFFFF` | 实测 28.5%（卡片/面板） |
-| `--color-surface-raised` | `#F5F7FB` | 实测 23.4%（浅灰嵌入卡/输入底/**右栏底**） |
-| `--color-border` | `#D1D8E8` | 实测 6.1% |
-| `--color-text` | `#151827` | 实测区间 #000–#27282B 取中 |
-| `--color-text-muted` | `#939AB1` | 实测两处一致（大写标签/表头） |
-| `--color-accent` | `#3A78F2` | 实测 4.81%（选中/柱图/CTA/进度/链接） |
-| `--color-positive` | `#0EA129` | 实测 ↑$15,686.65 |
-| `--color-negative` | `#E5484D` | 实测 #E36F6F~#FF2B63 取中 |
-| `--color-warning` | `#C6792A` | 实测 1.jpg Total Saved 金竖条 |
-| `--color-ink` | `#151933` | 实测 1.jpg 信用卡（深色对比卡/tooltip） |
-| `--color-sidebar` | `#FFFFFF` | 审查裁决：1.jpg 白底形式（2.webp 实测 #EFF1F7 被推翻） |
-| `--color-header` | `#FFFFFF` | 推断（素材无贯通顶栏） |
+| 变量                     | 值        | 证据                                                   |
+| ------------------------ | --------- | ------------------------------------------------------ |
+| `--color-bg`             | `#DDE4EF` | 实测 29.2%（画布，淡紫灰蓝）                           |
+| `--color-surface`        | `#FFFFFF` | 实测 28.5%（卡片/面板）                                |
+| `--color-surface-raised` | `#F5F7FB` | 实测 23.4%（浅灰嵌入卡/输入底/**右栏底**）             |
+| `--color-border`         | `#D1D8E8` | 实测 6.1%                                              |
+| `--color-text`           | `#151827` | 实测区间 #000–#27282B 取中                             |
+| `--color-text-muted`     | `#939AB1` | 实测两处一致（大写标签/表头）                          |
+| `--color-accent`         | `#3A78F2` | 实测 4.81%（选中/柱图/CTA/进度/链接）                  |
+| `--color-positive`       | `#0EA129` | 实测 ↑$15,686.65                                       |
+| `--color-negative`       | `#E5484D` | 实测 #E36F6F~#FF2B63 取中                              |
+| `--color-warning`        | `#C6792A` | 实测 1.jpg Total Saved 金竖条                          |
+| `--color-ink`            | `#151933` | 实测 1.jpg 信用卡（深色对比卡/tooltip）                |
+| `--color-sidebar`        | `#FFFFFF` | 审查裁决：1.jpg 白底形式（2.webp 实测 #EFF1F7 被推翻） |
+| `--color-header`         | `#FFFFFF` | 推断（素材无贯通顶栏）                                 |
 
 完整清单见 tokens.json（每个叶子带证据 `$description`）。
 
 ## 4. 组件形态
 
-| 组件 | 形态 | 来源 |
-|---|---|---|
-| 侧栏 | **1.jpg 形式**：侧栏列透明浮于窗口底，菜单条 = 白色圆角面板（200px 窄栏，`--color-sidebar` 白底 + `--shadow-card`，保留文字）；品牌卡 / 底部 CTA 独立浮动，**白底轻投影、无边框**（边框会与阴影打架，1.jpg hamburger 同法）；菜单项 `sidebar-text`，选中 = accent 圆角块 + 白字 + `--shadow-pop` 投影 + **菜单条左缘 accent 胶囊标**（~6×24，`--radius-full`） | 1.jpg + 2.webp |
-| 按钮 | 主 = accent 实心 r8 h40；ghost = 白底 `border` 描边；soft = `accent-weak` 底蓝字（INSIGHT/CHECK DATA 形） | 2.webp + 1.jpg |
-| 输入/搜索 | `surface-raised` 底 r8-10 h40，无边框；聚焦描边 `border-strong` | 2.webp |
-| 表格 | `surface-raised` 圆角条卡，列头 muted 小字，数值黑 semibold，行无描边 | 2.webp |
-| mark 卡 | 白卡 + 左侧 3px 彩条（`--color-warning` 金 / `--color-accent` 蓝 / data-2 靛） | 1.jpg |
-| ink 卡 | `--color-ink` 深底白字（信用卡/tooltip/强调块），muted 用 `--color-ink-text-muted` | 1.jpg |
-| 徽章 | `*-weak` 底 + 同色文字，r-full 胶囊（↑37% 绿 / ↓34% 红） | 2.webp |
-| 头像点 | 圆形容器彩色底（青/绿），`.d-avatar` | 1.jpg/2.webp |
-| 进度条 | 4px 高轨道 `chart-grid`，分段 accent 填充 | 2.webp REVENUE |
-| 迷你折线 | 卡内右侧 sparkline（SVG path），data-1/2/3 | 1.jpg |
+| 组件      | 形态                                                                                                                                                                                                                                                                                                                                                           | 来源           |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 侧栏      | **1.jpg 形式**：侧栏列透明浮于窗口底，菜单条 = 白色圆角面板（200px 窄栏，`--color-sidebar` 白底 + `--shadow-card`，保留文字）；品牌卡 / 底部 CTA 独立浮动，**白底轻投影、无边框**（边框会与阴影打架，1.jpg hamburger 同法）；菜单项 `sidebar-text`，选中 = accent 圆角块 + 白字 + `--shadow-pop` 投影 + **菜单条左缘 accent 胶囊标**（~6×24，`--radius-full`） | 1.jpg + 2.webp |
+| 按钮      | 主 = accent 实心 r8 h40；ghost = 白底 `border` 描边；soft = `accent-weak` 底蓝字（INSIGHT/CHECK DATA 形）                                                                                                                                                                                                                                                      | 2.webp + 1.jpg |
+| 输入/搜索 | `surface-raised` 底 r8-10 h40，无边框；聚焦描边 `border-strong`                                                                                                                                                                                                                                                                                                | 2.webp         |
+| 表格      | `surface-raised` 圆角条卡，列头 muted 小字，数值黑 semibold，行无描边                                                                                                                                                                                                                                                                                          | 2.webp         |
+| mark 卡   | 白卡 + 左侧 3px 彩条（`--color-warning` 金 / `--color-accent` 蓝 / data-2 靛）                                                                                                                                                                                                                                                                                 | 1.jpg          |
+| ink 卡    | `--color-ink` 深底白字（信用卡/tooltip/强调块），muted 用 `--color-ink-text-muted`                                                                                                                                                                                                                                                                             | 1.jpg          |
+| 徽章      | `*-weak` 底 + 同色文字，r-full 胶囊（↑37% 绿 / ↓34% 红）                                                                                                                                                                                                                                                                                                       | 2.webp         |
+| 头像点    | 圆形容器彩色底（青/绿），`.d-avatar`                                                                                                                                                                                                                                                                                                                           | 1.jpg/2.webp   |
+| 进度条    | 4px 高轨道 `chart-grid`，分段 accent 填充                                                                                                                                                                                                                                                                                                                      | 2.webp REVENUE |
+| 迷你折线  | 卡内右侧 sparkline（SVG path），data-1/2/3                                                                                                                                                                                                                                                                                                                     | 1.jpg          |
 
 ## 5. antd 映射表（/design-implement 直接消费）
 
-| antd token | 值 | 语义来源 |
-|---|---|---|
-| `colorPrimary` / `colorInfo` / `colorLink` | `#3A78F2` | accent |
-| `colorSuccess` | `#0EA129` | positive |
-| `colorWarning` | `#C6792A` | warning |
-| `colorError` | `#E5484D` | negative |
-| `colorTextBase` / `colorText` | `#151827` | text |
-| `colorTextSecondary` | `#939AB1` | text-muted |
-| `colorTextTertiary` | `#B4BCD0` | text-faint |
-| `colorBgLayout` | `#DDE4EF` | bg |
-| `colorBgContainer` | `#FFFFFF` | surface |
-| `colorBgElevated` | `#FFFFFF` | surface（下拉浮层 + shadow-pop） |
-| `colorBorder` | `#B9C3DA` | border-strong |
-| `colorBorderSecondary` | `#D1D8E8` | border |
-| `borderRadius` | `8` | radius.md |
-| `borderRadiusLG` | `12` | radius.lg |
-| `borderRadiusSM` | `6` | radius.sm |
-| `controlHeight` | `40` | layout.control-h |
-| `fontSize` | `14` | font.size.base |
-| algorithm | `defaultAlgorithm`（light） | $scheme |
+| antd token                                 | 值                                                       | 语义来源                                                 |
+| ------------------------------------------ | -------------------------------------------------------- | -------------------------------------------------------- |
+| `colorPrimary` / `colorInfo` / `colorLink` | `#3A78F2`                                                | accent                                                   |
+| `colorSuccess`                             | `#0EA129`                                                | positive                                                 |
+| `colorWarning`                             | `#C6792A`                                                | warning                                                  |
+| `colorError`                               | `#E5484D`                                                | negative                                                 |
+| `colorTextBase` / `colorText`              | `#151827`                                                | text                                                     |
+| `colorTextSecondary`                       | `#939AB1`                                                | text-muted                                               |
+| `colorTextTertiary`                        | `#B4BCD0`                                                | text-faint                                               |
+| `colorBgLayout`                            | `#DDE4EF`                                                | bg                                                       |
+| `colorBgContainer`                         | `#FFFFFF`                                                | surface                                                  |
+| `colorBgElevated`                          | `#FFFFFF`                                                | surface（下拉浮层 + shadow-pop）                         |
+| `colorBorder`                              | `#B9C3DA`                                                | border-strong                                            |
+| `colorBorderSecondary`                     | `#D1D8E8`                                                | border                                                   |
+| `borderRadius`                             | `8`                                                      | radius.md                                                |
+| `borderRadiusLG`                           | `12`                                                     | radius.lg                                                |
+| `borderRadiusSM`                           | `6`                                                      | radius.sm                                                |
+| `controlHeight`                            | 不映射（antd 默认 32；登录页等大号 CTA 用 size="large"） | 审查裁决：控件尺寸回 antd 默认，40px 仅用于侧栏/顶栏壳层 |
+| `fontSize`                                 | `14`                                                     | font.size.base                                           |
+| algorithm                                  | `defaultAlgorithm`（light）                              | $scheme                                                  |
 
 ## 6. 布局语法
 
 - 三栏心智：侧栏 232 + 内容流 + 右栏 ~320（本仓库实现为 sider + header + content 两栏，右栏信息并入内容网格）。
 - **分隔语法**：中央内容 = 白色浮层，方向性投影 `--shadow-sheet`（朝侧栏浅 → 白底侧栏与主区联动近；朝右栏深 → 与 `--color-surface-raised` 右栏分层清，实测接缝最暗 `#F2F3F7`）；右栏无白底无描边，其上的次级卡为白卡浮起；**右栏内容左内距加大（≥32px）避开阴影带**，投影只落在空的栏底上、不遮内容。
-- **侧栏语法**：1.jpg 形式——侧栏列透明，菜单条为白色圆角面板（200px 窄栏 + 文字菜单，`--shadow-card` 浮起）；选中项 = accent 块 + 胶囊标贴菜单条左缘；与主区的联动靠 sheet 阴影浅侧。
-- 内容节奏：`content-x/y = 24`，卡片间距 `--space-6`，卡内距 `--layout-card-pad`。
+- **侧栏语法**：1.jpg 形式——侧栏列透明，菜单条为白色圆角面板（200px 窄栏 + 文字菜单，`--shadow-card` 浮起）；选中项 = accent 块 + 胶囊标贴菜单条左缘；与主区的联动靠 sheet 阴影浅侧。菜单必须用 light 主题 + 本语言覆盖（dark 主题的白色文字在白条上不可见）。
+- **顶栏语法**：无贯通条带；折叠钮位于菜单条顶部品牌卡内（标题右侧、同一方块，即 1.jpg hamburger 位）；顶栏左侧为**打开页面的标签行**——与品牌卡同款白色圆角卡（`--shadow-card`），活跃页 = `accent-weak` 底 accent 字 chip，可关闭；右侧 = 个人中心圆形白底浮钮（`--radius-full` + `--shadow-card`）。**窗口底只有一层**：antd 布局容器（layout/header/content）全部透明，`colorBgLayout` 不参与——任何白卡底下不得再叠出一层背景。菜单 hover 态不得覆盖选中态（`:not(.ant-menu-item-selected)`）。
+- 内容节奏：内容卡**全出血**——`ant-layout-content` 无 padding，左缘与顶栏标签卡对齐（审查裁决：12px padding 也嫌大，直接取消）；内容卡内距 `--layout-card-pad`（24px 四边；左/上取消的裁决已回退）；卡片间距 `--space-6`。`content-x/y` token 保留契约但壳层不使用。
 - 页首 = 全大写标签 → hero 数字（xl/tight）→ 说明行 → 图表 → 节标签 → 统计行/表格。
 
 ## 7. 测得 vs 推断
@@ -97,14 +98,14 @@
 
 ## 8. 决策记录（融合裁决）
 
-| 角色 | 候选 | 裁决 | 理由 |
-|---|---|---|---|
-| accent | 2.webp `#3A78F2` vs 1.jpg `#4972FE`/靛 `#4A6ACE` | **#3A78F2** | 主体素材；1.jpg 蓝降级为 data 系列与选中块同场景使用 |
-| 画布 | 2.webp `#DDE4EF` vs 1.jpg `#EFEFEF` | **#DDE4EF** | 主体素材；1.jpg 灰太平（少紫蓝呼吸感） |
-| 表面层数 | — | bg → surface → surface-raised 三层 | 2.webp 实测占比 29/28/23 三层分明 |
-| 负面红 | 区域 #E36F6F vs 峰值 #FF2B63 | **#E5484D** | 区间取中：峰值太荧光、均值太粉 |
-| 文字黑 | #000000 vs #27282B | **#151827** | 抗锯齿区间取中，保留轻海军蓝（与 ink 同族协调） |
-| 暗色变体 | 1.jpg 双明暗样图 | **不采用暗色** | 用户明确要求 |
-| 侧栏形态 | 2.webp 文本侧栏 vs 1.jpg 图标方块侧栏 | **文本侧栏** | 主体素材；1.jpg 的选中方块形态由 2.webp Dashboard 项同款承担 |
-| 侧栏底/宽 | 2.webp `#EFF1F7` 230px vs 1.jpg 白底窄栏 | **白色菜单条 200px** | 用户审查裁决（2026-11-15，两轮收敛）：1.jpg 形式——白色圆角菜单条浮于窗口底，窄栏 + 文字；与主区联动靠 sheet 阴影浅侧 |
-| 主区投影 | 全向 `--shadow-pop` | **方向性 `--shadow-sheet`** | 用户审查裁决（2026-11-15）：朝侧栏浅、朝右栏深，突出侧栏与主区联动 |
+| 角色      | 候选                                             | 裁决                               | 理由                                                                                                                 |
+| --------- | ------------------------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| accent    | 2.webp `#3A78F2` vs 1.jpg `#4972FE`/靛 `#4A6ACE` | **#3A78F2**                        | 主体素材；1.jpg 蓝降级为 data 系列与选中块同场景使用                                                                 |
+| 画布      | 2.webp `#DDE4EF` vs 1.jpg `#EFEFEF`              | **#DDE4EF**                        | 主体素材；1.jpg 灰太平（少紫蓝呼吸感）                                                                               |
+| 表面层数  | —                                                | bg → surface → surface-raised 三层 | 2.webp 实测占比 29/28/23 三层分明                                                                                    |
+| 负面红    | 区域 #E36F6F vs 峰值 #FF2B63                     | **#E5484D**                        | 区间取中：峰值太荧光、均值太粉                                                                                       |
+| 文字黑    | #000000 vs #27282B                               | **#151827**                        | 抗锯齿区间取中，保留轻海军蓝（与 ink 同族协调）                                                                      |
+| 暗色变体  | 1.jpg 双明暗样图                                 | **不采用暗色**                     | 用户明确要求                                                                                                         |
+| 侧栏形态  | 2.webp 文本侧栏 vs 1.jpg 图标方块侧栏            | **文本侧栏**                       | 主体素材；1.jpg 的选中方块形态由 2.webp Dashboard 项同款承担                                                         |
+| 侧栏底/宽 | 2.webp `#EFF1F7` 230px vs 1.jpg 白底窄栏         | **白色菜单条 200px**               | 用户审查裁决（2026-11-15，两轮收敛）：1.jpg 形式——白色圆角菜单条浮于窗口底，窄栏 + 文字；与主区联动靠 sheet 阴影浅侧 |
+| 主区投影  | 全向 `--shadow-pop`                              | **方向性 `--shadow-sheet`**        | 用户审查裁决（2026-11-15）：朝侧栏浅、朝右栏深，突出侧栏与主区联动                                                   |

@@ -29,6 +29,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 - **Entry**: `src/main.js` → `setupWebkit(app, {env, backend: goFrameBackend, routes})`（web-frame 标准装配入口）
 - **App shell**: `src/App.vue` — wraps `<router-view>` in antdv's `a-config-provider` + `a-app`（中文 locale 在此设置）
 - **Router**: `src/router/index.js` 定义路由表，布局组件取 `src/layouts/layout-admin.vue`（自 web-frame kit-layout-admin 封装：Noir 用 72px 图标栏，其余语言沿用框架文本侧栏）
+- **标签页保活**：`layout-admin.vue` 的标签栏对已入签页面做 keep-alive（切签不重建、关签销毁缓存）；入签页面的**组件名必须等于路由名**（文件名推断不一致的视图用 `defineOptions({ name: 路由名 })` 声明，如 table-normal.vue → `table_normal`），否则 keep-alive include 匹配不上、缓存失效
 - **Business api**: `src/api/`（示例 `test.js`），页面不裸发 axios
 - **Views**: admin 视图 `src/views/`，移动端视图 `src/views-app/`（当前未接路由，处于闲置状态）
 
@@ -47,8 +48,8 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 ## Sample 专属约定
 
 - `src/after.css`：tailwind 之上的覆盖样式，在 `src/main.js` 于 tailwind 之后引入。
-- TinyMCE 语言包放 `public/tinymce/`；`vite-plugin-svg-icons` 扫 `src/assets/icons/`，图标组件用 `<KitIcon>`（web-frame/assets/icons/common 有公共 svg，用时复制过来）。
-- 重库（tinymce/echarts）在用到它的页面局部 import，避免整库进首屏主包——Bundle 纪律详见 web-frame/AGENTS.md。
+- 富文本为 Quill（`kit-rich-text.vue`，`public/tinymce/` 语言包已随 TinyMCE 移除）；`vite-plugin-svg-icons` 扫 `src/assets/icons/`，图标组件用 `<KitIcon>`（web-frame/assets/icons/common 有公共 svg，用时复制过来）。
+- 重库（quill/echarts）在用到它的页面局部 import，避免整库进首屏主包——Bundle 纪律详见 web-frame/AGENTS.md。
 - Tests: vitest（`src/**/*.test.js`；框架测试随 web-frame 仓库）；lint: oxlint（`.oxlintrc.json`）；typecheck 仍无 — only Prettier (`semi: false`)。
 
 ## 设计语言（design/ 素材 → 语言 → 落地）
