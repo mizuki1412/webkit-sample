@@ -11,6 +11,7 @@
     { "token": "color.warning(金)", "value": "#E8B339", "evidence": "Total Saved 折线目测", "why": "金色仅做数据第二语义，不做状态警告以外复用" },
     { "token": "color.data-2", "value": "#723DED", "evidence": "palette[10] share=0.6%", "why": "暗色变体会员卡紫色" },
     { "token": "layout.sidebar", "value": "72px", "evidence": "blocks[窄栏包围盒]", "why": "纯图标窄栏 + 蓝色圆角方块选中态，是布局签名" },
+    { "token": "layout.topbar", "value": "56px", "evidence": "暗变体顶部行 blocks：搜索 #15141A 395×35、日期胶囊 #221F2A 169×37，两件独立且与图标栏列相离 28px", "why": "顶部件为互相分离的浮层件、无贯通 header 条带，是布局签名（DESIGN.md 规则 7）" },
     { "token": "radius.lg", "value": "12px", "evidence": "blocks 边缘检测", "why": "卡片小圆角，金融克制剂" },
     { "token": "font.size.base", "value": "13px", "evidence": "type 高度聚类 h11x29/h8x52", "why": "整体比常规缩一档，高密度" }
   ],

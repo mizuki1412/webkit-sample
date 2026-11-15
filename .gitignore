@@ -21,3 +21,6 @@ weekly.*
 
 # web-frame 框架仓库：独立 git 仓库嵌套在项目内，不入父仓库
 /web-frame/
+
+# agent skills：本地安装的 agent 能力目录，不入仓库
+.agents/

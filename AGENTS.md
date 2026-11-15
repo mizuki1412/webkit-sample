@@ -28,7 +28,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 
 - **Entry**: `src/main.js` → `setupWebkit(app, {env, backend: goFrameBackend, routes})`（web-frame 标准装配入口）
 - **App shell**: `src/App.vue` — wraps `<router-view>` in antdv's `a-config-provider` + `a-app`（中文 locale 在此设置）
-- **Router**: `src/router/index.js` 定义路由表，布局组件取 `/web-frame/components-layout/kit-layout-admin.vue`
+- **Router**: `src/router/index.js` 定义路由表，布局组件取 `src/layouts/layout-admin.vue`（自 web-frame kit-layout-admin 封装：Noir 用 72px 图标栏，其余语言沿用框架文本侧栏）
 - **Business api**: `src/api/`（示例 `test.js`），页面不裸发 axios
 - **Views**: admin 视图 `src/views/`，移动端视图 `src/views-app/`（当前未接路由，处于闲置状态）
 
@@ -53,7 +53,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 
 ## 设计语言（design/ 多主题）
 
-- 三套可切换设计语言：**Aurora / Noir / Porcelain**，各自从 `design/pics/` 样图反演（tokens + DESIGN.md + 测量证据）。web-frame 保持 UI 无关，主题机制全在本仓库。
+- 两套可切换设计语言：**Noir / Porcelain**，各自从 `design/pics/` 样图反演（tokens + DESIGN.md + 测量证据）。web-frame 保持 UI 无关，主题机制全在本仓库。
 - 全链路：原图 → `design/themes/<id>/tokens.json` → `python design/tools/build.py`（产物 `design/themes/build/all-themes.css`）→ `<html data-design="<id>">` 级联切换 + antd ConfigProvider 映射 → 右下角切换器（localStorage 持久化）。
 - 页面写 UI：只用语义 CSS 变量（`--color-*` 等）与 `.d-card` / `.d-label` 词汇（`src/design/adapter.css`）；antd 组件自动跟随。图表用色走 `src/design/design-tokens.js`。
 - 改 token 后必须重跑 `python design/tools/build.py`；提交前 `python design/tools/design_lint.py --all-themes <files>` 0 error。新语言接入见 `design/README.md` §3.5。

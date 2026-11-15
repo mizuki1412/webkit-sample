@@ -19,7 +19,8 @@ export const routes = [
     path: "/",
     name: RouteName.index,
     redirect: {name: "page1"},
-    component: () => import("/web-frame/components-layout/kit-layout-admin.vue"),
+    // 本仓库封装的布局：Noir 用 72px 图标栏（design/pics/9e86025a 样图签名），其余语言沿用 web-frame 文本侧栏
+    component: () => import("../layouts/layout-admin.vue"),
     meta: {
       menu: true,
       authDisable: true,
