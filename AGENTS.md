@@ -28,7 +28,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 
 - **Entry**: `src/main.js` → `setupWebkit(app, {env, backend: goFrameBackend, routes})`（web-frame 标准装配入口）
 - **App shell**: `src/App.vue` — wraps `<router-view>` in antdv's `a-config-provider` + `a-app`（中文 locale 在此设置）
-- **Router**: `src/router/index.js` 定义路由表，布局组件取 `src/layouts/layout-admin.vue`（自 web-frame kit-layout-admin 封装：Noir 用 72px 图标栏，其余语言沿用框架文本侧栏）
+- **Router**: `src/router/index.js` 定义路由表，布局组件取 `src/layouts/layout-admin.vue`（自 web-frame kit-layout-admin 封装：文本侧栏 + 标签页）
 - **标签页保活**：`layout-admin.vue` 的标签栏对已入签页面做 keep-alive（切签不重建、关签销毁缓存）；入签页面的**组件名必须等于路由名**（文件名推断不一致的视图用 `defineOptions({ name: 路由名 })` 声明，如 table-normal.vue → `table_normal`），否则 keep-alive include 匹配不上、缓存失效
 - **Business api**: `src/api/`（示例 `test.js`），页面不裸发 axios
 - **Views**: admin 视图 `src/views/`，移动端视图 `src/views-app/`（当前未接路由，处于闲置状态）
@@ -52,13 +52,11 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 - 重库（quill/echarts）在用到它的页面局部 import，避免整库进首屏主包——Bundle 纪律详见 web-frame/AGENTS.md。
 - Tests: vitest（`src/**/*.test.js`；框架测试随 web-frame 仓库）；lint: oxlint（`.oxlintrc.json`）；typecheck 仍无 — only Prettier (`semi: false`)。
 
-## 设计语言（design/ 素材 → 语言 → 落地）
+## UI 落地流程（design/ 原图 → demo → 移植）
 
-- **一套项目一套语言**，两个阶段指令（本仓库工作区技能 `.zcode/skills/`）：参考素材放 `design/assets/` → **`/design`**（分析原图，融合为一套语言，产出 `design/lang/` 语言素材 + `design/demo/` 纯 css/html 审查 demo，不碰 src/）→ 用户浏览器审查 demo → **`/design-implement`**（落地进 `src/design/` 皮肤：theme.css + adapter.css + registry.js）。目录契约与流程见 `design/README.md`。
-- `design/lang/tokens.json` 是唯一事实源；改 token 后必须重跑 `python design/tools/build.py`。
-- 页面写 UI：只用语义 CSS 变量（`--color-*` 等）与 `.d-card` / `.d-label` 词汇（`src/design/adapter.css`）；antd 组件自动跟随。图表用色走 `src/design/design-tokens.js`。
-- 提交前 `python design/tools/design_lint.py`（demo）与 `python design/tools/design_lint.py src/design/adapter.css` 0 error。
-- **当前实现态**：`src/design/`（theme.css + adapter.css + registry.js + design-tokens.js）为 Lumen 单语言皮肤；侧栏为文本侧栏（1.jpg 菜单条形式，形态由 adapter.css 驱动，无主题切换器）。
+- **不做全局设计语言**，无 token / 皮肤层；**antdv 组件保持默认样式**（不加全局 css 覆盖、不动 antd 主题 token）。
+- 两个阶段指令（本仓库工作区技能 `.zcode/skills/`）：UI 原图放 `design/assets/` → **`/ui2demo`**（读图产出 `design/demo/<页名>/index.html`：单文件 + Tailwind CDN、纯静态，浏览器对照原图审查）→ 人审通过 → **`/demo2src`**（移植进 `src/views/`：布局壳 Tailwind class 原样搬，antd 同款控件换成 antdv 组件，示意数据接 `src/api/`，注册路由 + keep-alive 组件名对齐）。目录契约见 `design/README.md`。
+- 页面级视觉只落在 Tailwind class 与页面 `<style scoped>`；全局层（tailwind 入口、`src/after.css`、`App.vue`）不改。
 
 ## Prettier
 

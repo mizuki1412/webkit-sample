@@ -10,25 +10,25 @@
             <v-chart autoresize style="width: 300px; height: 200px" :option="option1"></v-chart>
         </div>
         <a-button @click="testMessage">测试messagebox</a-button>
-        <div class="d-card mt-2 w-[300px]">
-            <div class="d-label">设计语言 demo</div>
-            <div class="mt-1">d-card / d-label 随设计切换</div>
+        <div class="mt-2 w-[300px] rounded-lg bg-white p-6 shadow-sm">
+            <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">卡片示例</div>
+            <div class="mt-1">Tailwind class 直接落卡片样式</div>
         </div>
         <div class="flex gap-2 mt-2">
-            <div class="d-card flex-1">
-                <div class="d-label">Downloads</div>
-                <div class="mt-1" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">31K</div>
-                <div style="color: var(--color-text-faint); font-size: var(--font-size-xs)">From January 1st to February 1st</div>
+            <div class="flex-1 rounded-lg bg-white p-6 shadow-sm">
+                <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">Downloads</div>
+                <div class="mt-1 text-xl font-bold">31K</div>
+                <div class="text-xs text-gray-400">From January 1st to February 1st</div>
             </div>
-            <div class="d-card flex-1">
-                <div class="d-label">Users</div>
-                <div class="mt-1" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--color-accent)">4,200</div>
-                <div style="color: var(--color-positive); font-size: var(--font-size-xs)">↗︎ 40 (2%)</div>
+            <div class="flex-1 rounded-lg bg-white p-6 shadow-sm">
+                <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">Users</div>
+                <div class="mt-1 text-xl font-bold text-blue-500">4,200</div>
+                <div class="text-xs text-green-600">↗︎ 40 (2%)</div>
             </div>
-            <div class="d-card flex-1">
-                <div class="d-label">New Registers</div>
-                <div class="mt-1" style="font-size: var(--font-size-xl); font-weight: var(--font-weight-bold)">1,200</div>
-                <div style="color: var(--color-negative); font-size: var(--font-size-xs)">↘︎ 90 (14%)</div>
+            <div class="flex-1 rounded-lg bg-white p-6 shadow-sm">
+                <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">New Registers</div>
+                <div class="mt-1 text-xl font-bold">1,200</div>
+                <div class="text-xs text-red-500">↘︎ 90 (14%)</div>
             </div>
         </div>
     </a-spin>
@@ -46,37 +46,27 @@ import { useLoading } from "/web-frame/service"
 import { chartConfig } from "/web-frame/service/echarts-helper"
 import { useConfirm } from "/web-frame/service/confirm";
 import { message } from "antdv-next";
-import { designTokens } from "../../design/design-tokens"
 
 const loading = ref(false)
 const modalVisible = ref(false)
 const modalLoading = ref(false)
 const val1 = ref()
 
-// 图表颜色取自设计语言 token（单语言，无切换；designTokens 运行时读 CSS 变量）
+// 图表走 echarts 默认配色（页面内需自定义配色时直接在此写值）
 const option1 = computed(() => {
-  const t = designTokens()
   return chartConfig({
-    color: [t["--color-accent"], t["--color-data-2"], t["--color-data-3"]],
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      axisLabel: {color: t["--color-text-faint"]},
-      axisLine: {lineStyle: {color: t["--color-chart-grid"]}},
     },
     yAxis: {
       type: "value",
-      axisLabel: {color: t["--color-text-faint"]},
-      splitLine: {lineStyle: {color: t["--color-chart-grid"]}},
     },
     series: [
       {
         data: [150, 230, 224, 218, 135, 147, 260],
         type: "line",
         smooth: true,
-        lineStyle: {color: t["--color-data-1"], width: 2.5},
-        itemStyle: {color: t["--color-data-1"]},
-        areaStyle: {color: t["--color-chart-area"]},
       },
     ],
   })

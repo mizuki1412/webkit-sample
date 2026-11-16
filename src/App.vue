@@ -1,5 +1,5 @@
 <template>
-    <a-config-provider :locale="zhCn" :theme="antdTheme">
+    <a-config-provider :locale="zhCn">
         <a-app>
             <router-view />
         </a-app>
@@ -9,6 +9,5 @@
 import zhCn from 'antdv-next/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
-import { antdTheme } from './design/registry';
 dayjs.locale('zh-cn');
 </script>

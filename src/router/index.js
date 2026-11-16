@@ -19,7 +19,7 @@ export const routes = [
     path: "/",
     name: RouteName.index,
     redirect: {name: "page1"},
-    // 本仓库封装的布局：Lumen 单语言，文本侧栏（1.jpg 菜单条形式，形态由 src/design/adapter.css 驱动）
+    // 本仓库封装的布局：文本侧栏 + 标签页（keep-alive）
     component: () => import("../layouts/layout-admin.vue"),
     meta: {
       menu: true,

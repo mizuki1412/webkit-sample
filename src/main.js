@@ -11,9 +11,6 @@ import {routes} from "./router"
 import "vant/lib/index.css"
 // tailwind中覆盖用的css
 import "./after.css"
-// 设计语言皮肤（Lumen）：变量定义在前，适配层在后（流程见 design/README.md：assets → /design → lang+demo → /design-implement）
-import "./design/theme.css"
-import "./design/adapter.css"
 
 const app = createApp(App)
 setupWebkit(app, {

@@ -1,7 +1,6 @@
 <template>
     <a-layout id="home_page">
-        <!-- Lumen 侧栏（1.jpg 形式，DESIGN.md 侧栏语法）：列透明，白色圆角菜单条浮于窗口底；
-             菜单条/选中态/左缘胶囊标样式由 src/design/adapter.css 驱动。宽度对应 --layout-sidebar=200px。 -->
+        <!-- 侧栏：品牌卡（标题 + 折叠钮）+ 默认 a-menu，宽 200px -->
         <a-layout-sider v-model:collapsed="isCollapse" :trigger="null" collapsible :width="200">
             <!-- 品牌卡：标题 + 折叠钮同方块（折叠钮即 1.jpg hamburger 位） -->
             <div class="sider-brand" :class="{ 'is-collapsed': isCollapse }">
@@ -15,7 +14,7 @@
                 </button>
             </div>
             <div class="sider-menu-scroll overflow-auto no-scrollbar"
-                :style="{ height: 'calc(100vh - 64px)', padding: '0 var(--space-3)' }">
+                :style="{ height: 'calc(100vh - 64px)', padding: '0 12px' }">
                 <a-menu :collapsed="isCollapse" mode="inline" @click="tap" v-model:openKeys="openKeys"
                     v-model:selectedKeys="selectedKeys">
                     <template v-for="(item, index) in storePageMenu" :key="index">
@@ -40,7 +39,7 @@
             </div>
         </a-layout-sider>
         <a-layout>
-            <!-- 无贯通顶栏（语言规则）：标签行与品牌卡同款白卡背景；个人中心独立圆形浮钮 -->
+            <!-- 无贯通顶栏：标签行白卡背景；个人中心独立圆形浮钮 -->
             <a-layout-header style="padding: 0" class="topbar w-full flex items-center">
                 <nav class="topbar-tabs">
                     <button v-for="t in pageTabs" :key="t.name" type="button" class="topbar-tab"
@@ -55,8 +54,7 @@
                 </button>
             </a-layout-header>
             <a-layout-content class="overflow-auto" :style="{ height: 'calc(100vh - 64px)' }">
-                <!-- 内容白卡浮于窗口底（卡片化由 adapter.css 驱动）。
-                     标签页保活：keep-alive 缓存所有已入签页面（切换标签不重建、状态保留），
+                <!-- 标签页保活：keep-alive 缓存所有已入签页面（切换标签不重建、状态保留），
                      关闭标签时组件名移出 include，缓存即被丢弃。
                      注意：页面组件名必须等于路由名（文件名推断不一致的用 defineOptions 声明）。 -->
                 <div class="w-full min-h-full">
@@ -150,19 +148,19 @@ function visibleChildren(item) {
 }
 </script>
 <style scoped>
-/* 品牌卡：标题 + 折叠钮同方块，白底轻投影、无边框（DESIGN.md 侧栏语法） */
+/* 品牌卡：标题 + 折叠钮同方块，白底轻投影、无边框 */
 .sider-brand {
     box-sizing: border-box;
-    height: var(--layout-control-h);
-    margin: var(--space-3);
-    padding: var(--space-2);
+    height: 40px;
+    margin: 12px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-2);
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
+    gap: 8px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(21, 25, 51, 0.06);
 }
 
 .sider-brand.is-collapsed {
@@ -173,9 +171,9 @@ function visibleChildren(item) {
     flex: 1;
     min-width: 0;
     text-align: center;
-    color: var(--color-text);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-bold);
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -192,29 +190,28 @@ function visibleChildren(item) {
     border: none;
     cursor: pointer;
     background: transparent;
-    border-radius: var(--radius-sm);
-    color: var(--color-sidebar-text);
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.65);
 }
 
 .sider-collapse:hover {
-    background: var(--color-surface-raised);
-    color: var(--color-text);
+    background: #f5f5f5;
+    color: rgba(0, 0, 0, 0.88);
 }
 
-/* 顶栏：三块（品牌卡/标签卡/个人中心）同高 control-h、12px 沟槽、同一垂直中心带
-   （盒子几何由 adapter.css 驱动：高度 64px 钉死 + 居中 + 统一 gap） */
+/* 顶栏：三块（品牌卡/标签卡/个人中心）同高 40px、统一沟槽 */
 .topbar-tabs {
     box-sizing: border-box;
     flex: 1;
     min-width: 0;
-    height: var(--layout-control-h);
+    height: 40px;
     display: flex;
     align-items: center;
-    gap: var(--space-1);
-    padding: 0 var(--space-1);
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-card);
+    gap: 4px;
+    padding: 0 4px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px 0 rgba(21, 25, 51, 0.06);
     overflow-x: auto;
     overflow-y: hidden;
 }
@@ -222,58 +219,58 @@ function visibleChildren(item) {
 .topbar-tab {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: 8px;
     height: 28px;
-    padding: 0 var(--space-3);
+    padding: 0 12px;
     border: none;
     cursor: pointer;
     background: transparent;
-    border-radius: var(--radius-sm);
-    color: var(--color-text-muted);
-    font-size: var(--font-size-sm);
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 12px;
     white-space: nowrap;
 }
 
 .topbar-tab:hover {
-    background: var(--color-surface-raised);
-    color: var(--color-text);
+    background: #f5f5f5;
+    color: rgba(0, 0, 0, 0.88);
 }
 
 .topbar-tab-active,
 .topbar-tab-active:hover {
-    background: var(--color-accent-weak);
-    color: var(--color-accent);
-    font-weight: var(--font-weight-medium);
+    background: rgba(22, 119, 255, 0.1);
+    color: #1677ff;
+    font-weight: 500;
 }
 
 .topbar-tab-close {
-    font-size: var(--font-size-sm);
+    font-size: 12px;
     line-height: 1;
-    color: var(--color-text-faint);
+    color: rgba(0, 0, 0, 0.45);
 }
 
 .topbar-tab-close:hover {
-    color: var(--color-negative);
+    color: #ff4d4f;
 }
 
 .topbar-user {
     box-sizing: border-box;
     flex-shrink: 0;
-    width: var(--layout-control-h);
-    height: var(--layout-control-h);
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     cursor: pointer;
-    background: var(--color-surface);
-    border-radius: var(--radius-full);
-    box-shadow: var(--shadow-card);
-    color: var(--color-sidebar-text);
-    font-size: var(--font-size-base);
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: 0 1px 3px 0 rgba(21, 25, 51, 0.06);
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
 }
 
 .topbar-user:hover {
-    color: var(--color-accent);
+    color: #1677ff;
 }
 </style>
