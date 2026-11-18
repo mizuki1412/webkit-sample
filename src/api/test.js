@@ -1,6 +1,6 @@
 import {request, upload} from "/web-frame/request"
 
-// 业务 api 示范层（吸取 plm-web api/plm.js 的工程模式）：
+// 业务 api 示范层（实体 CRUD 模式 + 每端点具名函数）：
 //   1. 与 go-frame 生成端点一一对应：/xxx/list|get|create|update|del；
 //   2. 查询类 GET + showMsg:false（查询失败不弹错，页面自行兜底），写操作 POST 默认 showMsg；
 //   3. request 返回 axios response，信封在 `.data`：const ret = (await apiX()).data 再读 ret.data/ret.total；
