@@ -36,12 +36,10 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useRouter } from "vue-router";
 import { useLoading } from "/web-frame/service";
 import { postCommonUpload } from "/web-frame/backend/go-frame";
 import { message } from "antdv-next";
 
-const router = useRouter()
 const loading = ref(false)
 const formRef = ref()
 const formData = ref(null)
@@ -85,10 +83,6 @@ async function upload(option) {
     } finally {
         modalLoading.value = false
     }
-}
-
-async function query() {
-
 }
 
 onMounted(useLoading(loading, async () => {

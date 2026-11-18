@@ -37,14 +37,12 @@
 <script setup>
 // 组件名=路由名：标签栏 keep-alive 按此缓存（文件名推断名与路由名不一致，须显式声明）
 defineOptions({ name: 'table_server' });
-import { ref, onMounted, computed } from 'vue';
-import { useRouter } from "vue-router";
+import { ref, onMounted } from 'vue';
 import { useLoading } from "/web-frame/service";
 import { formatDateTime, sleep } from "/web-frame/utils";
-import { DeleteFilled, InfoOutlined, SearchOutlined } from '@antdv-next/icons';
+import { DeleteFilled, InfoOutlined } from '@antdv-next/icons';
 import KitTableCustomFilter from "/web-frame/components/table/kit-table-custom-filter.vue";
 
-const router = useRouter()
 const loading = ref(false)
 const columns = [
     {

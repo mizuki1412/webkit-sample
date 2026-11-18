@@ -52,14 +52,12 @@
 // 组件名=路由名：标签栏 keep-alive 按此缓存（文件名推断名与路由名不一致，须显式声明）
 defineOptions({ name: 'table_normal' });
 import { ref, onMounted } from 'vue';
-import { useRouter } from "vue-router";
 import { useLoading } from "/web-frame/service";
 import { formatDateTime } from "/web-frame/utils";
-import { DeleteFilled, InfoOutlined, SearchOutlined } from '@antdv-next/icons';
+import { DeleteFilled, InfoOutlined } from '@antdv-next/icons';
 import KitTableCustomFilter from "/web-frame/components/table/kit-table-custom-filter.vue";
 import { antTableFilter } from "/web-frame/utils/antdv";
 
-const router = useRouter()
 const loading = ref(false)
 const columns = [
     {

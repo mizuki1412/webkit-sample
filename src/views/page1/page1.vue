@@ -32,7 +32,7 @@
             </div>
         </div>
     </a-spin>
-    <kit-modal v-model:visible="modalVisible" v-model:loading="modalLoading" :confirm="confirm2">
+    <kit-modal v-model:visible="modalVisible" v-model:loading="modalLoading">
         <template #title>abc</template>
         <a-select class="w-[50%]" v-model="val1" :options="[{ label: 'aaa', value: 'aaa' }]"></a-select>
     </kit-modal>
@@ -72,19 +72,10 @@ const option1 = computed(() => {
   })
 })
 
-function confirm2() {
-}
-
-const data = ref([])
-const dataDisplay = ref([])
-
 function testMessage() {
     useConfirm("确定？", () => {
         message.info(12333)
     })
-}
-
-async function monitor() {
 }
 
 onMounted(
@@ -92,21 +83,19 @@ onMounted(
         await sleep(1000)
         option1.value = chartConfig({
             xAxis: {
-                type: "category",
-                data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+              type: "category",
+              data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
             },
             yAxis: {
-                type: "value",
+              type: "value",
             },
             series: [
-                {
-                    data: [150, 230, 224, 218, 135, 147, 260],
-                    type: "line",
-                },
+              {
+                data: [150, 230, 224, 218, 135, 147, 260],
+                type: "line",
+              },
             ],
         })
-        val1.value = 0
-        // test
     })
 )
 </script>

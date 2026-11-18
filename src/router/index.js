@@ -20,10 +20,12 @@ export const routes = [
     name: RouteName.index,
     redirect: {name: "page1"},
     // 本仓库封装的布局：文本侧栏 + 标签页（keep-alive）
+    // 注意勿配 authDisable：vue-router 4+ 父路由 meta 合并进子路由，
+    // 挂在布局路由上会让全部子页面跳过登录拦截（web-frame AGENTS 点名问题）。
+    // 免登录页面只在叶子路由单独声明（见 /login-joke）。
     component: () => import("../layouts/layout-admin.vue"),
     meta: {
       menu: true,
-      authDisable: true,
     },
     children: [
       {
