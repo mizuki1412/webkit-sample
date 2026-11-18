@@ -1,0 +1,13 @@
+/* tailwind 之后加载的覆盖样式（main.js 引入顺序保证在框架 css 之后，覆盖生效）。
+
+   基础 UI 参数（字号刻度/语义色）默认零配置继承 web-frame/tailwind.css 的 @theme
+   （antdv 对齐：text-micro 11 / xs 12 / sm 13 / base 14 / lg 18 / xl 24 / 2xl 30 / 3xl 38，
+   语义色 text-primary / bg-primary-weak / border-danger 等）。
+   本文件不含 tailwind import，@theme 在此不生效——项目级覆盖用 :root 重声明同名变量
+   （utility 编译产物引用 var(--text-sm) 这类主题变量，运行时取值即被改写）：
+
+   :root {
+       --text-base: 15px;         // 正文基准改为 15
+       --color-primary: #3a78f2;  // 品牌主色（须与 App.vue ConfigProvider theme token 双处同步）
+   }
+*/
