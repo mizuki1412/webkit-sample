@@ -10,25 +10,25 @@
             <v-chart autoresize style="width: 300px; height: 200px" :option="option1"></v-chart>
         </div>
         <a-button @click="testMessage">测试messagebox</a-button>
-        <div class="mt-2 w-[300px] rounded-lg bg-white p-6 shadow-sm">
+        <div class="mt-2 w-[300px] rounded-lg border border-border bg-container p-6 shadow-sm">
             <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">卡片示例</div>
             <div class="mt-1">Tailwind class 直接落卡片样式</div>
         </div>
         <div class="flex gap-2 mt-2">
-            <div class="flex-1 rounded-lg bg-white p-6 shadow-sm">
+            <div class="flex-1 rounded-lg border border-border bg-container p-6 shadow-sm">
                 <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">Downloads</div>
                 <div class="mt-1 text-xl font-bold">31K</div>
                 <div class="text-xs text-gray-400">From January 1st to February 1st</div>
             </div>
-            <div class="flex-1 rounded-lg bg-white p-6 shadow-sm">
+            <div class="flex-1 rounded-lg border border-border bg-container p-6 shadow-sm">
                 <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">Users</div>
-                <div class="mt-1 text-xl font-bold text-blue-500">4,200</div>
-                <div class="text-xs text-green-600">↗︎ 40 (2%)</div>
+                <div class="mt-1 text-xl font-bold text-primary">4,200</div>
+                <div class="text-xs text-success">↗︎ 40 (2%)</div>
             </div>
-            <div class="flex-1 rounded-lg bg-white p-6 shadow-sm">
+            <div class="flex-1 rounded-lg border border-border bg-container p-6 shadow-sm">
                 <div class="text-xs font-medium tracking-wider text-gray-400 uppercase">New Registers</div>
                 <div class="mt-1 text-xl font-bold">1,200</div>
-                <div class="text-xs text-red-500">↘︎ 90 (14%)</div>
+                <div class="text-xs text-danger">↘︎ 90 (14%)</div>
             </div>
         </div>
     </a-spin>

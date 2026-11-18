@@ -71,7 +71,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 
 ## UI 落地流程（design/ 原图 → demo → 移植）
 
-- **基础 UI 参数由 web-frame @theme 统一提供**：字号刻度（`text-micro` 11 / `xs` 12 / `sm` 13 / `base` 14 / `lg` 18 / `xl` 24…，antdv 对齐）与语义色（`text-primary`、`bg-primary-weak`、`border-danger` 等）零配置继承；项目级覆盖只在 `src/after.css` 用 `:root` 重声明同名变量（改主题色须与 ConfigProvider token 双处同步）。仍不做项目级设计语言/皮肤层；**antdv 组件保持默认样式**（不动 antd 主题 token）。
+- **基础 UI 参数由 web-frame @theme 统一提供**：字号刻度（`text-micro` 11 / `xs` 12 / `sm` 13 / `base` 14 / `lg` 18 / `xl` 24…）、语义色（`text-primary`、`bg-primary-weak`、`border-danger` 等）、表面色（`bg-container` / `bg-background` / `text-foreground-*` / `border-border`）、圆角与动效令牌（`animate-fade-in`/`slide-up`）——全部零配置继承；页面不手写 rgba 与硬编码色值。项目级覆盖只在 `src/after.css` 用 `:root` 重声明同名变量（改主题色须与 ConfigProvider token 双处同步）。仍不做项目级设计语言/皮肤层；**antdv 组件保持默认样式**（不动 antd 主题 token）。
 - 两个阶段指令（本仓库工作区技能 `.zcode/skills/`）：UI 原图放 `design/assets/` → **`/ui2demo`**（读图产出 `design/demo/<页名>/index.html`：单文件 + Tailwind CDN、纯静态，浏览器对照原图审查）→ 人审通过 → **`/demo2src`**（移植进 `src/views/`：布局壳 Tailwind class 原样搬，antd 同款控件换成 antdv 组件，示意数据接 `src/api/`，注册路由 + keep-alive 组件名对齐）。目录契约见 `design/README.md`。
 - 页面级视觉只落在 Tailwind class 与页面 `<style scoped>`；全局层不改——tailwind 入口在 web-frame 内，`src/after.css` 只用于基础参数覆盖与全局覆盖样式（新增内容须注明理由），`App.vue` 不改。
 
