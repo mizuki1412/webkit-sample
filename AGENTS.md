@@ -1,6 +1,6 @@
 # WebKit Sample — Agent Guide
 
-go-frame 后端的新项目工程模板（新项目以此为工程基础起步，同时充当 web-frame 框架的示例与测试载体）。**框架层是独立 git 仓库 web-frame，以内嵌独立仓库方式放在项目根下的 `web-frame/`（父仓库 .gitignore，各项目各自 clone 一份），其分层规则、适配器契约、go-frame 对接约定、新项目引导/升级工作流见 `web-frame/AGENTS.md`**——改框架、接新后端、起新项目先读它；本文件只记本仓库自身的事项。
+go-frame 后端的新项目工程模板（新项目以此为工程基础起步，同时充当 web-frame 框架的示例与测试载体）。**框架层是独立 git 仓库 web-frame，以内嵌独立仓库方式放在项目根下的 `web-frame/`（父仓库 .gitignore，各项目各自 clone 一份），其分层规则、适配器契约、go-frame 对接约定、新项目引导/升级工作流见 `web-frame/AGENTS.md`（适配器契约与 go-frame 对接细则分别在 `web-frame/backend/AGENTS.md` 与 `web-frame/backend/go-frame/AGENTS.md`）**——改框架、接新后端、起新项目先读它；本文件只记本仓库自身的事项。
 
 ## Stack
 
@@ -42,7 +42,7 @@ Vite 8 (not v5), config at `vite.config.mjs`; vitest config at `vitest.config.mj
 ## Backend (go-frame)
 
 - 后端为 `go-frame`（默认 `rest.port=10000`、`rest.base` 空）；dev 代理 `/api → VITE_PROXY_TARGET || http://127.0.0.1:10000`。生产走同源 nginx 反代（若后端配了 `rest.base` 则反代目标为 `/server`）。
-- 响应信封/401/403 语义、登出顺序、parsePage 分页、payloadCryptoEnable 报文加密、权限镜像同步——全部见 `web-frame/AGENTS.md` 的「go-frame 适配器对接约定」。
+- 响应信封/401/403 语义、登出顺序、parsePage 分页、payloadCryptoEnable 报文加密、权限镜像同步——全部见 `web-frame/backend/go-frame/AGENTS.md`。
 - 本模板默认未开启报文加密；需要时在 `src/main.js` 调 `payloadCryptoEnable()`（自 `/web-frame/backend/go-frame` 引入）。
 
 ## Sample 专属约定
