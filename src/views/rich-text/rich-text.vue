@@ -6,7 +6,7 @@
 </template>
 <script setup>
 import { ref } from "vue"
-// quill 体积大，仅本页引入
+// tiptap 体积大，仅本页引入
 import KitRichText from "/web-frame/components/kit-rich-text.vue"
 
 const content = ref('demo')
